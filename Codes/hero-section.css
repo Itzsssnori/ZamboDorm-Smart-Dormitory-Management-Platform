@@ -204,7 +204,7 @@
       line-height: 1;
     }
 
-     .hero-button {
+    .hero-button {
       display: inline-block;
       background-color: #ffd700; /* gold/yellow */
       color: #b22222;           /* firebrick red */
@@ -334,4 +334,40 @@
     height: 8px;
   }
 }
+    .btn {
+      padding: 14px 32px;
+      margin-top: 25px;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
+    .btn-primary {
+      background-color: #8b0000; /* dark red */
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: #a52a2a; /* lighter red on hover */
+    }
+
+    .btn-outline {
+      background-color: #fff;
+      color: #8b0000;
+      border: 2px solid #e8b4c4;
+    }
+
+    .btn-outline:hover {
+      background-color: #fdf0f0;
+    }
+
+    .hero-btn-container {
+      display: flex;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
