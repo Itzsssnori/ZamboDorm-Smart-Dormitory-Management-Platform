@@ -38,12 +38,14 @@
     </div>
 
     <div class="hero-slider">
-      <div class="slides" id="slides">
-        <img src="../images/dorm-image1.jpg" alt="Example Room 1">
-        <img src="../images/dorm-image2.jpg" alt="Example Room 2">
-        <img src="../images/dorm-image3.jpg" alt="Example Room 3">
-        <img src="../images/dorm-image4.jpg" alt="Example Room 4">
-        <img src="../images/dorm-image5.jpg" alt="Example Room 5">
+      <div class="slides-container">
+        <div class="slides" id="slides">
+          <img src="../images/dorm-image1.jpg" alt="Example Room 1">
+          <img src="../images/dorm-image2.jpg" alt="Example Room 2">
+          <img src="../images/dorm-image3.jpg" alt="Example Room 3">
+          <img src="../images/dorm-image4.jpg" alt="Example Room 4">
+          <img src="../images/dorm-image5.jpg" alt="Example Room 5">
+        </div>
       </div>
       <div class="arrow left" onclick="prevSlide()">&#10094;</div>
       <div class="arrow right" onclick="nextSlide()">&#10095;</div>
@@ -53,6 +55,17 @@
         <div class="indicator" onclick="goToSlide(2)"></div>
         <div class="indicator" onclick="goToSlide(3)"></div>
         <div class="indicator" onclick="goToSlide(4)"></div>
+      </div>
+      <div class="mobile-badge">
+        <div class="badge-icon">
+          <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+            <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/>
+          </svg>
+        </div>
+        <div class="badge-text">
+          <div class="badge-title">Mobile Ready</div>
+          <div class="badge-subtitle">Access anywhere</div>
+        </div>
       </div>
     </div>
   </div>
