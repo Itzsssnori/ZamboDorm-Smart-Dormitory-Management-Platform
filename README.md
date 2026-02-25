@@ -1,32 +1,32 @@
 # **ZamboDorm – Smart Dormitory Management Platform**
 
 ## **Project Overview**
-ZamboDorm is a **web-based dormitory management platform** designed to streamline accommodation operations in Zamboanga City. It helps **administrators and tenants** manage rooms, payments, visitors, and services efficiently, with a focus on **usability, transparency, and security**.
+ZamboDorm is a web‑based dormitory management platform built to make accommodation operations in Zamboanga City easier and more organized. It gives both administrators and tenants the tools to handle rooms, payments, visitors, and services in one place, with an emphasis on usability, transparency, and security.
 
 ---
 
 ## **Key Features**
-- **Role-Based Access:** Separate functionality for administrators and tenants.  
-- **Tenant & Room Management:** Add, edit, and monitor tenant information, rooms, and beds.  
+- **Role-Based Access:** Different dashboards and functions for admins and tenants.
+- **Tenant & Room Management:** Add, edit, and keep track of tenant details, rooms, and bed assignments.
 - **Payment Tracking:** Monitor who has paid, payment amounts, and billing history.  
 - **Visitor Logging:** Track visitor counts and visit duration.  
 - **Service Requests:** Submit and manage maintenance, water, and laundry requests.  
-- **Announcements & Notices:** Centralized notifications for tenants.  
+- **Announcements & Notices:** Share notices and updates with tenants in one central hub.
 
 ---
 
-## **Admin Functions**
-- **Manage tenants, rooms, and beds**  
-- **Track payments and view status**  
-- **Post announcements and notices**  
-- **Review visitor logs**  
-- **Respond to maintenance and service requests**  
+## **For Administrators**
+- Manage tenants, rooms, and bed assignments
+- Monitor payments and billing status
+- Post announcements and notices
+- Review visitor logs
+- Handle maintenance and service requests
 
 ---
 
-## **Tenant Functions**
-- **View personal room and payment details**  
-- **Receive announcements and notifications**  
-- **Submit complaints or maintenance requests**  
-- **Request laundry services or water delivery**  
-- **Register visitors online**  
+## **For Tenants**
+- View room details and payment history
+- Receive announcements and notifications
+- Submit complaints or maintenance requests
+- Request laundry services or water delivery
+- Register visitors online
