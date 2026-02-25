@@ -1,0 +1,76 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: 'Poppins', sans-serif;
+	padding-top: 62px;
+}
+
+.navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 96px;
+	background: rgba(255, 255, 255, 0.68);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.nav-logo {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+  padding-left: 20px;
+}
+
+.nav-logo img {
+	width: 48px;
+	height: 48px;
+}
+
+.brand {
+	font-size: 1.5rem;
+	line-height: 1;
+}
+
+.brand-zambo {
+	color: #b30000;
+	font-weight: 800;
+}
+
+.brand-dorm {
+	color: #b30000;
+	font-weight: 550;
+}
+
+.nav-links {
+	display: flex;
+	align-items: center;
+	gap: 31px;
+  padding-right: 25px;
+}
+
+.nav-links a {
+	text-decoration: none;
+	color: #333;
+	font-weight: 500;
+}
+
+.nav-links .signin-btn {
+	background-color: #a20202;
+	color: #ffffff;
+	padding: 7.5px 22px;
+	border-radius: 9px;
+	box-shadow: 0 5px 14px rgba(0, 0, 0, 0.24);
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
