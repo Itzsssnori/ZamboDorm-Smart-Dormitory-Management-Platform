@@ -147,3 +147,225 @@
       background-color: rgba(255, 255, 255, 1);
     }
 
+<<<<<<< Updated upstream
+=======
+    .mobile-badge {
+      position: absolute;
+      bottom: -27px;
+      right: -21px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #ffd93d 0%, #ffb800 100%);
+      padding: 14px 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      z-index: 10;
+    }
+
+    .badge-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      background-color: #c41e3a;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .badge-icon img {
+      display: block;
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .badge-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .badge-title {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #8b0000;
+      line-height: 1;
+    }
+
+    .badge-subtitle {
+      font-size: 0.82rem;
+      color: #8b0000;
+      line-height: 1;
+    }
+
+    .hero-button {
+      display: inline-block;
+      background-color: #ffd700; /* gold/yellow */
+      color: #b22222;           /* firebrick red */
+      font-weight: bold;
+      font-family: Arial, sans-serif;
+      padding: 10px 20px;
+      border-radius: 25px;      /* pill shape */
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) {
+  .label {
+    margin-top: 100px;
+    margin-left: clamp(20px, 5vw, 60px);
+  }
+  
+  .hero-section {
+    gap: 30px;
+    margin-left: clamp(20px, 5vw, 60px);
+    margin-right: clamp(20px, 5vw, 60px);
+  }
+  
+  .hero-text {
+    flex: 0 0 48%;
+  }
+  
+  .hero-slider {
+    flex: 0 0 50%;
+    max-width: 480px;
+  }
+  
+  .mobile-badge {
+    padding: 12px 16px;
+    gap: 10px;
+  }
+  
+  .badge-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .badge-title {
+    font-size: 1rem;
+  }
+  
+  .badge-subtitle {
+    font-size: 0.75rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .label {
+    margin-top: 80px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .hero-section {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+  }
+  
+  .hero-text {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .hero-text h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+  
+  .hero-text p {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+  
+  .hero-slider {
+    flex: 1 1 100%;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 50px;
+  }
+  
+  .mobile-badge {
+    bottom: -25px;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 10px 14px;
+  }
+  
+  .badge-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .badge-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .badge-title {
+    font-size: 0.9rem;
+  }
+  
+  .badge-subtitle {
+    font-size: 0.7rem;
+  }
+  
+  .arrow {
+    font-size: 1.5rem;
+    padding: 6px;
+  }
+  
+  .slider-indicators {
+    bottom: 8px;
+  }
+  
+  .indicator {
+    width: 8px;
+    height: 8px;
+  }
+}
+    .btn {
+      padding: 14px 32px;
+      border-radius: 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: #8b0000; /* dark red */
+      color: #fff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: #a52a2a; /* lighter red on hover */
+      box-shadow: 0 6px 16px rgba(139, 0, 0, 0.4);
+    }
+
+    .btn-outline {
+      background-color: #fff;
+      color: #8b0000;
+      border: 2px solid #f0d0d6;
+    }
+
+    .btn-outline:hover {
+      background-color: #fdf0f0;
+    }
+
+    .hero-btn-container {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+>>>>>>> Stashed changes
