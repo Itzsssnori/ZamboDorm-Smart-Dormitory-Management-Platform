@@ -1,111 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/ZamboDorm-Smart-Dormitory-Management-Platform/images/ZamboDorm.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="header.css">
-    <link rel="stylesheet" href="hero-section.css">
-    <title>ZamboDorm - Zamboanga's Smart Dormitory Platform</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="/ZamboDorm-Smart-Dormitory-Management-Platform/images/ZamboDorm.png">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="header.css">
+  <link rel="stylesheet" href="hero-section.css">
+  <link rel="stylesheet" href="footer.css">
+  <title>ZamboDorm - Zamboanga's Smart Dormitory Platform</title>
 </head>
+
 <body>
   <header class="navbar">
-  <div class="nav-logo">
-    <img src="/ZamboDorm-Smart-Dormitory-Management-Platform/images/ZamboDorm.png" alt="ZamboDorm Logo">
-    <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
-  </div>
-  <nav class="nav-links">
-    <a href="#home">Home</a>
-    <a href="#features">Features</a>
-    <a href="signin.html" class="signin-btn">Sign In</a>
+    <div class="nav-logo">
+      <img src="/ZamboDorm-Smart-Dormitory-Management-Platform/images/ZamboDorm.png" alt="ZamboDorm Logo">
+      <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="signin.html" class="signin-btn">Sign In</a>
 
-  </nav>
-</header>
-  <main>
-  <div class="label">
-    <div class="dot"></div>
-    <span class="label-text">Zamboanga's Smart Dormitory Platform</span>
-  </div>
-  
-  <div class="hero-section">
-    <div class="hero-text">
-      <h1>Digitizing Dorm<br>Life in<br> Zamboanga</h1>
-      <p>
-        A centralized web-based platform designed to simplify dormitory operations. 
-        Manage records, payments, and <br> service requests for tenants in Zamboanga City.
-      </p>
-      <div class="hero-btn-container">
-        <a href="signin.html" class="btn btn-primary">Explore Platform →</a>
-        <a href="#Services" class="btn btn-outline">Our Services</a>
-      </div>
+    </nav>
+  </header>
+  <main id="home">
+    <div class="label">
+      <div class="dot"></div>
+      <span class="label-text">Zamboanga's Smart Dormitory Platform</span>
     </div>
 
-    <div class="hero-slider">
-      <div class="slides-container">
-        <div class="slides" id="slides">
-          <img src="../images/dorm-image1.jpg" alt="Example Room 1">
-          <img src="../images/dorm-image2.jpg" alt="Example Room 2">
-          <img src="../images/dorm-image3.jpg" alt="Example Room 3">
-          <img src="../images/dorm-image4.jpg" alt="Example Room 4">
-          <img src="../images/dorm-image5.jpg" alt="Example Room 5">
+    <div class="hero-section">
+      <div class="hero-text">
+        <h1>Digitizing Dorm<br>Life in<br> Zamboanga</h1>
+        <p>
+          A centralized web-based platform designed to simplify dormitory operations.
+          Manage records, payments, and <br> service requests for tenants in Zamboanga City.
+        </p>
+        <div class="hero-btn-container">
+          <a href="signin.html" class="btn btn-primary">Explore Platform →</a>
+          <a href="#Services" class="btn btn-outline">Our Services</a>
         </div>
       </div>
-      <div class="arrow left" onclick="prevSlide()">&#10094;</div>
-      <div class="arrow right" onclick="nextSlide()">&#10095;</div>
-      <div class="slider-indicators">
-        <div class="indicator active" onclick="goToSlide(0)"></div>
-        <div class="indicator" onclick="goToSlide(1)"></div>
-        <div class="indicator" onclick="goToSlide(2)"></div>
-        <div class="indicator" onclick="goToSlide(3)"></div>
-        <div class="indicator" onclick="goToSlide(4)"></div>
-      </div>
-      <div class="mobile-badge">
-        <div class="badge-icon">
-          <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
-            <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z"/>
-          </svg>
+
+      <div class="hero-slider">
+        <div class="slides-container">
+          <div class="slides" id="slides">
+            <img src="../images/dorm-image1.jpg" alt="Example Room 1">
+            <img src="../images/dorm-image2.jpg" alt="Example Room 2">
+            <img src="../images/dorm-image3.jpg" alt="Example Room 3">
+            <img src="../images/dorm-image4.jpg" alt="Example Room 4">
+            <img src="../images/dorm-image5.jpg" alt="Example Room 5">
+          </div>
         </div>
-        <div class="badge-text">
-          <div class="badge-title">Mobile Ready</div>
-          <div class="badge-subtitle">Access anywhere</div>
+        <div class="arrow left" onclick="prevSlide()">&#10094;</div>
+        <div class="arrow right" onclick="nextSlide()">&#10095;</div>
+        <div class="slider-indicators">
+          <div class="indicator active" onclick="goToSlide(0)"></div>
+          <div class="indicator" onclick="goToSlide(1)"></div>
+          <div class="indicator" onclick="goToSlide(2)"></div>
+          <div class="indicator" onclick="goToSlide(3)"></div>
+          <div class="indicator" onclick="goToSlide(4)"></div>
+        </div>
+        <div class="mobile-badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z" />
+            </svg>
+          </div>
+          <div class="badge-text">
+            <div class="badge-title">Mobile Ready</div>
+            <div class="badge-subtitle">Access anywhere</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <script>
-    let index = 0;
-    const slides = document.getElementById('slides');
-    const total = slides.children.length;
-    const indicators = document.querySelectorAll('.indicator');
+      let index = 0;
+      const slides = document.getElementById('slides');
+      const total = slides.children.length;
+      const indicators = document.querySelectorAll('.indicator');
 
-    function updateIndicators() {
-      indicators.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
+      function updateIndicators() {
+        indicators.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.add('active');
+          } else {
+            dot.classList.remove('active');
+          }
+        });
+      }
 
-    function showSlide(i) {
-      index = (i + total) % total; // wrap around
-      slides.style.transform = `translateX(-${(index / total) * 100}%)`;
-      updateIndicators();
-    }
+      function showSlide(i) {
+        index = (i + total) % total; // wrap around
+        slides.style.transform = `translateX(-${(index / total) * 100}%)`;
+        updateIndicators();
+      }
 
-    function nextSlide() { showSlide(index + 1); }
-    function prevSlide() { showSlide(index - 1); }
-    function goToSlide(i) { showSlide(i); }
+      function nextSlide() { showSlide(index + 1); }
+      function prevSlide() { showSlide(index - 1); }
+      function goToSlide(i) { showSlide(i); }
 
-    // Auto-swipe every 5 seconds
-    setInterval(nextSlide, 5000);
-  </script>
-
+      // Auto-swipe every 5 seconds
+      setInterval(nextSlide, 5000);
+    </script>
   </main>
 
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-col">
+        <div class="footer-brand">
+          <img src="../images/ZamboDorm.png" alt="ZamboDorm logo">
+          <h2>ZamboDorm</h2>
+        </div>
+        <p>
+          Revolutionizing dormitory management in
+          Zamboanga City through digital innovation
+          and student-centric design.
+        </p>
+
+        <div class="social">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><img
+              src="../images/facebook.png" alt="Facebook"></a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><img
+              src="../images/twitter.png" alt="Twitter"></a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><img
+              src="../images/linkedin.png" alt="LinkedIn"></a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><img
+              src="../images/instagram.png" alt="Instagram"></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h3>Contact & Support</h3>
+        <p class="contact-item">
+          <img src="../images/mail.png" alt="Mail icon">support@zambodorm.com
+        </p>
+        <p class="contact-item">
+          <img src="../images/phone.png" alt="Phone icon">+63 912 345 6789
+        </p>
+        <p class="contact-item">
+          <img src="../images/address.png" alt="Address icon">Zamboanga City, Philippines
+        </p>
+      </div>
+
+      <div class="footer-col resources-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Dormitory Policies</a></li>
+          <li><a href="#">Tenant Handbook</a></li>
+          <li><a href="#">Safety Guidelines</a></li>
+          <li><a href="#">Privacy Center</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>2026 ZamboDorm. All rights reserved.</p>
+      <div class="links">
+        <a>Terms</a>
+        <a>Privacy</a>
+        <a>Cookies</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
+
 </html>
