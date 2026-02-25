@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 62px;
+  background-color: #f4f4f4;
+}
+
+.login-box {
+    width: 350px;
+    background: #ffffff;
+    padding: 30px 30px 0 30px; 
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    margin: 100px auto;
+    text-align: center;
+    overflow: hidden; 
+}
+
+.login-box h2{
+    margin-bottom: 5px;
+}
+
+.login-box p{
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.input-group{
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #b30000;
+}
+
+.forgot {
+    text-align: right;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.forgot a {
+    text-decoration: none;
+    color: #b30000;
+}
+
+.btn{
+    width: 100%;
+    padding: 10px;
+    background-color: #b30000;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.btn:hover{
+    background-color: #990000;
+}
+
+.demo-box{
+    width: 100%;
+    max-width: 380px;
+    margin: 20px auto;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.demo-title{
+    color: #777;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.demo-item{
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.role {
+    font-weight: 600;
+    color: #444;
+}
+
+.email{
+    color: #666;
+}
+
+.demo-line{
+    margin-top: 18px;
+    border: none;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.secure-box{
+    margin: 20px -30px 0 -30px; 
+    padding: 15px;
+    background-color: #f3f4f6;
+    border-top: 1px solid #e5e7eb;
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+}
+
+.signup{
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup a {
+    color: #ff9900;
+    text-decoration: none;
+    font-weight: bold;
+}
+
