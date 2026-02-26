@@ -7,40 +7,61 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 100%;
 }
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  padding-top: 56px;
+  padding-top: 3.5rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
-@media (max-width: 1024px) {
-  body {
-    padding-top: 56px;
-  }
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
 }
 
-@media (max-width: 768px) {
-  body {
-    padding-top: 50px;
-  }
-}
-/* remove padding bottom later after added contents */
 main {
   flex: 1;
-  padding-bottom: 700px;
+  padding-bottom: 35vh;
 }
 
 .button-group {
   display: flex;
-  gap: 16px; /* space between buttons */
+  gap: 1rem;
   font-family: Arial, sans-serif;
 }
 
 a[href]:active {
   opacity: 0.7;
+}
+
+@media (max-width: 90rem) {
+  body {
+    padding-top: 3.5rem;
+  }
+}
+
+@media (max-width: 75rem) {
+  body {
+    padding-top: 3.375rem;
+  }
+}
+
+@media (max-width: 62rem) {
+  body {
+    padding-top: 3.25rem;
+  }
+}
+
+@media (max-width: 48rem) {
+  body {
+    padding-top: 3.125rem;
+  }
 }
