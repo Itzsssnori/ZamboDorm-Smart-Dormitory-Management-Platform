@@ -1,1 +1,0 @@
-Hello Norielle, here is the file for the redsection and whitesection, if you want some changes, you can just chat me for the changes. Thank you for your consideration and time. I am sorry that I have push this late in my branch. 
