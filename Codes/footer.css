@@ -61,18 +61,11 @@
 .social a {
   text-decoration: none;
   color: #b0c4de;
-  transition: color 0.25s ease;
 }
-
-.footer-links a {
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
 .resources-col ul li a {
   display: inline-block;
   padding: 2px 0;
   cursor: pointer;
-  transition: color 0.25s ease, transform 0.2s ease;
 }
 
 .resources-col ul li a:hover {
@@ -86,13 +79,11 @@
   justify-content: center;
   margin-right: 16px;
   margin-top: 16px;
-  transition: transform 0.16s ease;
 }
 
 .social a img {
   width: 28px;
   height: 28px;
-  transition: opacity 0.25s ease;
 }
 
 .social a:hover img {
@@ -113,7 +104,6 @@
 .footer-container .footer-col:nth-child(2) {
   text-align: center;
   padding-right: 24px;
-  transition: opacity 0.3s ease;
   cursor: pointer;
 }
 
@@ -161,7 +151,6 @@
 
 .links a {
   margin-left: 0;
-  transition: opacity 0.25s ease;
   cursor: pointer;
 }
 

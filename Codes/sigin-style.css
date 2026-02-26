@@ -58,7 +58,6 @@
     text-decoration: none;
     color: #8b0000;
     font-weight: 600;
-    transition: color 0.25s ease;
 }
 
 .forgot a:hover {
@@ -144,7 +143,6 @@
     color: #ff9900;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.25s ease;
 }
 
 .signup a:hover {
