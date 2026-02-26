@@ -1,3 +1,4 @@
+/* Small label above hero */
 .label {
   display: inline-flex;
   align-items: center;
@@ -10,8 +11,8 @@
 }
 
 .dot {
-  width: 0.5625rem;
-  height: 0.5625rem;
+  width: 9px;
+  height: 9px;
   background-color: #8b0000;
   border-radius: 50%;
   margin-right: 0.5rem;
@@ -23,6 +24,7 @@
   font-size: clamp(0.8rem, 0.76rem + 0.2vw, 0.94rem);
 }
 
+/* Two-column hero layout */
 .hero-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -55,6 +57,7 @@
   overflow-wrap: break-word;
 }
 
+/* Image card and overlay badge */
 .hero-slider {
   position: relative;
   width: 100%;
@@ -69,8 +72,8 @@
   height: 100%;
   overflow: hidden;
   border-radius: 1.75rem;
-  border: 0.375rem solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25), inset 0 0 0 0.0625rem rgba(255, 255, 255, 0.3), 0 0 0.75rem rgba(255, 255, 255, 0.4);
+  border: 6px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .slides {
@@ -95,7 +98,7 @@
   background: linear-gradient(135deg, #ffd93d 0%, #ffb800 100%);
   padding: 0.875rem 1.25rem;
   border-radius: 0.875rem;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 10;
 }
 
@@ -103,8 +106,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 2.625rem;
-  height: 2.625rem;
+  width: 42px;
+  height: 42px;
   background-color: #c41e3a;
   border-radius: 50%;
   flex-shrink: 0;
@@ -112,8 +115,8 @@
 
 .badge-icon img {
   display: block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
 }
 
@@ -136,7 +139,7 @@
   line-height: 1;
 }
 
-/* Tablet responsiveness */
+/* Tablet spacing and sizing */
 @media (max-width: 90rem) {
   .label {
     margin-top: 6.5rem;
@@ -212,7 +215,7 @@
   }
 }
 
-/* Mobile responsiveness */
+/* Mobile stacking and button sizing */
 @media (max-width: 48rem) {
   .label {
     margin-top: 5rem;
@@ -305,6 +308,7 @@
   }
 }
 
+/* Shared hero buttons */
 .btn {
   padding: 0.875rem 2rem;
   margin-top: 1.5625rem;
@@ -319,7 +323,7 @@
   background-color: #8b0000;
   color: #fff;
   border: none;
-  box-shadow: 0 0.25rem 0.75rem rgba(139, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
 }
 
 .btn-primary:hover {

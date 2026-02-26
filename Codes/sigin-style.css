@@ -1,14 +1,15 @@
+/* Sign-in card container */
 .login-box {
-    width: min(100%, 26.875rem);
+    width: min(100%, 430px);
     background: #ffffff;
     padding: 2.25rem 2.25rem 0;
-    border-radius: 1.0625rem;
-    box-shadow: 0 0.625rem 1.5rem rgba(0, 0, 0, 0.1);
+    border-radius: 17px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.1);
     margin: 4.125rem auto;
     display: flex;
     flex-direction: column;
     text-align: center;
-    min-height: 39.375rem;
+    min-height: 630px;
     overflow: hidden;
 }
 
@@ -28,6 +29,7 @@
     margin-top: 0.625rem;
 }
 
+/* Form input wrappers and fields */
 .input-group {
     margin-bottom: 1rem;
     text-align: left;
@@ -37,7 +39,7 @@
     width: 100%;
     padding: 0.8125rem;
     border-radius: 0.625rem;
-    border: 0.08125rem solid #ccc;
+    border: 1.3px solid #ccc;
     font-size: clamp(0.88rem, 0.84rem + 0.2vw, 0.98rem);
     outline: none;
 }
@@ -67,6 +69,7 @@
     color: #8b0000;
 }
 
+/* Primary submit button */
 .btn {
     width: 100%;
     padding: 0.875rem;
@@ -79,13 +82,14 @@
     cursor: pointer;
     font-size: clamp(0.9rem, 0.86rem + 0.22vw, 1rem);
     font-weight: bold;
-    box-shadow: 0 0.25rem 0.75rem rgba(179, 0, 0, 0.28);
+    box-shadow: 0 4px 12px rgba(179, 0, 0, 0.28);
 }
 
 .btn:hover {
     background-color: #a30000;
 }
 
+/* Demo account helper section */
 .demo-box {
     width: 100%;
     max-width: 100%;
@@ -118,15 +122,16 @@
     margin-top: 1.25rem;
     margin-bottom: 0.625rem;
     border: none;
-    height: 0.0625rem;
+    height: 1px;
     background-color: #e0e0e0;
 }
 
+/* Security note strip at card bottom */
 .secure-box {
     margin: auto -2.25rem 0;
     padding: 1.25rem 1.25rem 1.625rem;
     background-color: #f7f8fa;
-    border-top: 0.0625rem solid #eceff3;
+    border-top: 1px solid #eceff3;
     font-size: clamp(0.78rem, 0.76rem + 0.14vw, 0.875rem);
     color: #9ca3af;
     text-align: center;
@@ -148,6 +153,7 @@
     color: #e58a00;
 }
 
+/* Responsive card sizing */
 @media (max-width: 90rem) {
     .login-box {
         margin-top: 4rem;
@@ -156,7 +162,7 @@
 
 @media (max-width: 75rem) {
     .login-box {
-        width: min(100%, 25.5rem);
+        width: min(100%, 408px);
         padding: 2rem 2rem 0;
     }
 
@@ -177,7 +183,7 @@
         width: min(100%, 92%);
         padding: 1.5rem 1.25rem 0;
         margin-top: 2.75rem;
-        border-radius: 0.875rem;
+        border-radius: 14px;
     }
 
     .secure-box {
