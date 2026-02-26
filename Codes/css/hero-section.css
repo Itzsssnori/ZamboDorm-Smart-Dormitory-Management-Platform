@@ -5,12 +5,13 @@
   background-color: #f8d7da;
   border-radius: 0.625rem;
   padding: 0.4375rem 0.75rem;
-  margin-top: 7rem;
+  margin-top: clamp(7.5rem, 9vw, 9.5rem);
   margin-left: clamp(1.5rem, 8vw, 7.5rem);
   font-family: Arial, sans-serif;
 }
 
 .dot {
+  position: relative;
   width: 9px;
   height: 9px;
   background-color: #8b0000;
@@ -18,10 +19,50 @@
   margin-right: 0.5rem;
 }
 
+.dot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background-color: #8b0000;
+  opacity: 0.45;
+  animation: dot-ping 1.8s ease-out infinite;
+}
+
 .label-text {
   font-weight: bold;
   color: #8b0000;
   font-size: clamp(0.8rem, 0.76rem + 0.2vw, 0.94rem);
+  animation: label-pulse 2.2s ease-in-out infinite;
+}
+
+@keyframes dot-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes label-pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.72;
+  }
 }
 
 /* Two-column hero layout */
@@ -45,6 +86,7 @@
   font-weight: 700;
   line-height: 1.22;
   margin: 0;
+  margin-top: clamp(0.4rem, 0.8vw, 0.6rem);
 }
 
 .hero-text p {
@@ -72,7 +114,8 @@
   height: 100%;
   overflow: hidden;
   border-radius: 1.75rem;
-  border: 6px solid rgba(255, 255, 255, 0.95);
+  /* Slightly thicker white frame for better visibility */
+  border: 7px solid rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
@@ -113,11 +156,46 @@
   flex-shrink: 0;
 }
 
+.badge-icon svg {
+  /* Animate only the phone icon (not the red badge container) */
+  animation: icon-shake 2.6s ease-in-out infinite;
+  transform-origin: center;
+}
+
 .badge-icon img {
   display: block;
   width: 24px;
   height: 24px;
   object-fit: contain;
+}
+
+@keyframes icon-shake {
+
+  /* Gentle shake to reinforce the “Mobile Ready” cue */
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  8% {
+    transform: translateX(-1px) rotate(-4deg);
+  }
+
+  16% {
+    transform: translateX(1px) rotate(4deg);
+  }
+
+  24% {
+    transform: translateX(-1px) rotate(-3deg);
+  }
+
+  32% {
+    transform: translateX(1px) rotate(3deg);
+  }
+
+  40% {
+    transform: translateX(0) rotate(0deg);
+  }
 }
 
 .badge-text {
@@ -142,7 +220,7 @@
 /* Tablet spacing and sizing */
 @media (max-width: 90rem) {
   .label {
-    margin-top: 6.5rem;
+    margin-top: 7rem;
     margin-left: clamp(1.25rem, 5vw, 3.75rem);
   }
 
@@ -189,7 +267,9 @@
 
 @media (max-width: 62rem) {
   .label {
-    margin-top: 5.5rem;
+    margin-top: clamp(4rem, 6vw, 6rem);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-section {
@@ -197,15 +277,22 @@
     align-items: center;
   }
 
+  .hero-text {
+    text-align: center;
+  }
+
   .hero-slider {
     justify-self: center;
     max-width: min(100%, 36rem);
-    margin-bottom: 3.75rem;
+    margin-bottom: clamp(2rem, 4vw, 3.75rem);
   }
 
   .hero-btn-container {
-    gap: 0.875rem;
+    gap: clamp(0.75rem, 1.5vw, 0.875rem);
     width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .btn {
@@ -218,9 +305,9 @@
 /* Mobile stacking and button sizing */
 @media (max-width: 48rem) {
   .label {
-    margin-top: 5rem;
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
+    margin-top: clamp(3.5rem, 5vw, 5.5rem);
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-section {
@@ -233,6 +320,7 @@
   .hero-text {
     width: 100%;
     max-width: 100%;
+    text-align: center;
   }
 
   .hero-text h1 {
@@ -246,7 +334,7 @@
   .hero-slider {
     width: 100%;
     max-width: 100%;
-    margin-bottom: 3.875rem;
+    margin-bottom: clamp(2rem, 4vw, 3.875rem);
   }
 
   .mobile-badge {
@@ -276,8 +364,11 @@
   }
 
   .hero-btn-container {
-    gap: 0.875rem;
+    gap: clamp(0.625rem, 1.5vw, 0.875rem);
     width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .btn {
@@ -289,7 +380,7 @@
 
 @media (max-width: 30rem) {
   .label {
-    margin-top: 4.625rem;
+    margin-top: clamp(3rem, 5vw, 5.125rem);
     margin-left: 1rem;
     margin-right: 1rem;
   }
@@ -311,7 +402,7 @@
 /* Shared hero buttons */
 .btn {
   padding: 0.875rem 2rem;
-  margin-top: 1.5625rem;
+  margin-top: clamp(0.875rem, 1.5vw, 1.5625rem);
   border-radius: 1rem;
   font-size: clamp(0.92rem, 0.88rem + 0.2vw, 1rem);
   font-weight: bold;
@@ -342,6 +433,6 @@
 
 .hero-btn-container {
   display: flex;
-  gap: 2rem;
+  gap: clamp(0.875rem, 2vw, 2rem);
   flex-wrap: wrap;
 }

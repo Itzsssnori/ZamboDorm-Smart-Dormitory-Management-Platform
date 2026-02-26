@@ -1,0 +1,223 @@
+/*
+  ========================================
+  GLOBAL STYLES & LAYOUT
+  ========================================
+  Core styling: resets, typography, responsive layout
+  and page-level configuration used across all pages
+*/
+
+/* Reset and global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HTML smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+/* Body layout with flex for sticky footer */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 56px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+/* Responsive media elements */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Main content grows to fill available space */
+main {
+  flex: 1;
+  padding-bottom: clamp(4rem, 8vw, 10vh);
+}
+
+/*
+  ========================================
+  USER TYPES SECTION
+  ========================================
+  Two-card layout showcasing Tenant and Dorm Admin personas
+*/
+
+/* Section container with centered alignment */
+.user-types-section {
+  margin: clamp(4.5rem, 6.5vw, 10rem) auto 6rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* Main heading with responsive sizing */
+.user-types-section h1 {
+  color: #8b0000;
+  font-size: clamp(1.7rem, 1.4rem + 1.2vw, 2.55rem);
+  line-height: 1.35;
+  padding-top: 0.6rem;
+  padding-bottom: 1.1rem;
+}
+
+/* Description paragraph spacing */
+.user-types-section > p {
+  color: gray;
+  line-height: 1.7;
+  margin-bottom: clamp(2.5rem, 3.5vw, 4.5rem);
+}
+
+/* Two-column grid for user type cards */
+.user-types-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 26rem));
+  gap: 2.5rem;
+  max-width: 60rem;
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* Card styling with hover effects */
+.user-type-card {
+  background: #f5f5f5;
+  border: 1px solid rgba(224, 224, 224, 0.6);
+  border-radius: 32px;
+  width: 100%;
+  min-height: 17.5rem;
+  padding: 2rem 1.75rem 1.75rem 2.5rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: background 0.45s ease-in-out, box-shadow 0.45s ease-in-out, transform 0.45s ease-in-out 0.1s;
+  cursor: pointer;
+}
+
+/* Hover state - card lifts and becomes white */
+.user-type-card:hover {
+  background: #ffffff;
+  transform: translateY(-0.8rem);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Icon box hover - turns red */
+.user-type-card:hover .user-type-icon-box {
+  background: #8b0000;
+  box-shadow: 0 6px 16px rgba(139, 0, 0, 0.2);
+  transition: background 0s, box-shadow 0s;
+}
+
+/* SVG stroke color on hover */
+.user-type-card:hover .user-type-icon-box svg path,
+.user-type-card:hover .user-type-icon-box svg circle {
+  stroke: #ffffff;
+  transition: stroke 0s;
+}
+
+/* Icon container styling */
+.user-type-icon-box {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.75rem;
+  margin-top: 0.75rem;
+  transition: all 0.4s ease-in-out;
+}
+
+/* SVG sizing within icon box */
+.user-type-icon-box svg {
+  width: 2.25rem;
+  height: 2.25rem;
+  transition: stroke 0.4s ease-in-out;
+}
+
+/* SVG animation transitions */
+.user-type-icon-box svg path,
+.user-type-icon-box svg circle {
+  transition: stroke 0.4s ease-in-out;
+}
+
+/* Content box layout */
+.user-type-content-box {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Card heading styling */
+.user-type-content-box h2 {
+  color: #8b0000;
+  font-size: clamp(1.25rem, 1rem + 0.5vw, 1.5rem);
+  margin-bottom: 0.875rem;
+}
+
+/* Card description text */
+.user-type-content-box p {
+  color: gray;
+  font-size: clamp(0.8rem, 0.7rem + 0.25vw, 0.9rem);
+  line-height: 1.5;
+  margin: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Button group container */
+.button-group {
+  display: flex;
+  gap: 1rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Active link feedback */
+a[href]:active {
+  opacity: 0.7;
+}
+
+/*
+  ========================================
+  RESPONSIVE BREAKPOINTS
+  ========================================
+*/
+
+@media (max-width: 90rem) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+@media (max-width: 75rem) {
+  body {
+    padding-top: 54px;
+  }
+}
+
+@media (max-width: 62rem) {
+  body {
+    padding-top: 52px;
+  }
+
+  .user-types-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 48rem) {
+  body {
+    padding-top: 50px;
+  }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Character encoding and viewport for responsive design -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Page title for browser -->
+  <title>ZamboDorm - Sign In Account</title>
+  
+  <!-- Favicon for browser tab -->
+  <link rel="icon" type="image/png" href="/images/ZamboDorm.png">
+  
+  <!-- Google Fonts - Poppins for all typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/sigin-style.css">
+  <link rel="stylesheet" href="../css/header.css">
+</head>
+
+<body id="top">
+
+  <!-- ====== NAVIGATION HEADER ====== -->
+  <!-- Reused top navigation bar for consistency -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
+      <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html" class="home">Home</a>
+      <a href="index.html#features">Features</a>
+      <a href="#top" class="signin-btn">Sign In</a>
+    </nav>
+  </header>
+
+  <!-- ====== SIGN-IN FORM SECTION ====== -->
+  <!-- Main login card container with form and demo credentials -->
+  <div class="login-box">
+    <h2>Welcome Back</h2>
+    <p>Access your ZamboDorm account</p>
+
+    <!-- Authentication form -->
+    <form action="dashboard.html" method="post">
+      <!-- Email input field -->
+      <div class="input-group">
+        <input type="email" name="email" placeholder="Email Address" required pattern=".+@.+\.com">
+      </div>
+
+      <!-- Password input field -->
+      <div class="input-group">
+        <input type="password" name="password" placeholder="Password" required minlength="12">
+      </div>
+
+      <!-- Forgot password link -->
+      <div class="forgot">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <!-- Sign in button -->
+      <button type="submit" class="btn">Sign In &#8594;</button>
+    </form>
+
+    <!-- Sign up link for new users -->
+    <div class="signup">
+      Don't have an account? <a href="#">Sign Up</a>
+    </div>
+
+    <!-- Demo credentials for testing UI/login flow -->
+    <div class="demo-box">
+      <hr class="demo-line">
+      <p class="demo-title">Demo Accounts:</p>
+
+      <div class="demo-item">
+        <span class="role">Tenant: </span>
+        <span class="email">tenant@example.com</span>
+      </div>
+
+      <div class="demo-item">
+        <span class="role">Dorm Admin:</span>
+        <span class="email">admin@example.com</span>
+      </div>
+    </div>
+
+    <!-- Security trust note -->
+    <div class="secure-box">
+      🛡Secure AES-256 encrypted authentication
+    </div>
+  </div>
+
+</body>
+
+</html>
