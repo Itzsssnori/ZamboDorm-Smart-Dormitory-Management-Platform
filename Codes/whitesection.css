@@ -1,0 +1,109 @@
+/* Remove default spacing */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* Main section layout */
+.community-section {
+    display: flex;              /* Image and content side by side */
+    align-items: center;
+    justify-content: center;
+    gap: 60px;                  /* Space between image and text */
+    padding: 80px 10%;
+}
+
+/* Left image box */
+.image-box img {
+    width: 100%;
+    height: auto;         /* Keep image ratio */
+    max-width: 500px;     /* Limit size on desktop */
+    border-radius: 25px;  /* Rounded corners */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Soft shadow */
+}
+
+/* Right content */
+.content-box {
+    max-width: 550px;
+}
+
+/* Small top label */
+.top-label {
+    color: #a40000;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.top-label i {
+    margin-right: 8px;
+}
+
+/* Main heading */
+.content-box h2 {
+    font-size: 42px;
+    color: #8b0000;
+    margin-bottom: 20px;
+}
+
+/* Description text */
+.description {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+/* Features list layout */
+.features-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px 40px;
+}
+
+/* Each feature item */
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 500;
+}
+
+/* Check icon style */
+.feature-item i {
+    color: #a40000;
+}
+
+/* Responsive for Mobile */
+
+@media (max-width: 768px) {
+
+    .community-section {
+        flex-direction: column;   /* Stack image and text */
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .content-box h2 {
+        font-size: 30px;
+    }
+
+    .features-list {
+        grid-template-columns: 1fr; /* One column on mobile */
+    }
+
+    .feature-item {
+        justify-content: center;
+    }
+
+    .image-box {
+        width: 100%;      /* Full width container */
+        text-align: center; /* Center image */
+    }
+
+    .image-box img {
+        max-width: 100%;  /* Full width on mobile */
+        border-radius: 18px;
+    }
+    
+}
