@@ -18,11 +18,10 @@ Below is a record of our team members and development progress.
 ## Development Timeline  
 
 - **02/25/2026**  
-  Started creating the landing page. Distributed the navigation bar, header, body section, footer, and sign-in page into separate HTML and CSS files for clarity and to avoid merge conflicts.  
+  Started creating the landing page; separated sections (nav, header, body, footer, sign-in) into individual files to avoid merge conflicts.
 
 - **02/26/2026**  
-  Completed assigned tasks, uploaded work to individual branches, and merged contributions. Gathered files into a single **index.html** for the landing page. Tweaked responsiveness for different platforms and added comments and indentation for readability.  
-
+ Completed tasks, merged branches, organized into one index, improved responsiveness, and added comments for readability.
 ---
 
 ## Notes  
