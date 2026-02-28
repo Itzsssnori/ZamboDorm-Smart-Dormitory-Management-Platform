@@ -1,0 +1,188 @@
+
+/* Main content wrapper */
+.main-content {
+    padding: 3rem;
+    margin-left: 250px;
+}
+
+/* Container */
+.visitor-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem;
+    margin-top: 2rem;
+    margin-left: 8rem;
+    margin-right: 6rem;
+}
+
+/* Header */
+.visitor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.visitor-header h1 {
+    font-size: 2.3rem;
+    font-weight: 650;
+    color: var(--text-dark);
+    margin: 0;
+    margin-bottom: 0.1rem;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Register Button */
+.register-btn {
+    background-color: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s ease;
+}
+
+.register-btn:hover {
+    background-color: #a40000;
+    transform: scale(1.02);
+}
+
+.plus {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Card */
+.visitor-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 60px 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Icon circle */
+.icon {
+    width: 70px;
+    height: 70px;
+    background-color: #0b1c2d;
+    border-radius: 50%;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #9ca3af;
+}
+
+/* Card text */
+.visitor-card h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #111827;
+}
+
+.visitor-card p {
+    font-size: 16px;
+    color: #6b7280;
+}
+
+/* Responsive for tablet */
+@media (max-width: 1024px) {
+    .main-content {
+        margin-left: 200px;
+        padding: 2rem;
+    }
+
+    .visitor-container {
+        max-width: 100%;
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
+    .visitor-header h1 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+        padding-top: 4rem;
+    }
+
+    .visitor-container {
+        padding: 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .visitor-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .visitor-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .visitor-card {
+        padding: 40px 15px;
+    }
+}
+
+/* Responsive for mobile */
+@media (max-width: 480px) {
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+        padding-top: 5rem;
+    }
+
+    .visitor-container {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .visitor-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .visitor-header h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .register-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .visitor-card {
+        padding: 40px 15px;
+    }
+
+    .visitor-card h2 {
+        font-size: 18px;
+    }
+
+    .visitor-card p {
+        font-size: 14px;
+    }
+
+    .icon {
+        width: 60px;
+        height: 60px;
+    }
+}

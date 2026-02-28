@@ -83,6 +83,7 @@
         /* Stack image and text */
         text-align: center;
         padding: 50px 20px;
+        align-items: center;
     }
 
     .content-box h2 {
@@ -101,12 +102,17 @@
     .image-box {
         width: 100%;
         /* Full width container */
-        text-align: center;
-        /* Center image */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 20px;
+        box-sizing: border-box;
     }
 
     .image-box img {
         max-width: 100%;
+        width: 100%;
         /* Full width on mobile */
         border-radius: 18px;
     }

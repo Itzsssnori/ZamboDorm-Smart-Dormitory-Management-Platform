@@ -1,66 +1,91 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+
+/* Main content styling */
+.main-content {
+  padding: 3rem;
+  margin-left: 250px;
 }
 
-body{
-    background: #f3f4f6;
+/* Maintenance & Feedback Section */
+.maintenance-feedback-section {
+  margin-top: 2rem;
+  margin-left: 8rem;
+  margin-right: 6em;
 }
 
-/* style for the  Page */
-.page {
-    width: 90%;            /* 90% of screen width on small devices */
-    max-width: 700px;      /* a bit wider for laptops */
-    margin: 120px auto 40px auto;
+.maintenance-title {
+  font-size: 2.3rem;
+  font-weight: 650;
+  color: #1f2937;
+  margin: 0 0 1.5rem 0;
+  font-family: 'Poppins', sans-serif;
 }
 
-h1{
-    margin-bottom: 20px;
-    color: #1f2937;
-    font-size: 30px;
+.maintenance-card {
+  background: white;
+  padding: 2.5rem 2rem 3rem 2.6rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0 , 0, 0.1);
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 2rem;
 }
 
-/* style for the Card */
-.card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0 , 0, 0.1);
-    width: 100%;           /* fills parent .page */
-    box-sizing: border-box;
-}
-
-label{
+.form-label {
     display: block;
-    margin-top: 15px;
-    margin-bottom: 8px;
-    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
 }
 
-select, textarea{
+.form-label:first-of-type {
+  margin-top: 0;
+}
+
+.form-select,
+.form-textarea {
     width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #ccc ;
+    padding: 0.75rem;
+    border-radius: 13px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f5f5;
 }
 
-textarea{
+.form-textarea{
     height: 120px;
     resize: none;
 }
 
 /* style for the submit button */
 .submit-btn{
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    padding: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.6rem;
+    padding: 1rem 23.2rem;
     border-radius: 14px;
-    background: #2563eb;
+    background: #c40000;
     color: white;
     cursor: pointer;
+    font-weight: 600;
+    border: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+.submit-btn:hover {
+  background: #8b0000;
+}
+
+.submit-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }
 
 /* hidden checkbox */
@@ -92,4 +117,109 @@ textarea{
 /* Display success message after submit button is clicked */
 #ShowMessage:checked ~ .success-message{
   display: flex;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 200px;
+    padding: 2rem;
+  }
+
+  .maintenance-feedback-section {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .maintenance-title {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1.5rem;
+    padding-top: 4rem;
+  }
+
+  .sidebar {
+    width: 80px;
+  }
+
+  .maintenance-feedback-section {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .maintenance-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .maintenance-card {
+    padding: 1.5rem 1rem 2rem 1rem;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+  }
+
+  .form-textarea {
+    height: 100px;
+  }
+
+  .submit-btn {
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-content {
+    padding: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .maintenance-feedback-section {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .maintenance-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .maintenance-card {
+    padding: 1rem 0.75rem 1.5rem 0.75rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+
+  .form-select,
+  .form-textarea {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+  }
+
+  .form-textarea {
+    height: 80px;
+  }
+
+  .submit-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    gap: 0.3rem;
+    width: 100%;
+  }
+
+  .submit-icon {
+    width: 18px;
+    height: 18px;
+  }
 }

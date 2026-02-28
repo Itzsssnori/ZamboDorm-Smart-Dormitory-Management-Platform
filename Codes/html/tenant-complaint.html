@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance & Feedback </title>
+    <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/section-bar.css">
+    <link rel="stylesheet" href="../css/complaint-style.css">
+</head>
+<body>
+     <!-- Navigation header -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
+      <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
+    </div>
+    <label class="sidebar-toggle" for="sidebarToggle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </label>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#features">Features</a>
+      <a href="#" class="user-profile-link">
+        <svg class="profile-avatar" viewBox="0 0 40 40" width="40" height="40">
+          <circle cx="20" cy="20" r="20" fill="#8b0000" />
+          <text x="20" y="27" text-anchor="middle" font-size="18" font-weight="600" fill="white">SJ</text>
+        </svg>
+        <span class="profile-name">Sherwin Jr.</span>
+      </a>
+      <div class="logout-container">
+        <a href="index.html#home" class="logout-btn">Logout</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Sidebar toggle checkbox -->
+  <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
+
+  <!-- Left sidebar navigation -->
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <a href="tenant-myroom.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+          <polyline points="9 22 9 12 15 12 15 22"></polyline>
+        </svg>
+        <span class="sidebar-label">My Room</span>
+      </a>
+
+      <a href="#payment" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
+          <line x1="1" y1="10" x2="23" y2="10"></line>
+        </svg>
+        <span class="sidebar-label">Payments</span>
+      </a>
+
+      <a href="#request" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+        <span class="sidebar-label">Request Service</span>
+      </a>
+
+      <a href="tenant-complaint.html" class="sidebar-item active">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <line x1="9" y1="10" x2="9" y2="10"></line>
+          <line x1="12" y1="10" x2="12" y2="10"></line>
+          <line x1="15" y1="10" x2="15" y2="10"></line>
+        </svg>
+        <span class="sidebar-label">Complaints</span>
+      </a>
+
+      <a href="tenant-visitor.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+        <span class="sidebar-label">Visitors</span>
+      </a>
+
+      <a href="#settings" class="sidebar-item sidebar-settings">
+        <img src="../../images/settings.png" alt="Settings" class="sidebar-icon">
+        <span class="sidebar-label">Settings</span>
+      </a>
+
+      <a href="#help" class="sidebar-item">
+        <img src="../../images/help.png" alt="Help" class="sidebar-icon">
+        <span class="sidebar-label">Help</span>
+      </a>
+
+    </nav>
+  </aside>
+    <!--Hidden checkbox (controls message visibility)-->
+   <input type="checkbox" id="ShowMessage">
+
+    <div class="success-message">
+    <span class="check-icon">✔</span>
+    <p>Your report has been submitted anonymously to admin.</p> 
+</div>
+
+    <!-- Main content section -->
+    <main class="main-content">
+      <!-- Maintenance & Feedback Section -->
+      <div class="maintenance-feedback-section">
+        <h2 class="maintenance-title">Maintenance & Feedback</h2>
+        
+        <form class="maintenance-card" action="submit-complaint" method="POST">
+          <label class="form-label">Issues Category</label>
+          <select class="form-select" name="issue-category" required>
+            <option value="">Select an issue category</option>
+            <option value="electrical">Electrical / Lighting</option>
+            <option value="plumbing">Plumbing / Water</option>
+            <option value="noise">Noise Complain</option>
+            <option value="other">Other / General</option>
+          </select>
+
+          <label class="form-label">Description</label>
+          <textarea class="form-textarea" name="description" placeholder="Tell us what's wrong..." required></textarea>
+
+          <button type="submit" class="submit-btn">
+            <svg class="submit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            <span>Submit Report</span>
+          </button>
+        </form>
+      </div>
+    </main>
+    
+</body>
+</html>
