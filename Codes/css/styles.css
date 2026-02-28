@@ -182,7 +182,19 @@ main {
 
 @media (max-width: 768px) {
   .sticky-demo-box {
-    display: none;
+    top: auto;
+    bottom: 15px;
+    right: 10px;
+    left: auto;
+    padding: 8px;
+    gap: 8px;
+    flex-wrap: wrap;
+    max-width: calc(100% - 20px);
+  }
+
+  .demo-admin a,
+  .demo-tenant a {
+    font-size: 11px;
   }
 }
 
