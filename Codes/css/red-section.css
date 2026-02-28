@@ -1,0 +1,70 @@
+/* Dark red section with 4 key features */
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Main red section container */
+.features {
+    background-color: var(--primary-red);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    text-align: center;
+    padding: clamp(2.5rem, 4vw, 4rem) clamp(1rem, 3vw, 2rem);
+    margin-bottom: 3em;
+    gap: clamp(1rem, 1.5vw, 1.5rem);
+    flex-wrap: wrap;
+    border-top: 4px solid var(--accent-yellow);
+}
+
+.feature-box {
+    width: clamp(16%, 19%, 24%);
+    min-width: 11rem;
+    margin: 0 clamp(0.5rem, 1vw, 1rem);
+    background-color: transparent;
+    padding-top: clamp(1.7rem, 2.2vw, 2.3rem);
+    padding-bottom: clamp(1.7rem, 2.2vw, 2.3rem);
+}
+
+.icon {
+    font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.2rem);
+    color: var(--accent-yellow);
+    margin-bottom: 1rem;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Feature heading style */
+.feature-box h3 {
+    font-size: clamp(0.95rem, 0.85rem + 0.4vw, 1.25rem);
+    margin-bottom: 0.75rem;
+    color: white;
+    margin-top: 0;
+}
+
+/* Feature description paragraph */
+.feature-box p {
+    font-size: clamp(0.75rem, 0.65rem + 0.25vw, 0.9rem);
+    line-height: 1.5;
+    color: #e0e0e0;
+    margin: 0;
+}
+
+/* Responsive mobile design */
+
+@media (max-width: 48rem) {
+    .features {
+        flex-direction: column;
+        padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 2vw, 2rem);
+    }
+
+    .feature-box {
+        width: 100%;
+        margin: 0;
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+}

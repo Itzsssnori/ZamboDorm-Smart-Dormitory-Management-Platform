@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/hero-section.css">
+  <link rel="stylesheet" href="../css/red-section.css">
+  <link rel="stylesheet" href="../css/features.css">
+  <link rel="stylesheet" href="../css/whitesection.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <title>ZamboDorm - Zamboanga's Smart Dormitory Platform</title>
+</head>
+
+<body>
+  <!-- Sticky demo box -->
+  <div class="sticky-demo-box">
+    <div class="demo-admin">
+      <a href="signin.html?role=admin">Demo Admin</a>
+    </div>
+    <div class="demo-tenant">
+      <a href="tenant-myroom.html">Demo Tenant</a>
+    </div>
+  </div>
+
+  <!-- Navigation header -->
+  <header class="navbar">
+    <div class="nav-logo">
+      <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
+      <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#core-features">Features</a>
+      <a href="signin.html" class="signin-btn">Sign In</a>
+
+    </nav>
+  </header>
+
+  <!-- Main landing section -->
+  <main id="home">
+    <!-- Tagline label -->
+    <div class="label">
+      <div class="dot"></div>
+      <span class="label-text">Zamboanga's Smart Dormitory Platform</span>
+    </div>
+
+    <!-- Hero content and image -->
+    <div class="hero-section">
+      <div class="hero-text">
+        <h1>Digitizing Dorm<br>Life in<br> Zamboanga</h1>
+        <p>
+          A centralized web-based platform designed to simplify dormitory operations.
+          Manage records, payments, and <br> service requests for tenants in Zamboanga City.
+        </p>
+        <div class="hero-btn-container">
+          <a href="signin.html" class="btn btn-primary">Explore Platform →</a>
+          <a href="#community" class="btn btn-outline">Our Services</a>
+        </div>
+      </div>
+
+      <!-- Image preview with mobile badge -->
+      <div class="hero-slider">
+        <div class="slides-container">
+          <div class="slides">
+            <img src="../../images/dorm-image4.jpg" alt="Example Room 4">
+          </div>
+        </div>
+        <div class="mobile-badge">
+          <div class="badge-icon">
+            <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z" />
+            </svg>
+          </div>
+          <div class="badge-text">
+            <div class="badge-title">Mobile Ready</div>
+            <div class="badge-subtitle">Access anywhere</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- User types section -->
+  <section class="user-types-section" aria-labelledby="user-types-title">
+    <h1 id="user-types-title">TWO ESSENTIAL USER TYPES</h1>
+    <p>Tailored, streamlined experiences for both tenants and administrators.</p>
+
+    <!-- User type cards: Tenants and Dorm Admin -->
+    <div class="user-types-grid">
+      <article class="user-type-card" aria-label="The Tenants">
+        <div class="user-type-icon-box" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+            <circle cx="9" cy="8" r="3" stroke="#8b0000" stroke-width="1.8" />
+            <circle cx="16.5" cy="9.2" r="2.2" stroke="#8b0000" stroke-width="1.8" />
+            <path d="M4.5 18.5c0-2.6 2.1-4.7 4.7-4.7h0.3c2.6 0 4.7 2.1 4.7 4.7" stroke="#8b0000" stroke-width="1.8"
+              stroke-linecap="round" />
+            <path d="M14 18.5c0-1.9 1.5-3.5 3.5-3.5h0.2c1.9 0 3.5 1.5 3.5 3.5" stroke="#8b0000" stroke-width="1.8"
+              stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="user-type-content-box">
+          <h2>The Tenants</h2>
+          <p>View records, submit requests, track payments, and recieve announcements instantly.</p>
+        </div>
+      </article>
+
+      <article class="user-type-card" aria-label="Dorm Admin">
+        <div class="user-type-icon-box" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
+            <path d="M4 20h16" stroke="#8b0000" stroke-width="1.8" stroke-linecap="round" />
+            <path d="M6.5 20V6.5L12 4l5.5 2.5V20" stroke="#8b0000" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M9 20v-3.5h6V20" stroke="#8b0000" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M9 9.5h1.2M13.8 9.5H15M9 12.5h1.2M13.8 12.5H15" stroke="#8b0000" stroke-width="1.8"
+              stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="user-type-content-box">
+          <h2>Dorm Admin</h2>
+          <p>Manage tenants, rooms, payments and services with a comprehensive dashboard.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Quick features section -->
+  <section class="features" id="features">
+    <div class="feature-box">
+      <i class="fas fa-bolt icon"></i>
+      <h3>Fast Response Time</h3>
+      <p>Real-time updates and instant notifications for all users.</p>
+    </div>
+
+    <div class="feature-box">
+      <i class="fas fa-clock icon"></i>
+      <h3>24/7 Support Access</h3>
+      <p>Always available for both tenants and administrators.</p>
+    </div>
+
+    <div class="feature-box">
+      <i class="fas fa-lock icon"></i>
+      <h3>Secure Data Management</h3>
+      <p>Bank-level protection for tenant records and payments.</p>
+    </div>
+
+    <div class="feature-box">
+      <i class="fas fa-mobile-alt icon"></i>
+      <h3>Mobile-Friendly</h3>
+      <p>Optimized for phones, tablets, and desktop browsers.</p>
+    </div>
+  </section>
+
+  <!-- Core system features -->
+  <section class="core-features" id="core-features">
+    <h2 class="features-section-title">Core System Features</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
+        <h3>Digital Records</h3>
+        <p>Secure, paperless profiling for all residents.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+        <h3>Billing System</h3>
+        <p>Easy payment tracking and digital receipts.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
+        <h3>Broadcasts</h3>
+        <p>Important announcements delivered instantly.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tint"></i></div>
+        <h3>Water Service</h3>
+        <p>Integrated water refilling station orders.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-tshirt"></i></div>
+        <h3>Laundry Hub</h3>
+        <p>Schedule and track your laundry orders.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+        <h3>E-Reports</h3>
+        <p>Automated reports for dorm administrators.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community section -->
+  <section class="community-section" id="community">
+    <div class="image-box">
+      <img
+        src="https://images.unsplash.com/photo-1607529378166-034debce6bfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxpcGlubyUyMHN0dWRlbnRzJTIwY29sbGVnZSUyMHVuaXZlcnNpdHklMjBjYW1wdXMlMjBncm91cHxlbnwxfHx8fDE3NzAxMTUxOTV8MA&ixlib=rb-4.1.0&q=80&w=1080"
+        alt="Students">
+    </div>
+
+    <div class="content-box">
+      <div class="top-label">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>ZAMBOANGA CITY PRIDE</span>
+      </div>
+
+      <h2>
+        Built for the Zamboangueño <br>
+        Tenant Community
+      </h2>
+
+      <p class="description">
+        We understand the unique needs of tenants living in Zamboanga City.
+        Our system connects you with local services and provides a seamless dormitory living experience.
+      </p>
+
+      <!-- Features list - two columns -->
+      <div class="features-list">
+
+        <!-- Verified Services -->
+        <div class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Verified Services</span>
+        </div>
+
+        <!-- Bilingual Support -->
+        <div class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Bilingual Support</span>
+        </div>
+
+        <!-- Citywide Coverage -->
+        <div class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Citywide Coverage</span>
+        </div>
+
+        <!-- Smart Tracking -->
+        <div class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          <span>Smart Tracking</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <!-- Site footer with branding, contact info, social links, and resources -->
+  <footer class="footer">
+
+    <!-- Footer main container with multiple columns -->
+    <div class="footer-container">
+
+      <!-- Brand and social links column -->
+      <div class="footer-col">
+
+        <!-- Brand section with logo and company name -->
+        <div class="footer-brand">
+          <img src="../../images/ZamboDorm.png" alt="ZamboDorm logo">
+          <h2>ZamboDorm</h2>
+        </div>
+
+        <!-- Company mission and tagline -->
+        <p>
+          Revolutionizing dormitory management in
+          Zamboanga City through digital innovation
+          and student-centric design.
+        </p>
+
+        <!-- Social media links -->
+        <div class="social">
+          <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <img src="../../images/facebook.png" alt="Facebook">
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+            <img src="../../images/twitter.png" alt="Twitter">
+          </a>
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <img src="../../images/linkedin.png" alt="LinkedIn">
+          </a>
+          <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <img src="../../images/instagram.png" alt="Instagram">
+          </a>
+          <a href="https://www.gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail">
+            <img src="../../images/gmail.png" alt="Gmail">
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Contact and support information column -->
+      <div class="footer-col">
+        <h3>Contact & Support</h3>
+
+        <!-- Email contact -->
+        <p class="contact-item">
+          <img src="../../images/mail.png" alt="Mail icon">support@zambodorm.com
+        </p>
+
+        <!-- Phone contact -->
+        <p class="contact-item">
+          <img src="../../images/phone.png" alt="Phone icon">+63 912 345 6789
+        </p>
+
+        <!-- Location contact -->
+        <p class="contact-item">
+          <img src="../../images/address.png" alt="Address icon">Zamboanga City, Philippines
+        </p>
+      </div>
+
+      <!-- Resources and links column -->
+      <div class="footer-col resources-col">
+        <h3>Resources</h3>
+        <ul>
+          <li><a href="#">Dormitory Policies</a></li>
+          <li><a href="#">Tenant Handbook</a></li>
+          <li><a href="#">Safety Guidelines</a></li>
+          <li><a href="#">Privacy Center</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Footer bottom with copyright and additional links -->
+    <div class="footer-bottom">
+      <p>2026 ZamboDorm. All rights reserved.</p>
+
+      <!-- Additional footer links -->
+      <div class="links">
+        <a>Terms</a>
+        <a>Privacy</a>
+        <a>Cookies</a>
+      </div>
+
+    </div>
+
+  </footer>
+
+</body>
+
+</html>
