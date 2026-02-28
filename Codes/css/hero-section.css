@@ -1,3 +1,11 @@
+/*
+  ========================================
+  HERO SECTION STYLES
+  ========================================
+  Landing page hero section with animated label,
+  two-column layout, main headline, and CTA buttons
+*/
+
 /* Small label above hero */
 .label {
   display: inline-flex;

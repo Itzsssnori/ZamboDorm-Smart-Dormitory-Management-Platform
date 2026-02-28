@@ -1,3 +1,11 @@
+/*
+  ========================================
+  SIGN-IN PAGE STYLES
+  ========================================
+  Login form styling and authentication UI components
+  for user account sign-in functionality
+*/
+
 /* Sign-in card container */
 .login-box {
     width: min(100%, 430px);
