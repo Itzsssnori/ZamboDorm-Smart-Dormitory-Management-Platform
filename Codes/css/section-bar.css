@@ -1,0 +1,126 @@
+/*
+  ========================================
+  SIDEBAR/SECTION BAR NAVIGATION
+  ========================================
+  Left sidebar with navigation sections
+*/
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 56px;
+  width: 280px;
+  height: calc(100vh - 56px);
+  background-color: #ffffff;
+  border-right: 1px solid #e0e0e0;
+  padding: 2rem 0;
+  z-index: 999;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1.25rem 2rem;
+  color: #888888;
+  text-decoration: none;
+  font-weight: 530;
+  font-size: 1.05rem;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.sidebar-item:hover {
+  background-color: #e8e8e8;
+  border-left-color: #8b0000;
+  color: #000000;
+}
+
+.sidebar-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+  color: #888888;
+  stroke: currentColor;
+}
+
+.sidebar-item:hover .sidebar-icon {
+  opacity: 1;
+}
+
+.sidebar-settings {
+  margin-top: auto;
+  border-top: 1px solid #e0e0e0;
+}
+
+.sidebar-label {
+  flex: 1;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 550;
+}
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    padding: 1rem 0;
+  }
+
+  .sidebar-item {
+    padding: 1rem 0.75rem;
+    gap: 0.5rem;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar-icon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 70px;
+  }
+
+  .sidebar-item {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .sidebar-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+/* Active/Selected state styling */
+.sidebar-item:target,
+.sidebar-item:focus {
+  background-color: #ffebeb;
+  border-left-color: #8b0000;
+}
+
+.sidebar-item:target .sidebar-icon,
+.sidebar-item:focus .sidebar-icon {
+  color: #8b0000;
+  opacity: 1;
+  filter: brightness(0.9);
+}
+
+.sidebar-item:target .sidebar-label,
+.sidebar-item:focus .sidebar-label {
+  color: #8b0000;
+  font-weight: 600;
+}

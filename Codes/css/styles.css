@@ -47,6 +47,102 @@ main {
 
 /*
   ========================================
+  STICKY DEMO BOX
+  ========================================
+  Fixed sticky box in top-right corner with demo links
+*/
+
+.sticky-demo-box {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.demo-admin {
+  background: #e3f2fd;
+  border-radius: 12px;
+  padding: 6px 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(200, 200, 200, 0.2);
+}
+
+.demo-admin a {
+  color: #0d47a1;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 12px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.demo-admin:hover {
+  background: #bbdefb;
+}
+
+.demo-admin a:hover {
+  color: #0d47a1;
+}
+
+.demo-tenant {
+  background: #e8f5e9;
+  border-radius: 12px;
+  padding: 6px 10px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(200, 200, 200, 0.2);
+}
+
+.demo-tenant a {
+  color: #1b5e20;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 12px;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.demo-tenant:hover {
+  background: #c8e6c9;
+}
+
+.demo-tenant a:hover {
+  color: #1b5e20;
+}
+
+/* Responsive design for sticky demo box */
+@media (max-width: 768px) {
+  .sticky-demo-box {
+    bottom: 10px;
+    right: 10px;
+    padding: 12px;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .demo-admin a,
+  .demo-tenant a {
+    font-size: 12px;
+  }
+
+  .demo-admin,
+  .demo-tenant {
+    padding: 10px 12px;
+  }
+}
+
+/*
+  ========================================
   USER TYPES SECTION
   ========================================
   Two-card layout showcasing Tenant and Dorm Admin personas

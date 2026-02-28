@@ -58,6 +58,7 @@
   align-items: center;
   gap: 1.9375rem;
   padding-right: 0.5rem;
+  margin-left: auto;
 }
 
 /* Navigation link styling */
@@ -86,6 +87,49 @@
 .nav-links .signin-btn:hover {
   background-color: #b31818;
   color: #ffffff;
+}
+
+/* User profile link styling */
+.user-profile-link {
+  background-color: #e8e8e8;
+  padding: 0.5rem 0.7rem 0.5rem 0.3rem;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: default;
+}
+
+.profile-avatar {
+  flex-shrink: 0;
+  padding-left: 0.5rem;
+}
+
+.profile-name {
+  font-size: clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem);
+  color: #1a1a1a;
+}
+
+/* Logout container and button styling */
+.logout-container {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.logout-container:hover {
+  background-color: #fce4ec;
+}
+
+.logout-btn {
+  color: #d32f2f !important;
+  font-weight: 600;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.logout-btn:hover {
+  color: #b71c1c !important;
 }
 
 /*
