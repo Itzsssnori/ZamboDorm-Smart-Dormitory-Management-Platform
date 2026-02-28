@@ -1,11 +1,3 @@
-/*
-  ========================================
-  NAVIGATION & HEADER STYLES
-  ========================================
-  Fixed top navigation bar with logo, brand name, 
-  navigation links, and sign-in button
-*/
-
 /* Fixed navigation bar - stays visible when scrolling */
 .navbar {
   position: fixed;
@@ -43,12 +35,12 @@
 }
 
 .brand-zambo {
-  color: #b30000;
+  color: var(--primary-red-hover);
   font-weight: 800;
 }
 
 .brand-dorm {
-  color: #b30000;
+  color: var(--primary-red-hover);
   font-weight: 550;
 }
 
@@ -64,34 +56,34 @@
 /* Navigation link styling */
 .nav-links a {
   text-decoration: none;
-  color: #333;
+  color: var(--text-dark);
   font-weight: 600;
   font-size: clamp(0.88rem, 0.84rem + 0.18vw, 1rem);
 }
 
 .nav-links a:hover {
-  color: #8b0000;
+  color: var(--primary-red);
 }
 
 /* Sign-in button styling */
 .nav-links .signin-btn {
-  background-color: #8b0000;
-  color: #ffffff;
+  background-color: var(--primary-red);
+  color: var(--text-white);
   padding: 0.46875rem 1.375rem;
-  border-radius: 0.5625rem;
+  border-radius: var(--radius-sm);
   box-shadow: 0 5px 14px rgba(0, 0, 0, 0.24);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   font-size: clamp(0.86rem, 0.82rem + 0.2vw, 0.98rem);
 }
 
 .nav-links .signin-btn:hover {
-  background-color: #b31818;
-  color: #ffffff;
+  background-color: var(--secondary-red);
+  color: var(--text-white);
 }
 
 /* User profile link styling */
 .user-profile-link {
-  background-color: #e8e8e8;
+  background-color: var(--bg-gray);
   padding: 0.5rem 0.7rem 0.5rem 0.3rem;
   border-radius: 2rem;
   display: flex;
@@ -107,7 +99,7 @@
 
 .profile-name {
   font-size: clamp(0.8rem, 0.75rem + 0.15vw, 0.9rem);
-  color: #1a1a1a;
+  color: var(--text-dark);
 }
 
 /* Logout container and button styling */
@@ -124,7 +116,7 @@
 .logout-btn {
   color: #d32f2f !important;
   font-weight: 600;
-  transition: color 0.3s ease;
+  transition: var(--transition-fast);
   text-decoration: none;
 }
 
@@ -132,11 +124,7 @@
   color: #b71c1c !important;
 }
 
-/*
-  ========================================
-  RESPONSIVE BREAKPOINTS
-  ========================================
-*/
+/* Responsive breakpoints */
 
 /* Tablet adjustments */
 @media (max-width: 90rem) {

@@ -1,15 +1,9 @@
-/*
-  ========================================
-  FOOTER STYLES
-  ========================================
-  Site-wide footer with company info, links,
-  social media, and responsive layout
-*/
+/* Site-wide footer */
 
 /* Footer main container background and layout */
 .footer {
-  background-color: #0A1A2F;
-  color: #ffffff;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
   padding: 3rem clamp(1rem, 5vw, 4.5rem) 1.25rem;
   font-family: 'Poppins', sans-serif;
 }
@@ -36,7 +30,7 @@
 .footer-col h3 {
   font-size: clamp(1rem, 0.96rem + 0.24vw, 1.16rem);
   margin-bottom: 0.75rem;
-  color: #ffffff;
+  color: var(--text-white);
 }
 
 /* Brand block and basic text */
@@ -53,7 +47,7 @@
 
 .footer-col p {
   line-height: 1.7;
-  color: #b0c4de;
+  color: var(--text-lighter);
   font-size: clamp(0.9rem, 0.86rem + 0.22vw, 1.02rem);
   margin: 0.625rem 0 1.125rem;
 }
@@ -71,7 +65,7 @@
 .links a,
 .social a {
   text-decoration: none;
-  color: #b0c4de;
+  color: var(--text-lighter);
 }
 
 .resources-col ul li a {
@@ -95,12 +89,11 @@
 }
 
 .social a img {
-  /* Keep all social icons visually consistent, including Gmail */
   display: block;
   width: 28px;
   height: 28px;
   object-fit: contain;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition: var(--transition-opacity);
 }
 
 .social a:hover img {
@@ -166,7 +159,7 @@
 }
 
 .footer-bottom p {
-  color: #b0c4de;
+  color: var(--text-lighter);
 }
 
 .links {
@@ -183,16 +176,9 @@
   opacity: 0.92;
 }
 
-/*
-  ========================================
-  RESPONSIVE BREAKPOINTS
-  ========================================
-*/
+/* Responsive breakpoints */
 
-@media (max-width: 56.25rem) {
 
-  /* Move to 2-column grid on small tablets */
-  .footer-container {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
@@ -206,8 +192,6 @@
 }
 
 @media (max-width: 62rem) {
-
-  /* Keep columns readable at compact widths */
   .footer {
     padding-inline: clamp(1rem, 2.5vw, 1.25rem);
   }
@@ -231,8 +215,6 @@
 }
 
 @media (max-width: 48rem) {
-
-  /* Single-column mobile footer */
   .footer-container {
     grid-template-columns: 1fr;
   }

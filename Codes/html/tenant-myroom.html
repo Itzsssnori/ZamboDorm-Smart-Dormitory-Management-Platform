@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Character encoding and viewport for responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
-  
-  <!-- Google Fonts - Poppins for all typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <!-- Component stylesheets -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/section-bar.css">
-  
   <title>Sherwin Jr - My Room</title>
 </head>
 <body>
-  <!-- ====== NAVIGATION HEADER ====== -->
-  <!-- Fixed top navigation with tenant profile, logout, logo, and nav links -->
+  <!-- Navigation header -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
       <span class="brand"><span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span></span>
     </div>
     <nav class="nav-links">
-      <a href="#home">Home</a>
-      <a href="#core-features">Features</a>
+      <a href="index.html">Home</a>
+      <a href="index.html#features">Features</a>
       <a href="#" class="user-profile-link">
         <svg class="profile-avatar" viewBox="0 0 40 40" width="40" height="40">
           <circle cx="20" cy="20" r="20" fill="#8b0000" />
@@ -37,16 +28,14 @@
         <span class="profile-name">Sherwin Jr.</span>
       </a>
       <div class="logout-container">
-        <a href="#" class="logout-btn">Logout</a>
+        <a href="index.html#home" class="logout-btn">Logout</a>
       </div>
     </nav>
   </header>
 
-  <!-- ====== LEFT SIDEBAR NAVIGATION ====== -->
-  <!-- Fixed left sidebar with 7 main tenant action sections -->
+  <!-- Left sidebar navigation -->
   <aside class="sidebar">
     <nav class="sidebar-nav">
-      <!-- My Room Section -->
       <a href="#my-room" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
@@ -55,7 +44,6 @@
         <span class="sidebar-label">My Room</span>
       </a>
 
-      <!-- Payment Section -->
       <a href="#payment" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
@@ -64,7 +52,6 @@
         <span class="sidebar-label">Payments</span>
       </a>
 
-      <!-- Request Service Section -->
       <a href="#request" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <line x1="12" y1="5" x2="12" y2="19"></line>
@@ -73,7 +60,6 @@
         <span class="sidebar-label">Request Service</span>
       </a>
 
-      <!-- Complaints Section -->
       <a href="#complaints" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
@@ -84,7 +70,6 @@
         <span class="sidebar-label">Complaints</span>
       </a>
 
-      <!-- Visitor Section -->
       <a href="#visitor" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -93,13 +78,11 @@
         <span class="sidebar-label">Visitor</span>
       </a>
 
-      <!-- Settings Section -->
       <a href="#settings" class="sidebar-item sidebar-settings">
         <img src="../../images/settings.png" alt="Settings" class="sidebar-icon">
         <span class="sidebar-label">Settings</span>
       </a>
 
-      <!-- Help Section -->
       <a href="#help" class="sidebar-item">
         <img src="../../images/help.png" alt="Help" class="sidebar-icon">
         <span class="sidebar-label">Help</span>

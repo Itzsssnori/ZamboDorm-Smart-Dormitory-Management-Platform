@@ -1,17 +1,9 @@
-/*
-  ========================================
-  HERO SECTION STYLES
-  ========================================
-  Landing page hero section with animated label,
-  two-column layout, main headline, and CTA buttons
-*/
-
 /* Small label above hero */
 .label {
   display: inline-flex;
   align-items: center;
-  background-color: #f8d7da;
-  border-radius: 0.625rem;
+  background-color: var(--red-light);
+  border-radius: var(--radius-sm);
   padding: 0.4375rem 0.75rem;
   margin-top: clamp(7.5rem, 9vw, 9.5rem);
   margin-left: clamp(1.5rem, 8vw, 7.5rem);
@@ -22,7 +14,7 @@
   position: relative;
   width: 9px;
   height: 9px;
-  background-color: #8b0000;
+  background-color: var(--primary-red);
   border-radius: 50%;
   margin-right: 0.5rem;
 }
@@ -32,14 +24,14 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background-color: #8b0000;
+  background-color: var(--primary-red);
   opacity: 0.45;
   animation: dot-ping 1.8s ease-out infinite;
 }
 
 .label-text {
   font-weight: bold;
-  color: #8b0000;
+  color: var(--primary-red);
   font-size: clamp(0.8rem, 0.76rem + 0.2vw, 0.94rem);
   animation: label-pulse 2.2s ease-in-out infinite;
 }
@@ -89,7 +81,7 @@
 }
 
 .hero-text h1 {
-  color: #8b0000;
+  color: var(--primary-red);
   font-size: clamp(1.9rem, 1.2rem + 4.2vw, 4.8rem);
   font-weight: 700;
   line-height: 1.22;
@@ -99,7 +91,7 @@
 
 .hero-text p {
   margin: 1.0625rem 0 0;
-  color: #333;
+  color: var(--text-dark);
   font-size: clamp(0.95rem, 0.9rem + 0.45vw, 1.25rem);
   line-height: 1.5;
   max-width: 100%;
@@ -122,9 +114,8 @@
   height: 100%;
   overflow: hidden;
   border-radius: 1.75rem;
-  /* Slightly thicker white frame for better visibility */
   border: 7px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-xl), inset 0 0 0 1px rgba(255, 255, 255, 0.3), 0 0 12px rgba(255, 255, 255, 0.4);
 }
 
 .slides {
@@ -146,10 +137,10 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  background: linear-gradient(135deg, #ffd93d 0%, #ffb800 100%);
+  background: linear-gradient(135deg, var(--accent-gold) 0%, #ffb800 100%);
   padding: 0.875rem 1.25rem;
-  border-radius: 0.875rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   z-index: 10;
 }
 
@@ -159,13 +150,12 @@
   justify-content: center;
   width: 42px;
   height: 42px;
-  background-color: #c41e3a;
+  background-color: var(--red-badge);
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .badge-icon svg {
-  /* Animate only the phone icon (not the red badge container) */
   animation: icon-shake 2.6s ease-in-out infinite;
   transform-origin: center;
 }
@@ -215,13 +205,13 @@
 .badge-title {
   font-weight: 600;
   font-size: clamp(0.92rem, 0.86rem + 0.3vw, 1.1rem);
-  color: #8b0000;
+  color: var(--primary-red);
   line-height: 1;
 }
 
 .badge-subtitle {
   font-size: clamp(0.7rem, 0.68rem + 0.18vw, 0.82rem);
-  color: #8b0000;
+  color: var(--primary-red);
   line-height: 1;
 }
 
@@ -419,19 +409,19 @@
 }
 
 .btn-primary {
-  background-color: #8b0000;
-  color: #fff;
+  background-color: var(--primary-red);
+  color: var(--text-white);
   border: none;
-  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.3);
+  box-shadow: var(--shadow-red-btn);
 }
 
 .btn-primary:hover {
-  background-color: #a52a2a;
+  background-color: var(--primary-red-active);
 }
 
 .btn-outline {
-  background-color: #fff;
-  color: #8b0000;
+  background-color: var(--text-white);
+  color: var(--primary-red);
   border: 0.125rem solid #e8b4c4;
 }
 

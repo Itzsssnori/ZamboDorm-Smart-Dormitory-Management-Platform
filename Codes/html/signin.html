@@ -2,20 +2,11 @@
 <html lang="en">
 
 <head>
-  <!-- Character encoding and viewport for responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Page title for browser -->
   <title>ZamboDorm - Sign In Account</title>
-  
-  <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" href="../../images/ZamboDorm.png">
-  
-  <!-- Google Fonts - Poppins for all typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/signin-style.css">
   <link rel="stylesheet" href="../css/header.css">
@@ -23,8 +14,7 @@
 
 <body id="top">
 
-  <!-- ====== NAVIGATION HEADER ====== -->
-  <!-- Reused top navigation bar for consistency -->
+  <!-- Navigation header -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
@@ -38,39 +28,32 @@
     </nav>
   </header>
 
-  <!-- ====== SIGN-IN FORM SECTION ====== -->
-  <!-- Main login card container with form and demo credentials -->
+  <!-- Sign-in form -->
   <div class="login-box">
     <h2>Welcome Back</h2>
     <p>Access your ZamboDorm account</p>
 
-    <!-- Authentication form -->
     <form action="dashboard.html" method="post">
-      <!-- Email input field -->
       <div class="input-group">
         <input type="email" name="email" placeholder="Email Address" required pattern=".+@.+\.com">
       </div>
 
-      <!-- Password input field -->
       <div class="input-group">
         <input type="password" name="password" placeholder="Password" required minlength="12">
       </div>
 
-      <!-- Forgot password link -->
       <div class="forgot">
         <a href="#">Forgot Password?</a>
       </div>
 
-      <!-- Sign in button -->
       <button type="submit" class="btn">Sign In &#8594;</button>
     </form>
 
-    <!-- Sign up link for new users -->
     <div class="signup">
       Don't have an account? <a href="#">Sign Up</a>
     </div>
 
-    <!-- Demo credentials for testing UI/login flow -->
+    <!-- Demo accounts -->
     <div class="demo-box">
       <hr class="demo-line">
       <p class="demo-title">Demo Accounts:</p>
@@ -86,7 +69,7 @@
       </div>
     </div>
 
-    <!-- Security trust note -->
+    <!-- Security note -->
     <div class="secure-box">
       🛡Secure AES-256 encrypted authentication
     </div>

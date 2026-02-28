@@ -2,21 +2,11 @@
 <html lang="en">
 
 <head>
-  <!-- Character encoding and viewport for responsive design -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Favicon for browser tab -->
   <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
-  
-  <!-- Google Fonts - Poppins for all typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome CDN for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
-  <!-- Global and component stylesheets -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/hero-section.css">
@@ -24,24 +14,21 @@
   <link rel="stylesheet" href="../css/features.css">
   <link rel="stylesheet" href="../css/whitesection.css">
   <link rel="stylesheet" href="../css/footer.css">
-  
   <title>ZamboDorm - Zamboanga's Smart Dormitory Platform</title>
 </head>
 
 <body>
-  <!-- ====== STICKY DEMO BOX ====== -->
-  <!-- Sticky box in top-right corner with Demo Admin and Demo Tenant buttons -->
+  <!-- Sticky demo box -->
   <div class="sticky-demo-box">
     <div class="demo-admin">
       <a href="signin.html?role=admin">Demo Admin</a>
     </div>
     <div class="demo-tenant">
-      <a href="signin.html?role=tenant">Demo Tenant</a>
+      <a href="tenant-myroom.html">Demo Tenant</a>
     </div>
   </div>
 
-  <!-- ====== NAVIGATION HEADER ====== -->
-  <!-- Fixed top navigation with logo, nav links, and sign-in button -->
+  <!-- Navigation header -->
   <header class="navbar">
     <div class="nav-logo">
       <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
@@ -55,16 +42,15 @@
     </nav>
   </header>
 
-  <!-- ====== MAIN LANDING SECTION ====== -->
-  <!-- Hero section with headline, description, CTA buttons, and product image preview -->
+  <!-- Main landing section -->
   <main id="home">
-    <!-- Product label/tagline -->
+    <!-- Tagline label -->
     <div class="label">
       <div class="dot"></div>
       <span class="label-text">Zamboanga's Smart Dormitory Platform</span>
     </div>
 
-    <!-- Hero content with call-to-actions and preview image -->
+    <!-- Hero content and image -->
     <div class="hero-section">
       <div class="hero-text">
         <h1>Digitizing Dorm<br>Life in<br> Zamboanga</h1>
@@ -78,7 +64,7 @@
         </div>
       </div>
 
-      <!-- Visual preview card -->
+      <!-- Image preview with mobile badge -->
       <div class="hero-slider">
         <div class="slides-container">
           <div class="slides">
@@ -89,7 +75,6 @@
           <div class="badge-icon">
             <svg viewBox="0 0 24 24" fill="white" width="24" height="24">
               <path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14z" />
-              <!-- Smartphone outline -->
             </svg>
           </div>
           <div class="badge-text">
@@ -102,18 +87,15 @@
     </div>
   </main>
 
-  <!-- ====== USER TYPES SECTION ====== -->
-  <!-- Two-card layout showcasing Tenant and Dorm Admin user personas with icons -->
+  <!-- User types section -->
   <section class="user-types-section" aria-labelledby="user-types-title">
     <h1 id="user-types-title">TWO ESSENTIAL USER TYPES</h1>
     <p>Tailored, streamlined experiences for both tenants and administrators.</p>
 
     <!-- User type cards: Tenants and Dorm Admin -->
     <div class="user-types-grid">
-      <!-- Tenant card -->
       <article class="user-type-card" aria-label="The Tenants">
         <div class="user-type-icon-box" aria-hidden="true">
-          <!-- Icon: Two People/Tenants Profile -->
           <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
             <circle cx="9" cy="8" r="3" stroke="#8b0000" stroke-width="1.8" />
             <circle cx="16.5" cy="9.2" r="2.2" stroke="#8b0000" stroke-width="1.8" />
@@ -130,10 +112,8 @@
         </div>
       </article>
 
-      <!-- Dorm Admin card -->
       <article class="user-type-card" aria-label="Dorm Admin">
         <div class="user-type-icon-box" aria-hidden="true">
-          <!-- Icon: Building/Admin Dashboard -->
           <svg viewBox="0 0 24 24" fill="none" width="24" height="24">
             <path d="M4 20h16" stroke="#8b0000" stroke-width="1.8" stroke-linecap="round" />
             <path d="M6.5 20V6.5L12 4l5.5 2.5V20" stroke="#8b0000" stroke-width="1.8" stroke-linejoin="round" />
@@ -151,31 +131,26 @@
     </div>
   </section>
 
-  <!-- ====== QUICK FEATURES SECTION (Red Background) ====== -->
-  <!-- Four key features highlighted with yellow icons on dark red background -->
+  <!-- Quick features section -->
   <section class="features" id="features">
-    <!-- Fast Response Time -->
     <div class="feature-box">
       <i class="fas fa-bolt icon"></i>
       <h3>Fast Response Time</h3>
       <p>Real-time updates and instant notifications for all users.</p>
     </div>
 
-    <!-- 24/7 Support Access -->
     <div class="feature-box">
       <i class="fas fa-clock icon"></i>
       <h3>24/7 Support Access</h3>
       <p>Always available for both tenants and administrators.</p>
     </div>
 
-    <!-- Secure Data Management -->
     <div class="feature-box">
       <i class="fas fa-lock icon"></i>
       <h3>Secure Data Management</h3>
       <p>Bank-level protection for tenant records and payments.</p>
     </div>
 
-    <!-- Mobile-Friendly -->
     <div class="feature-box">
       <i class="fas fa-mobile-alt icon"></i>
       <h3>Mobile-Friendly</h3>
@@ -183,48 +158,41 @@
     </div>
   </section>
 
-  <!-- ====== CORE SYSTEM FEATURES SECTION ====== -->
-  <!-- 6-card grid showcasing main platform features (Records, Billing, Broadcasts, etc.) -->
+  <!-- Core system features -->
   <section class="core-features" id="core-features">
     <h2 class="features-section-title">Core System Features</h2>
 
     <div class="features-grid">
-      <!-- Digital Records -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-file-alt"></i></div>
         <h3>Digital Records</h3>
         <p>Secure, paperless profiling for all residents.</p>
       </div>
 
-      <!-- Billing System -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
         <h3>Billing System</h3>
         <p>Easy payment tracking and digital receipts.</p>
       </div>
 
-      <!-- Broadcasts -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-bullhorn"></i></div>
         <h3>Broadcasts</h3>
         <p>Important announcements delivered instantly.</p>
       </div>
 
-      <!-- Water Service -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-tint"></i></div>
         <h3>Water Service</h3>
         <p>Integrated water refilling station orders.</p>
       </div>
 
-      <!-- Laundry Hub -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-tshirt"></i></div>
         <h3>Laundry Hub</h3>
         <p>Schedule and track your laundry orders.</p>
       </div>
 
-      <!-- E-Reports -->
       <div class="feature-card">
         <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
         <h3>E-Reports</h3>
@@ -233,34 +201,25 @@
     </div>
   </section>
 
-  <!-- ====== COMMUNITY/ZAMBOANGA SECTION ====== -->
-  <!-- White background section highlighting local community focus with image and feature list -->
+  <!-- Community section -->
   <section class="community-section" id="community">
-
-    <!-- Left Image -->
     <div class="image-box">
-      <!-- Community image - landscape format with rounded corners -->
       <img
         src="https://images.unsplash.com/photo-1607529378166-034debce6bfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaWxpcGlubyUyMHN0dWRlbnRzJTIwY29sbGVnZSUyMHVuaXZlcnNpdHklMjBjYW1wdXMlMjBncm91cHxlbnwxfHx8fDE3NzAxMTUxOTV8MA&ixlib=rb-4.1.0&q=80&w=1080"
         alt="Students">
     </div>
 
-    <!-- Right Content -->
     <div class="content-box">
-
-      <!-- Location label with icon -->
       <div class="top-label">
         <i class="fas fa-map-marker-alt"></i>
         <span>ZAMBOANGA CITY PRIDE</span>
       </div>
 
-      <!-- Main heading -->
       <h2>
         Built for the Zamboangueño <br>
         Tenant Community
       </h2>
 
-      <!-- Section description -->
       <p class="description">
         We understand the unique needs of tenants living in Zamboanga City.
         Our system connects you with local services and provides a seamless dormitory living experience.

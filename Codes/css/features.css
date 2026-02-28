@@ -1,12 +1,4 @@
-/*
-  ========================================
-  FEATURES SECTION STYLES
-  ========================================
-  Styling for the 6-card grid layout showcasing 
-  core system features with icons
-*/
-
-/* Logo styling (if featured on features page) */
+/* Logo styling and features page */
 .features-logo {
     display: flex;
     align-items: center;
@@ -33,44 +25,35 @@
     color: #8B0000;
 }
 
-/* 
-  ========================================
-  NAVIGATION (Features Page)
-  ========================================
-*/
+/* Navigation on features page */
 
 .features-nav a {
     text-decoration: none;
     margin-right: 25px;
-    color: #333;
+    color: var(--text-dark);
     font-weight: 500;
 }
 
 .features-nav a:hover {
-    color: #8B0000;
+    color: var(--primary-red-dark);
 }
 
 .features-btn-signin {
-    background-color: #8B0000;
-    color: #ffffff;
+    background-color: var(--primary-red-dark);
+    color: var(--text-white);
     border: none;
     padding: 8px 22px;
     border-radius: 25px;
     cursor: pointer;
     font-weight: 500;
-    transition: 0.3s ease;
+    transition: var(--transition-fast);
 }
 
 .features-btn-signin:hover {
     background-color: #a00000;
 }
 
-/* 
-  ========================================
-  CORE FEATURES SECTION
-  ========================================
-  Main features grid with cards
-*/
+/* Core features section and grid */
 
 .features-page {
     padding: 80px 20px 10em 20px;
@@ -87,18 +70,13 @@
 /* Features section title */
 .features-section-title {
     font-size: 28px;
-    color: #8B0000;
+    color: var(--primary-red-dark);
     margin-bottom: 60px;
     text-align: center;
     font-weight: 780;
 }
 
-/* 
-  ========================================
-  FEATURES GRID LAYOUT
-  ========================================
-  Responsive 3-column grid for feature cards
-*/
+/* Grid layout for feature cards */
 
 .features-grid {
     display: grid;
@@ -108,77 +86,61 @@
     margin: auto;
 }
 
-/* 
-  ========================================
-  FEATURE CARD STYLING
-  ========================================
-  White cards with icons and hover effects
-*/
+/* White cards with icons and hover effects */
 
 .feature-card {
-    background-color: #ffffff;
+    background-color: var(--text-white);
     padding: 40px 25px;
     border-radius: 14px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: 0.3s ease;
+    box-shadow: var(--shadow-xs);
+    transition: var(--transition-fast);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     text-align: left;
 }
 
-/* Hover animation - lift card up */
 .feature-card:hover {
     transform: translateY(-8px);
 }
 
-/* Icon container styling */
 .feature-icon {
     width: 60px;
     height: 60px;
-    background-color: #fdecec;
+    background-color: var(--red-feature-bg);
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
     font-size: 26px;
-    transition: 0.3s ease;
+    transition: var(--transition-fast);
 }
 
-/* Icon color - dark red */
 .feature-icon i {
-    color: #8B0000;
-    transition: 0.3s ease;
+    color: var(--primary-red-dark);
+    transition: var(--transition-fast);
 }
 
-/* Icon background changes on card hover */
 .feature-card:hover .feature-icon {
-    background-color: #8B0000;
+    background-color: var(--primary-red-dark);
 }
 
-/* Icon color inverts on hover */
 .feature-card:hover .feature-icon i {
-    color: #ffffff;
+    color: var(--text-white);
 }
 
-/* Card heading */
 .feature-card h3 {
     margin-bottom: 12px;
-    color: #8B0000;
+    color: var(--primary-red-dark);
 }
 
-/* Card description text */
 .feature-card p {
     font-size: 14px;
-    color: #555;
+    color: var(--text-medium);
 }
 
-/* 
-  ========================================
-  RESPONSIVE BREAKPOINTS
-  ========================================
-*/
+/* Responsive breakpoints */
 
 @media (max-width: 900px) {
     .features-grid {

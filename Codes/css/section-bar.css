@@ -1,9 +1,4 @@
-/*
-  ========================================
-  SIDEBAR/SECTION BAR NAVIGATION
-  ========================================
-  Left sidebar with navigation sections
-*/
+/* Left sidebar navigation */
 
 .sidebar {
   position: fixed;
@@ -11,8 +6,8 @@
   top: 56px;
   width: 280px;
   height: calc(100vh - 56px);
-  background-color: #ffffff;
-  border-right: 1px solid #e0e0e0;
+  background-color: var(--bg-white);
+  border-right: 1px solid var(--border-light);
   padding: 2rem 0;
   z-index: 999;
 }
@@ -29,19 +24,19 @@
   align-items: center;
   gap: 1rem;
   padding: 1.25rem 1.5rem 1.25rem 2rem;
-  color: #888888;
+  color: var(--text-light);
   text-decoration: none;
   font-weight: 530;
   font-size: 1.05rem;
   font-family: 'Poppins', sans-serif;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   border-left: 4px solid transparent;
 }
 
 .sidebar-item:hover {
-  background-color: #e8e8e8;
-  border-left-color: #8b0000;
-  color: #000000;
+  background-color: var(--bg-gray);
+  border-left-color: var(--primary-red);
+  color: var(--text-dark);
 }
 
 .sidebar-icon {
@@ -50,7 +45,7 @@
   object-fit: contain;
   opacity: 0.85;
   transition: opacity 0.3s ease;
-  color: #888888;
+  color: var(--text-light);
   stroke: currentColor;
 }
 
@@ -60,7 +55,7 @@
 
 .sidebar-settings {
   margin-top: auto;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid var(--border-light);
 }
 
 .sidebar-label {

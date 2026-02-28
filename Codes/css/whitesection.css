@@ -1,39 +1,24 @@
-/*
-  ========================================
-  COMMUNITY / ZAMBOANGA SECTION
-  ========================================
-  White background section highlighting local community 
-  focus with landscape image on left and content features on right
-*/
+/* Zamboanga community section */
 
 /* Main section layout */
 .community-section {
     display: flex;
-    /* Image and content side by side */
     align-items: center;
     justify-content: center;
     gap: 60px;
-    /* Space between image and text */
     padding: 80px 10%;
-    background-color: #ffffff;
-    /* Pure white background */
+    background-color: var(--bg-white);
 }
 
 /* Left image box */
 .image-box img {
     width: 100%;
     height: auto;
-    /* Keep image ratio */
     max-width: 750px;
-    /* Limit size on desktop - landscape */
     border-radius: 25px;
-    /* Rounded corners */
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    /* Soft shadow */
+    box-shadow: var(--shadow-md);
     aspect-ratio: 16 / 14;
-    /* Taller landscape aspect ratio */
     object-fit: cover;
-    /* Cover without distortion */
 }
 
 /* Right content */
@@ -89,7 +74,7 @@
     color: #a40000;
 }
 
-/* Responsive for Mobile */
+/* Responsive for mobile */
 
 @media (max-width: 768px) {
 
