@@ -1,9 +1,5 @@
 
-/* Main content styling */
-.main-content {
-  padding: 3rem;
-  margin-left: 250px;
-}
+/* Main content styling - defined globally in styles.css */
 
 /* Maintenance & Feedback Section */
 .maintenance-feedback-section {
@@ -27,7 +23,6 @@
   box-shadow: 0 4px 12px rgba(0, 0 , 0, 0.1);
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #e5e7eb;
   margin-bottom: 2rem;
 }
 

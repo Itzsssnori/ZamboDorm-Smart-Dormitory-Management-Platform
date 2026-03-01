@@ -1,8 +1,4 @@
-/* Welcome Section */
-.main-content {
-  padding: 3rem;
-  margin-left: 250px;
-}
+/* Welcome Section - main-content defined globally in styles.css */
 
 .welcome-section {
   display: flex;
@@ -263,6 +259,7 @@
   text-align: center;
   transition: all 0.3s ease;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .pay-now-badge:hover {

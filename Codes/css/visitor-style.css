@@ -1,9 +1,5 @@
 
-/* Main content wrapper */
-.main-content {
-    padding: 3rem;
-    margin-left: 250px;
-}
+/* Main content - defined globally in styles.css */
 
 /* Container */
 .visitor-container {
@@ -35,10 +31,10 @@
 /* Register Button */
 .register-btn {
     background-color: var(--primary-red);
-    color: white;
+    color: var(--text-white);
     border: none;
     padding: 12px 22px;
-    border-radius: 30px;
+    border-radius: 15px;
     font-size: 16px;
     font-weight: 500;
     cursor: pointer;
@@ -50,12 +46,11 @@
 
 .register-btn:hover {
     background-color: #a40000;
-    transform: scale(1.02);
 }
 
 .plus {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Card */

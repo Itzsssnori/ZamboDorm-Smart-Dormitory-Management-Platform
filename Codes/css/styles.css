@@ -70,6 +70,10 @@ html {
 }
 
 /* Body layout with flex for sticky footer */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -93,6 +97,12 @@ canvas {
 main {
   flex: 1;
   padding-bottom: clamp(4rem, 8vw, 10vh);
+}
+
+/* Main content global styles */
+.main-content {
+  padding: 3rem;
+  margin-left: 250px;
 }
 
 
