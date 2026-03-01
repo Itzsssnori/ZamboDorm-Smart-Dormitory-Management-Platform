@@ -3,12 +3,11 @@
 
 /* Container */
 .visitor-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 1rem;
-    margin-top: 2rem;
+    max-width: 100%;
     margin-left: 8rem;
-    margin-right: 6rem;
+    margin-right: 6em;
+    margin-top: 2rem;
+    padding: 2rem 2rem 2rem 2.6rem;
 }
 
 /* Header */
@@ -16,7 +15,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    margin-bottom: 1.875rem;
 }
 
 .visitor-header h1 {
@@ -33,15 +32,17 @@
     background-color: var(--primary-red);
     color: var(--text-white);
     border: none;
-    padding: 12px 22px;
-    border-radius: 15px;
-    font-size: 16px;
+    padding: 0.75rem 1.375rem;
+    border-radius: 0.9375rem;
+    font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0.5rem;
     transition: 0.3s ease;
+    min-height: 44px;
+    white-space: nowrap;
 }
 
 .register-btn:hover {
@@ -56,50 +57,47 @@
 /* Card */
 .visitor-card {
     background-color: #ffffff;
-    border-radius: 20px;
-    padding: 60px 20px;
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 5vw, 3.75rem) clamp(0.75rem, 3vw, 1.25rem);
     text-align: center;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
 /* Icon circle */
 .icon {
-    width: 70px;
-    height: 70px;
+    width: 4.375rem;
+    height: 4.375rem;
     background-color: #0b1c2d;
     border-radius: 50%;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 1.25rem auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 30px;
+    font-size: 1.875rem;
     color: #9ca3af;
 }
 
 /* Card text */
 .visitor-card h2 {
-    font-size: 22px;
+    font-size: clamp(1.3rem, 2vw, 1.375rem);
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 0.625rem;
     color: #111827;
 }
 
 .visitor-card p {
-    font-size: 16px;
+    font-size: 1rem;
     color: #6b7280;
 }
 
-/* Responsive for tablet */
-@media (max-width: 1024px) {
-    .main-content {
-        margin-left: 200px;
-        padding: 2rem;
-    }
+/* Responsive Media Queries */
 
+/* Tablet: 1024px and below */
+@media (max-width: 1024px) {
     .visitor-container {
-        max-width: 100%;
-        margin-left: 3rem;
-        margin-right: 3rem;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        padding: 1rem;
     }
 
     .visitor-header h1 {
@@ -107,77 +105,100 @@
     }
 }
 
+/* Mobile landscape: 768px and below */
 @media (max-width: 768px) {
-    .main-content {
-        margin-left: 0;
-        padding: 1.5rem;
-        padding-top: 4rem;
-    }
-
     .visitor-container {
-        padding: 0.5rem;
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1rem;
+        width: 100%;
     }
 
     .visitor-header {
-        flex-direction: column;
+        flex-direction: row;
         gap: 1rem;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .visitor-header h1 {
         font-size: 1.5rem;
-    }
-
-    .visitor-card {
-        padding: 40px 15px;
-    }
-}
-
-/* Responsive for mobile */
-@media (max-width: 480px) {
-    .main-content {
-        margin-left: 0;
-        padding: 1rem;
-        padding-top: 5rem;
-    }
-
-    .visitor-container {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
-    }
-
-    .visitor-header {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-
-    .visitor-header h1 {
-        font-size: 1.2rem;
-        margin-bottom: 0.5rem;
+        flex: 1;
     }
 
     .register-btn {
-        width: 100%;
-        justify-content: center;
+        white-space: nowrap;
+        padding: 0.625rem 1rem;
+        font-size: 0.9rem;
     }
 
     .visitor-card {
-        padding: 40px 15px;
+        padding: 1.875rem 0.9375rem;
     }
 
     .visitor-card h2 {
-        font-size: 18px;
+        font-size: 1.3rem;
     }
 
     .visitor-card p {
-        font-size: 14px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Mobile small: 480px and below */
+@media (max-width: 480px) {
+    .visitor-container {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0.75rem;
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .visitor-header {
+        flex-direction: row;
+        gap: 0.75rem;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1.5rem;
+    }
+
+    .visitor-header h1 {
+        font-size: 1.3rem;
+        margin: 0;
+        flex: 1;
+    }
+
+    .register-btn {
+        padding: 0.625rem 0.75rem;
+        min-height: 42px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+        gap: 0.375rem;
+    }
+
+    .plus {
+        font-size: 0.95em;
+    }
+
+    .visitor-card {
+        padding: 1.5625rem 0.75rem;
+        border-radius: 0.9375rem;
+    }
+
+    .visitor-card h2 {
+        font-size: 1.1rem;
+        margin-bottom: 0.3125rem;
+    }
+
+    .visitor-card p {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 
     .icon {
-        width: 60px;
-        height: 60px;
+        width: 3.4375rem;
+        height: 3.4375rem;
+        margin-bottom: 0.9375rem;
     }
 }

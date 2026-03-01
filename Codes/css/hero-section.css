@@ -12,8 +12,8 @@
 
 .dot {
   position: relative;
-  width: 9px;
-  height: 9px;
+  width: 0.5625rem;
+  height: 0.5625rem;
   background-color: var(--primary-red);
   border-radius: 50%;
   margin-right: 0.5rem;
@@ -148,8 +148,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 2.625rem;
+  height: 2.625rem;
   background-color: var(--red-badge);
   border-radius: 50%;
   flex-shrink: 0;
@@ -162,8 +162,8 @@
 
 .badge-icon img {
   display: block;
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   object-fit: contain;
 }
 

@@ -47,9 +47,9 @@ body > .main-content {
 /* Modal Wrapper - White form container */
 .payment-modal-wrapper {
   background: var(--bg-white);
-  border-radius: var(--radius-xl);
+  border-radius: 1rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-  max-width: 700px;
+  max-width: 43.75rem;
   width: 90%;
   max-height: 90vh;
   overflow-y: auto;
@@ -150,10 +150,10 @@ body > .main-content {
 .payment-announcements-container::after {
   content: '';
   position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 220px;
-  height: 218px;
+  top: -7.5rem;
+  right: -7.5rem;
+  width: 13.75rem;
+  height: 13.625rem;
   background-color: #dc5a5a;
   border-radius: 50%;
   opacity: 0.6;
@@ -163,12 +163,12 @@ body > .main-content {
 
 .announcement-badge {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 1.25rem;
+  right: 1.25rem;
   background-color: #fee2e2;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -250,7 +250,7 @@ body > .main-content {
 
 .billing-cards-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
   gap: 2rem;
 }
 
@@ -340,10 +340,10 @@ body > .main-content {
 /* Card Container */
 .payment-card {
   background: var(--bg-white);
-  border-radius: var(--radius-xl);
+  border-radius: 1rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border: 1px solid var(--border-color);
   transition: box-shadow 0.3s ease;
 }
@@ -380,6 +380,7 @@ body > .main-content {
   font-weight: 600;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+  min-height: 2.75rem;
 }
 
 .payment-add-room-btn:hover {
@@ -409,6 +410,9 @@ body > .main-content {
   border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 3rem;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .payment-room-item:hover {
@@ -422,10 +426,10 @@ body > .main-content {
 }
 
 .payment-room-item input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
+  width: 1.25rem;
+  height: 1.25rem;
   cursor: pointer;
-  margin-top: 2px;
+  margin-top: 0.125rem;
   accent-color: var(--primary-red);
 }
 
@@ -487,8 +491,8 @@ body > .main-content {
   color: var(--text-light);
   cursor: pointer;
   padding: 0;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -529,6 +533,12 @@ body > .main-content {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .payment-duration-option input[type="radio"]:checked + .payment-duration-label {
@@ -565,12 +575,15 @@ body > .main-content {
   padding: 1.2rem;
   background: var(--bg-light);
   border: 2px solid var(--border-color);
-  border-radius: var(--radius-lg);
+  border-radius: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-dark);
+  min-height: 2.75rem;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .payment-method-option input[type="radio"]:checked + .payment-method-label {
@@ -581,8 +594,8 @@ body > .main-content {
 }
 
 .payment-method-icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   stroke-width: 2;
 }
 
@@ -596,12 +609,18 @@ body > .main-content {
   font-family: 'Poppins', sans-serif;
   color: var(--text-dark);
   transition: all 0.3s ease;
+  min-height: 2.75rem;
 }
 
 .payment-reference-input:focus {
   outline: none;
   border-color: var(--primary-red);
   box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+.payment-reference-input:focus-visible {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
 }
 
 .payment-reference-input::placeholder {
@@ -688,6 +707,10 @@ body > .main-content {
   text-decoration: none;
   display: inline-block;
   text-align: center;
+  min-height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .payment-btn-cancel {
@@ -766,6 +789,7 @@ body > .main-content {
   .payment-modal-wrapper {
     width: 85%;
     padding: 1.5rem;
+    max-height: 90vh;
   }
 
   .payment-methods-grid {
@@ -773,19 +797,62 @@ body > .main-content {
   }
 
   .payment-action-buttons {
-    flex-direction: column;
+    flex-direction: row;
+    gap: 1rem;
   }
 
   .payment-btn {
     padding: 0.9rem 1.5rem;
+    flex: 1;
   }
 }
 
-/* Mobile (768px) */
+/* Mobile Landscape & Tablet (768px) */
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
     padding: 1.5rem;
+  }
+
+  body > .navbar,
+  body > .sidebar,
+  body > .main-content {
+    pointer-events: auto;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar-toggle-input:checked ~ .sidebar {
+    transform: translateX(0);
+  }
+
+  .payment-modal-overlay {
+    padding: 0.5rem;
+  }
+
+  .payment-modal-wrapper {
+    width: 100%;
+    max-width: 100%;
+    max-height: 95vh;
+    padding: 1.5rem;
+    border-radius: 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .payment-modal-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .payment-modal-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .payment-modal-subtitle {
+    font-size: 0.85rem;
   }
 
   .payment-welcome-section {
@@ -793,12 +860,29 @@ body > .main-content {
     align-items: flex-start;
     margin-left: 0;
     margin-right: 0;
-    gap: 1.5rem;
+    gap: 1rem;
+  }
+
+  .payment-welcome-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .payment-welcome-message {
+    font-size: 0.9rem;
   }
 
   .payment-room-info {
     text-align: left;
     align-items: flex-start;
+    margin-right: 0;
+    gap: 0.3rem;
+  }
+
+  .payment-announcements-container {
+    margin-left: 0;
+    margin-right: 0;
+    padding: 1.5rem;
   }
 
   .billing-section {
@@ -806,35 +890,22 @@ body > .main-content {
     margin-right: 0;
   }
 
-  .payment-modal-overlay {
-    padding: 1rem;
-  }
-
-  .payment-modal-wrapper {
-    width: 100%;
-    max-height: 95vh;
-    padding: 1.2rem;
-  }
-
-  .payment-modal-title {
-    font-size: 1.5rem;
-  }
-
-  .payment-modal-subtitle {
-    font-size: 0.85rem;
-  }
-
-  .payment-welcome-title {
-    font-size: 1.75rem;
-  }
-
   .billing-title {
     font-size: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 
   .payment-card {
     padding: 1.2rem;
     margin-bottom: 1.2rem;
+    border-radius: 12px;
+  }
+
+  .payment-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    gap: 0.8rem;
   }
 
   .payment-card-title {
@@ -843,6 +914,12 @@ body > .main-content {
 
   .payment-duration-buttons {
     grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+
+  .payment-duration-label {
+    padding: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .payment-methods-grid {
@@ -852,87 +929,343 @@ body > .main-content {
 
   .payment-method-label {
     padding: 1rem;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    gap: 0.3rem;
+  }
+
+  .payment-method-icon {
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   .payment-room-item {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 20px 1fr auto;
     gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .payment-room-item input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0.25rem;
+  }
+
+  .payment-room-header {
+    gap: 0.5rem;
+  }
+
+  .payment-room-header .payment-room-number {
+    font-size: 1rem;
+  }
+
+  .payment-room-occupant {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
   }
 
   .payment-room-remove-btn {
-    grid-column: 1 / -1;
-    justify-self: flex-end;
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 1.5rem;
+  }
+
+  .payment-reference-input {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .payment-summary-card {
+    margin-bottom: 1.2rem;
+  }
+
+  .payment-summary-row {
+    font-size: 0.9rem;
+    padding: 0.6rem 0;
+  }
+
+  .payment-summary-row.total {
+    font-size: 1.1rem;
   }
 
   .payment-action-buttons {
+    display: flex;
+    flex-direction: row;
     gap: 0.75rem;
+    margin-top: 1.5rem;
+    justify-content: stretch;
   }
 
   .payment-btn {
-    padding: 0.85rem 1rem;
+    padding: 0.8rem 1rem;
     font-size: 0.95rem;
+    flex: 1;
+    min-height: 2.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .payment-add-room-btn {
     padding: 0.5rem 1rem;
     font-size: 0.85rem;
+    width: auto;
   }
 
   .billing-cards-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .billing-card {
+    padding: 1rem;
+  }
+
+  .billing-month {
+    font-size: 1rem;
+  }
+
+  .billing-amount {
+    font-size: 1.75rem;
   }
 }
 
 /* Mobile Small (480px) */
 @media (max-width: 480px) {
+  html,
+  body {
+    font-size: 14px;
+  }
+
+  .payment-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
   .payment-modal-wrapper {
     width: 100%;
+    max-width: 100%;
+    max-height: 95vh;
     padding: 1rem;
+    border-radius: 16px 16px 0 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .payment-modal-header {
+    margin-bottom: 1.2rem;
+    text-align: center;
   }
 
   .payment-modal-title {
     font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .payment-modal-subtitle {
+    font-size: 0.8rem;
   }
 
   .payment-welcome-title {
     font-size: 1.5rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .payment-welcome-message {
+    font-size: 0.85rem;
   }
 
   .billing-title {
     font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 
   .payment-card {
     padding: 1rem;
     margin-bottom: 1rem;
-  }
-
-  .payment-duration-buttons {
-    grid-template-columns: 1fr;
-  }
-
-  .payment-methods-grid {
-    grid-template-columns: 1fr;
+    border-radius: 12px;
   }
 
   .payment-card-header {
     flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .payment-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+
+  .payment-duration-buttons {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .payment-duration-label {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .payment-methods-grid {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .payment-method-label {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.9rem;
+    gap: 0.6rem;
+  }
+
+  .payment-method-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .payment-room-item {
+    grid-template-columns: 1.25rem 1fr auto;
+    gap: 0.6rem;
+    padding: 0.9rem;
+    border-radius: 0.5rem;
+  }
+
+  .payment-room-item input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+    margin-top: 0;
+    min-width: 1.125rem;
+  }
+
+  .payment-room-label {
+    gap: 0.4rem;
+  }
+
+  .payment-room-header {
+    flex-direction: column;
+    gap: 0.3rem;
     align-items: flex-start;
-    gap: 1rem;
+  }
+
+  .payment-room-header .payment-room-number {
+    font-size: 0.95rem;
+  }
+
+  .payment-room-occupant {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .payment-room-balance {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding-top: 0.5rem;
+  }
+
+  .payment-balance-text {
+    font-size: 0.8rem;
+  }
+
+  .payment-balance-amount {
+    font-size: 0.95rem;
+  }
+
+  .payment-room-remove-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 1.3rem;
+  }
+
+  .payment-reference-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .payment-summary-card {
+    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+    margin-bottom: 1rem;
+  }
+
+  .payment-summary-content {
+    gap: 0.6rem;
+  }
+
+  .payment-summary-row {
+    font-size: 0.85rem;
+    padding: 0.5rem 0;
+  }
+
+  .payment-summary-row.total {
+    font-size: 1rem;
+    margin-top: 0.2rem;
+    padding-top: 0.6rem;
+  }
+
+  .payment-action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+
+  .payment-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    min-height: 2.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+  }
+
+  .payment-btn-cancel {
+    width: 100%;
+  }
+
+  .payment-btn-submit {
+    width: 100%;
   }
 
   .payment-add-room-btn {
     width: 100%;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
     justify-content: center;
-  }
-
-  .payment-btn {
-    padding: 0.8rem;
   }
 
   .billing-cards-container {
     grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .billing-card {
+    padding: 0.9rem;
+    border-radius: 0.625rem;
+  }
+
+  .billing-month {
+    font-size: 0.95rem;
+  }
+
+  .billing-amount {
+    font-size: 1.5rem;
+  }
+
+  .make-payment-now {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
   }
 }
 

@@ -41,8 +41,8 @@
 }
 
 .footer-brand img {
-  width: 46px;
-  height: 46px;
+  width: 2.875rem;
+  height: 2.875rem;
 }
 
 .footer-col p {
@@ -90,8 +90,8 @@
 
 .social a img {
   display: block;
-  width: 28px;
-  height: 28px;
+  width: 1.75rem;
+  height: 1.75rem;
   object-fit: contain;
   transition: var(--transition-opacity);
 }
@@ -127,8 +127,8 @@
 }
 
 .contact-item img {
-  width: 26px;
-  height: 26px;
+  width: 1.625rem;
+  height: 1.625rem;
 }
 
 .resources-col {
