@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZamboDorm Payment Section</title>
+
+<style>
+
+/* ===============================
+   ZAMBODORM PAYMENT SECTION STYLES ================================= */
+
+.zd-payment-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.zd-payment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#zd-makePaymentBtn {
+    background-color: #2563eb;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+#zd-makePaymentBtn:hover {
+    background-color: #1e40af;
+}
+
+/* Payment Card */
+
+.zd-payment-card {
+    background-color: #f9fafb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.zd-payment-info h3 {
+    margin: 0;
+}
+
+.zd-payment-info p {
+    margin: 4px 0;
+    color: gray;
+    font-size: 14px;
+}
+
+.zd-payment-amount {
+    text-align: right;
+}
+
+.zd-payment-price {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Status Colors */
+
+.zd-status-paid {
+    color: green;
+    font-weight: bold;
+}
+
+.zd-status-unpaid {
+    color: red;
+    font-weight: bold;
+}
+
+/* Modal */
+
+#zd-paymentModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+}
+
+.zd-modal-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.zd-modal-content input,
+.zd-modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.zd-confirm-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.zd-close-btn {
+    background: #e5e7eb;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    border-radius: 6px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .zd-payment-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .zd-payment-amount {
+        text-align: left;
+        margin-top: 10px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===============================
+     ZAMBODORM PAYMENT SECTION
+================================= -->
+
+<div class="zd-payment-wrapper">
+
+    <div class="zd-payment-header">
+        <h2>Billing History</h2>
+        <button id="zd-makePaymentBtn">Make Payment</button>
+    </div>
+
+    <!-- February (Unpaid) -->
+    <div class="zd-payment-card" data-month="February 2026">
+        <div class="zd-payment-info">
+            <h3>February 2026</h3>
+            <p>Due Feb 07</p>
+        </div>
+        <div class="zd-payment-amount">
+            <div class="zd-payment-price">₱4,500</div>
+            <div class="zd-status-unpaid">UNPAID</div>
+        </div>
+    </div>
+
+    <!-- January (Paid) -->
+    <div class="zd-payment-card">
+        <div class="zd-payment-info">
+            <h3>January 2026</h3>
+            <p>Paid Jan 05</p>
+        </div>
+        <div class="zd-payment-amount">
+            <div class="zd-payment-price">₱4,500</div>
+            <div class="zd-status-paid">PAID</div>
+        </div>
+    </div>
+
+    <!-- December (Paid) -->
+    <div class="zd-payment-card">
+        <div class="zd-payment-info">
+            <h3>December 2025</h3>
+            <p>Paid Dec 04</p>
+        </div>
+        <div class="zd-payment-amount">
+            <div class="zd-payment-price">₱4,500</div>
+            <div class="zd-status-paid">PAID</div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ===============================
+     PAYMENT MODAL
+================================= -->
+
+<div id="zd-paymentModal">
+    <div class="zd-modal-content">
+        <h3>Make a Payment</h3>
+
+        <!-- Payment Method -->
+        <select id="zd-paymentMethod">
+            <option value="">Select Payment Method</option>
+            <option>GCash</option>
+            <option>Bank Transfer</option>
+            <option>Cash</option>
+        </select>
+
+        <!-- Reference Number -->
+        <input type="text" id="zd-referenceNumber" placeholder="Reference Number">
+
+        <button class="zd-confirm-btn" onclick="zd_confirmPayment()">Confirm Payment</button>
+        <button class="zd-close-btn" onclick="zd_closeModal()">Cancel</button>
+    </div>
+</div>
+
+<script>
+
+/* ===============================
+   ZAMBODORM PAYMENT INTERACTIVITY
+================================= */
+
+const zd_modal = document.getElementById("zd-paymentModal");
+const zd_makeBtn = document.getElementById("zd-makePaymentBtn");
+
+// Open Modal
+zd_makeBtn.addEventListener("click", function() {
+    zd_modal.style.display = "flex";
+});
+
+// Close Modal
+function zd_closeModal() {
+    zd_modal.style.display = "none";
+}
+
+// Confirm Payment Logic
+function zd_confirmPayment() {
+    const method = document.getElementById("zd-paymentMethod").value;
+    const reference = document.getElementById("zd-referenceNumber").value;
+
+    if(method === "" || reference === "") {
+        alert("Please complete all fields.");
+        return;
+    }
+
+    alert("Payment Successful via " + method);
+
+    zd_modal.style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
