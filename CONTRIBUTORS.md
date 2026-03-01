@@ -23,7 +23,7 @@ Below is a record of our team members and development progress.
 - **02/26/2026**  
  Completed tasks, merged branches, organized into one index, improved responsiveness, and added comments for readability.
 - **02/28/2026**
-- Began development of the tenant demonstration page, structured into five sections (My Room, Payments, Request Service, Complaints, Visitors), with each section assigned to a team member.
+  Began development of the tenant demonstration page, structured into five sections (My Room, Payments, Request Service, Complaints, Visitors), with each section assigned to a team member.
 ---
 ## Notes  
 - Git commits may appear under Norielle’s name due to repository management.  
