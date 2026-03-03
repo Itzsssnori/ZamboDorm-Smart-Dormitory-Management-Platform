@@ -5,23 +5,23 @@
 }
 
 /* ================= QUICK SERVICES CONTAINER ================= */
-.quick-container {
+.req-container {
     max-width: 1100px;
     margin: auto;
 }
 
 /* Header */
-.quick-header h1 {
+.req-header h1 {
     margin-bottom: 5px;
 }
 
-.subtitle {
+.req-subtitle {
     color: #6b7280;
     margin-bottom: 25px;
 }
 
 /* ================= MAP CARD ================= */
-.map-card {
+.req-map-card {
     background: #ffffff;
     padding: 25px;
     border-radius: 20px;
@@ -29,7 +29,7 @@
     margin-bottom: 40px;
 }
 
-.map-box {
+.req-map-box {
     position: relative;
     height: 200px;
     border-radius: 15px;
@@ -38,7 +38,7 @@
 }
 
 /* Provider tags */
-.provider {
+.req-provider {
     position: absolute;
     background: white;
     padding: 8px 14px;
@@ -47,18 +47,18 @@
     box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
 
-.suds {
+.req-suds {
     left: 200px;
     top: 110px;
 }
 
-.aqua {
+.req-aqua {
     right: 200px;
     top: 60px;
 }
 
 /* User location dot */
-.location-dot {
+.req-location-dot {
     width: 14px;
     height: 14px;
     background: #2563eb;
@@ -69,12 +69,12 @@
 }
 
 /* ================= SERVICES ================= */
-.services {
+.req-services {
     display: flex;
     gap: 30px;
 }
 
-.service-card {
+.req-service-card {
     flex: 1;
     background: white;
     padding: 30px;
@@ -84,7 +84,7 @@
 }
 
 /* Icon */
-.icon {
+.req-icon {
     width: 70px;
     height: 70px;
     margin: 0 auto 20px;
@@ -95,23 +95,23 @@
     font-size: 28px;
 }
 
-.water-icon {
+.req-water-icon {
     background: #e0edff;
     color: #2563eb;
 }
 
-.laundry-icon {
+.req-laundry-icon {
     background: #fde2ef;
     color: #e11d74;
 }
 
-.card-sub {
+.req-card-sub {
     color: #6b7280;
     margin-bottom: 20px;
 }
 
 /* Selector Buttons */
-.selector button {
+.req-selector button {
     padding: 10px 18px;
     border-radius: 20px;
     border: 1px solid #ddd;
@@ -120,19 +120,19 @@
     cursor: pointer;
 }
 
-.active-blue {
+.req-active-blue {
     border: 2px solid #2563eb;
     color: #2563eb;
 }
 
-.active-pink {
+.req-active-pink {
     border: 2px solid #e11d74;
     color: #e11d74;
 }
 
 /* Action Buttons */
-.btn-blue,
-.btn-pink {
+.req-btn-blue,
+.req-btn-pink {
     width: 100%;
     padding: 15px;
     margin-top: 20px;
@@ -143,23 +143,23 @@
     cursor: pointer;
 }
 
-.btn-blue {
+.req-btn-blue {
     background: #2563eb;
 }
 
-.btn-pink {
+.req-btn-pink {
     background: #e11d74;
 }
 
 /* ================= SELECTOR (PURE CSS INTERACTIVE) ================= */
 
 /* Hide radio buttons */
-.selector input {
+.req-selector input {
     display: none;
 }
 
 /* Style labels as buttons */
-.selector label {
+.req-selector label {
     display: inline-block;
     padding: 10px 18px;
     border-radius: 20px;
@@ -185,11 +185,11 @@ input[name="day"]:checked + label {
 }
 
 /* ================= BUTTON HOVER ================= */
-.btn-blue:hover {
+.req-btn-blue:hover {
     background: #1d4ed8;
 }
 
-.btn-pink:hover {
+.req-btn-pink:hover {
     background: #be185d;
 }
 
@@ -201,11 +201,11 @@ input[name="day"]:checked + label {
         padding-top: 5rem;
     }
 
-    .services {
+    .req-services {
         flex-direction: column;
     }
 
-    .service-card {
+    .req-service-card {
         width: 100%;
     }
 }
