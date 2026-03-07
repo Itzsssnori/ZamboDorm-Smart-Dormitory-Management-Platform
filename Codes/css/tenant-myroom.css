@@ -234,11 +234,11 @@
   display: block;
   background-color: #d4edda;
   border-radius: 12px;
-  padding: 0.4rem 0.80rem;
+  padding: 0.8rem 1rem;
   margin-top: 1rem;
   margin-left: 0;
   margin-right: 0;
-  border: 1px solid #a5d6a7;
+  border: none;
 }
 
 .advance-deposit-text {

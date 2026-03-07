@@ -1,0 +1,516 @@
+/* ==================================================
+   Enhanced Responsive Design - All Platforms
+   ================================================== */
+
+/* Desktop Extra Large (1920px+) */
+@media (min-width: 1920px) {
+    .admin-main-content {
+        margin-left: 28rem;
+        margin-right: 8rem;
+        padding: 2.5rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .admin-page-title {
+        font-size: 2.8rem;
+    }
+
+    .admin-bar-chart {
+        height: 280px;
+    }
+
+    .admin-circle-svg {
+        width: 220px;
+        height: 220px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 3rem;
+    }
+}
+
+/* Desktop Large (1440px) */
+@media (min-width: 1440px) and (max-width: 1919px) {
+    .admin-main-content {
+        margin-left: 24.3rem;
+        margin-right: 6rem;
+        padding: 2rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .admin-page-title {
+        font-size: 2.3rem;
+    }
+}
+
+/* Desktop Medium (1200px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+    .admin-main-content {
+        margin-left: 24.3rem;
+        margin-right: 5rem;
+        padding: 1.75rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .admin-page-title {
+        font-size: 2.2rem;
+    }
+
+    .admin-bar-chart {
+        height: 220px;
+    }
+
+    .admin-circle-svg {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+/* Tablet Large (912px) */
+@media (min-width: 913px) and (max-width: 1023px) {
+    .admin-main-content {
+        margin-left: 7.5rem;
+        margin-right: 0;
+        padding: 1.5rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.75rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .admin-metric-card {
+        padding: 1rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.7rem;
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-bar-chart {
+        height: 180px;
+        gap: 0.65rem;
+    }
+
+    .admin-circle-chart {
+        height: 200px;
+    }
+
+    .admin-circle-svg {
+        width: 150px;
+        height: 150px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.8rem;
+    }
+}
+
+/* Phone Landscape Extra Large (853px) */
+@media (max-width: 853px) {
+    .admin-main-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.1rem;
+        padding-top: 4rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.6rem;
+    }
+
+    .admin-bar-chart {
+        height: 170px;
+    }
+
+    .admin-circle-svg {
+        width: 135px;
+        height: 135px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.7rem;
+    }
+}
+
+/* Large Phone (769px to 912px) - Already handled by existing 768px query */
+
+/* Phone Portrait (621px to 768px) - Already handled by existing 640px query */
+
+/* SMS Phone Landscape (735px) */
+@media (max-width: 735px) {
+    .admin-main-content {
+        margin-right: 0;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.35rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.7rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.25rem;
+    }
+
+    .admin-bar-chart {
+        height: 150px;
+        gap: 0.5rem;
+    }
+
+    .admin-circle-svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.6rem;
+    }
+}
+
+/* Small Phone Landscape (667px) */
+@media (max-width: 667px) {
+    .admin-main-content {
+        margin-right: 0;
+    }
+
+    .admin-bar-chart {
+        height: 145px;
+        gap: 0.45rem;
+    }
+
+    .admin-chart-y-axis {
+        width: 35px;
+        padding-right: 5px;
+    }
+
+    .admin-x-axis {
+        margin-left: 40px;
+    }
+
+    .admin-circle-svg {
+        width: 115px;
+        height: 115px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.55rem;
+    }
+}
+
+/* Phone Portrait (481px to 640px) - Already handled by existing 640px query */
+
+/* iPhone SE / Small Phone (568px) */
+@media (max-width: 568px) {
+    .admin-main-content {
+        margin-right: 0;
+        padding: 0.9rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.2rem;
+    }
+
+    .admin-metrics-grid {
+        gap: 0.45rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.65rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.1rem;
+    }
+
+    .admin-bar-chart {
+        height: 130px;
+        gap: 0.35rem;
+    }
+
+    .admin-circle-svg {
+        width: 105px;
+        height: 105px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.4rem;
+    }
+}
+
+/* Phone Portrait (480px) - Already handled by existing 480px query */
+
+/* Small Phone Portrait (414px) */
+@media (max-width: 414px) {
+    .admin-main-content {
+        margin-right: 0;
+        padding: 0.5rem;
+        padding-top: 3rem;
+    }
+
+    .admin-page-title {
+        font-size: 1rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.5rem;
+    }
+
+    .admin-metric-value {
+        font-size: 0.9rem;
+    }
+
+    .admin-chart-container {
+        padding: 0.5rem;
+    }
+
+    .admin-chart-title {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .admin-bar-chart {
+        height: 110px;
+        gap: 0.3rem;
+    }
+
+    .admin-circle-svg {
+        width: 90px;
+        height: 90px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1rem;
+    }
+}
+
+/* Tiny Phone (375px) */
+@media (max-width: 375px) {
+    .admin-main-content {
+        margin-right: 0;
+        padding: 0.35rem;
+        padding-top: 2.7rem;
+    }
+
+    .admin-page-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.15rem;
+    }
+
+    .admin-page-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .admin-metrics-grid {
+        gap: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.4rem;
+    }
+
+    .admin-metric-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .admin-metric-label {
+        font-size: 0.6rem;
+    }
+
+    .admin-metric-value {
+        font-size: 0.8rem;
+    }
+
+    .admin-chart-container {
+        padding: 0.35rem;
+    }
+
+    .admin-chart-title {
+        font-size: 0.7rem;
+    }
+
+    .admin-bar-chart {
+        height: 100px;
+        gap: 0.2rem;
+    }
+
+    .admin-circle-svg {
+        width: 75px;
+        height: 75px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 0.9rem;
+    }
+}
+
+/* Very Small Phone (360px) - Already handled by existing 360px query */
+
+/* Ultra Small Phone (320px) */
+@media (max-width: 320px) {
+    .admin-main-content {
+        margin-right: 0;
+        padding: 0.25rem;
+        padding-top: 2.4rem;
+    }
+
+    .admin-page-title {
+        font-size: 0.85rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.3rem;
+    }
+
+    .admin-metric-icon {
+        width: 1.2rem;
+        height: 1.2rem;
+    }
+
+    .admin-metric-value {
+        font-size: 0.75rem;
+    }
+
+    .admin-chart-container {
+        padding: 0.25rem;
+    }
+
+    .admin-chart-title {
+        font-size: 0.6rem;
+    }
+
+    .admin-bar-chart {
+        height: 85px;
+        gap: 0.15rem;
+    }
+
+    .admin-circle-svg {
+        width: 65px;
+        height: 65px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 0.8rem;
+    }
+}
+
+/* Orientation-specific fixes */
+@media (max-height: 500px) and (orientation: landscape) {
+    .admin-main-content {
+        padding-top: 3.5rem;
+    }
+
+    .admin-bar-chart {
+        height: auto;
+        min-height: 120px;
+    }
+
+    .admin-circle-chart {
+        height: auto;
+        min-height: 150px;
+    }
+}
+
+/* High resolution displays (Retina) */
+@media (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+       (min-width: 768px) and (min-resolution: 192dpi) {
+    .admin-bar,
+    .admin-metric-card,
+    .admin-chart-container {
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    }
+}
+
+/* Wider tablets (iPad landscape) */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .admin-main-content {
+        margin-left: 8rem;
+        padding: 1.5rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1.5fr 1fr;
+    }
+}
+
+/* Folded devices / Split screen */
+@media (max-width: 400px) and (min-height: 800px) {
+    .admin-main-content {
+        padding: 0.6rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Forced color mode (Windows High Contrast) */
+@media (prefers-contrast: more) {
+    .admin-metric-card,
+    .admin-chart-container {
+        border-width: 2px;
+    }
+
+    .admin-bar {
+        filter: contrast(1.2);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .admin-metric-card,
+    .admin-bar,
+    .admin-circle-occupied,
+    .admin-circle-unoccupied,
+    .admin-circle-tooltip {
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* If dark mode is implemented in the future */
+}

@@ -1,0 +1,891 @@
+
+
+/* Main content area - accounts for sidebar */
+.admin-main-content {
+    margin-left: 24.3rem;
+    margin-right: 6rem;
+    padding: 2rem;
+    background-color: transparent;
+    min-height: calc(100vh - 70px);
+}
+
+/* ==================================================
+   Content Header
+   ================================================== */
+
+.admin-content-header {
+    margin-top: 1.5rem;
+    margin-bottom: 2.1rem;
+    margin-left: 0;
+}
+
+.admin-page-title {
+    font-size: 2.3rem;
+   font-weight: 650;
+     margin-top: 0rem;
+      color: var(--text-dark);
+    margin-bottom: 0.7rem;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+}
+
+.admin-page-subtitle {
+  font-size: 1rem;
+  color: var(--text-light);
+  margin-top: 0.5rem;
+  font-weight: 400;
+}
+
+/* ==================================================
+   Metrics Grid
+   ================================================== */
+
+.admin-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Metric Card */
+.admin-metric-card {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-metric-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    border-color: #d1d5db;
+    transform: translateY(-2px);
+}
+
+/* Metric Header */
+.admin-metric-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* Metric Icon */
+.admin-metric-icon {
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-light);
+    flex-shrink: 0;
+}
+
+.admin-metric-icon svg {
+    width: 2rem;
+    height: 2rem;
+    stroke: currentColor;
+}
+
+.admin-metric-icon-tenants {
+    background-color: #dbeafe;
+    color: #0284c7;
+}
+
+.admin-metric-icon-rooms {
+    background-color: var(--green-light);
+    color: var(--green-dark);
+}
+
+.admin-metric-icon-payments {
+    background-color: var(--yellow-light);
+    color: #b45309;
+}
+
+.admin-metric-icon-complaints {
+    background-color: var(--red-light-bg);
+    color: var(--red-dark-text);
+}
+
+/* Metric Change Badge */
+.admin-metric-change {
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.3rem 0.6rem;
+    border-radius: var(--radius-sm);
+    white-space: nowrap;
+    line-height: 1.2;
+}
+
+.admin-metric-positive {
+    color: var(--green-dark);
+    background-color: var(--green-light);
+}
+
+.admin-metric-negative {
+    color: var(--red-dark-text);
+    background-color: var(--red-light-bg);
+}
+
+.admin-metric-neutral {
+    color: var(--text-medium);
+    background-color: var(--bg-light);
+}
+
+/* Metric Label */
+.admin-metric-label {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+/* Metric Value */
+.admin-metric-value {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+}
+
+/* ==================================================
+   Charts Grid
+   ================================================== */
+
+.admin-charts-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Chart Container */
+.admin-chart-container {
+    background: var(--bg-white);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
+}
+
+.admin-chart-container:first-child {
+    padding-left: 2rem;
+}
+
+.admin-chart-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==================================================
+   Bar Chart
+   ================================================== */
+
+.admin-bar-chart {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-end;
+    height: 220px;
+}
+
+.admin-chart-y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 50px;
+    text-align: right;
+    padding-right: 10px;
+    border-right: 2px solid var(--border-light);
+}
+
+.admin-chart-y-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 500;
+}
+
+.admin-bars-container {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-end;
+    flex: 1;
+    height: 100%;
+    position: relative;
+    background: 
+        repeating-linear-gradient(
+            to right,
+            #d8d8d8 0px,
+            #d8d8d8 4px,
+            transparent 4px,
+            transparent 8px
+        ) 0 0% / 100% 1px no-repeat,
+        repeating-linear-gradient(
+            to right,
+            #d8d8d8 0px,
+            #d8d8d8 4px,
+            transparent 4px,
+            transparent 8px
+        ) 0 25% / 100% 1px no-repeat,
+        repeating-linear-gradient(
+            to right,
+            #d8d8d8 0px,
+            #d8d8d8 4px,
+            transparent 4px,
+            transparent 8px
+        ) 0 50% / 100% 1px no-repeat,
+        repeating-linear-gradient(
+            to right,
+            #d8d8d8 0px,
+            #d8d8d8 4px,
+            transparent 4px,
+            transparent 8px
+        ) 0 75% / 100% 1px no-repeat,
+        repeating-linear-gradient(
+            to right,
+            #d8d8d8 0px,
+            #d8d8d8 4px,
+            transparent 4px,
+            transparent 8px
+        ) 0 100% / 100% 1px no-repeat;
+}
+
+.admin-bar-wrapper {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+.admin-bar {
+    width: 100%;
+    max-width: 50px;
+    background: linear-gradient(180deg, var(--blue-primary) 0%, var(--blue-hover) 100%);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.admin-bar:hover {
+    opacity: 0.85;
+    box-shadow: 0 4px 12px rgba(184, 0, 0, 0.3);
+}
+
+.admin-bar-value {
+    font-size: 0.65rem;
+    color: white;
+    font-weight: 700;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.3rem;
+    white-space: nowrap;
+    margin-bottom: 0.5rem;
+}
+
+.admin-bar-value::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+.admin-bar-wrapper:hover .admin-bar-value {
+    opacity: 1;
+}
+
+.admin-bar-label {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 600;
+    margin-top: 0.75rem;
+    text-align: center;
+    display: none;
+}
+
+.admin-x-axis {
+    display: flex;
+    gap: 0.75rem;
+    margin-left: 60px;
+    margin-top: 0.5rem;
+}
+
+.admin-x-label {
+    font-size: 0.85rem;
+    color: var(--text-medium);
+    font-weight: 600;
+    flex: 1;
+    text-align: center;
+}
+
+/* ==================================================
+   Circle Chart (Occupancy Rate)
+   ================================================== */
+
+.admin-circle-chart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 220px;
+    position: relative;
+}
+
+.admin-circle-svg {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.admin-circle-occupied {
+    transition: all 0.3s ease;
+}
+
+.admin-circle-occupied:hover {
+    stroke-width: 14;
+}
+
+.admin-circle-unoccupied {
+    transition: all 0.3s ease;
+}
+
+.admin-circle-unoccupied:hover {
+    stroke-width: 14;
+}
+
+.admin-circle-tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.admin-circle-tooltip::after {
+    content: '';
+    position: absolute;
+    border: 5px solid transparent;
+}
+
+.admin-circle-occupied-tooltip {
+    top: 5px;
+    background-color: #b80000;
+}
+
+.admin-circle-occupied-tooltip::after {
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: #b80000;
+}
+
+.admin-circle-unoccupied-tooltip {
+    bottom: 5px;
+    background-color: #6b7280;
+}
+
+.admin-circle-unoccupied-tooltip::after {
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: #6b7280;
+}
+
+.admin-circle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.admin-circle-percentage {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1;
+}
+
+.admin-circle-label {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* ==================================================
+   Scrollbar Styling
+   ================================================== */
+
+.admin-main-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.admin-main-content::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.admin-main-content::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.admin-main-content::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ==================================================
+   Responsive Design
+   ================================================== */
+
+@media (max-width: 1024px) {
+    .admin-main-content {
+        margin-left: 7.5rem;
+        margin-right: 0;
+        padding: 1.5rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-page-title {
+        font-size: 2rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-main-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.25rem;
+        padding-top: 4rem;
+    }
+
+    .admin-content-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .admin-page-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.75rem;
+    }
+
+    .admin-metric-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .admin-metric-icon svg {
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+
+    .admin-metric-label {
+        font-size: 0.75rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.5rem;
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .admin-chart-container {
+        padding: 1rem;
+    }
+
+    .admin-chart-container:first-child {
+        padding-left: 1rem;
+    }
+
+    .admin-chart-title {
+        font-size: 1.15rem;
+        margin-bottom: 1rem;
+    }
+
+    .admin-bar-chart {
+        height: 160px;
+        gap: 0.75rem;
+    }
+
+    .admin-chart-y-axis {
+        width: 40px;
+        padding-right: 8px;
+    }
+
+    .admin-chart-y-label {
+        font-size: 0.7rem;
+    }
+
+    .admin-x-axis {
+        margin-left: 48px;
+        gap: 0.5rem;
+    }
+
+    .admin-x-label {
+        font-size: 0.8rem;
+    }
+
+    .admin-bar-value {
+        font-size: 0.6rem;
+    }
+
+    .admin-circle-svg {
+        width: 140px;
+        height: 140px;
+    }
+
+    .admin-circle-chart {
+        height: 200px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 2rem;
+    }
+
+    .admin-circle-label {
+        font-size: 0.7rem;
+    }
+
+    .admin-circle-tooltip {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.9rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .admin-main-content {
+        padding: 1rem;
+        padding-top: 3.5rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .admin-content-header {
+        margin-bottom: 1rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.3rem;
+    }
+
+    .admin-page-subtitle {
+        font-size: 0.85rem;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.75rem;
+    }
+
+    .admin-metric-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .admin-metric-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .admin-metric-icon svg {
+        width: 1rem;
+        height: 1rem;
+    }
+
+    .admin-metric-label {
+        font-size: 0.7rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1.2rem;
+    }
+
+    .admin-metric-change {
+        font-size: 0.6rem;
+        padding: 0.2rem 0.3rem;
+    }
+
+    .admin-charts-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .admin-chart-container {
+        padding: 0.75rem;
+    }
+
+    .admin-chart-container:first-child {
+        padding-left: 0.75rem;
+    }
+
+    .admin-chart-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .admin-bar-chart {
+        height: 140px;
+        gap: 0.6rem;
+    }
+
+    .admin-chart-y-axis {
+        width: 35px;
+        padding-right: 5px;
+    }
+
+    .admin-chart-y-label {
+        font-size: 0.65rem;
+    }
+
+    .admin-x-axis {
+        margin-left: 40px;
+        gap: 0.5rem;
+    }
+
+    .admin-x-label {
+        font-size: 0.75rem;
+    }
+
+    .admin-bar-value {
+        font-size: 0.55rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .admin-circle-chart {
+        height: 180px;
+    }
+
+    .admin-circle-svg {
+        width: 120px;
+        height: 120px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.5rem;
+    }
+
+    .admin-circle-label {
+        font-size: 0.65rem;
+        margin-top: 0.3rem;
+    }
+
+    .admin-circle-tooltip {
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-main-content {
+        margin-right: 0;
+    }
+
+    .admin-metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-metric-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+    }
+
+    .admin-metric-icon svg {
+        width: 0.9rem;
+        height: 0.9rem;
+    }
+
+    .admin-metric-value {
+        font-size: 1rem;
+    }
+
+    .admin-chart-y-label {
+        font-size: 0.6rem;
+    }
+
+    .admin-bar-chart {
+        height: 120px;
+        gap: 0.4rem;
+    }
+
+    .admin-chart-y-axis {
+        width: 30px;
+        padding-right: 3px;
+    }
+
+    .admin-bar-wrapper {
+        flex: 1;
+    }
+
+    .admin-bar {
+        max-width: 100%;
+    }
+
+    .admin-x-axis {
+        margin-left: 33px;
+        gap: 0.4rem;
+    }
+
+    .admin-x-label {
+        font-size: 0.75rem;
+    }
+
+    .admin-bar-value {
+        font-size: 0.55rem;
+        padding: 0.25rem 0.35rem;
+    }
+
+    .admin-circle-chart {
+        height: 180px;
+    }
+
+    .admin-circle-svg {
+        width: 100px;
+        height: 100px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1.2rem;
+    }
+
+    .admin-circle-label {
+        font-size: 0.6rem;
+    }
+
+    .admin-circle-tooltip {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .admin-main-content {
+        margin-right: 0;
+        padding: 0.75rem;
+        padding-top: 3rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.1rem;
+    }
+
+    .admin-metrics-grid {
+        gap: 0.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.5rem;
+    }
+
+    .admin-metric-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .admin-metric-label {
+        font-size: 0.65rem;
+    }
+
+    .admin-metric-value {
+        font-size: 0.9rem;
+    }
+
+    .admin-chart-container {
+        padding: 0.5rem;
+    }
+
+    .admin-chart-title {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .admin-bar-chart {
+        height: 100px;
+        gap: 0.2rem;
+    }
+
+    .admin-chart-y-axis {
+        width: 25px;
+        padding-right: 2px;
+    }
+
+    .admin-circle-svg {
+        width: 80px;
+        height: 80px;
+    }
+
+    .admin-circle-percentage {
+        font-size: 1rem;
+    }
+
+    .admin-circle-label {
+        font-size: 0.55rem;
+    }
+}
+
