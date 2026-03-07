@@ -1,0 +1,176 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header-space{
+    height:70px;
+    width:100%;
+    background:#fff;
+    border-bottom:1px solid #ddd;
+}
+
+.layout{
+    display:flex;
+}
+
+.sidebar-space{
+    width:230px;
+    background:#fff;
+    border-right:1px solid #ddd;
+}
+
+.service-container{
+    flex:1;
+    padding:40px;
+    background:#f5f6fa;
+    min-height:100vh;
+}
+
+.service-container h2{
+    margin-bottom:25px;
+    color:#333;
+}
+
+/* REQUEST BOX */
+.request-box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.request-main{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.request-left{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.icon{
+    width:40px;
+    height:40px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.icon svg{
+    width:30px;
+    height:30px;
+}
+
+.request-info h3{
+    font-size:16px;
+    margin-bottom:5px;
+    color:#333;
+}
+
+.request-info p{
+    font-size:14px;
+    color:#777;
+}
+
+.request-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* STATUS */
+.status{
+    padding:5px 12px;
+    border-radius:15px;
+    font-size:13px;
+    font-weight:500;
+}
+
+.pending{
+    background:#ffe8cc;
+    color:#ca6c00;
+    font-size: medium;
+}
+
+.progress{
+    background:#dfe8ff;
+    color:#2f6fed;
+    font-size: medium;
+}
+
+.completed{
+    background:#d6f5e3;
+    color:#28a745;
+    font-size: medium;
+}
+
+/* Manage button & toggle */
+.toggle-message{
+    display:none;
+}
+
+.manage-btn{
+    background:#2f6fed;
+    color:white;
+    border:none;
+    padding:7px 15px;
+    border-radius:8px;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+.manage-btn:hover{
+    background:#1f54c7;
+}
+
+/* Message box */
+.manage-message{
+    display:none;
+    margin-top:12px;
+    padding:12px;
+    background:#f0f4f8;
+    border-left:4px solid #2f6fed;
+    border-radius:6px;
+    font-size:14px;
+    color:#333;
+}
+
+/* Show message when checkbox is checked */
+.toggle-message:checked ~ .manage-message{
+    display:block;
+}
+
+/* Responsive */
+@media screen and (max-width:768px){
+    .layout{
+        flex-direction:column;
+    }
+
+    .sidebar-space{
+        width:100%;
+        height:60px;
+    }
+
+    .service-container{
+        padding:20px;
+    }
+
+    .request-main{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .request-right{
+        width:100%;
+        justify-content:space-between;
+    }
+}
