@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZamboDorm - Tenant Management</title>
+    <link rel = "stylesheet" href="tenant management.css">
+    <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Tenant Management</h1>
+
+<!--Top Controls-->
+    <div class="search-box">
+        <i class="fa fa-search"></i>
+        <input class="search" type="text" placeholder="Search by name,room, or school....">
+        <button class="filter-btn">Filters</button>
+        <i class="fa fa-filters"></i>
+        <button class="add-btn">+ Add New Tenant</button>
+    </div>
+
+<!--The Table-->
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>TENANT NAME</th>
+                <th>ROOM</th>
+                <th>ADVANCE DEPOSIT</th>
+                <th>JOIN DATE</th>
+                <th>STATUS</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>Aila May Natividad</td>
+                <td>102-B</td>
+                <td class="money"> ₱15,000</td>
+                <td>Feb 21, 2025</td>
+                <td><span class="status active">Active</span></td>
+                <td>⋮</td>
+            </tr>
+
+            <tr>
+                <td>Noriel John Buhawe</td>
+                <td>305-C</td>
+                <td class="money"> ₱5,000</td>
+                <td>Dec 15, 2024</td>
+                <td><span class="status notice">Notice</span></td>
+                <td>⋮</td>
+            </tr>
+
+            <tr>
+                <td>KC Charmelle S. Lagare</td>
+                <td>210-A</td>
+                <td class="money"> ₱10,000</td>
+                <td>Jan 20, 2025</td>
+                <td><span class="status active">Active</span></td>
+                <td>⋮</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>
