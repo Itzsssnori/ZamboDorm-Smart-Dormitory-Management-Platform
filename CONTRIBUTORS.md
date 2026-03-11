@@ -26,7 +26,7 @@ Below is a record of our team members and development progress.
   Began development of the tenant demonstration page, structured into five sections (My Room, Payments, Request Service, Complaints, Visitors), with each section assigned to a team member.
 - **03/03/2026**
   Completed, compiled and merged demo tenant page and made it responsive into any other platforms.
--**03/08/2026**
+- **03/08/2026**
   Started the admin page and distributed tasks among the team. The page is currently halfway done and actively being developed.
 ---
 ## Notes  
