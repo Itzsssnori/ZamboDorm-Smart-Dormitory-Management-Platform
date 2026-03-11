@@ -1,5 +1,4 @@
 
-
 /* Main content area - accounts for sidebar */
 .admin-main-content {
     margin-left: 24.3rem;
@@ -9,9 +8,7 @@
     min-height: calc(100vh - 70px);
 }
 
-/* ==================================================
-   Content Header
-   ================================================== */
+/* Content Header */
 
 .admin-content-header {
     margin-top: 1.5rem;
@@ -36,9 +33,7 @@
   font-weight: 400;
 }
 
-/* ==================================================
-   Metrics Grid
-   ================================================== */
+/* Metrics Grid */
 
 .admin-metrics-grid {
     display: grid;
@@ -154,9 +149,7 @@
     line-height: 1.2;
 }
 
-/* ==================================================
-   Charts Grid
-   ================================================== */
+/*Charts Grid */
 
 .admin-charts-grid {
     display: grid;
@@ -186,9 +179,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* ==================================================
-   Bar Chart
-   ================================================== */
+/*  Bar Chart */
 
 .admin-bar-chart {
     display: flex;
@@ -338,9 +329,9 @@
     text-align: center;
 }
 
-/* ==================================================
+/* 
    Circle Chart (Occupancy Rate)
-   ================================================== */
+*/
 
 .admin-circle-chart {
     display: flex;
@@ -365,12 +356,20 @@
     stroke-width: 14;
 }
 
+.admin-circle-chart:has(.admin-circle-occupied:hover) .admin-circle-occupied-tooltip {
+    opacity: 1;
+}
+
 .admin-circle-unoccupied {
     transition: all 0.3s ease;
 }
 
 .admin-circle-unoccupied:hover {
     stroke-width: 14;
+}
+
+.admin-circle-chart:has(.admin-circle-unoccupied:hover) .admin-circle-unoccupied-tooltip {
+    opacity: 1;
 }
 
 .admin-circle-tooltip {
@@ -443,9 +442,9 @@
     margin-top: 0.5rem;
 }
 
-/* ==================================================
+/* 
    Scrollbar Styling
-   ================================================== */
+*/
 
 .admin-main-content::-webkit-scrollbar {
     width: 8px;
@@ -464,9 +463,9 @@
     background: #94a3b8;
 }
 
-/* ==================================================
+/* 
    Responsive Design
-   ================================================== */
+*/
 
 @media (max-width: 1024px) {
     .admin-main-content {

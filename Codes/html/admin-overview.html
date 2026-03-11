@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/section-bar.css">
     <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-    <link rel="stylesheet" href="../css/admin-responsive-extra.css">
     <title>Admin Dashboard - ZamboDorm</title>
 </head>
 <body>
@@ -44,6 +43,9 @@
 
     <!-- Sidebar toggle checkbox -->
     <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
+
+    <!-- Sidebar overlay - closes sidebar when clicked -->
+    <label for="sidebarToggle" class="sidebar-overlay"></label>
 
     <!-- Left sidebar navigation -->
     <aside class="sidebar">
@@ -86,7 +88,7 @@
             <span class="sidebar-label">Payments</span>
           </a>
 
-          <a href="#" class="sidebar-item">
+          <a href="admin-service-request.html" class="sidebar-item">
             <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"></path>
               <line x1="16" y1="11" x2="8" y2="11"></line>
@@ -104,7 +106,7 @@
             <span class="sidebar-label">Announcements</span>
           </a>
 
-          <a href="#" class="sidebar-item">
+          <a href="admin-visitor_security_log.html" class="sidebar-item">
             <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M18 21H3V9a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12z"></path>
               <path d="M9 10h6"></path>
@@ -285,31 +287,5 @@
             </div>
         </div>
     </main>
-
-    <script>
-        // Handle circle chart hover effects
-        const occupiedCircle = document.querySelector('.admin-circle-occupied');
-        const unoccupiedCircle = document.querySelector('.admin-circle-unoccupied');
-        const occupiedTooltip = document.querySelector('.admin-circle-occupied-tooltip');
-        const unoccupiedTooltip = document.querySelector('.admin-circle-unoccupied-tooltip');
-
-        if (occupiedCircle && occupiedTooltip) {
-            occupiedCircle.addEventListener('mouseover', () => {
-                occupiedTooltip.style.opacity = '1';
-            });
-            occupiedCircle.addEventListener('mouseout', () => {
-                occupiedTooltip.style.opacity = '0';
-            });
-        }
-
-        if (unoccupiedCircle && unoccupiedTooltip) {
-            unoccupiedCircle.addEventListener('mouseover', () => {
-                unoccupiedTooltip.style.opacity = '1';
-            });
-            unoccupiedCircle.addEventListener('mouseout', () => {
-                unoccupiedTooltip.style.opacity = '0';
-            });
-        }
-    </script>
 </body>
 </html>
