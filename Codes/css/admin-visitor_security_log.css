@@ -33,7 +33,7 @@
 
 .visitor-logs-table-container {
     background: #ffffff;
-    padding: 1.5rem;
+    padding: 2.5rem 1.5rem 3rem 1.5rem;
     margin-left: 1rem;
     margin-right: 1rem;
     border-radius: 12px;
@@ -89,12 +89,12 @@
 */
 
 .visitor-logs-time-in {
-    color: #b30000 !important;
+    color: #16a34a !important;
     font-weight: 600;
 }
 
 .visitor-logs-time-out {
-    color: #b30000 !important;
+    color: #dc2626 !important;
     font-weight: 600;
 }
 
