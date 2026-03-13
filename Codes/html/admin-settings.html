@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/section-bar.css">
     <link rel="stylesheet" href="../css/admin-settings.css">
     <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-    <title>Admin - Settings</title>
+    <title>Admin Dashboard - Admin Settings</title>
 </head>
 <body>
 
@@ -104,7 +104,7 @@
             <span class="sidebar-label">Announcements</span>
           </a>
 
-          <a href="visitor_security_log.html" class="sidebar-item">
+          <a href="admin-visitor_security_log.html" class="sidebar-item">
             <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
               <path d="M18 21H3V9a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3v12z"></path>
               <path d="M9 10h6"></path>
@@ -112,7 +112,7 @@
             <span class="sidebar-label">Visitor Logs</span>
           </a>
 
-          <a href="#" class="sidebar-item">
+          <a href="admin-settings.html" class="sidebar-item active">
             <svg class="sidebar-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
               <circle cx="12" cy="12" r="2"></circle>
               <circle cx="12" cy="4" r="1.5"></circle>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="sidebar-nav-fixed">
-          <a href="admin-settings.html" class="sidebar-item active">
+          <a href="#settings" class="sidebar-item">
             <img src="../../images/settings.png" alt="Settings" class="sidebar-icon" width="20">
             <span class="sidebar-label">Settings</span>
           </a>
@@ -142,54 +142,59 @@
       </nav>
     </aside>
 
-    <main class="main-wrapper">
+    <main class="settings-main-wrapper">
         
         <section>
-            <h1 class="page-title">Rental & Inventory Management</h1>
-            <div class="card-config">
-                <div class="card-header-config">
-                    <h2 class="card-title-config">Deck Rental Configuration</h2>
-                    <span class="status-badge-blue">Active</span>
+            <h1 class="settings-page-title">Rental & Inventory Management</h1>
+            <div class="settings-card-config">
+                <div class="settings-card-header-config">
+                    <h2 class="settings-card-title-config">Deck Rental Configuration</h2>
+                    <span class="settings-status-badge-blue">Active</span>
                 </div>
-                <div class="config-section">
+                <div class="settings-config-section">
                     <div class="inventory-box">
-                        <label class="label">Number of Decks Available</label>
-                        <div class="input-group">
-                            <input type="text" class="styled-input" value="10">
-                            <div class="stats">
-                                <span class="rented-num">7</span> <span class="stats-label">rented</span><br>
-                                <span class="avail-num">3</span> <span class="stats-label">available</span>
+                        <label class="settings-label">Number of Decks Available</label>
+                        <div class="settings-input-group">
+                            <input type="number" class="settings-styled-input" value="10">
+                            <div class="settings-stats">
+                                <span class="settings-rented-num">7</span> <span class="settings-stats-label">rented</span><br>
+                                <span class="settings-avail-num">3</span> <span class="settings-stats-label">available</span>
                             </div>
                         </div>
                     </div>
-                    <div class="duration-container">
-                        <label class="label">Rental Duration Type</label>
-                        <div class="toggle-pill">
+                    <div class="settings-duration-container">
+                        <label class="settings-label">Rental Duration Type</label>
+                        <div class="settings-toggle-pill">
                             <input type="radio" name="duration" id="day-radio" checked>
                             <label for="day-radio">By Day</label>
                             <input type="radio" name="duration" id="month-radio">
                             <label for="month-radio">By Month</label>
                         </div>
-                        <span class="rate-hint">Current rate: ₱2,500/month</span>
+                        <span class="settings-rate-hint">Current rate: ₱2,500/month</span>
                     </div>
                 </div>
-                <div class="card-footer">
-                    <button class="save-btn">Save Changes</button>
+                <div class="settings-card-footer">
+                    <button class="settings-save-btn">Save Changes</button>
                 </div>
             </div>
         </section>
 
-        <section class="registry-container">
-            <div class="header-registry">
-                <div class="title-section">
-                    <h1>Tenant Items & Appliances Registry</h1>
-                    <p class="subtitle">Track items brought by tenants for safety and insurance</p>
+        <div class="registry-table-container">
+            <div class="registry-title-section">
+                <div>
+                    <h1 class="registry-title">Tenant Items & Appliances Registry</h1>
+                    <p class="registry-subtitle">Track items brought by tenants for safety and insurance</p>
                 </div>
                 <button class="add-item-btn">
-                    <span style="margin-right:8px; font-size:1.2rem">+</span> Add Item
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="add-item-icon">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Add Item
                 </button>
             </div>
-            <table>
+
+            <table class="registry-table">
                 <thead>
                     <tr>
                         <th>Tenant Name</th>
@@ -203,73 +208,91 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td data-label="Tenant Name" class="tenant-name">Maria Santos</td>
+                        <td data-label="Tenant Name" class="tenant-name">Van Claude C. Valeros</td>
                         <td data-label="Room">204-A</td>
                         <td data-label="Item/Appliance" class="item-name">Laptop</td>
                         <td data-label="Brand/Model">Dell Inspiron 15</td>
                         <td data-label="Date Registered">Jan 15, 2026</td>
-                        <td data-label="Status"><span class="status-badge-pill">Active</span></td>
-                        <td data-label="Actions"><button class="actions-btn">⋮</button></td>
+                        <td data-label="Status"><span class="settings-status-badge-pill">Active</span></td>
+                        <td data-label="Actions"><button class="settings-actions-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="settings-actions-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
                     </tr>
                     <tr>
-                        <td data-label="Tenant Name" class="tenant-name">John Doe</td>
+                        <td data-label="Tenant Name" class="tenant-name">Aila May Natividad</td>
                         <td data-label="Room">102-B</td>
                         <td data-label="Item/Appliance" class="item-name">Electric Fan</td>
                         <td data-label="Brand/Model">Standard 16"</td>
                         <td data-label="Date Registered">Feb 01, 2026</td>
-                        <td data-label="Status"><span class="status-badge-pill">Active</span></td>
-                        <td data-label="Actions"><button class="actions-btn">⋮</button></td>
+                        <td data-label="Status"><span class="settings-status-badge-pill">Active</span></td>
+                        <td data-label="Actions"><button class="settings-actions-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="settings-actions-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
                     </tr>
                     <tr>
-                        <td data-label="Tenant Name" class="tenant-name">Sarah Lee</td>
+                        <td data-label="Tenant Name" class="tenant-name">KC Charmelle S. Lagare</td>
                         <td data-label="Room">305-C</td>
                         <td data-label="Item/Appliance" class="item-name">Rice Cooker</td>
                         <td data-label="Brand/Model">Kyowa 1.8L</td>
                         <td data-label="Date Registered">Dec 20, 2024</td>
-                        <td data-label="Status"><span class="status-badge-pill">Active</span></td>
-                        <td data-label="Actions"><button class="actions-btn">⋮</button></td>
+                        <td data-label="Status"><span class="settings-status-badge-pill">Active</span></td>
+                        <td data-label="Actions"><button class="settings-actions-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="settings-actions-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
                     </tr>
                 </tbody>
             </table>
-        </section>
+        </div>
 
-        <section class="stat-cards-grid">
-            <article class="stat-card">
-                <div class="card-header-stat">
-                    <h2 class="card-title-stat">Total Items Registered</h2>
-                    <svg class="card-icon icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <section class="settings-stat-cards-grid">
+            <article class="settings-stat-card">
+                <div class="settings-card-header-stat">
+                    <h2 class="settings-card-title-stat">Total Items Registered</h2>
+                    <svg class="settings-card-icon settings-icon-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
                 </div>
                 <div class="card-content">
-                    <p class="stat-value">128</p>
-                    <p class="stat-subtext">Across all tenants</p>
+                    <p class="settings-stat-value">128</p>
+                    <p class="settings-stat-subtext">Across all tenants</p>
                 </div>
             </article>
 
-            <article class="stat-card">
-                <div class="card-header-stat">
-                    <h2 class="card-title-stat">High-Value Items</h2>
-                    <svg class="card-icon icon-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <article class="settings-stat-card">
+                <div class="settings-card-header-stat">
+                    <h2 class="settings-card-title-stat">High-Value Items</h2>
+                    <svg class="settings-card-icon settings-icon-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
                     </svg>
                 </div>
                 <div class="card-content">
-                    <p class="stat-value">45</p>
-                    <p class="stat-subtext">Worth ₱10k or more</p>
+                    <p class="settings-stat-value">45</p>
+                    <p class="settings-stat-subtext">Worth ₱10k or more</p>
                 </div>
             </article>
 
-            <article class="stat-card">
-                <div class="card-header-stat">
-                    <h2 class="card-title-stat">Pending Approvals</h2>
-                    <svg class="card-icon icon-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <article class="settings-stat-card">
+                <div class="settings-card-header-stat">
+                    <h2 class="settings-card-title-stat">Pending Approvals</h2>
+                    <svg class="settings-card-icon settings-icon-red" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                 </div>
                 <div class="card-content">
-                    <p class="stat-value">7</p>
-                    <p class="stat-subtext">Requires review</p>
+                    <p class="settings-stat-value">12</p>
+                    <p class="settings-stat-subtext">Awaiting admin action</p>
                 </div>
             </article>
         </section>
