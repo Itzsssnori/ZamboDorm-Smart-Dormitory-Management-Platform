@@ -27,7 +27,7 @@ Below is a record of our team members and development progress.
   Completed, compiled and merged demo tenant page and made it responsive into any other platforms.
 - **03/08/2026**
   Started the admin page and distributed tasks among the team. The page is currently halfway done and actively being developed.
-- **-3/19/2026**
+- **03/19/2026**
   Developed the settings and help page for admin and tenants use for quick navigation and easy web-app accessibility.
 ---
 ## Notes  
