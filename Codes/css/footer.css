@@ -178,7 +178,8 @@
 
 /* Responsive breakpoints */
 
-
+@media (max-width: 1200px) {
+  .footer-container {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
@@ -190,6 +191,7 @@
     text-align: left;
   }
 }
+
 
 @media (max-width: 1024px) {
   .footer {
