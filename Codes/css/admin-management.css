@@ -225,22 +225,85 @@ body {
     .tenant-mgmt-search-box {
         gap: 0.75rem;
         margin-bottom: 1.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
     }
 
     .tenant-mgmt-search {
-        min-width: 150px;
+        flex: 2;
+        min-width: 0;
         padding: 0.65rem 0.9rem;
         font-size: 0.9rem;
     }
 
-    .tenant-mgmt-filter-btn,
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
     .tenant-mgmt-add-btn {
-        padding: 0.65rem 1rem;
+        flex: 1;
+        padding: 0.65rem 0.9rem;
         font-size: 0.8rem;
     }
 
     .tenant-mgmt-table-container {
         padding: 1.25rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.85rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive Design - Medium-Large Screens (1199px to 769px) */
+@media (max-width: 1199px) and (min-width: 769px) {
+    .tenant-mgmt-container {
+        margin-left: 17rem;
+        margin-right: 2rem;
+        padding: 1.5rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tenant-mgmt-search-box {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 1.5rem;
     }
 
     .tenant-mgmt-table thead th {
@@ -270,14 +333,15 @@ body {
     }
 
     .tenant-mgmt-search-box {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.75rem;
         margin-bottom: 1.5rem;
+        flex-wrap: nowrap;
     }
 
     .tenant-mgmt-search {
-        width: 100%;
-        min-width: unset;
+        flex: 2;
+        min-width: 0;
         padding: 0.6rem 0.85rem;
         font-size: 0.85rem;
     }
@@ -289,7 +353,7 @@ body {
     }
 
     .tenant-mgmt-add-btn {
-        width: 100%;
+        flex: 1;
         margin-left: 0;
         padding: 0.6rem 0.8rem;
         font-size: 0.8rem;
@@ -328,17 +392,21 @@ body {
     }
 
     .tenant-mgmt-search-box {
-        flex-direction: column;
+        flex-direction: row;
         gap: 0.5rem;
+        flex-wrap: nowrap;
     }
 
     .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
         padding: 0.5rem 0.75rem;
         font-size: 0.8rem;
     }
 
     .tenant-mgmt-filter-btn,
     .tenant-mgmt-add-btn {
+        flex: 1;
         padding: 0.5rem 0.75rem;
         font-size: 0.75rem;
     }
@@ -420,6 +488,75 @@ body {
     .tenant-mgmt-status {
         padding: 0.25rem 0.5rem;
         font-size: 0.65rem;
+    }
+}
+
+/* Responsive Design - Mobile Phones (390px and below / 390px-479px) */
+@media (max-width: 479px) and (min-width: 390px) {
+    .tenant-mgmt-container {
+        padding: 0.8rem;
+        padding-top: 4rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
+
+    .tenant-mgmt-search-box {
+        flex-direction: row;
+        gap: 0.5rem;
+        margin-bottom: 1.2rem;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        padding: 0.5rem 0.7rem;
+        font-size: 0.8rem;
+        min-width: 0;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        margin-left: 0;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 0.8rem;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    .tenant-mgmt-table {
+        font-size: 0.8rem;
+        min-width: 100%;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.6rem 0.65rem;
+        font-size: 0.72rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.6rem 0.65rem;
+        font-size: 0.78rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
     }
 }
 

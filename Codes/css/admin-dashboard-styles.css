@@ -2,10 +2,35 @@
 /* Main content area - accounts for sidebar */
 .admin-main-content {
     margin-left: 24.3rem;
-    margin-right: 6rem;
+    margin-right: 1rem;
     padding: 2rem;
     background-color: transparent;
     min-height: calc(100vh - 70px);
+}
+
+/* Responsive Design - Large screens (1280px and below) */
+@media (max-width: 1280px) {
+    .admin-main-content {
+        margin-left: 17.5rem;
+        margin-right: 1rem;
+    }
+}
+
+/* Responsive Design - Tablets (1024px and below) - Updated */
+@media (max-width: 1024px) {
+    .admin-main-content {
+        margin-left: 16.5rem;
+        margin-right: 1rem;
+        padding: 1.5rem;
+    }
+}
+
+/* Responsive Design - Smaller tablets (896px and below) */
+@media (max-width: 896px) {
+    .admin-main-content {
+        margin-left: 15.5rem;
+        margin-right: 1rem;
+    }
 }
 
 /* Content Header */
@@ -464,20 +489,21 @@
 }
 
 /* 
-   Responsive Design
+   Responsive Design - Remaining styles for 921px and below
 */
 
-@media (max-width: 1024px) {
+/* Responsive Design - iPad Air (921px and below) */
+@media (max-width: 921px) {
     .admin-main-content {
-        margin-left: 7.5rem;
-        margin-right: 0;
-        padding: 1.5rem;
+        margin-left: 16.5rem;
+        margin-right: 1rem;
+        padding: 1.25rem;
     }
 
     .admin-metrics-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        margin-bottom: 1.5rem;
+        gap: 0.9rem;
+        margin-bottom: 1.2rem;
     }
 
     .admin-charts-grid {
@@ -485,11 +511,20 @@
     }
 
     .admin-page-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .admin-metric-card {
+        padding: 0.9rem;
     }
 
     .admin-metric-value {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+    }
+
+    .admin-chart-container {
+        padding: 1rem;
     }
 }
 
@@ -497,8 +532,8 @@
     .admin-main-content {
         margin-left: 0;
         margin-right: 0;
-        padding: 1.25rem;
-        padding-top: 4rem;
+        padding: 1.25rem 1rem;
+        padding-top: 1.5rem;
     }
 
     .admin-content-header {

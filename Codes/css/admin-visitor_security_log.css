@@ -5,11 +5,32 @@
 
 .visitor-logs {
     margin-left: 24.3rem;
-    margin-right: 6rem;
+    margin-right: 1rem;
     padding: 2rem;
     background-color: transparent;
     min-height: calc(100vh - 70px);
     font-family: 'Poppins', sans-serif;
+}
+
+/* Responsive Design - Large screens (1280px and below) */
+@media (max-width: 1280px) {
+    .visitor-logs {
+        margin-left: 17.5rem;
+    }
+}
+
+/* Responsive Design - Tablets (1024px and below) */
+@media (max-width: 1024px) {
+    .visitor-logs {
+        margin-left: 16.5rem;
+    }
+}
+
+/* Responsive Design - Smaller tablets (896px and below) */
+@media (max-width: 896px) {
+    .visitor-logs {
+        margin-left: 15.5rem;
+    }
 }
 
 /* 
@@ -18,7 +39,7 @@
 
 .visitor-logs-title {
     margin-top: 2rem;
-    margin-bottom: 2.1rem;
+    margin-bottom: 2.5rem;
     margin-left: 0;
     font-size: 2.3rem;
     font-weight: 700;
@@ -102,15 +123,10 @@
    Responsive Design - Tablets (1024px and below)
 */
 
-@media (max-width: 1024px) {
-    .visitor-logs {
-        margin-left: 7.5rem;
-        margin-right: 1rem;
-        padding: 1.5rem;
-    }
+/* Old 1024px query - removed, using new structure above */
 
     .visitor-logs-title {
-        font-size: 2rem;
+        font-size: 2.3rem;
         margin-bottom: 1.5rem;
     }
 
@@ -129,6 +145,36 @@
         padding: 0.85rem 1rem;
         font-size: 0.9rem;
     }
+
+
+/* Responsive Design - iPad Air (921px and below) */
+@media (max-width: 921px) {
+    .visitor-logs {
+        margin-left: 16.5rem;
+        margin-right: 1rem;
+        padding: 1.25rem;
+    }
+
+    .visitor-logs-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .visitor-logs-table-container {
+        padding: 1.15rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .visitor-logs-table thead th {
+        padding: 0.8rem 0.95rem;
+        font-size: 0.78rem;
+    }
+
+    .visitor-logs-table tbody td {
+        padding: 0.8rem 0.95rem;
+        font-size: 0.88rem;
+    }
 }
 
 /* 
@@ -138,9 +184,9 @@
 @media (max-width: 768px) {
     .visitor-logs {
         margin-left: 0;
-        margin-right: 0;
-        padding: 1.25rem;
-        padding-top: 4rem;
+        margin-right: 0.5rem;
+        padding: 1.25rem 0.75rem;
+        padding-top: 1.5rem;
     }
 
     .visitor-logs-title {

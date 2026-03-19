@@ -1,7 +1,8 @@
-/* ================= QUICK SERVICES CONTAINER ================= */
+/* quick services container */
 .req-container {
     margin-left: 8rem;
-    margin-right: 6em;
+    padding: 2rem;
+    max-width: 100%;
 }
 
 /* Header */
@@ -25,7 +26,7 @@
     font-size: 1rem;
 }
 
-/* ================= MAP CARD ================= */
+/* map card */
 .req-map-card {
     background: #ffffff;
     padding: 2rem 2rem 2rem 2.6rem;
@@ -135,7 +136,7 @@
     animation: dot-ping 1.8s ease-out infinite;
 }
 
-/* ================= SERVICES ================= */
+/* services */
 .req-services {
     display: flex;
     gap: 30px;
@@ -222,7 +223,7 @@
     background: #e11d74;
 }
 
-/* ================= SELECTOR (PURE CSS INTERACTIVE) ================= */
+/* selector (pure css interactive) */
 
 /* Hide radio buttons */
 .req-selector input {
@@ -255,7 +256,7 @@ input[name="day"]:checked + label {
     font-weight: 600;
 }
 
-/* ================= BUTTON HOVER ================= */
+/* button hover */
 .req-btn-blue:hover {
     background: #1d4ed8;
 }
@@ -264,7 +265,7 @@ input[name="day"]:checked + label {
     background: #be185d;
 }
 
-/* ================= ANIMATIONS ================= */
+/* animations */
 @keyframes dot-ping {
   0% {
     transform: scale(1);
@@ -282,13 +283,25 @@ input[name="day"]:checked + label {
   }
 }
 
-/* ================= RESPONSIVE MEDIA QUERIES ================= */
+/* responsive media queries */
+
+/* Desktop: 1280px and below */
+@media (max-width: 1280px) {
+    .req-container {
+        margin-left: 6rem;
+        padding: 2rem 4rem;
+    }
+
+    .req-header h1 {
+        font-size: 2.1rem;
+    }
+}
 
 /* Tablet view: 1024px and below */
 @media (max-width: 1024px) {
     .req-container {
-        margin-left: 6rem;
-        margin-right: 4rem;
+        margin-left: 2rem;
+        padding: 2rem;
     }
 
     .req-header h1 {
@@ -327,11 +340,23 @@ input[name="day"]:checked + label {
     }
 }
 
+/* Tablet small: 896px and below */
+@media (max-width: 896px) {
+    .req-container {
+        margin-left: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .req-header h1 {
+        font-size: 1.9rem;
+    }
+}
+
 /* Mobile landscape: 768px and below */
 @media (max-width: 768px) {
     .req-container {
-        margin-left: 1.5rem;
-        margin-right: 1.5rem;
+        margin-left: 1rem;
+        padding: 1.5rem;
     }
 
     .req-header h1 {
@@ -433,11 +458,23 @@ input[name="day"]:checked + label {
     }
 }
 
+/* Mobile medium: 640px and below */
+@media (max-width: 640px) {
+    .req-container {
+        margin-left: 0.5rem;
+        padding: 1.25rem;
+    }
+
+    .req-header h1 {
+        font-size: 1.6rem;
+    }
+}
+
 /* Mobile small: 480px and below */
 @media (max-width: 480px) {
     .req-container {
-        margin-left: 1rem;
-        margin-right: 1rem;
+        margin-left: 0;
+        padding: 1rem;
     }
 
     .req-header h1 {

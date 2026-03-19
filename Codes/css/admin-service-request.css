@@ -1,4 +1,6 @@
 
+/* Main container for service requests - using admin-main-content from dashboard styles */
+
 /* Service Request Title */
 .service-request-title {
     font-size: 2.3rem;
@@ -223,6 +225,40 @@
     .service-request-manage-btn {
         padding: 0.4rem 0.8rem;
         font-size: 0.8rem;
+    }
+}
+
+/* Responsive Design - iPad Air (921px and below) */
+@media (max-width: 921px) {
+    .service-request-title {
+        font-size: 1.85rem;
+    }
+
+    .service-request-box {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .service-request-main {
+        gap: 1.2rem;
+    }
+
+    .service-request-icon {
+        width: 2.85rem;
+        height: 2.85rem;
+    }
+
+    .service-request-icon svg {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .service-request-info h3 {
+        font-size: 0.92rem;
+    }
+
+    .service-request-info p {
+        font-size: 0.82rem;
     }
 }
 

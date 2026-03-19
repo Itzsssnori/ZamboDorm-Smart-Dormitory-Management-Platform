@@ -2,62 +2,65 @@
    CSS VARIABLES - DESIGN TOKENS
    ======================================== */
 :root {
-  /* Colors */
+  /* Primary Colors */
   --primary-red: #8b0000;
-  --primary-red-dark: #8B0000;
+  --primary-red-dark: #8b0000;
   --primary-red-hover: #b30000;
   --primary-red-active: #a52a2a;
   --secondary-red: #b31818;
   --red-accent: #a40000;
   --red-badge: #c41e3a;
-  --red-light: #f8d7da;
+  --red: #8b0000;
+  --red-light: #fff0f0;
+  --red-mid: #ffd6d6;
   --red-feature-bg: #fdecec;
-  --blue-primary: #b80000;
-  --blue-hover: #8b0000;
-  --green-light: #d1fae5;
-  --green-dark: #059669;
-  --yellow-light: #fed7aa;
   --red-light-bg: #fecaca;
   --red-dark-text: #dc2626;
   
-  --text-dark: #333;
+  /* Text Colors */
+  --text-dark: #1a1a2e;
+  --text-med: #64748b;
   --text-medium: #555;
-  --text-light: #777;
+  --text-light: #94a3b8;
   --text-lighter: #b0c4de;
   --text-white: #ffffff;
-  --text-medium: #6b7280;
-  --text-white: #ffffff;
+  --blue-primary: #b80000;
+  --blue-hover: #8b0000;
   
-  --bg-light: #f9f9f9;
-  --bg-lighter: #f5f5f5;
+  /* Background Colors */
   --bg-white: #ffffff;
-  --bg-dark: #0A1A2F;
-  --bg-gray: #e8e8e8;
-  --bg-white: #ffffff;
-  
-  --border-light: #e0e0e0;
-  --border-light: #e5e7eb;
   --bg-light: #f3f4f6;
+  --bg-lighter: #f5f5f5;
+  --bg-page: #f4f6fb;
+  --bg-dark: #0a1a2f;
+  --bg-gray: #e8e8e8;
   
+  /* Border Colors */
+  --border: #e8ecf4;
+  --border-light: #e0e0e0;
   --border-medium: #ccc;
   --border-subtle: rgba(200, 200, 200, 0.2);
   
-  --accent-yellow: rgba(39, 31, 31, 0.2)
+  /* Special Colors */
+  --green-light: #d1fae5;
+  --green-dark: #059669;
+  --yellow-light: #fed7aa;
+  --accent-yellow: rgba(39, 31, 31, 0.2);
   --accent-gold: #ffd93d;
   --accent-orange: #ff9900;
   
   /* Shadows */
+  --shadow: 0 2px 16px rgba(30, 40, 90, 0.07);
   --shadow-xs: 0 4px 10px rgba(0, 0, 0, 0.08);
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.15);
   --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-red: 0 6px 16px rgba(139, 0, 0, 0.2);
   --shadow-red-btn: 0 4px 12px rgba(139, 0, 0, 0.3);
-  -shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   
   /* Border Radius */
+  --radius: 12px;
   --radius-sm: 0.5625rem;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -65,11 +68,13 @@
   --radius-2xl: 32px;
   
   /* Transitions */
+  --transition: 0.18s ease;
   --transition-fast: all 0.3s ease;
   --transition-normal: all 0.45s ease-in-out;
   --transition-smooth: all 0.4s ease-in-out;
   --transition-opacity: opacity 0.2s ease, transform 0.2s ease;
 }
+
 
 /* Reset and global styles */
 * {
@@ -82,11 +87,6 @@
 html {
   scroll-behavior: smooth;
   font-size: 100%;
-}
-
-/* Body layout with flex for sticky footer */
-html {
-  scroll-behavior: smooth;
 }
 
 body {
