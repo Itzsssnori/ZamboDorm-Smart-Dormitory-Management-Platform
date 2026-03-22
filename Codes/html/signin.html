@@ -33,6 +33,18 @@
     <h2>Welcome Back</h2>
     <p>Access your ZamboDorm account</p>
 
+    <!-- User Role Labels -->
+    <div class="signin-role-selector">
+      <label class="signin-role-label signin-role-admin" for="signinAdmin">
+        <input type="radio" id="signinAdmin" name="signinRole" value="admin">
+        <span>Admin</span>
+      </label>
+      <label class="signin-role-label signin-role-tenant" for="signinTenant">
+        <input type="radio" id="signinTenant" name="signinRole" value="tenant" checked>
+        <span>Tenant</span>
+      </label>
+    </div>
+
     <form action="dashboard.html" method="post">
       <div class="input-group">
         <input type="email" name="email" placeholder="Email Address" required pattern=".+@.+\.com">

@@ -216,7 +216,7 @@
 }
 
 /* Tablet spacing and sizing */
-@media (max-width: 90rem) {
+@media (max-width: 1280px) {
   .label {
     margin-top: 7rem;
     margin-left: clamp(1.25rem, 5vw, 3.75rem);
@@ -229,7 +229,7 @@
   }
 }
 
-@media (max-width: 75rem) {
+@media (max-width: 1120px) {
   .hero-section {
     grid-template-columns: 1.05fr 0.95fr;
   }
@@ -263,7 +263,7 @@
   }
 }
 
-@media (max-width: 62rem) {
+@media (max-width: 1024px) {
   .label {
     margin-top: clamp(4rem, 6vw, 6rem);
     margin-left: auto;
@@ -301,7 +301,7 @@
 }
 
 /* Mobile stacking and button sizing */
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .label {
     margin-top: clamp(3.5rem, 5vw, 5.5rem);
     margin-left: auto;
@@ -376,7 +376,7 @@
   }
 }
 
-@media (max-width: 30rem) {
+@media (max-width: 480px) {
   .label {
     margin-top: clamp(3rem, 5vw, 5.125rem);
     margin-left: 1rem;

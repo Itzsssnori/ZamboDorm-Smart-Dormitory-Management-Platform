@@ -178,7 +178,8 @@
 
 /* Responsive breakpoints */
 
-
+@media (max-width: 1200px) {
+  .footer-container {
     grid-template-columns: repeat(8, minmax(0, 1fr));
   }
 
@@ -191,7 +192,8 @@
   }
 }
 
-@media (max-width: 62rem) {
+
+@media (max-width: 1024px) {
   .footer {
     padding-inline: clamp(1rem, 2.5vw, 1.25rem);
   }
@@ -214,7 +216,7 @@
   }
 }
 
-@media (max-width: 48rem) {
+@media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
   }

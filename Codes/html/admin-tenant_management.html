@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
-     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/section-bar.css">
     <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-    <title>Admin Dashboard - ZamboDorm</title>
+    <title>Admin Dashboard - Tenant Management</title>
+    <link rel="stylesheet" href="../css/admin-management.css">
 </head>
+
 <body>
-    <!-- Navigation header -->
+ <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -65,7 +68,7 @@
     <!-- Scrollable nav items -->
     <div class="sidebar-nav-scrollable">
 
-      <a href="admin-overview.html" class="sidebar-item active">
+      <a href="admin-overview.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7" rx="1"/>
           <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -75,7 +78,7 @@
         <span class="sidebar-label">Overview</span>
       </a>
 
-      <a href="admin-tenant_management.html" class="sidebar-item">
+      <a href="admin-tenant_management.html" class="sidebar-item active">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
@@ -174,149 +177,86 @@
 
   </nav>
 </aside>
+    <div class="tenant-mgmt-container">
+        <h1 class="tenant-mgmt-title">Tenant Management</h1>
 
-    <!-- Main content section -->
-    <main class="admin-main-content">
-        <!-- Header Section -->
-        <div class="admin-content-header">
-            <h1 class="admin-page-title">Admin Dashboard</h1>
-            <p class="admin-page-subtitle">Welcome back! Here's what's happening today in ZamboDorm.</p>
+        <!--Top Controls-->
+        <div class="tenant-mgmt-search-box">
+            <i class="fa fa-search"></i>
+            <input class="tenant-mgmt-search" type="text" placeholder="Search by name, room, or school....">
+            <button class="tenant-mgmt-filter-btn">Filters</button>
+            <i class="fa fa-filter"></i>
+            <button class="tenant-mgmt-add-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tenant-mgmt-add-icon">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add New Tenant
+            </button>
         </div>
 
-        <!-- Metrics Cards Section -->
-        <div class="admin-metrics-grid">
-            <!-- Total Tenants Card -->
-            <div class="admin-metric-card">
-                <div class="admin-metric-header">
-                    <div class="admin-metric-icon admin-metric-icon-tenants">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <div class="admin-metric-change admin-metric-positive">+12%</div>
-                </div>
-                <div class="admin-metric-label">Total Tenants</div>
-                <div class="admin-metric-value">124</div>
-            </div>
+        <!--The Table-->
+        <div class="tenant-mgmt-table-container">
+            <table class="tenant-mgmt-table">
+                <thead>
+                    <tr>
+                        <th>TENANT NAME</th>
+                        <th>ROOM</th>
+                        <th>ADVANCE DEPOSIT</th>
+                        <th>JOIN DATE</th>
+                        <th>STATUS</th>
+                        <th>ACTIONS</th>
+                    </tr>
+                </thead>
 
-            <!-- Available Rooms Card -->
-            <div class="admin-metric-card">
-                <div class="admin-metric-header">
-                    <div class="admin-metric-icon admin-metric-icon-rooms">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
-                            <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                            <polyline points="7 5 7 13 17 13"></polyline>
-                        </svg>
-                    </div>
-                    <div class="admin-metric-change admin-metric-negative">-2</div>
-                </div>
-                <div class="admin-metric-label">Available Rooms</div>
-                <div class="admin-metric-value">18</div>
-            </div>
+                <tbody>
+                    <tr>
+                        <td>Aila May Natividad</td>
+                        <td>102-B</td>
+                        <td class="tenant-mgmt-money">₱15,000</td>
+                        <td>Feb 21, 2025</td>
+                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
+                        <td><button class="tenant-mgmt-action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
+                    </tr>
 
-            <!-- Pending Payments Card -->
-            <div class="admin-metric-card">
-                <div class="admin-metric-header">
-                    <div class="admin-metric-icon admin-metric-icon-payments">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="1" y="6" width="22" height="13" rx="2" ry="2"></rect>
-                            <path d="M1 9h22M6 15h4"></path>
-                        </svg>
-                    </div>
-                    <div class="admin-metric-change admin-metric-negative">-5%</div>
-                </div>
-                <div class="admin-metric-label">Pending Payments</div>
-                <div class="admin-metric-value">8</div>
-            </div>
+                    <tr>
+                        <td>KC Charmelle S. Lagare</td>
+                        <td>305-C</td>
+                        <td class="tenant-mgmt-money">₱5,000</td>
+                        <td>Dec 15, 2024</td>
+                        <td><span class="tenant-mgmt-status tenant-mgmt-status-notice">Notice</span></td>
+                        <td><button class="tenant-mgmt-action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
+                    </tr>
 
-            <!-- Active Complaints Card -->
-            <div class="admin-metric-card">
-                <div class="admin-metric-header">
-                    <div class="admin-metric-icon admin-metric-icon-complaints">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            <circle cx="9" cy="10" r="1"></circle>
-                            <circle cx="12" cy="10" r="1"></circle>
-                            <circle cx="15" cy="10" r="1"></circle>
-                        </svg>
-                    </div>
-                    <div class="admin-metric-change admin-metric-neutral">0</div>
-                </div>
-                <div class="admin-metric-label">Active Complaints</div>
-                <div class="admin-metric-value">4</div>
-            </div>
+                    <tr>
+                        <td>Norielle John D. Buhawe</td>
+                        <td>210-A</td>
+                        <td class="tenant-mgmt-money">₱10,000</td>
+                        <td>Jan 20, 2025</td>
+                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
+                        <td><button class="tenant-mgmt-action-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
+                                <circle cx="12" cy="5" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="12" cy="19" r="2"></circle>
+                            </svg>
+                        </button></td>
+            </table>
         </div>
-
-        <!-- Charts Section -->
-        <div class="admin-charts-grid">
-            <!-- Revenue Analysis Chart -->
-            <div class="admin-chart-container">
-                <h2 class="admin-chart-title">Revenue Analysis</h2>
-                <div class="admin-bar-chart">
-                    <div class="admin-chart-y-axis">
-                        <span class="admin-chart-y-label">60000</span>
-                        <span class="admin-chart-y-label">45000</span>
-                        <span class="admin-chart-y-label">30000</span>
-                        <span class="admin-chart-y-label">15000</span>
-                        <span class="admin-chart-y-label">0</span>
-                    </div>
-                    <div class="admin-bars-container">
-                        <div class="admin-bar-wrapper">
-                            <div class="admin-bar" style="height: 73%;"></div>
-                            <span class="admin-bar-value">₱44,300</span>
-                        </div>
-                        <div class="admin-bar-wrapper">
-                            <div class="admin-bar" style="height: 80%;"></div>
-                            <span class="admin-bar-value">₱46,000</span>
-                        </div>
-                        <div class="admin-bar-wrapper">
-                            <div class="admin-bar" style="height: 60%;"></div>
-                            <span class="admin-bar-value">₱36,000</span>
-                        </div>
-                        <div class="admin-bar-wrapper">
-                            <div class="admin-bar" style="height: 87%;"></div>
-                            <span class="admin-bar-value">₱54,200</span>
-                        </div>
-                        <div class="admin-bar-wrapper">
-                            <div class="admin-bar" style="height: 75%;"></div>
-                            <span class="admin-bar-value">₱45,000</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="admin-x-axis">
-                    <span class="admin-x-label">Oct</span>
-                    <span class="admin-x-label">Nov</span>
-                    <span class="admin-x-label">Dec</span>
-                    <span class="admin-x-label">Jan</span>
-                    <span class="admin-x-label">Feb</span>
-                </div>
-            </div>
-
-            <!-- Occupancy Rate Circle Chart -->
-            <div class="admin-chart-container">
-                <h2 class="admin-chart-title">Occupancy Rate</h2>
-                <div class="admin-circle-chart">
-                    <svg class="admin-circle-svg" viewBox="0 0 120 120">
-                        <!-- Background circle (Unoccupied) -->
-                        <circle class="admin-circle-unoccupied" cx="60" cy="60" r="50" fill="none" stroke="#e8e8e8" stroke-width="12"/>
-                        <!-- Percentage circle (Occupied 75%) -->
-                        <circle class="admin-circle-occupied" cx="60" cy="60" r="50" fill="none" stroke="#b80000" stroke-width="12" 
-                                stroke-dasharray="267.04" stroke-dashoffset="47.96"
-                                stroke-linecap="round" transform="rotate(-90 60 60)"/>
-                    </svg>
-                    <div class="admin-circle-tooltip admin-circle-occupied-tooltip">75% Occupied</div>
-                    <div class="admin-circle-tooltip admin-circle-unoccupied-tooltip">25% Unoccupied</div>
-                    <div class="admin-circle-content">
-                        <div class="admin-circle-percentage">75%</div>
-                        <div class="admin-circle-label">Occupied</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+    </div>
 </body>
+
 </html>

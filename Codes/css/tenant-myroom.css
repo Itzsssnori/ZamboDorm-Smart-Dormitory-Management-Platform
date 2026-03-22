@@ -372,6 +372,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1280px) {
+  .welcome-section,
+  .announcements-container,
+  .balance-roommate-section {
+    margin-left: 6rem;
+    margin-right: 4rem;
+  }
+
+  .room-info {
+    margin-right: 4rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .main-content {
     margin-left: 12.5rem;
@@ -380,10 +393,9 @@
 
   .welcome-section,
   .announcements-container,
-  .balance-roommate-section,
-  .maintenance-feedback-section {
-    margin-left: 3rem;
-    margin-right: 3rem;
+  .balance-roommate-section {
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .room-info {
@@ -403,15 +415,28 @@
   }
 }
 
+@media (max-width: 896px) {
+  .main-content {
+    margin-left: 11rem;
+  }
+
+  .welcome-section,
+  .announcements-container,
+  .balance-roommate-section {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .room-info {
+    margin-right: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
     padding: 1.5rem;
     padding-top: 4rem;
-  }
-
-  .sidebar {
-    width: 5rem;
   }
 
   .welcome-section {

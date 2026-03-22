@@ -31,6 +31,52 @@
     margin-top: 0.625rem;
 }
 
+/* Role Selector for Sign In */
+.signin-role-selector {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+}
+
+.signin-role-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    background-color: transparent;
+    color: #9ca3af;
+    border: none;
+    border-bottom: 2px solid transparent;
+    position: relative;
+}
+
+.signin-role-label:hover {
+    color: #d1d5db;
+}
+
+.signin-role-label input {
+    display: none;
+}
+
+/* Active state: just color and underline */
+.signin-role-admin:has(input:checked) {
+    background-color: transparent;
+    color: #0284c7;
+    border-bottom-color: #0284c7;
+}
+
+.signin-role-tenant:has(input:checked) {
+    background-color: transparent;
+    color: #16a34a;
+    border-bottom-color: #16a34a;
+}
+
 /* Form input wrappers and fields */
 .input-group {
     margin-bottom: 1rem;
@@ -53,8 +99,8 @@
 .forgot {
     text-align: right;
     font-size: clamp(0.8rem, 0.77rem + 0.2vw, 0.9rem);
-    margin-top: 1rem;
-    margin-bottom: 0.75rem;
+    margin-top: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .forgot a {

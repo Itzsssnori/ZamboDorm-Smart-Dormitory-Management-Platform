@@ -1,0 +1,352 @@
+
+    /* ── Layout ───────────────────────────────────────── */
+    .help-main-content {
+      margin-left: 19rem;
+      margin-right: 6rem;
+      padding: 2rem;
+      background-color: transparent;
+      min-height: calc(100vh - 70px);
+    }
+
+    .zd-help {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    /* ── Page header ──────────────────────────────────── */
+    .zd-help__header { margin-bottom: 2rem; margin-top: 1.5rem; }
+
+    .zd-help__title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin-bottom: 0.4rem;
+    }
+
+    .zd-help__subtitle {
+      font-size: 0.95rem;
+      color: var(--text-med);
+      font-weight: 400;
+    }
+
+    /* ── Search bar ───────────────────────────────────── */
+    .zd-help__search-wrap {
+      position: relative;
+      margin-bottom: 2rem;
+    }
+
+    .zd-help__search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px; height: 18px;
+      stroke: var(--text-light);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+
+    .zd-help__search {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-dark);
+      background: var(--bg-white);
+      box-shadow: var(--shadow);
+      transition: border-color var(--transition), box-shadow var(--transition);
+    }
+
+    .zd-help__search:focus {
+      outline: none;
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(139,0,0,.1);
+    }
+
+    .zd-help__search::placeholder { color: var(--text-light); }
+
+    /* ── Quick links ──────────────────────────────────── */
+    .zd-help__quick {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .zd-help__quick-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+      cursor: pointer;
+    }
+
+    .zd-help__quick-card:hover {
+      box-shadow: 0 6px 24px rgba(30,40,90,.12);
+      transform: translateY(-2px);
+      border-color: var(--red-mid);
+    }
+
+    .zd-help__quick-icon {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      background: var(--red-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zd-help__quick-icon svg {
+      width: 20px; height: 20px;
+      stroke: var(--red); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .zd-help__quick-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    /* ── Section card ─────────────────────────────────── */
+    .zd-help__section {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .zd-help__section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      background: #fafbfd;
+    }
+
+    .zd-help__section-icon {
+      width: 36px; height: 36px;
+      border-radius: 9px;
+      background: var(--red-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zd-help__section-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--red); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .zd-help__section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+    }
+
+    .zd-help__section-desc {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-top: 1px;
+    }
+
+    /* ── FAQ item ─────────────────────────────────────── */
+    .zd-help__faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .zd-help__faq-item:last-child { border-bottom: none; }
+
+    /* CSS-only accordion using checkbox */
+    .zd-help__faq-toggle { display: none; }
+
+    .zd-help__faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .zd-help__faq-question:hover {
+      background: #fafbfd;
+      color: var(--red);
+    }
+
+    .zd-help__faq-chevron {
+      width: 16px; height: 16px;
+      stroke: var(--text-light); fill: none;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+      flex-shrink: 0;
+      transition: transform var(--transition);
+    }
+
+    .zd-help__faq-toggle:checked ~ .zd-help__faq-question .zd-help__faq-chevron {
+      transform: rotate(180deg);
+      stroke: var(--red);
+    }
+
+    .zd-help__faq-toggle:checked ~ .zd-help__faq-question {
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    .zd-help__faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+      font-size: 0.875rem;
+      color: var(--text-med);
+      line-height: 1.7;
+    }
+
+    .zd-help__faq-toggle:checked ~ .zd-help__faq-answer {
+      max-height: 400px;
+      padding: 0.75rem 1.5rem 1.25rem;
+    }
+
+    /* ── Contact row ──────────────────────────────────── */
+    .zd-help__contact-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+
+    .zd-help__contact-row:last-child { border-bottom: none; }
+    .zd-help__contact-row:hover { background: #fafbfd; }
+
+    .zd-help__contact-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--red-light);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zd-help__contact-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--red); fill: none;
+      stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .zd-help__contact-info { flex: 1; }
+
+    .zd-help__contact-label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 2px;
+    }
+
+    .zd-help__contact-value {
+      font-size: 0.8rem;
+      color: var(--text-med);
+    }
+
+    .zd-help__contact-btn {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-med);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: border-color var(--transition), color var(--transition), background var(--transition);
+    }
+
+    .zd-help__contact-btn:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: var(--red-light);
+    }
+
+    /* ── Info row (plain text row) ────────────────────── */
+    .zd-help__info-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.875rem;
+    }
+
+    .zd-help__info-row:last-child { border-bottom: none; }
+
+    .zd-help__info-label { font-weight: 600; color: var(--text-dark); }
+    .zd-help__info-value { color: var(--text-med); text-align: right; }
+
+    /* ── Badge ────────────────────────────────────────── */
+    .zd-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.22rem 0.6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .zd-badge--green { background: #dcfce7; color: #16a34a; }
+    .zd-badge--gray  { background: #f1f5f9; color: #64748b; }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 1280px) {
+      .help-main-content { margin-left: 17.5rem; margin-right: 4rem; }
+    }
+
+    @media (max-width: 1024px) {
+      .help-main-content { margin-left: 16.5rem; margin-right: 1rem; padding: 1.5rem; }
+      .zd-help__quick    { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 896px) {
+      .help-main-content { margin-left: 15.5rem; margin-right: 1rem; }
+    }
+
+    @media (max-width: 768px) {
+      .help-main-content { margin-left: 0; margin-right: 0; padding: 1.25rem 1rem; padding-top: 1.5rem; }
+      .zd-help__quick    { grid-template-columns: repeat(3, 1fr); }
+      .zd-help__title    { font-size: 1.6rem; }
+    }
+
+    @media (max-width: 640px) {
+      .help-main-content { padding: 1.25rem; padding-top: 3.5rem; }
+      .zd-help__quick    { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .help-main-content { padding: 1rem; padding-top: 3rem; }
+      .zd-help__quick    { grid-template-columns: repeat(2, 1fr); }
+      .zd-help__title    { font-size: 1.4rem; }
+      .zd-help__contact-row { flex-wrap: wrap; }
+    }

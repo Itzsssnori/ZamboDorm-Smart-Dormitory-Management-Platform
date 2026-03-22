@@ -686,6 +686,19 @@
 }
 
 /* Responsive Design */
+@media (max-width: 1280px) {
+  .payment-welcome-section,
+  .payment-announcements-container,
+  .billing-section {
+    margin-left: 6rem;
+    margin-right: 4rem;
+  }
+
+  .payment-room-info {
+    margin-right: 4rem;
+  }
+}
+
 @media (max-width: 1024px) {
   .main-content {
     margin-left: 12.5rem;
@@ -693,19 +706,19 @@
   }
 
   .payment-welcome-section {
-    margin-left: 3rem;
+    margin-left: 2rem;
     flex-direction: column;
     gap: 1rem;
   }
 
   .payment-announcements-container {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .billing-section {
-    margin-left: 3rem;
-    margin-right: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
   .payment-room-info {
@@ -726,15 +739,28 @@
   }
 }
 
+@media (max-width: 896px) {
+  .main-content {
+    margin-left: 11rem;
+  }
+
+  .payment-welcome-section,
+  .payment-announcements-container,
+  .billing-section {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .payment-room-info {
+    margin-right: 1.5rem;
+  }
+}
+
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
     padding: 1.5rem;
     padding-top: 4rem;
-  }
-
-  .sidebar {
-    width: 5rem;
   }
 
   .payment-welcome-section {
