@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f5f7fb;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: #1c2b4a;
+}
+
+.new-post {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.new-post:hover {
+  opacity: 0.9;
+}
+
+/* Cards */
+.card {
+  background: #f1f3f7;
+  border-radius: 18px;
+  padding: 20px 25px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-left h2 {
+  font-size: 18px;
+  color: #1c2b4a;
+  margin-bottom: 5px;
+}
+
+.card-left p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Right Side */
+.card-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Status Badge */
+.status {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+/* Published */
+.published {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+/* Archived */
+.archived {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* Menu (3 dots) */
+.menu {
+  font-size: 18px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.menu:hover {
+  color: #000;
+}
