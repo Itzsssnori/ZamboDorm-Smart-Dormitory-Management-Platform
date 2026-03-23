@@ -1,6 +1,8 @@
 /* quick services container */
 .req-container {
-    margin-left: 8rem;
+    margin-left: 7rem;
+    margin-right: 6rem;
+    margin-top: -1.5rem;
     padding: 2rem;
     max-width: 100%;
 }
@@ -13,7 +15,7 @@
 .req-header h1 {
     font-size: 2.3rem;
     font-weight: 650;
-    color: #333;
+    color: var(--text-dark);
     margin: 0;
     margin-bottom: 0.1rem;
     font-family: 'Poppins', sans-serif;
@@ -289,7 +291,8 @@ input[name="day"]:checked + label {
 @media (max-width: 1280px) {
     .req-container {
         margin-left: 6rem;
-        padding: 2rem 4rem;
+        margin-right: 4rem;
+        padding: 2rem;
     }
 
     .req-header h1 {
@@ -301,6 +304,7 @@ input[name="day"]:checked + label {
 @media (max-width: 1024px) {
     .req-container {
         margin-left: 2rem;
+        margin-right: 2rem;
         padding: 2rem;
     }
 
@@ -344,6 +348,7 @@ input[name="day"]:checked + label {
 @media (max-width: 896px) {
     .req-container {
         margin-left: 1.5rem;
+        margin-right: 1.5rem;
         padding: 1.5rem;
     }
 
@@ -356,6 +361,7 @@ input[name="day"]:checked + label {
 @media (max-width: 768px) {
     .req-container {
         margin-left: 1rem;
+        margin-right: 1rem;
         padding: 1.5rem;
     }
 

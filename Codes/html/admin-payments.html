@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/section-bar.css">
+    <link rel="stylesheet" href="../css/admin-payments.css">
     <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-    <title>Admin Dashboard - Tenant Management</title>
-    <link rel="stylesheet" href="../css/admin-management.css">
+    <title>Admin Payments - ZamboDorm</title>
 </head>
-
 <body>
- <!-- Navigation header -->
+    <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -78,7 +76,7 @@
         <span class="sidebar-label">Overview</span>
       </a>
 
-      <a href="admin-tenant_management.html" class="sidebar-item active">
+      <a href="admin-tenant_management.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
@@ -96,7 +94,7 @@
         <span class="sidebar-label">Rooms</span>
       </a>
 
-      <a href="admin-payments.html" class="sidebar-item">
+      <a href="admin-payments.html" class="sidebar-item active">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="2" y="5" width="20" height="14" rx="2"/>
           <line x1="2" y1="10" x2="22" y2="10"/>
@@ -177,86 +175,147 @@
 
   </nav>
 </aside>
-    <div class="tenant-mgmt-container">
-        <h1 class="tenant-mgmt-title">Tenant Management</h1>
 
-        <!--Top Controls-->
-        <div class="tenant-mgmt-search-box">
-            <i class="fa fa-search"></i>
-            <input class="tenant-mgmt-search" type="text" placeholder="Search by name, room, or school....">
-            <button class="tenant-mgmt-filter-btn">Filters</button>
-            <i class="fa fa-filter"></i>
-            <button class="tenant-mgmt-add-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tenant-mgmt-add-icon">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                Add New Tenant
-            </button>
+<main class="admin-main-content">
+    <!-- Header Section -->
+    <div class="admin-content-header">
+        <h1 class="admin-page-title">Billing & Payments</h1>
+    </div>
+
+    <!-- Stats Cards Section -->
+    <div class="ap-stats-grid">
+        <div class="ap-stat-card">
+            <div class="ap-stat-label">Unpaid Dues</div>
+            <div class="ap-stat-value" style="color: #991b1b;">₱24,500.00</div>
         </div>
-
-        <!--The Table-->
-        <div class="tenant-mgmt-table-container">
-            <table class="tenant-mgmt-table">
-                <thead>
-                    <tr>
-                        <th>TENANT NAME</th>
-                        <th>ROOM</th>
-                        <th>ADVANCE DEPOSIT</th>
-                        <th>JOIN DATE</th>
-                        <th>STATUS</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Aila May Natividad</td>
-                        <td>102-B</td>
-                        <td class="tenant-mgmt-money">₱15,000</td>
-                        <td>Feb 21, 2025</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-                    </tr>
-
-                    <tr>
-                        <td>KC Charmelle S. Lagare</td>
-                        <td>305-C</td>
-                        <td class="tenant-mgmt-money">₱5,000</td>
-                        <td>Dec 15, 2024</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-notice">Notice</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-                    </tr>
-
-                    <tr>
-                        <td>Norielle John D. Buhawe</td>
-                        <td>210-A</td>
-                        <td class="tenant-mgmt-money">₱10,000</td>
-                        <td>Jan 20, 2025</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-            </table>
+        <div class="ap-stat-card">
+            <div class="ap-stat-label">Total Received (Feb)</div>
+            <div class="ap-stat-value" style="color: #15803d;">₱85,000.00</div>
+        </div>
+        <div class="ap-stat-card">
+            <div class="ap-stat-label">Expected Revenue</div>
+            <div class="ap-stat-value" style="color: #6d28d9;">₱109,500.00</div>
         </div>
     </div>
-</body>
 
+    <!-- Payment Methods Section -->
+    <div class="ap-payment-methods-section">
+        <div class="ap-section-header">
+            <div>
+                <h2>Accepted Payment Methods</h2>
+                <p class="ap-section-subtitle">Payment channels available for tenants</p>
+            </div>
+            <button class="ap-manage-btn">Manage</button>
+        </div>
+
+        <div class="ap-categories-grid">
+            <!-- E-Wallets -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #dbeafe; color: #4338ca;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="1" y="4" width="22" height="16" rx="2"/>
+                        <path d="M1 10h22"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>E-Wallets</h3>
+                    <div class="ap-category-items">
+                        <span class="ap-category-item">GCash</span>
+                        <span class="ap-category-item">PayMaya</span>
+                        <span class="ap-category-item">GrabPay</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Major Banks -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #bbf7d0; color: #15803d;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M3 10h18M5 14h2M5 18h2M9 14h10M9 18h10"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>Major Banks</h3>
+                    <div class="ap-category-items">
+                        <span class="ap-category-item">BDO</span>
+                        <span class="ap-category-item">BPI</span>
+                        <span class="ap-category-item">Metrobank</span>
+                        <span class="ap-category-item">LandBank</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Other Banks -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #ede9fe; color: #7c3aed;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 6h18M3 10h18M5 14h2M5 18h2M9 14h10M9 18h10"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>Other Banks</h3>
+                    <div class="ap-category-items">
+                        <span class="ap-category-item">Unionbank</span>
+                        <span class="ap-category-item">Security Bank</span>
+                        <span class="ap-category-item">PNB</span>
+                        <span class="ap-category-item">RCBC</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cash Payment -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #fdba74; color: #ea580c;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>Cash Payment</h3>
+                    <p>Direct payment at dorm office</p>
+                </div>
+            </div>
+
+            <!-- Remittance -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #fcd34d; color: #d97706;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6"/>
+                        <path d="M9 19l3-3m0 0l3 3m-3-3v7"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>Remittance</h3>
+                    <div class="ap-category-items">
+                        <span class="ap-category-item">Palawan</span>
+                        <span class="ap-category-item">Cebuana</span>
+                        <span class="ap-category-item">M Lhuillier</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Online Banking -->
+            <div class="ap-payment-category">
+                <div class="ap-category-icon" style="background: #a5f3fc; color: #0891b2;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="14" rx="2"/>
+                        <path d="M2 18h20"/>
+                    </svg>
+                </div>
+                <div class="ap-category-content">
+                    <h3>Online Banking</h3>
+                    <p>Bank transfers via online platforms</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<!-- FOOTER SPACE -->
+<footer class="ap-footer-space"></footer>
+
+</body>
 </html>

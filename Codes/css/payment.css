@@ -53,7 +53,7 @@
 
 .payment-welcome-message {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--text-dark);
   font-weight: 400;
   margin: 0;
 }

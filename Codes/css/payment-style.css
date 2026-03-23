@@ -20,7 +20,7 @@
 .payment-welcome-title {
   font-size: 2.3rem;
   font-weight: 650;
-  color: #333;
+  color: var(--text-dark);
   margin: 0;
   margin-bottom: 0.1rem;
   font-family: 'Poppins', sans-serif;

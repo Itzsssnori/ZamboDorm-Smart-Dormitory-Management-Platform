@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/section-bar.css">
-    <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-    <title>Admin Dashboard - Tenant Management</title>
-    <link rel="stylesheet" href="../css/admin-management.css">
+    <link rel="stylesheet" href="../css/admin-announcements.css">
+    <title>Admin Announcements - ZamboDorm</title>
 </head>
-
 <body>
- <!-- Navigation header -->
+    <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -78,7 +75,7 @@
         <span class="sidebar-label">Overview</span>
       </a>
 
-      <a href="admin-tenant_management.html" class="sidebar-item active">
+      <a href="admin-tenant_management.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
           <circle cx="9" cy="7" r="4"/>
@@ -116,7 +113,7 @@
         <span class="sidebar-label">Service Requests</span>
       </a>
 
-      <a href="admin-announcements.html" class="sidebar-item">
+      <a href="admin-announcements.html" class="sidebar-item active">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
           <circle cx="9" cy="10" r="1" fill="currentColor"/>
@@ -177,86 +174,57 @@
 
   </nav>
 </aside>
-    <div class="tenant-mgmt-container">
-        <h1 class="tenant-mgmt-title">Tenant Management</h1>
 
-        <!--Top Controls-->
-        <div class="tenant-mgmt-search-box">
-            <i class="fa fa-search"></i>
-            <input class="tenant-mgmt-search" type="text" placeholder="Search by name, room, or school....">
-            <button class="tenant-mgmt-filter-btn">Filters</button>
-            <i class="fa fa-filter"></i>
-            <button class="tenant-mgmt-add-btn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="tenant-mgmt-add-icon">
-                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-                Add New Tenant
-            </button>
-        </div>
-
-        <!--The Table-->
-        <div class="tenant-mgmt-table-container">
-            <table class="tenant-mgmt-table">
-                <thead>
-                    <tr>
-                        <th>TENANT NAME</th>
-                        <th>ROOM</th>
-                        <th>ADVANCE DEPOSIT</th>
-                        <th>JOIN DATE</th>
-                        <th>STATUS</th>
-                        <th>ACTIONS</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td>Aila May Natividad</td>
-                        <td>102-B</td>
-                        <td class="tenant-mgmt-money">₱15,000</td>
-                        <td>Feb 21, 2025</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-                    </tr>
-
-                    <tr>
-                        <td>KC Charmelle S. Lagare</td>
-                        <td>305-C</td>
-                        <td class="tenant-mgmt-money">₱5,000</td>
-                        <td>Dec 15, 2024</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-notice">Notice</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-                    </tr>
-
-                    <tr>
-                        <td>Norielle John D. Buhawe</td>
-                        <td>210-A</td>
-                        <td class="tenant-mgmt-money">₱10,000</td>
-                        <td>Jan 20, 2025</td>
-                        <td><span class="tenant-mgmt-status tenant-mgmt-status-active">Active</span></td>
-                        <td><button class="tenant-mgmt-action-btn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="tenant-mgmt-action-icon">
-                                <circle cx="12" cy="5" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="12" cy="19" r="2"></circle>
-                            </svg>
-                        </button></td>
-            </table>
-        </div>
+<main class="admin-main-content">
+    <!-- Header Section -->
+    <div class="admin-content-header">
+        <h1 class="admin-page-title">Announcements</h1>
+        <p class="admin-page-subtitle">Manage and publish announcements for all tenants</p>
     </div>
-</body>
 
+<div class="aa-container">
+
+  <!-- Header -->
+  <div class="aa-header">
+    <h2>All Announcements</h2>
+    <button class="aa-new-post">+ New Post</button>
+  </div>
+
+  <!-- Announcement Card -->
+  <div class="aa-card">
+    <div class="aa-card-left">
+      <h2>General Dorm Cleaning</h2>
+      <p>Posted on Feb 03, 2026 • Visibility: All Tenants</p>
+    </div>
+    <div class="aa-card-right">
+      <span class="aa-status aa-status--published">Published</span>
+      <span class="aa-menu">⋮</span>
+    </div>
+  </div>
+
+  <div class="aa-card">
+    <div class="aa-card-left">
+      <h2>Water Interruption Notice</h2>
+      <p>Posted on Jan 28, 2026 • Visibility: Building A</p>
+    </div>
+    <div class="aa-card-right">
+      <span class="aa-status aa-status--archived">Archived</span>
+      <span class="aa-menu">⋮</span>
+    </div>
+  </div>
+
+  <div class="aa-card">
+    <div class="aa-card-left">
+      <h2>New Visitor Policy</h2>
+      <p>Posted on Jan 15, 2026 • Visibility: All Tenants</p>
+    </div>
+    <div class="aa-card-right">
+      <span class="aa-status aa-status--published">Published</span>
+      <span class="aa-menu">⋮</span>
+    </div>
+  </div>
+
+</div>
+</main>
+</body>
 </html>
