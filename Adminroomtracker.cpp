@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZamboDorm – Room Occupancy Tracker</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f4f6fb;
+      --sidebar-bg: #ffffff;
+      --card-bg: #ffffff;
+      --card-border: #e8ecf4;
+      --card-hover: #eef1fb;
+      --primary: #2563eb;
+      --primary-light: #dbeafe;
+      --text-main: #1a1d2e;
+      --text-sub: #6b7280;
+      --text-label: #9ca3af;
+      --dot-occupied: #2563eb;
+      --dot-available: #d1d5db;
+      --occupied-full-bg: #eff6ff;
+      --occupied-full-border: #bfdbfe;
+      --available-bg: #f9fafb;
+      --available-border: #e5e7eb;
+      --partial-bg: #f0f4ff;
+      --partial-border: #c7d7fc;
+      --brand: #b91c1c;
+      --sidebar-active: #2563eb;
+      --sidebar-active-text: #fff;
+      --nav-text: #374151;
+      --badge-sysadmin: #f3e8ff;
+      --badge-sysadmin-text: #7c3aed;
+      --badge-admin: #dbeafe;
+      --badge-admin-text: #1d4ed8;
+      --badge-tenant: #dcfce7;
+      --badge-tenant-text: #15803d;
+      --radius: 14px;
+      --card-radius: 16px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      width: 230px;
+      background: var(--sidebar-bg);
+      border-right: 1px solid var(--card-border);
+      padding: 24px 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-shrink: 0;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .sidebar-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .sidebar-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--text-main);
+      font-size: 15px;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+      cursor: pointer;
+    }
+
+    .sidebar-item:hover {
+      background: var(--card-hover);
+    }
+
+    .sidebar-item.active {
+      background: var(--sidebar-active);
+      color: var(--sidebar-active-text);
+    }
+
+    .sidebar-item.active .sidebar-icon { color: #fff; }
+
+    .sidebar-icon {
+      width: 18px;
+      height: 18px;
+      color: var(--text-sub);
+      flex-shrink: 0;
+    }
+
+    .sidebar-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 0 4px;
+    }
+
+    .badge {
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-size: 12px;
+      font-weight: 700;
+      font-family: 'DM Mono', monospace;
+      text-align: center;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .badge:hover { opacity: 0.8; }
+
+    .badge-sysadmin {
+      background: var(--badge-sysadmin);
+      color: var(--badge-sysadmin-text);
+      border: 1.5px solid #ddd6fe;
+    }
+    .badge-admin {
+      background: var(--badge-admin);
+      color: var(--badge-admin-text);
+      border: 1.5px solid #bfdbfe;
+    }
+    .badge-tenant {
+      background: var(--badge-tenant);
+      color: var(--badge-tenant-text);
+      border: 1.5px solid #bbf7d0;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .main {
+      flex: 1;
+      padding: 32px 36px;
+      overflow-y: auto;
+    }
+
+    .page-header {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .page-title {
+      font-size: 26px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+    }
+
+    .legend {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-sub);
+    }
+
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── ROOM GRID ── */
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .room-card {
+      border-radius: var(--card-radius);
+      padding: 18px 16px 14px;
+      border: 1.5px solid var(--card-border);
+      background: var(--card-bg);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      animation: fadeUp 0.4s ease both;
+    }
+
+    .room-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.1);
+      border-color: #a5b4fc;
+    }
+
+    .room-card.status-full {
+      background: var(--occupied-full-bg);
+      border-color: var(--occupied-full-border);
+    }
+
+    .room-card.status-partial {
+      background: var(--partial-bg);
+      border-color: var(--partial-border);
+    }
+
+    .room-card.status-available {
+      background: var(--available-bg);
+      border-color: var(--available-border);
+    }
+
+    .room-status-dot {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .room-status-dot.occupied { background: var(--dot-occupied); box-shadow: 0 0 0 3px #bfdbfe; }
+    .room-status-dot.available { background: var(--dot-available); }
+
+    .room-number {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .room-label {
+      font-size: 12.5px;
+      color: var(--text-sub);
+      font-weight: 500;
+    }
+
+    .room-label span {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--text-label);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .room-card:nth-child(1)  { animation-delay: 0.02s; }
+    .room-card:nth-child(2)  { animation-delay: 0.04s; }
+    .room-card:nth-child(3)  { animation-delay: 0.06s; }
+    .room-card:nth-child(4)  { animation-delay: 0.08s; }
+    .room-card:nth-child(5)  { animation-delay: 0.10s; }
+    .room-card:nth-child(6)  { animation-delay: 0.12s; }
+    .room-card:nth-child(7)  { animation-delay: 0.14s; }
+    .room-card:nth-child(8)  { animation-delay: 0.16s; }
+    .room-card:nth-child(9)  { animation-delay: 0.18s; }
+    .room-card:nth-child(10) { animation-delay: 0.20s; }
+    .room-card:nth-child(11) { animation-delay: 0.22s; }
+    .room-card:nth-child(12) { animation-delay: 0.24s; }
+    .room-card:nth-child(13) { animation-delay: 0.26s; }
+    .room-card:nth-child(14) { animation-delay: 0.28s; }
+    .room-card:nth-child(15) { animation-delay: 0.30s; }
+    .room-card:nth-child(16) { animation-delay: 0.32s; }
+    .room-card:nth-child(17) { animation-delay: 0.34s; }
+    .room-card:nth-child(18) { animation-delay: 0.36s; }
+    .room-card:nth-child(19) { animation-delay: 0.38s; }
+    .room-card:nth-child(20) { animation-delay: 0.40s; }
+    .room-card:nth-child(21) { animation-delay: 0.42s; }
+    .room-card:nth-child(22) { animation-delay: 0.44s; }
+    .room-card:nth-child(23) { animation-delay: 0.46s; }
+    .room-card:nth-child(24) { animation-delay: 0.48s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .main { padding: 20px 16px; }
+      .room-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Overview
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Tenants
+        </a>
+
+        <a class="sidebar-item active" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+          Rooms
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          Payments
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Service Requests
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          Announcements
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          Visitor Logs
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          Room Gallery
+        </a>
+
+        <a class="sidebar-item" href="#">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1 0 4.93 19.07 10 10 0 0 0 19.07 4.93z"/></svg>
+          Settings
+        </a>
+
+      </nav>
+
+      <div class="sidebar-badges">
+        <div class="badge badge-sysadmin">Demo SysAdmin</div>
+        <div class="badge badge-admin">Demo Admin</div>
+        <div class="badge badge-tenant">Demo Tenant</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="page-header">
+        <h1 class="page-title">Room Occupancy Tracker</h1>
+        <div class="legend">
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#2563eb"></div>
+            Occupied
+          </div>
+          <div class="legend-item">
+            <div class="legend-dot" style="background:#d1d5db"></div>
+            Available
+          </div>
+        </div>
+      </div>
+
+      <div class="room-grid" id="roomGrid"></div>
+    </main>
+
+  </div>
+
+  <script>
+    const rooms = [
+      { number: 100, occupied: 2, total: 2 },
+      { number: 101, occupied: 1, total: 2 },
+      { number: 102, occupied: 0, total: 2 },
+      { number: 103, occupied: 2, total: 2 },
+      { number: 104, occupied: 0, total: 2 },
+      { number: 105, occupied: 1, total: 2 },
+      { number: 106, occupied: 2, total: 2 },
+      { number: 107, occupied: 0, total: 2 },
+      { number: 108, occupied: 1, total: 2 },
+      { number: 109, occupied: 2, total: 2 },
+      { number: 110, occupied: 0, total: 2 },
+      { number: 111, occupied: 1, total: 2 },
+      { number: 112, occupied: 2, total: 2 },
+      { number: 113, occupied: 0, total: 2 },
+      { number: 114, occupied: 1, total: 2 },
+      { number: 115, occupied: 2, total: 2 },
+      { number: 116, occupied: 0, total: 2 },
+      { number: 117, occupied: 1, total: 2 },
+      { number: 118, occupied: 2, total: 2 },
+      { number: 119, occupied: 0, total: 2 },
+      { number: 120, occupied: 1, total: 2 },
+      { number: 121, occupied: 2, total: 2 },
+      { number: 122, occupied: 0, total: 2 },
+      { number: 123, occupied: 1, total: 2 },
+    ];
+
+    function getStatusClass(occupied, total) {
+      if (occupied === total && occupied > 0) return 'status-full';
+      if (occupied === 0) return 'status-available';
+      return 'status-partial';
+    }
+
+    function getLabel(occupied, total) {
+      if (occupied === total && occupied > 0) return 'Occupied';
+      if (occupied === 0) return 'Available';
+      return 'Occupied';
+    }
+
+    function isDotOccupied(occupied) {
+      return occupied > 0;
+    }
+
+    const grid = document.getElementById('roomGrid');
+
+    rooms.forEach(room => {
+      const card = document.createElement('div');
+      card.className = `room-card ${getStatusClass(room.occupied, room.total)}`;
+
+      const dotClass = isDotOccupied(room.occupied) ? 'occupied' : 'available';
+      const label = getLabel(room.occupied, room.total);
+
+      card.innerHTML = `
+        <div class="room-status-dot ${dotClass}"></div>
+        <div class="room-number">${room.number}</div>
+        <div class="room-label">${label} <span>(${room.occupied}/${room.total})</span></div>
+      `;
+
+      grid.appendChild(card);
+    });
+  </script>
+
+</body>
+</html>
