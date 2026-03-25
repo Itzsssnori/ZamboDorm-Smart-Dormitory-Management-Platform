@@ -1,0 +1,116 @@
+/* --- Global Reset --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    /* Removed display: flex to allow sidebar/header positioning */
+}
+
+/* --- Content Layout --- */
+.content-area {
+    margin-left: 260px; /* Adjust this to match your sidebar width */
+    padding: 100px 40px 40px 40px; /* Top padding accounts for fixed header */
+    transition: margin-left 0.3s ease;
+}
+
+/* If sidebar is collapsed (based on your checkbox logic) */
+#sidebarToggle:checked ~ .content-area {
+    margin-left: 0;
+}
+
+.tracker-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- Header --- */
+.tracker-header {
+    margin-bottom: 30px;
+}
+
+.tracker-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #111827;
+}
+
+/* --- The Grid System --- */
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
+    gap: 20px;
+}
+
+/* --- Room Card Style --- */
+.room-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 24px 20px;
+    position: relative;
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.room-number {
+    font-size: 18px;
+    font-weight: 600;
+    color: #111827;
+}
+
+.room-status {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 4px;
+}
+
+/* --- Status Dots --- */
+.dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+/* Full/Partial Occupancy */
+.room-card.occupied-full,
+.room-card.occupied-partial {
+    background-color: #f0f7ff;
+    border-color: #bfdbfe;
+}
+
+.room-card.occupied-full .dot,
+.room-card.occupied-partial .dot {
+    background-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* Available */
+.room-card.available {
+    background-color: #ffffff;
+}
+
+.room-card.available .dot {
+    background-color: #cbd5e1;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .content-area {
+        margin-left: 0; /* Sidebar usually becomes an overlay on tablets/mobile */
+        padding: 80px 20px 20px 20px;
+    }
+}

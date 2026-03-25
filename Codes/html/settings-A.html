@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/section-bar.css">
+    <link rel="stylesheet" href="../css/settings.css">
+    <title>ZamboDorm - Settings</title>
+</head>
+<body>
+        <!-- Navigation header -->
+<header class="navbar">
+
+  <div class="nav-logo">
+    <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
+    <span class="brand">
+      <span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span>
+    </span>
+  </div>
+
+  <label class="sidebar-toggle" for="sidebarToggle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+      <line x1="3" y1="6"  x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </label>
+
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#features">Features</a>
+
+    <a href="#" class="user-profile-link">
+      <svg class="profile-avatar" viewBox="0 0 40 40" width="40" height="40">
+        <circle cx="20" cy="20" r="20" fill="#8b0000"/>
+        <text x="20" y="27" text-anchor="middle"
+              font-size="15" font-weight="700" fill="white"
+              font-family="Poppins, sans-serif">AD</text>
+      </svg>
+      <span class="profile-name">Admin User</span>
+    </a>
+
+    <div class="logout-container">
+      <a href="index.html#home" class="logout-btn">Logout</a>
+    </div>
+  </nav>
+
+</header>
+ <!-- Sidebar toggle checkbox -->
+<input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
+
+<!-- Sidebar overlay - closes sidebar when clicked -->
+<label for="sidebarToggle" class="sidebar-overlay"></label>
+
+<!-- Left sidebar navigation -->
+<aside class="sidebar">
+  <nav class="sidebar-nav">
+
+    <!-- Scrollable nav items -->
+    <div class="sidebar-nav-scrollable">
+
+      <a href="admin-overview.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span class="sidebar-label">Overview</span>
+      </a>
+
+      <a href="admin-tenant_management.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <span class="sidebar-label">Tenants</span>
+      </a>
+
+      <a href="#" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="sidebar-label">Rooms</span>
+      </a>
+
+      <a href="admin-payments.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+          <line x1="6" y1="15" x2="10" y2="15"/>
+        </svg>
+        <span class="sidebar-label">Payments</span>
+      </a>
+
+      <a href="admin-service-request.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
+          <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="9" y1="16" x2="13" y2="16"/>
+        </svg>
+        <span class="sidebar-label">Service Requests</span>
+      </a>
+
+      <a href="admin-announcements.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <circle cx="9" cy="10" r="1" fill="currentColor"/>
+          <circle cx="12" cy="10" r="1" fill="currentColor"/>
+          <circle cx="15" cy="10" r="1" fill="currentColor"/>
+        </svg>
+        <span class="sidebar-label">Announcements</span>
+      </a>
+<a href="admin-visitor_security_log.html" class="sidebar-item">
+  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+    <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
+    <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+    <circle cx="10" cy="13" r="2"/>
+    <path d="M7 21v-1a3 3 0 0 1 6 0v1"/>
+  </svg>
+  <span class="sidebar-label">Visitor Logs</span>
+</a>
+      <a href="#" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span class="sidebar-label">Room Gallery</span>
+      </a>
+<a href="admin-settings.html" class="sidebar-item">
+  <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <circle cx="12" cy="10" r="2.5"/>
+    <path d="M7.5 19a4.5 4.5 0 0 1 9 0"/>
+  </svg>
+  <span class="sidebar-label">Admin Settings</span>
+</a>
+    </div><!-- /sidebar-nav-scrollable -->
+
+    <!-- Fixed bottom items -->
+    <div class="sidebar-nav-fixed">
+
+      <a href="settings-A.html" class="sidebar-item active">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span class="sidebar-label">Settings</span>
+      </a>
+
+      <a href="help-A.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+        </svg>
+        <span class="sidebar-label">Help</span>
+      </a>
+
+    </div><!-- /sidebar-nav-fixed -->
+
+  </nav>
+</aside>
+
+<div class="settings-main-content">
+<div class="zd-settings">
+ 
+  <!-- Page Header -->
+  <div class="zd-settings__header">
+    <h1 class="zd-settings__title">Settings</h1>
+    <p class="zd-settings__subtitle">Manage your application preferences and account options.</p>
+  </div>
+ 
+  <!-- ── SECTION: Appearance ──────────────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title">Appearance</div>
+        <div class="zd-settings__section-desc">Customize how ZamboDorm looks for you</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Theme</div>
+        <div class="zd-settings__row-hint">Choose between light or dark mode</div>
+      </div>
+      <select class="zd-select">
+        <option>Light</option>
+        <option>Dark</option>
+        <option>System Default</option>
+      </select>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Accent Color</div>
+        <div class="zd-settings__row-hint">Pick a highlight color used across the app</div>
+      </div>
+      <div class="zd-swatches">
+        <span class="zd-swatch active" style="background:#8b0000;" title="Crimson"></span>
+        <span class="zd-swatch" style="background:#1a56db;" title="Blue"></span>
+        <span class="zd-swatch" style="background:#16a34a;" title="Green"></span>
+        <span class="zd-swatch" style="background:#b45309;" title="Amber"></span>
+        <span class="zd-swatch" style="background:#6d28d9;" title="Violet"></span>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Compact Sidebar</div>
+        <div class="zd-settings__row-hint">Show icons only in the sidebar to save space</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Font Size</div>
+        <div class="zd-settings__row-hint">Adjust the base text size across the application</div>
+      </div>
+      <select class="zd-select">
+        <option>Small</option>
+        <option selected>Medium</option>
+        <option>Large</option>
+      </select>
+    </div>
+ 
+  </div>
+ 
+  <!-- ── SECTION: Notifications ───────────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title">Notifications</div>
+        <div class="zd-settings__section-desc">Control which alerts and updates you receive</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Email Notifications</div>
+        <div class="zd-settings__row-hint">Receive updates and alerts to your email address</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" checked />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">In-App Notifications</div>
+        <div class="zd-settings__row-hint">Show alerts inside the dashboard when logged in</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" checked />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Payment Reminders</div>
+        <div class="zd-settings__row-hint">Get notified before and when rent is due</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" checked />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Announcement Alerts</div>
+        <div class="zd-settings__row-hint">Notify me when a new announcement is posted</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Service Request Updates</div>
+        <div class="zd-settings__row-hint">Get notified when your request status changes</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" checked />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+  </div>
+ 
+  <!-- ── SECTION: Language & Region ───────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title">Language &amp; Region</div>
+        <div class="zd-settings__section-desc">Set your preferred language and date formats</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Language</div>
+        <div class="zd-settings__row-hint">Choose your preferred display language</div>
+      </div>
+      <select class="zd-select">
+        <option selected>English (US)</option>
+        <option>Filipino</option>
+        <option>Cebuano</option>
+      </select>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Timezone</div>
+        <div class="zd-settings__row-hint">Used for scheduling and timestamps</div>
+      </div>
+      <select class="zd-select">
+        <option selected>Asia/Manila (PHT, UTC+8)</option>
+        <option>UTC</option>
+        <option>America/New_York</option>
+      </select>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Date Format</div>
+        <div class="zd-settings__row-hint">How dates are displayed throughout the app</div>
+      </div>
+      <select class="zd-select">
+        <option>MM/DD/YYYY</option>
+        <option selected>DD/MM/YYYY</option>
+        <option>YYYY-MM-DD</option>
+      </select>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Currency</div>
+        <div class="zd-settings__row-hint">Currency shown on payments and invoices</div>
+      </div>
+      <select class="zd-select">
+        <option selected>Philippine Peso (₱)</option>
+        <option>US Dollar ($)</option>
+      </select>
+    </div>
+ 
+  </div>
+ 
+  <!-- ── SECTION: Privacy & Security ─────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title">Privacy &amp; Security</div>
+        <div class="zd-settings__section-desc">Manage your security preferences and data</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Two-Factor Authentication</div>
+        <div class="zd-settings__row-hint">Add an extra layer of security to your account</div>
+      </div>
+      <span class="zd-badge zd-badge--gray">Not set up</span>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Login Activity</div>
+        <div class="zd-settings__row-hint">Review recent logins and active sessions</div>
+      </div>
+      <button class="zd-btn zd-btn--outline">View Activity</button>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Data Export</div>
+        <div class="zd-settings__row-hint">Download a copy of your account data</div>
+      </div>
+      <button class="zd-btn zd-btn--outline">Export Data</button>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Show Profile to Other Tenants</div>
+        <div class="zd-settings__row-hint">Let other residents see your basic profile info</div>
+      </div>
+      <label class="zd-toggle">
+        <input type="checkbox" />
+        <span class="zd-toggle__track"></span>
+        <span class="zd-toggle__thumb"></span>
+      </label>
+    </div>
+ 
+  </div>
+ 
+  <!-- ── SECTION: About ───────────────────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title">About</div>
+        <div class="zd-settings__section-desc">Application version and system information</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Application Version</div>
+        <div class="zd-settings__row-hint">Current version of ZamboDorm</div>
+      </div>
+      <span class="zd-badge zd-badge--green">v1.0.0 — Stable</span>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Last Updated</div>
+        <div class="zd-settings__row-hint">Date of the most recent update</div>
+      </div>
+      <span class="zd-badge zd-badge--gray">March 2026</span>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Terms of Service</div>
+        <div class="zd-settings__row-hint">Read the terms governing use of ZamboDorm</div>
+      </div>
+      <button class="zd-btn zd-btn--outline">View Terms</button>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Privacy Policy</div>
+        <div class="zd-settings__row-hint">Learn how your data is collected and used</div>
+      </div>
+      <button class="zd-btn zd-btn--outline">View Policy</button>
+    </div>
+ 
+  </div>
+ 
+  <!-- ── SECTION: Danger Zone ─────────────────────────── -->
+  <div class="zd-settings__section">
+    <div class="zd-settings__section-header">
+      <div class="zd-settings__section-icon" style="background:#fff0f0;">
+        <svg viewBox="0 0 24 24" style="stroke:#8b0000;">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+      </div>
+      <div>
+        <div class="zd-settings__section-title" style="color:#8b0000;">Danger Zone</div>
+        <div class="zd-settings__section-desc">Irreversible actions — proceed with caution</div>
+      </div>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Clear All Notifications</div>
+        <div class="zd-settings__row-hint">Permanently remove all your notification history</div>
+      </div>
+      <button class="zd-btn zd-btn--danger">Clear All</button>
+    </div>
+ 
+    <div class="zd-settings__row">
+      <div class="zd-settings__row-info">
+        <div class="zd-settings__row-label">Deactivate Account</div>
+        <div class="zd-settings__row-hint">Temporarily disable your account — contact admin to reactivate</div>
+      </div>
+      <button class="zd-btn zd-btn--danger">Deactivate</button>
+    </div>
+ 
+  </div>
+ 
+  <!-- Save bar -->
+  <div style="display:flex; justify-content:flex-end; gap:0.75rem; padding-bottom:2rem;">
+    <button class="zd-btn zd-btn--outline">Reset to Defaults</button>
+    <button class="zd-btn zd-btn--primary">Save Changes</button>
+  </div>
+ 
+</div><!-- /.zd-settings -->
+</div><!-- /.settings-main-content -->
+</body>
+</html>

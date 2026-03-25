@@ -1,139 +1,625 @@
-/* --- Unified Global Styles & Variables --- */
-        :root {
-            --bg-color: #F6F8F9;
-            --card-bg: #FFFFFF;
-            --text-primary: #111827;
-            --text-secondary: #6B7280;
-            --primary-blue: #2563EB;
-            --border-color: #f1f5f9;
-            
-            /* Stat Colors */
-            --color-blue: #2563EB;
-            --color-orange: #F97316;
-            --color-red: #EF4444;
+/* ── Main content positioning ── */
+.settings-main-wrapper {
+    margin-left: 24.3rem;
+    margin-right: 6rem;
+    padding: 2rem;
+    background-color: transparent;
+    min-height: calc(100vh - 70px);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    box-sizing: border-box;
+}
 
-            /* Registry/Badge Colors */
-            --status-green-bg: #f0fdf4;
-            --status-green-text: #22c55e;
-            --badge-bg: #D1FAE5;
-            --badge-text: #065F46;
-            --badge-dot: #10B981;
-            --hover-bg: #f1f5f9;
-        }
+/* ── Page Title ── */
+.settings-page-title {
+    font-size: 2.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1f2937;
+    margin-top: 1.5rem;
+}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* ── Config Card ── */
+.settings-card-config {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.5;
-        }
+.settings-card-header-config {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
 
-        /* Adjusting for Sidebar Layout */
-        .main-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 40px; 
-            padding: 20px;
-        }
+.settings-card-title-config {
+    font-size: 1rem;
+    font-weight: 700;
+    margin: 0;
+    color: #1f2937;
+}
 
-        /* --- Your Original Dashboard CSS --- */
-        .card-config {
-            background: #ffffff;
-            border-radius: 16px;
-            padding: 32px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-            border: 1px solid #eef2f6;
-        }
+.settings-config-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 0;
+    align-items: start;
+    padding: 0 1.5rem;
+}
 
-        .page-title { font-size: 24px; font-weight: 700; margin-bottom: 25px; }
-        .card-header-config { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .card-title-config { font-size: 18px; font-weight: 700; margin: 0; }
-        .config-section { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; margin-bottom: 30px; }
-        .label { display: block; font-size: 14px; font-weight: 600; color: #4b5563; margin-bottom: 10px; }
-        .input-group { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 280px; }
-        .styled-input { width: 100%; max-width: 320px; padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 12px; font-size: 16px; color: #1e293b; outline: none; }
-        .stats { font-size: 13px; line-height: 1.4; white-space: nowrap; }
-        .rented-num { color: #10b981; font-weight: 700; }
-        .avail-num { color: #1e293b; font-weight: 700; }
-        .stats-label { color: #94a3b8; }
-        .duration-container { text-align: right; min-width: 280px; }
-        .toggle-pill { display: inline-flex; background-color: #f1f5f9; padding: 6px; border-radius: 999px; gap: 2px; }
-        .toggle-pill input[type="radio"] { display: none; }
-        .toggle-pill label { padding: 12px 34px; border-radius: 999px; font-size: 16px; font-weight: 700; cursor: pointer; color: #4b5563; transition: all 0.25s ease; user-select: none; }
-        #day-radio:checked ~ label[for="day-radio"], #month-radio:checked ~ label[for="month-radio"] { background-color: #2563eb; color: #ffffff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25); }
-        .rate-hint { display: block; font-size: 12px; color: #94a3b8; margin-top: 8px; }
-        .card-footer { border-top: 1px solid #f1f5f9; padding-top: 25px; display: flex; justify-content: flex-end; }
-        .save-btn { background-color: #2563eb; color: white; border: none; padding: 12px 34px; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; transition: opacity 0.2s; }
+.settings-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
 
-        .registry-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            overflow: hidden;
-        }
+.settings-input-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
 
-        .header-registry { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
-        @media (min-width: 640px) { .header-registry { flex-direction: row; justify-content: space-between; align-items: center; } }
-        .title-section h1 { font-size: 1.25rem; margin: 0; font-weight: 700; }
-        .subtitle { font-size: 0.875rem; color: var(--text-secondary); margin: 4px 0 0; }
-        .add-item-btn { background-color: var(--primary-blue); color: white; border: none; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; white-space: nowrap; transition: opacity 0.2s; }
-        
-        table { width: 100%; border-collapse: collapse; }
-        thead { background-color: #fafafa; }
-        th { text-align: left; padding: 16px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); border-bottom: 1px solid var(--border-color); }
-        td { padding: 16px; border-bottom: 1px solid var(--border-color); font-size: 0.875rem; }
-        .tenant-name, .item-name { font-weight: 600; }
-        .status-badge-pill { background: var(--status-green-bg); color: var(--status-green-text); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
-        .actions-btn { background: none; border: none; color: #cbd5e1; font-size: 1.2rem; cursor: pointer; width: 32px; height: 32px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
-        .actions-btn:hover { color: var(--text-primary); background-color: var(--hover-bg); }
+.settings-styled-input {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1f2937;
+    outline: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
 
-        .stat-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 16px;
-        }
+.settings-styled-input:focus {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.05);
+}
 
-        @media (min-width: 768px) {
-            .stat-cards-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-        }
+.settings-stats {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    white-space: nowrap;
+}
 
-        .stat-card {
-            background-color: var(--card-bg);
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease-in-out;
-            border: 1px solid #eef2f6;
-        }
+.settings-rented-num { color: #16a34a; font-weight: 700; }
+.settings-avail-num { color: #1f2937; font-weight: 700; }
+.settings-stats-label { color: #9ca3af; }
 
-        .stat-card:hover { transform: translateY(-2px); }
-        .card-header-stat { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .card-title-stat { font-size: 0.9rem; font-weight: 500; color: var(--text-secondary); }
-        .card-icon { width: 24px; height: 24px; }
-        .icon-blue { color: var(--color-blue); }
-        .icon-orange { color: var(--color-orange); }
-        .icon-red { color: var(--color-red); }
-        .stat-value { font-size: 2.5rem; font-weight: 700; color: var(--text-primary); line-height: 1.1; }
-        .stat-subtext { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
-        .status-badge-blue { background-color: #dbeafe; color: #1e40af; font-size: 12px; font-weight: 600; padding: 4px 14px; border-radius: 20px; }
+.settings-duration-container {
+    text-align: right;
+    width: 100%;
+}
 
-        @media (max-width: 768px) {
-            .registry-container thead { display: none; }
-            .registry-container tr { display: block; padding: 16px; border-bottom: 8px solid var(--bg-color); }
-            .registry-container td { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border: none; text-align: right; }
-            .registry-container td::before { content: attr(data-label); font-weight: 600; color: var(--text-secondary); text-align: left; font-size: 0.75rem; text-transform: uppercase; }
-            .config-section { flex-direction: column; }
-            .duration-container { text-align: left; width: 100%; }
-            .toggle-pill { width: 100%; display: flex; }
-            .toggle-pill label { flex: 1; text-align: center; }
-        }
+.settings-toggle-pill {
+    display: inline-flex;
+    background-color: #f3f4f6;
+    padding: 4px;
+    border-radius: 999px;
+    gap: 2px;
+}
+
+.settings-toggle-pill input[type="radio"] { display: none; }
+
+.settings-toggle-pill label {
+    padding: 0.75rem 2rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #4b5563;
+    transition: all 0.25s ease;
+    user-select: none;
+}
+
+#day-radio:checked ~ label[for="day-radio"],
+#month-radio:checked ~ label[for="month-radio"] {
+    background-color: #991b1b;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(153, 27, 27, 0.2);
+}
+
+.settings-rate-hint {
+    display: block;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 0.5rem;
+}
+
+.settings-card-footer {
+    border-top: 1px solid #e5e7eb;
+    padding: 1.5rem 1.5rem 0;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2.5rem;
+}
+
+.settings-save-btn {
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+}
+
+.settings-save-btn:hover { background-color: #b91c1c; }
+
+/* ── Registry Section ── */
+.registry-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0 1.5rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.registry-title {
+    font-size: 1.125rem;
+    margin: 0;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.registry-subtitle {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0.25rem 0 0;
+}
+
+.add-item-btn {
+    background-color: #991b1b;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    font-size: 0.875rem;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.add-item-btn:hover { background-color: #7f1d1d; }
+
+.add-item-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke: currentColor;
+}
+
+/* ── Registry Table ── */
+.registry-table-container {
+    background: white;
+    padding: 1.5rem 1.5rem 2.2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.registry-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+    min-width: 500px;
+}
+
+.registry-table thead { background-color: white; }
+
+.registry-table thead th {
+    text-align: left;
+    padding: 1rem 1.2rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+}
+
+.registry-table tbody td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    color: #374151;
+    vertical-align: middle;
+}
+
+.registry-table tbody tr:last-child td { border-bottom: none; }
+
+.registry-table tbody tr {
+    transition: all 0.2s ease;
+    background-color: #ffffff;
+}
+
+.registry-table tbody tr:hover { background-color: #fff5f5; }
+
+.registry-table .tenant-name,
+.registry-table .item-name {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+/* ── Badges & Actions ── */
+.settings-status-badge-pill {
+    background: #f0fdf4;
+    color: #22c55e;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.settings-actions-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0.5rem;
+}
+
+.settings-actions-btn:hover {
+    color: #dc2626;
+    background-color: #f3f4f6;
+}
+
+.settings-actions-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* ── Stat Cards ── */
+.settings-stat-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.settings-stat-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease;
+    border: 1px solid #e5e7eb;
+    box-sizing: border-box;
+}
+
+.settings-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.settings-card-header-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.settings-card-title-stat {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.settings-card-icon { width: 24px; height: 24px; }
+.settings-icon-blue { color: #0284c7; }
+.settings-icon-orange { color: #f97316; }
+.settings-icon-red { color: #dc2626; }
+
+.settings-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-red);
+    line-height: 1.1;
+}
+
+.settings-stat-subtext {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+}
+
+.settings-status-badge-blue {
+    background-color: #dcfce7;
+    color: #16a34a;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════ */
+
+/* ── Large desktop (1280px+) ── */
+@media (min-width: 1280px) {
+    .settings-main-wrapper {
+        margin-right: 4rem;
+    }
+}
+
+/* ── Small desktop / large tablet (1024px–1199px) ── */
+@media (max-width: 1199px) {
+    .settings-main-wrapper {
+        margin-left: 17rem;
+        margin-right: 2rem;
+        padding: 1.5rem;
+        gap: 1.8rem;
+    }
+
+    .settings-card-config {
+        padding: 1.8rem;
+    }
+
+    .settings-config-section {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0 1rem;
+    }
+
+    .settings-styled-input {
+        max-width: 100%;
+    }
+
+    .settings-duration-container {
+        text-align: left;
+    }
+
+    .settings-toggle-pill {
+        width: 100%;
+        display: flex;
+    }
+
+    .settings-toggle-pill label {
+        flex: 1;
+        text-align: center;
+        padding: 0.75rem 1rem;
+    }
+
+    .settings-stat-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ── Tablet (768px–1023px) ── */
+@media (max-width: 1023px) {
+    .settings-main-wrapper {
+        margin-left: 14rem;
+        margin-right: 1rem;
+        padding: 1.25rem;
+    }
+
+    .settings-page-title {
+        font-size: 1.9rem;
+    }
+
+    .settings-stat-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* ── Tablet portrait / sidebar collapsed (768px) ── */
+@media (max-width: 768px) {
+    .settings-main-wrapper {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1rem;
+        gap: 1.25rem;
+    }
+
+    .settings-page-title {
+        font-size: 1.6rem;
+        margin-top: 1rem;
+    }
+
+    .settings-card-config {
+        padding: 1.25rem;
+    }
+
+    .settings-config-section {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding: 0 0.5rem;
+    }
+
+    .settings-styled-input {
+        max-width: 100%;
+    }
+
+    .settings-duration-container {
+        text-align: left;
+    }
+
+    .settings-toggle-pill {
+        width: 100%;
+        display: flex;
+    }
+
+    .settings-toggle-pill label {
+        flex: 1;
+        text-align: center;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .settings-card-footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.25rem 0.5rem 0;
+    }
+
+    .settings-save-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .registry-title-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-item-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .registry-table-container {
+        padding: 1rem;
+    }
+
+    /* Stack table as cards on mobile */
+    .registry-table {
+        min-width: unset;
+    }
+
+    .registry-table thead {
+        display: none;
+    }
+
+    .registry-table tbody tr {
+        display: block;
+        padding: 1rem;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        margin-bottom: 0.75rem;
+        background: white;
+    }
+
+    .registry-table tbody tr:last-child {
+        margin-bottom: 0;
+    }
+
+    .registry-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border: none;
+        font-size: 0.875rem;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .registry-table tbody td:last-child {
+        border-bottom: none;
+    }
+
+    .registry-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #6b7280;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        min-width: 100px;
+    }
+
+    .settings-stat-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .settings-stat-value {
+        font-size: 1.6rem;
+    }
+}
+
+/* ── Mobile landscape (600px) ── */
+@media (max-width: 600px) {
+    .settings-main-wrapper {
+        padding: 0.875rem;
+        gap: 1rem;
+    }
+
+    .settings-page-title {
+        font-size: 1.4rem;
+    }
+
+    .settings-card-config {
+        padding: 1rem;
+    }
+}
+
+/* ── Mobile portrait (480px) ── */
+@media (max-width: 480px) {
+    .settings-stat-cards-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .settings-page-title {
+        font-size: 1.25rem;
+    }
+
+    .settings-stat-value {
+        font-size: 1.75rem;
+    }
+
+    .settings-toggle-pill label {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ── Very small phones (360px) ── */
+@media (max-width: 360px) {
+    .settings-main-wrapper {
+        padding: 0.75rem;
+    }
+
+    .settings-page-title {
+        font-size: 1.1rem;
+    }
+
+    .settings-card-config {
+        padding: 0.875rem;
+    }
+
+    .registry-table-container {
+        padding: 0.75rem;
+    }
+
+    .settings-stat-card {
+        padding: 1rem;
+    }
+}

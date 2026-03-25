@@ -1,0 +1,596 @@
+
+/* Main Container */
+.tenant-mgmt-container {
+    margin-left: 24.3rem;
+    margin-right: 6rem;
+    padding: 2rem;
+    background-color: transparent;
+    min-height: calc(100vh - 70px);
+    font-family: 'Poppins', sans-serif;
+}
+
+.tenant-mgmt-title {
+    margin-top: 1.5rem;
+    margin-bottom: 2.1rem;
+    margin-left: 0;
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: #1f2937;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.2;
+}
+
+/* Search Box & Controls */
+.tenant-mgmt-search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.tenant-mgmt-search-box i {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.tenant-mgmt-search {
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    font-size: 0.95rem;
+    flex: 1 1 auto;
+    min-width: 250px;
+    background: white;
+    color: #1f2937;
+    transition: all 0.2s ease;
+}
+
+.tenant-mgmt-search:focus {
+    outline: none;
+    border-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.05);
+}
+
+.tenant-mgmt-search::placeholder {
+    color: #9ca3af;
+}
+
+.tenant-mgmt-filter-btn {
+    padding: 0.70rem 1.25rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    background: white;
+    color: #1f2937;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+}
+
+.tenant-mgmt-filter-btn:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.tenant-mgmt-add-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #991b1b;
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.875rem;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tenant-mgmt-add-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    stroke: currentColor;
+}
+
+.tenant-mgmt-add-btn:hover {
+    background: #7f1d1d;
+}
+
+/* Table Container */
+.tenant-mgmt-table-container {
+    background: white;
+    padding: 2.5rem 1.5rem 3rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+}
+
+.tenant-mgmt-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.tenant-mgmt-table thead th {
+    text-align: left;
+    font-size: 0.85rem;
+    color: #6b7280;
+    padding: 1rem 1.2rem;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    background: white;
+}
+
+.tenant-mgmt-table tbody td {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 0.95rem;
+    color: #374151;
+}
+
+.tenant-mgmt-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.tenant-mgmt-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.tenant-mgmt-table tbody tr:hover {
+    background-color: #fff5f5;
+}
+
+/* Action Button */
+.tenant-mgmt-action-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    color: #6b7280;
+}
+
+.tenant-mgmt-action-btn:hover {
+    background: #f3f4f6;
+    color: #dc2626;
+}
+
+.tenant-mgmt-action-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+/* Money Column */
+.tenant-mgmt-money {
+    color: #16a34a !important;
+    font-weight: 600;
+}
+
+/* Status Badges */
+.tenant-mgmt-status {
+    display: inline-block;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.tenant-mgmt-status-active {
+    background: #d6f5e3;
+    color: #28a745;
+}
+
+.tenant-mgmt-status-notice {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+/* Responsive Design - Tablets (1024px and below) */
+@media (max-width: 1024px) {
+    .tenant-mgmt-container {
+        margin-left: 7.5rem;
+        margin-right: 1rem;
+        padding: 1.5rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 2rem;
+    }
+
+    .tenant-mgmt-search-box {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 1.25rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.85rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive Design - Medium-Large Screens (1199px to 769px) */
+@media (max-width: 1199px) and (min-width: 769px) {
+    .tenant-mgmt-container {
+        margin-left: 17rem;
+        margin-right: 2rem;
+        padding: 1.5rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tenant-mgmt-search-box {
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.9rem;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        padding: 0.65rem 0.9rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 1.5rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.85rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.85rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive Design - Medium Screens (768px and below) */
+@media (max-width: 768px) {
+    .tenant-mgmt-container {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.25rem;
+        padding-top: 4rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        margin-top: 0;
+    }
+
+    .tenant-mgmt-search-box {
+        flex-direction: row;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
+        padding: 0.6rem 0.85rem;
+        font-size: 0.85rem;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        margin-left: 0;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 1rem;
+        overflow-x: auto;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.75rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.75rem 0.85rem;
+        font-size: 0.85rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.35rem 0.7rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* Responsive Design - Small Screens (640px and below) */
+@media (max-width: 640px) {
+    .tenant-mgmt-container {
+        padding: 1rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+
+    .tenant-mgmt-search-box {
+        flex-direction: row;
+        gap: 0.5rem;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        min-width: 0;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-filter-btn,
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+
+    .tenant-mgmt-add-btn {
+        width: 100%;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 0.85rem;
+    }
+
+    .tenant-mgmt-table {
+        min-width: 100%;
+        font-size: 0.85rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.7rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.65rem 0.75rem;
+        font-size: 0.8rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Responsive Design - Extra Small (480px and below) */
+@media (max-width: 480px) {
+    .tenant-mgmt-container {
+        padding: 0.75rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1.15rem;
+        margin-bottom: 0.85rem;
+    }
+
+    .tenant-mgmt-search-box {
+        gap: 0.5rem;
+    }
+
+    .tenant-mgmt-search {
+        padding: 0.45rem 0.65rem;
+        font-size: 0.75rem;
+    }
+
+    .tenant-mgmt-filter-btn,
+    .tenant-mgmt-add-btn {
+        padding: 0.4rem 0.65rem;
+        font-size: 0.7rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 0.7rem;
+        border-radius: 8px;
+    }
+
+    .tenant-mgmt-table {
+        font-size: 0.75rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.55rem 0.45rem;
+        font-size: 0.65rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.55rem 0.45rem;
+        font-size: 0.75rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.65rem;
+    }
+}
+
+/* Responsive Design - Mobile Phones (390px and below / 390px-479px) */
+@media (max-width: 479px) and (min-width: 390px) {
+    .tenant-mgmt-container {
+        padding: 0.8rem;
+        padding-top: 4rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        margin-top: 0;
+    }
+
+    .tenant-mgmt-search-box {
+        flex-direction: row;
+        gap: 0.5rem;
+        margin-bottom: 1.2rem;
+        flex-wrap: nowrap;
+    }
+
+    .tenant-mgmt-search {
+        flex: 2;
+        padding: 0.5rem 0.7rem;
+        font-size: 0.8rem;
+        min-width: 0;
+    }
+
+    .tenant-mgmt-filter-btn {
+        flex: 1;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .tenant-mgmt-add-btn {
+        flex: 1;
+        margin-left: 0;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.7rem;
+        white-space: nowrap;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 0.8rem;
+        border-radius: 8px;
+        overflow-x: auto;
+    }
+
+    .tenant-mgmt-table {
+        font-size: 0.8rem;
+        min-width: 100%;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.6rem 0.65rem;
+        font-size: 0.72rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.6rem 0.65rem;
+        font-size: 0.78rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Responsive Design - Very Small (360px and below) */
+@media (max-width: 360px) {
+    .tenant-mgmt-container {
+        padding: 0.5rem;
+    }
+
+    .tenant-mgmt-title {
+        font-size: 1rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .tenant-mgmt-search-box {
+        gap: 0.4rem;
+    }
+
+    .tenant-mgmt-search {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.7rem;
+    }
+
+    .tenant-mgmt-filter-btn,
+    .tenant-mgmt-add-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.65rem;
+    }
+
+    .tenant-mgmt-table-container {
+        padding: 0.5rem;
+    }
+
+    .tenant-mgmt-table thead th {
+        padding: 0.4rem 0.25rem;
+        font-size: 0.58rem;
+    }
+
+    .tenant-mgmt-table tbody td {
+        padding: 0.4rem 0.25rem;
+        font-size: 0.68rem;
+    }
+
+    .tenant-mgmt-status {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.58rem;
+    }
+}
+
