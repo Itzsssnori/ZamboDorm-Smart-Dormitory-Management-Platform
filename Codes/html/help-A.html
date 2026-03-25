@@ -12,7 +12,8 @@
     <title>ZamboDorm - Help</title>
 </head>
 <body>
-    <header class="navbar">
+    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
+<header class="navbar">
 
   <div class="nav-logo">
     <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
@@ -51,17 +52,17 @@
 
 </header>
 
-    <!-- Sidebar toggle checkbox -->
+    <!-- Hidden checkbox for sidebar toggle functionality -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Sidebar overlay - closes sidebar when clicked -->
+<!-- Overlay to close sidebar when clicked outside -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Left sidebar navigation -->
+<!-- Collapsible sidebar navigation menu -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable nav items -->
+    <!-- Scrollable navigation items section -->
     <div class="sidebar-nav-scrollable">
 
       <a href="admin-overview.html" class="sidebar-item">
@@ -149,7 +150,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom items -->
+    <!-- Fixed bottom navigation items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -173,21 +174,23 @@
 
   </nav>
 </aside>
+<!-- Main content wrapper for admin help center page -->
 <main class="adm-help-main">
     <div class="adm-help">
  
+      <!-- Help center header section with title and subtitle -->
       <div class="adm-help__header">
         <h1 class="adm-help__title">Admin Help Center</h1>
         <p class="adm-help__subtitle">Guides, references, and support resources for all 9 admin sections.</p>
       </div>
  
-      <!-- Search -->
+      <!-- Search input section for help queries -->
       <div class="adm-help__search-wrap">
         <svg class="adm-help__search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         <input class="adm-help__search" type="text" placeholder="Search admin help, e.g. 'how to add a tenant', 'mark payment'…" />
       </div>
  
-      <!-- Quick Links — all 9 sections -->
+      <!-- Quick links grid for all admin sections -->
       <div class="adm-help__quick">
  
         <a class="adm-qcard" href="admin-overview.html">
@@ -238,6 +241,7 @@
       </div>
  
       <!-- ── FAQ — one per section ─────────────────────────── -->
+      <!-- FAQ section with guides for each admin section -->
       <div class="adm-section">
         <div class="adm-section-hdr">
           <div class="adm-section-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="#8b0000"/></svg></div>
@@ -311,6 +315,7 @@
 
  
       <!-- ── Contact & Escalation ──────────────────────────── -->
+      <!-- Contact and escalation section for support -->
       <div class="adm-section">
         <div class="adm-section-hdr">
           <div class="adm-section-ico"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.58 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.27 6.27l1.06-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
@@ -334,6 +339,7 @@
       </div>
  
       <!-- ── System Info ─────────────────────────────────────── -->
+      <!-- System information section with version and status -->
       <div class="adm-section">
         <div class="adm-section-hdr">
           <div class="adm-section-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>

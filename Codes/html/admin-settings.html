@@ -13,8 +13,7 @@
     <title>Admin Dashboard - Admin Settings</title>
 </head>
 <body>
-
-     <!-- Navigation header -->
+    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -54,17 +53,17 @@
 
 </header>
 
-    <!-- Sidebar toggle checkbox -->
+    <!-- Hidden checkbox for sidebar toggle functionality -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Sidebar overlay - closes sidebar when clicked -->
+<!-- Overlay to close sidebar when clicked outside -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Left sidebar navigation -->
+<!-- Collapsible sidebar navigation menu -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable nav items -->
+    <!-- Scrollable navigation items section -->
     <div class="sidebar-nav-scrollable">
 
       <a href="admin-overview.html" class="sidebar-item">
@@ -152,7 +151,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom items -->
+    <!-- Fixed bottom navigation items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -177,10 +176,13 @@
   </nav>
 </aside>
 
+    <!-- Main content wrapper for admin settings page -->
     <main class="settings-main-wrapper">
         
+        <!-- Section for rental and inventory management configuration -->
         <section>
             <h1 class="settings-page-title">Rental & Inventory Management</h1>
+            <!-- Configuration card for deck rental settings -->
             <div class="settings-card-config">
                 <div class="settings-card-header-config">
                     <h2 class="settings-card-title-config">Deck Rental Configuration</h2>
@@ -214,6 +216,7 @@
             </div>
         </section>
 
+        <!-- Container for tenant items and appliances registry table -->
         <div class="registry-table-container">
             <div class="registry-title-section">
                 <div>
@@ -229,6 +232,7 @@
                 </button>
             </div>
 
+            <!-- Table displaying registered tenant items and appliances -->
             <table class="registry-table">
                 <thead>
                     <tr>
@@ -291,7 +295,9 @@
             </table>
         </div>
 
+        <!-- Grid of statistics cards showing summary metrics -->
         <section class="settings-stat-cards-grid">
+            <!-- Statistics card for total items registered -->
             <article class="settings-stat-card">
                 <div class="settings-card-header-stat">
                     <h2 class="settings-card-title-stat">Total Items Registered</h2>
@@ -305,6 +311,7 @@
                 </div>
             </article>
 
+            <!-- Statistics card for high-value items -->
             <article class="settings-stat-card">
                 <div class="settings-card-header-stat">
                     <h2 class="settings-card-title-stat">High-Value Items</h2>
@@ -318,6 +325,7 @@
                 </div>
             </article>
 
+            <!-- Statistics card for pending approvals -->
             <article class="settings-stat-card">
                 <div class="settings-card-header-stat">
                     <h2 class="settings-card-title-stat">Pending Approvals</h2>

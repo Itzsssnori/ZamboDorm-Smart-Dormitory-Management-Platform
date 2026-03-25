@@ -1,5 +1,5 @@
 
-    /* ── Layout ───────────────────────────────────────── */
+    /* Main content layout for tenant help page */
     .help-main-content {
       margin-left: 19rem;
       margin-right: 6rem;
@@ -13,7 +13,7 @@
       margin: 0 auto;
     }
 
-    /* ── Page header ──────────────────────────────────── */
+    /* Header section with title and subtitle */
     .zd-help__header { margin-bottom: 2rem; margin-top: 1.5rem; }
 
     .zd-help__title {
@@ -30,7 +30,7 @@
       font-weight: 400;
     }
 
-    /* ── Search bar ───────────────────────────────────── */
+    /* Search input field with icon */
     .zd-help__search-wrap {
       position: relative;
       margin-bottom: 2rem;
@@ -71,7 +71,7 @@
 
     .zd-help__search::placeholder { color: var(--text-light); }
 
-    /* ── Quick links ──────────────────────────────────── */
+    /* Grid of quick access cards */
     .zd-help__quick {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -121,7 +121,7 @@
       color: var(--text-dark);
     }
 
-    /* ── Section card ─────────────────────────────────── */
+    /* Collapsible section cards for help topics */
     .zd-help__section {
       background: var(--bg-white);
       border: 1px solid var(--border);
@@ -166,7 +166,7 @@
       margin-top: 1px;
     }
 
-    /* ── FAQ item ─────────────────────────────────────── */
+    /* Accordion-style FAQ items */
     .zd-help__faq-item {
       border-bottom: 1px solid var(--border);
     }
@@ -228,7 +228,7 @@
       padding: 0.75rem 1.5rem 1.25rem;
     }
 
-    /* ── Contact row ──────────────────────────────────── */
+    /* Rows for contact information */
     .zd-help__contact-row {
       display: flex;
       align-items: center;
@@ -291,7 +291,7 @@
       background: var(--red-light);
     }
 
-    /* ── Info row (plain text row) ────────────────────── */
+    /* Information display rows */
     .zd-help__info-row {
       display: flex;
       align-items: center;
@@ -307,7 +307,7 @@
     .zd-help__info-label { font-weight: 600; color: var(--text-dark); }
     .zd-help__info-value { color: var(--text-med); text-align: right; }
 
-    /* ── Badge ────────────────────────────────────────── */
+    /* Status badges */
     .zd-badge {
       font-size: 0.7rem;
       font-weight: 700;
@@ -319,7 +319,7 @@
     .zd-badge--green { background: #dcfce7; color: #16a34a; }
     .zd-badge--gray  { background: #f1f5f9; color: #64748b; }
 
-    /* ── Responsive ───────────────────────────────────── */
+    /* Responsive design adjustments */
     @media (max-width: 1280px) {
       .help-main-content { margin-left: 17.5rem; margin-right: 4rem; }
     }

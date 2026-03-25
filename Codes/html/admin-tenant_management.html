@@ -15,7 +15,7 @@
 </head>
 
 <body>
- <!-- Navigation header -->
+    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -55,17 +55,17 @@
 
 </header>
 
-    <!-- Sidebar toggle checkbox -->
+    <!-- Hidden checkbox for sidebar toggle functionality -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Sidebar overlay - closes sidebar when clicked -->
+<!-- Overlay to close sidebar when clicked outside -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Left sidebar navigation -->
+<!-- Collapsible sidebar navigation menu -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable nav items -->
+    <!-- Scrollable navigation items section -->
     <div class="sidebar-nav-scrollable">
 
       <a href="admin-overview.html" class="sidebar-item">
@@ -153,7 +153,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom items -->
+    <!-- Fixed bottom navigation items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -177,10 +177,13 @@
 
   </nav>
 </aside>
+
+    <!-- Main content wrapper for tenant management page -->
     <div class="tenant-mgmt-container">
+        <!-- Page header with title for tenant management -->
         <h1 class="tenant-mgmt-title">Tenant Management</h1>
 
-        <!--Top Controls-->
+        <!-- Search and filter controls section -->
         <div class="tenant-mgmt-search-box">
             <i class="fa fa-search"></i>
             <input class="tenant-mgmt-search" type="text" placeholder="Search by name, room, or school....">
@@ -196,8 +199,9 @@
             </button>
         </div>
 
-        <!--The Table-->
+        <!-- Table container for tenant management data -->
         <div class="tenant-mgmt-table-container">
+            <!-- Table displaying tenant information with actions -->
             <table class="tenant-mgmt-table">
                 <thead>
                     <tr>

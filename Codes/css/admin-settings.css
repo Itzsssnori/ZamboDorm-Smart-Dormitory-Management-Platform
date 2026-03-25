@@ -1,4 +1,4 @@
-/* ── Main content positioning ── */
+/* Main wrapper for settings page content, accounting for sidebar margin */
 .settings-main-wrapper {
     margin-left: 24.3rem;
     margin-right: 6rem;
@@ -12,7 +12,7 @@
     box-sizing: border-box;
 }
 
-/* ── Page Title ── */
+/* Page title styling */
 .settings-page-title {
     font-size: 2.3rem;
     font-weight: 700;
@@ -21,7 +21,7 @@
     margin-top: 1.5rem;
 }
 
-/* ── Config Card ── */
+/* Configuration settings card container */
 .settings-card-config {
     background: #ffffff;
     border-radius: 12px;
@@ -31,6 +31,7 @@
     box-sizing: border-box;
 }
 
+/* Header for configuration card with title and controls */
 .settings-card-header-config {
     display: flex;
     justify-content: space-between;
@@ -40,6 +41,7 @@
     gap: 0.75rem;
 }
 
+/* Title for configuration card */
 .settings-card-title-config {
     font-size: 1rem;
     font-weight: 700;
@@ -47,6 +49,7 @@
     color: #1f2937;
 }
 
+/* Grid layout for configuration sections */
 .settings-config-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -56,6 +59,7 @@
     padding: 0 1.5rem;
 }
 
+/* Label styling for form inputs */
 .settings-label {
     display: block;
     font-size: 0.875rem;
@@ -66,6 +70,7 @@
     letter-spacing: 0.5px;
 }
 
+/* Input group container with flex layout */
 .settings-input-group {
     display: flex;
     align-items: center;
@@ -74,6 +79,7 @@
     min-width: 0;
 }
 
+/* Styled input field with focus states */
 .settings-styled-input {
     width: 100%;
     max-width: 320px;
@@ -92,6 +98,7 @@
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.05);
 }
 
+/* Statistics display for room counts */
 .settings-stats {
     font-size: 0.85rem;
     line-height: 1.4;
@@ -102,11 +109,13 @@
 .settings-avail-num { color: #1f2937; font-weight: 700; }
 .settings-stats-label { color: #9ca3af; }
 
+/* Container for duration selection aligned to the right */
 .settings-duration-container {
     text-align: right;
     width: 100%;
 }
 
+/* Toggle pill for day/month selection */
 .settings-toggle-pill {
     display: inline-flex;
     background-color: #f3f4f6;
@@ -117,6 +126,7 @@
 
 .settings-toggle-pill input[type="radio"] { display: none; }
 
+/* Labels for toggle options */
 .settings-toggle-pill label {
     padding: 0.75rem 2rem;
     border-radius: 999px;
@@ -128,6 +138,7 @@
     user-select: none;
 }
 
+/* Active state for toggle options */
 #day-radio:checked ~ label[for="day-radio"],
 #month-radio:checked ~ label[for="month-radio"] {
     background-color: #991b1b;
@@ -135,6 +146,7 @@
     box-shadow: 0 2px 8px rgba(153, 27, 27, 0.2);
 }
 
+/* Hint text for rate input */
 .settings-rate-hint {
     display: block;
     font-size: 0.75rem;
@@ -142,6 +154,7 @@
     margin-top: 0.5rem;
 }
 
+/* Footer for configuration card with save button */
 .settings-card-footer {
     border-top: 1px solid #e5e7eb;
     padding: 1.5rem 1.5rem 0;
@@ -150,6 +163,7 @@
     margin-top: 2.5rem;
 }
 
+/* Save button styling */
 .settings-save-btn {
     background-color: #dc2626;
     color: white;
@@ -165,7 +179,7 @@
 
 .settings-save-btn:hover { background-color: #b91c1c; }
 
-/* ── Registry Section ── */
+/* Registry section header with title and add button */
 .registry-title-section {
     display: flex;
     justify-content: space-between;
@@ -175,6 +189,7 @@
     gap: 1rem;
 }
 
+/* Registry section title */
 .registry-title {
     font-size: 1.125rem;
     margin: 0;
@@ -182,12 +197,14 @@
     color: #1f2937;
 }
 
+/* Registry section subtitle */
 .registry-subtitle {
     font-size: 0.875rem;
     color: #6b7280;
     margin: 0.25rem 0 0;
 }
 
+/* Add item button styling */
 .add-item-btn {
     background-color: #991b1b;
     color: white;
@@ -208,13 +225,14 @@
 
 .add-item-btn:hover { background-color: #7f1d1d; }
 
+/* Icon for add button */
 .add-item-icon {
     width: 1.2rem;
     height: 1.2rem;
     stroke: currentColor;
 }
 
-/* ── Registry Table ── */
+/* Container for registry table with scroll */
 .registry-table-container {
     background: white;
     padding: 1.5rem 1.5rem 2.2rem;
@@ -225,6 +243,7 @@
     box-sizing: border-box;
 }
 
+/* Registry table styling */
 .registry-table {
     width: 100%;
     border-collapse: collapse;
@@ -234,6 +253,7 @@
 
 .registry-table thead { background-color: white; }
 
+/* Table header cells */
 .registry-table thead th {
     text-align: left;
     padding: 1rem 1.2rem;
@@ -245,6 +265,7 @@
     font-weight: 600;
 }
 
+/* Table body cells */
 .registry-table tbody td {
     padding: 1rem 1.2rem;
     border-bottom: 1px solid #e5e7eb;
@@ -255,6 +276,7 @@
 
 .registry-table tbody tr:last-child td { border-bottom: none; }
 
+/* Table row hover effect */
 .registry-table tbody tr {
     transition: all 0.2s ease;
     background-color: #ffffff;
@@ -262,13 +284,14 @@
 
 .registry-table tbody tr:hover { background-color: #fff5f5; }
 
+/* Specific styling for tenant and item names */
 .registry-table .tenant-name,
 .registry-table .item-name {
     font-weight: 600;
     color: #1f2937;
 }
 
-/* ── Badges & Actions ── */
+/* Status badge for active items */
 .settings-status-badge-pill {
     background: #f0fdf4;
     color: #22c55e;
@@ -278,6 +301,7 @@
     font-weight: 600;
 }
 
+/* Action buttons in table */
 .settings-actions-btn {
     background: none;
     border: none;
@@ -298,18 +322,20 @@
     background-color: #f3f4f6;
 }
 
+/* Icon for action buttons */
 .settings-actions-icon {
     width: 1.25rem;
     height: 1.25rem;
 }
 
-/* ── Stat Cards ── */
+/* Grid layout for statistics cards */
 .settings-stat-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
 }
 
+/* Individual statistics card */
 .settings-stat-card {
     background-color: #ffffff;
     border-radius: 12px;
@@ -327,6 +353,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
+/* Header for statistics card */
 .settings-card-header-stat {
     display: flex;
     justify-content: space-between;
@@ -334,6 +361,7 @@
     margin-bottom: 1rem;
 }
 
+/* Title for statistics card */
 .settings-card-title-stat {
     font-size: 0.85rem;
     font-weight: 600;
@@ -342,11 +370,13 @@
     letter-spacing: 0.5px;
 }
 
+/* Icons for statistics cards */
 .settings-card-icon { width: 24px; height: 24px; }
 .settings-icon-blue { color: #0284c7; }
 .settings-icon-orange { color: #f97316; }
 .settings-icon-red { color: #dc2626; }
 
+/* Value display in statistics card */
 .settings-stat-value {
     font-size: 2rem;
     font-weight: 700;
@@ -354,12 +384,14 @@
     line-height: 1.1;
 }
 
+/* Subtext for statistics card */
 .settings-stat-subtext {
     font-size: 0.8rem;
     color: #6b7280;
     margin-top: 0.25rem;
 }
 
+/* Alternative status badge */
 .settings-status-badge-blue {
     background-color: #dcfce7;
     color: #16a34a;
@@ -369,18 +401,16 @@
     border-radius: 20px;
 }
 
-/* ════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-════════════════════════════════ */
+/* Responsive design for different screen sizes */
 
-/* ── Large desktop (1280px+) ── */
+/* Large desktop adjustments */
 @media (min-width: 1280px) {
     .settings-main-wrapper {
         margin-right: 4rem;
     }
 }
 
-/* ── Small desktop / large tablet (1024px–1199px) ── */
+/* Small desktop and large tablet adjustments */
 @media (max-width: 1199px) {
     .settings-main-wrapper {
         margin-left: 17rem;
@@ -423,7 +453,7 @@
     }
 }
 
-/* ── Tablet (768px–1023px) ── */
+/* Tablet adjustments */
 @media (max-width: 1023px) {
     .settings-main-wrapper {
         margin-left: 14rem;
@@ -441,7 +471,7 @@
     }
 }
 
-/* ── Tablet portrait / sidebar collapsed (768px) ── */
+/* Mobile and collapsed sidebar adjustments */
 @media (max-width: 768px) {
     .settings-main-wrapper {
         margin-left: 0;
@@ -509,7 +539,7 @@
         padding: 1rem;
     }
 
-    /* Stack table as cards on mobile */
+    /* Mobile table layout as cards */
     .registry-table {
         min-width: unset;
     }
@@ -565,7 +595,7 @@
     }
 }
 
-/* ── Mobile landscape (600px) ── */
+/* Mobile landscape adjustments */
 @media (max-width: 600px) {
     .settings-main-wrapper {
         padding: 0.875rem;
@@ -581,7 +611,7 @@
     }
 }
 
-/* ── Mobile portrait (480px) ── */
+/* Mobile portrait adjustments */
 @media (max-width: 480px) {
     .settings-stat-cards-grid {
         grid-template-columns: repeat(1, 1fr);
@@ -601,7 +631,7 @@
     }
 }
 
-/* ── Very small phones (360px) ── */
+/* Very small mobile devices adjustments */
 @media (max-width: 360px) {
     .settings-main-wrapper {
         padding: 0.75rem;

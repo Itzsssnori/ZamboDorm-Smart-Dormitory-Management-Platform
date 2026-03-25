@@ -1,4 +1,4 @@
-/* ── Main content positioning ── */
+/* Main content wrapper for admin announcements page, accounting for sidebar margin and responsive layout */
 .admin-main-content {
     margin-left: 24.3rem;
     margin-right: 1rem;
@@ -7,7 +7,7 @@
     min-height: calc(100vh - 70px);
 }
 
-/* ── Content Header ── */
+/* Page header section with title and subtitle for announcements */
 .admin-content-header {
     margin-top: 1.5rem;
     margin-bottom: 2.5rem;
@@ -32,7 +32,7 @@
     font-weight: 400;
 }
 
-/* ── White container ── */
+/* White background container for announcements content */
 .aa-container {
     background-color: #ffffff;
     border: 1px solid #e5e7eb;
@@ -43,7 +43,7 @@
     width: 100%;
 }
 
-/* ── Header ── */
+/* Header section with title and new post button */
 .aa-header {
     display: flex;
     align-items: center;
@@ -79,7 +79,7 @@
     background: #8b0000;
 }
 
-/* ── Cards ── */
+/* Announcement cards container and styling */
 .aa-card {
     display: flex;
     align-items: center;
@@ -104,7 +104,7 @@
     transform: translateY(-1px);
 }
 
-/* ── Card Left ── */
+/* Left section of announcement card with title and description */
 .aa-card-left {
     flex: 1;
     min-width: 0;
@@ -128,7 +128,7 @@
     line-height: 1.3;
 }
 
-/* ── Card Right ── */
+/* Right section of announcement card with status and menu */
 .aa-card-right {
     display: flex;
     align-items: center;
@@ -136,7 +136,7 @@
     flex-shrink: 0;
 }
 
-/* ── Status Badges ── */
+/* Status badges for published and archived announcements */
 .aa-status {
     padding: 0.375rem 0.75rem;
     border-radius: 15px;
@@ -156,7 +156,7 @@
     color: #ca6c00;
 }
 
-/* ── Three-dot Menu ── */
+/* Three-dot menu button for announcement actions */
 .aa-menu {
     font-size: 1.125rem;
     color: #9ca3af;
@@ -173,7 +173,7 @@
     color: #374151;
 }
 
-/* ── Large desktops (1280px+) ── */
+/* Responsive adjustments for large desktop screens (1280px and above) */
 @media (min-width: 1280px) {
     .admin-main-content {
         margin-left: 24.3rem;
@@ -182,7 +182,7 @@
     }
 }
 
-/* ── Small desktops / large tablets (1024px) ── */
+/* Responsive styles for medium desktop screens (1024px and below) */
 @media (max-width: 1024px) {
     .admin-main-content {
         margin-left: 18rem;
@@ -195,7 +195,7 @@
     }
 }
 
-/* ── Tablets (768px) — sidebar collapses ── */
+/* Responsive styles for tablet screens (768px and below) with collapsed sidebar */
 @media (max-width: 768px) {
     .admin-main-content {
         margin-left: 0;
@@ -240,7 +240,7 @@
     }
 }
 
-/* ── Mobile landscape / small tablets (600px) ── */
+/* Responsive styles for small tablet and mobile landscape screens (600px and below) */
 @media (max-width: 600px) {
     .admin-main-content {
         padding: 1rem;
@@ -259,7 +259,7 @@
     }
 }
 
-/* ── Mobile portrait (480px) ── */
+/* Responsive styles for mobile portrait screens (480px and below) */
 @media (max-width: 480px) {
     .admin-content-header {
         margin-bottom: 1.25rem;
@@ -318,7 +318,7 @@
     }
 }
 
-/* ── Very small phones (360px) ── */
+/* Responsive styles for very small mobile screens (360px and below) */
 @media (max-width: 360px) {
     .admin-main-content {
         padding: 0.75rem;

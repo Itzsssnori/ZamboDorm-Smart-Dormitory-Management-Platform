@@ -1,6 +1,6 @@
-/* Site-wide footer */
+/* Site-wide footer styling */
 
-/* Footer main container background and layout */
+/* Main footer container with background and layout */
 .footer {
   background-color: var(--bg-dark);
   color: var(--text-white);
@@ -8,7 +8,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* 12-column grid layout for footer columns */
+/* Grid layout for footer columns */
 .footer-container {
   max-width: 75rem;
   margin: 0 auto;
@@ -33,7 +33,7 @@
   color: var(--text-white);
 }
 
-/* Brand block and basic text */
+/* Footer brand section with logo and description */
 .footer-brand {
   display: flex;
   align-items: center;
@@ -79,7 +79,7 @@
   transform: translateX(-2px);
 }
 
-/* Social icon links */
+/* Social media icon links */
 .social a {
   display: inline-flex;
   align-items: center;
@@ -139,7 +139,7 @@
   font-size: clamp(0.9rem, 0.87rem + 0.18vw, 1rem);
 }
 
-/* Bottom legal row */
+/* Footer bottom section with legal links */
 .footer-bottom {
   max-width: 75rem;
   margin: 1.25rem auto 0;
@@ -176,8 +176,7 @@
   opacity: 0.92;
 }
 
-/* Responsive breakpoints */
-
+/* Responsive design adjustments for footer */
 @media (max-width: 1200px) {
   .footer-container {
     grid-template-columns: repeat(8, minmax(0, 1fr));
