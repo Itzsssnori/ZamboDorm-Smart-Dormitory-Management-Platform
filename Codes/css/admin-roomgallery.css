@@ -130,7 +130,7 @@ body {
 
 /* --- Primary Upload Button --- */
 .upload-btn {
-    background: linear-gradient(135deg, #007bff, #0056b3);
+    background: linear-gradient(135deg, #ff9797, #ff8686);
     color: white;
     border: none;
     padding: 12px 24px;
@@ -142,13 +142,13 @@ body {
     align-items: center;
     gap: 10px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 159, 159, 0.3);
 }
 
 .upload-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
-    background: linear-gradient(135deg, #0088ff, #0066cc);
+    box-shadow: 0 4px 15px rgba(255, 159, 159, 0.3);
+    background: linear-gradient(135deg, #ff6d6d, #ff5b5b);
 }
 
 .upload-btn:active {
