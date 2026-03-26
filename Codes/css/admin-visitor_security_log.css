@@ -1,5 +1,8 @@
 
-/* Main content wrapper for visitor security logs page, accounting for sidebar margin and responsive layout */
+/* 
+   Visitor Logs - Main Container
+*/
+
 .visitor-logs {
     margin-left: 24.3rem;
     margin-right: 1rem;
@@ -9,28 +12,31 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Responsive adjustments for large screens (1280px and below) */
+/* Responsive Design - Large screens (1280px and below) */
 @media (max-width: 1280px) {
     .visitor-logs {
         margin-left: 17.5rem;
     }
 }
 
-/* Responsive adjustments for tablet screens (1024px and below) */
+/* Responsive Design - Tablets (1024px and below) */
 @media (max-width: 1024px) {
     .visitor-logs {
         margin-left: 16.5rem;
     }
 }
 
-/* Responsive adjustments for smaller tablet screens (896px and below) */
+/* Responsive Design - Smaller tablets (896px and below) */
 @media (max-width: 896px) {
     .visitor-logs {
         margin-left: 15.5rem;
     }
 }
 
-/* Page title for visitor logs section */
+/* 
+   Visitor Logs - Page Title Header
+*/
+
 .visitor-logs-title {
     margin-top: 2rem;
     margin-bottom: 2.5rem;
@@ -42,7 +48,10 @@
     line-height: 1.2;
 }
 
-/* Container for visitor logs table with background and shadow effects */
+/* 
+   Visitor Logs - Table Container
+*/
+
 .visitor-logs-table-container {
     background: #ffffff;
     padding: 2.5rem 1.5rem 3rem 1.5rem;
@@ -57,7 +66,10 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
-/* Table styling for visitor logs data display */
+/* 
+   Visitor Logs - Table Styling
+*/
+
 .visitor-logs-table {
     width: 100%;
     border-collapse: collapse;
@@ -93,7 +105,10 @@
     background-color: #fff5f5;
 }
 
-/* Color-coded styling for time-in and time-out entries */
+/* 
+   Visitor Logs - Table Cell Styling
+*/
+
 .visitor-logs-time-in {
     color: #16a34a !important;
     font-weight: 600;
@@ -104,8 +119,12 @@
     font-weight: 600;
 }
 
-/* Responsive adjustments for tablet screens (1024px and below) */
-@media (max-width: 1024px) {
+/* 
+   Responsive Design - Tablets (1024px and below)
+*/
+
+/* Old 1024px query - removed, using new structure above */
+
     .visitor-logs-title {
         font-size: 2.3rem;
         margin-bottom: 1.5rem;
@@ -126,9 +145,9 @@
         padding: 0.85rem 1rem;
         font-size: 0.9rem;
     }
-}
 
-/* Responsive adjustments for iPad Air screens (921px and below) */
+
+/* Responsive Design - iPad Air (921px and below) */
 @media (max-width: 921px) {
     .visitor-logs {
         margin-left: 16.5rem;
@@ -158,7 +177,10 @@
     }
 }
 
-/* Responsive adjustments for medium screens (768px and below) */
+/* 
+   Responsive Design - Medium Screens (768px and below)
+*/
+
 @media (max-width: 768px) {
     .visitor-logs {
         margin-left: 0;
@@ -190,7 +212,10 @@
     }
 }
 
-/* Responsive adjustments for small screens (640px and below) */
+/* 
+   Responsive Design - Small Screens (640px and below)
+*/
+
 @media (max-width: 640px) {
     .visitor-logs {
         margin-left: 0;
@@ -226,7 +251,10 @@
     }
 }
 
-/* Responsive adjustments for extra small screens (480px and below) */
+/* 
+   Responsive Design - Extra Small (480px and below)
+*/
+
 @media (max-width: 480px) {
     .visitor-logs {
         margin-left: 0;
@@ -270,7 +298,10 @@
     }
 }
 
-/* Responsive adjustments for very small screens (360px and below) */
+/* 
+   Responsive Design - Very Small (360px and below)
+*/
+
 @media (max-width: 360px) {
     .visitor-logs {
         padding: 0.5rem;

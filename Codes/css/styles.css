@@ -1,6 +1,8 @@
-/* CSS custom properties for design tokens */
+/* ========================================
+   CSS VARIABLES - DESIGN TOKENS
+   ======================================== */
 :root {
-  /* Primary color palette */
+  /* Primary Colors */
   --primary-red: #8b0000;
   --primary-red-dark: #8b0000;
   --primary-red-hover: #b30000;
@@ -14,8 +16,8 @@
   --red-feature-bg: #fdecec;
   --red-light-bg: #fecaca;
   --red-dark-text: #dc2626;
-
-  /* Text color variables */
+  
+  /* Text Colors */
   --text-dark: #1a1a2e;
   --text-med: #64748b;
   --text-medium: #555;
@@ -24,30 +26,30 @@
   --text-white: #ffffff;
   --blue-primary: #b80000;
   --blue-hover: #8b0000;
-
-  /* Background color variables */
+  
+  /* Background Colors */
   --bg-white: #ffffff;
   --bg-light: #f3f4f6;
   --bg-lighter: #f5f5f5;
   --bg-page: #f4f6fb;
   --bg-dark: #0a1a2f;
   --bg-gray: #e8e8e8;
-
-  /* Border color variables */
+  
+  /* Border Colors */
   --border: #e8ecf4;
   --border-light: #e0e0e0;
   --border-medium: #ccc;
   --border-subtle: rgba(200, 200, 200, 0.2);
-
-  /* Accent color variables */
+  
+  /* Special Colors */
   --green-light: #d1fae5;
   --green-dark: #059669;
   --yellow-light: #fed7aa;
   --accent-yellow: rgba(39, 31, 31, 0.2);
   --accent-gold: #ffd93d;
   --accent-orange: #ff9900;
-
-  /* Shadow variables */
+  
+  /* Shadows */
   --shadow: 0 2px 16px rgba(30, 40, 90, 0.07);
   --shadow-xs: 0 4px 10px rgba(0, 0, 0, 0.08);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -56,16 +58,16 @@
   --shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.25);
   --shadow-red: 0 6px 16px rgba(139, 0, 0, 0.2);
   --shadow-red-btn: 0 4px 12px rgba(139, 0, 0, 0.3);
-
-  /* Border radius variables */
+  
+  /* Border Radius */
   --radius: 12px;
   --radius-sm: 0.5625rem;
   --radius-md: 12px;
   --radius-lg: 16px;
   --radius-xl: 18px;
   --radius-2xl: 32px;
-
-  /* Transition variables */
+  
+  /* Transitions */
   --transition: 0.18s ease;
   --transition-fast: all 0.3s ease;
   --transition-normal: all 0.45s ease-in-out;
@@ -73,20 +75,20 @@
   --transition-opacity: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Global reset for all elements */
+
+/* Reset and global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Smooth scrolling for anchor links */
+/* HTML smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
   font-size: 100%;
 }
 
-/* Body styling with top padding for header */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -97,7 +99,7 @@ body {
   background-color: var(--bg-light);
 }
 
-/* Responsive sizing for media elements */
+/* Responsive media elements */
 img,
 svg,
 video,
@@ -106,21 +108,21 @@ canvas {
   height: auto;
 }
 
-/* Main element expands to fill available space */
+/* Main content grows to fill available space */
 main {
   flex: 1;
   padding-bottom: clamp(4rem, 8vw, 10vh);
 }
 
-/* Main content area with left margin for sidebar */
+/* Main content global styles */
 .main-content {
   padding: clamp(1.5rem, 3vw, 3rem);
   margin-left: 15.625rem;
 }
 
-/* Responsive adjustments for main content */
+/* Responsive Media Queries - Main content adjustments only */
 
-/* Tablet view adjustments */
+/* Tablet view: 1024px and below */
 @media (max-width: 1024px) {
   .main-content {
     margin-left: 12.5rem;
@@ -128,7 +130,7 @@ main {
   }
 }
 
-/* Mobile landscape adjustments */
+/* Mobile landscape: 768px and below */
 @media (max-width: 768px) {
   .main-content {
     margin-left: 0;
@@ -137,7 +139,7 @@ main {
   }
 }
 
-/* Mobile small screen adjustments */
+/* Mobile small: 480px and below */
 @media (max-width: 480px) {
   .main-content {
     margin-left: 0;
@@ -146,7 +148,7 @@ main {
   }
 }
 
-/* Fixed demo links box in bottom-left corner */
+/* Fixed sticky box in top-right with demo links */
 .sticky-demo-box {
   position: fixed;
   bottom: 1.25rem;
@@ -164,7 +166,6 @@ main {
   max-width: calc(100% - 2.5rem);
 }
 
-/* Admin demo link styling */
 .demo-admin {
   background: #e3f2fd;
   border-radius: var(--radius-md);
@@ -192,7 +193,6 @@ main {
   color: #0d47a1;
 }
 
-/* Tenant demo link styling */
 .demo-tenant {
   background: #e8f5e9;
   border-radius: var(--radius-md);
@@ -220,7 +220,6 @@ main {
   color: #1b5e20;
 }
 
-/* Sysadmin demo link styling */
 .demo-sysadmin {
   background: #f3e5f5;
   border-radius: var(--radius-md);
@@ -248,7 +247,7 @@ main {
   color: #4a148c;
 }
 
-/* Responsive adjustments for demo box */
+/* Responsive design for sticky demo box */
 @media (max-width: 1024px) {
   .sticky-demo-box {
     top: auto;
@@ -276,7 +275,7 @@ main {
   }
 }
 
-/* User types section container */
+/* Section container with centered alignment */
 .user-types-section {
   margin: clamp(4.5rem, 6.5vw, 10rem) auto 6rem;
   text-align: center;
@@ -297,7 +296,6 @@ main {
   margin-bottom: clamp(2.5rem, 3.5vw, 4.5rem);
 }
 
-/* Grid layout for user type cards */
 .user-types-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 26rem));
@@ -308,7 +306,6 @@ main {
   justify-items: center;
 }
 
-/* Individual user type card */
 .user-type-card {
   background: var(--bg-lighter);
   border: 1px solid rgba(224, 224, 224, 0.6);
@@ -342,7 +339,6 @@ main {
   transition: stroke 0s;
 }
 
-/* Icon container for user type */
 .user-type-icon-box {
   width: 4rem;
   height: 4rem;
@@ -369,7 +365,6 @@ main {
   transition: stroke 0.4s ease-in-out;
 }
 
-/* Content box for user type */
 .user-type-content-box {
   border: none;
   border-radius: 0;
@@ -398,28 +393,25 @@ main {
   font-family: Arial, sans-serif;
 }
 
-/* Active link state feedback */
+/* Active link feedback */
 a[href]:active {
   opacity: 0.7;
 }
 
-/* Responsive breakpoints for body and layout */
+/* Responsive breakpoints */
 
-/* Large screen adjustments */
 @media (max-width: 90rem) {
   body {
     padding-top: 56px;
   }
 }
 
-/* Medium screen adjustments */
 @media (max-width: 75rem) {
   body {
     padding-top: 54px;
   }
 }
 
-/* Small screen adjustments */
 @media (max-width: 62rem) {
   body {
     padding-top: 52px;
@@ -430,7 +422,6 @@ a[href]:active {
   }
 }
 
-/* Mobile adjustments */
 @media (max-width: 48rem) {
   body {
     padding-top: 50px;

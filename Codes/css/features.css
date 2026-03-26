@@ -1,4 +1,4 @@
-/* Logo styling for features page header */
+/* Logo styling and features page */
 .features-logo {
     display: flex;
     align-items: center;
@@ -25,7 +25,8 @@
     color: #8B0000;
 }
 
-/* Navigation links for features page */
+/* Navigation on features page */
+
 .features-nav a {
     text-decoration: none;
     margin-right: 1.5625rem;
@@ -52,20 +53,21 @@
     background-color: #a00000;
 }
 
-/* Main features page layout */
+/* Core features section and grid */
+
 .features-page {
     padding: 5rem 1.25rem 10em 1.25rem;
     text-align: center;
     margin-bottom: 6em;
 }
 
-/* Container for core features section */
+/* Core features container with reduced padding */
 .core-features {
     padding: 3.125rem 1.25rem 5rem 1.25rem;
     margin-bottom: 2em;
 }
 
-/* Title for features section */
+/* Features section title */
 .features-section-title {
     font-size: 1.75rem;
     color: var(--primary-red-dark);
@@ -74,7 +76,8 @@
     font-weight: 780;
 }
 
-/* Responsive grid layout for feature cards */
+/* Grid layout for feature cards */
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -83,7 +86,8 @@
     margin: auto;
 }
 
-/* Feature card styling with hover animations */
+/* White cards with icons and hover effects */
+
 .feature-card {
     background-color: var(--text-white);
     padding: 2.5rem 1.5625rem;
@@ -136,7 +140,8 @@
     color: var(--text-medium);
 }
 
-/* Responsive design adjustments for different screen sizes */
+/* Responsive breakpoints */
+
 @media (max-width: 1024px) {
     .features-grid {
         grid-template-columns: repeat(2, 1fr);

@@ -1,11 +1,11 @@
 
 
-/* Reserved space for fixed header and footer elements to prevent content overlap */
+/* HEADER AND FOOTER SPACE */
 .ap-header-space, .ap-footer-space{
   height:80px;
 }
 
-/* Responsive grid layout for displaying payment statistics cards */
+/* ── Stats Grid ── */
 .ap-stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -46,7 +46,7 @@
   line-height: 1.2;
 }
 
-/* Section for displaying payment methods with header and categories */
+/* ── Payment Methods Section ── */
 .ap-payment-methods-section {
   display: flex;
   flex-direction: column;
@@ -99,7 +99,7 @@
   box-shadow: 0 2px 8px rgba(139, 0, 0, 0.3);
 }
 
-/* Grid layout for payment categories */
+/* ── Payment Categories Grid ── */
 .ap-categories-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -185,7 +185,7 @@
   background: #e5e7eb;
 }
 
-/* Responsive adjustments for large desktop screens (1280px and above) */
+/* ── Large desktops (1280px+) ── */
 @media (min-width: 1280px) {
     .admin-main-content {
         margin-left: 24.3rem;
@@ -194,7 +194,7 @@
     }
 }
 
-/* Responsive adjustments for medium desktop screens (1024px and below) */
+/* ── Small desktops / large tablets (1024px) ── */
 @media (max-width: 1024px) {
     .admin-main-content {
         margin-left: 18rem;
@@ -230,7 +230,7 @@
     }
 }
 
-/* Responsive adjustments for tablet screens (768px and below) with collapsed sidebar */
+/* ── Tablets (768px) — sidebar collapses ── */
 @media (max-width: 768px) {
     .admin-main-content {
         margin-left: 0;
@@ -306,7 +306,7 @@
     }
 }
 
-/* Responsive adjustments for small tablet and mobile landscape screens (600px and below) */
+/* ── Mobile landscape / small tablets (600px) ── */
 @media (max-width: 600px) {
     .admin-main-content {
         padding: 1rem;
@@ -325,7 +325,7 @@
     }
 }
 
-/* Responsive adjustments for mobile portrait screens (480px and below) */
+/* ── Mobile portrait (480px) ── */
 @media (max-width: 480px) {
     .admin-content-header {
         margin-bottom: 1.25rem;
@@ -409,7 +409,7 @@
     }
 }
 
-/* Responsive adjustments for very small mobile screens (360px and below) */
+/* ── Very small phones (360px) ── */
 @media (max-width: 360px) {
     .admin-main-content {
         padding: 0.75rem;

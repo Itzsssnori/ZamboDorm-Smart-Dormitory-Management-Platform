@@ -2,7 +2,7 @@
    NAVBAR  —  ZamboDorm  (refined)
 ═══════════════════════════════════════════════════════ */
 
-/* Base navbar styling */
+/* ── Base navbar ──────────────────────────────────────── */
 .navbar {
   position: fixed;
   top: 0;
@@ -21,7 +21,7 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* Logo section in navbar */
+/* ── Logo ─────────────────────────────────────────────── */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -36,7 +36,7 @@
   height: 2.5rem;
 }
 
-/* Brand name styling */
+/* ── Brand name ───────────────────────────────────────── */
 .brand {
   font-size: clamp(1.1rem, 1rem + 0.5vw, 1.45rem);
   line-height: 1;
@@ -52,7 +52,7 @@
   font-weight: 500;
 }
 
-/* Sidebar toggle button for mobile */
+/* ── Sidebar toggle (hamburger) ───────────────────────── */
 .sidebar-toggle {
   display: none;
   align-items: center;
@@ -76,7 +76,7 @@
   stroke: #1a1a2e;
 }
 
-/* Navigation links container */
+/* ── Nav links wrapper ────────────────────────────────── */
 .nav-links {
   display: flex;
   align-items: center;
@@ -87,7 +87,7 @@
   flex-wrap: nowrap;
 }
 
-/* Plain navigation links */
+/* ── Plain text links (Home, Features) ───────────────── */
 .nav-links > a {
   text-decoration: none;
   color: #1a1a2e;
@@ -102,7 +102,7 @@
   color: var(--primary-red-hover);
 }
 
-/* Sign in button styling */
+/* ── Sign In Button ───────────────────────────────────── */
 .signin-btn {
   background: #8b0000;
   color: white !important;
@@ -157,7 +157,7 @@
   white-space: nowrap;
 }
 
-/* Logout button styling */
+/* ── Logout ───────────────────────────────────────────── */
 .logout-container {
   display: flex;
   align-items: center;
@@ -188,7 +188,7 @@
    RESPONSIVE
 ═══════════════════════════════════════════════════════ */
 
-/* Responsive adjustments for screens ≤ 1280px */
+/* ── ≤ 1280px ─────────────────────────────────────────── */
 @media (max-width: 1280px) {
   .navbar {
     padding-inline: clamp(1.25rem, 5vw, 4.5rem);
@@ -204,7 +204,7 @@
   }
 }
 
-/* Responsive adjustments for screens ≤ 1120px */
+/* ── ≤ 1120px ─────────────────────────────────────────── */
 @media (max-width: 1120px) {
   .navbar {
     padding-inline: clamp(1rem, 3.5vw, 2.5rem);
@@ -225,7 +225,7 @@
   }
 }
 
-/* Responsive adjustments for screens ≤ 1024px */
+/* ── ≤ 1024px ─────────────────────────────────────────── */
 @media (max-width: 1024px) {
   .navbar {
     height: 2.9rem;
@@ -237,14 +237,14 @@
   }
 }
 
-/* Show hamburger menu for screens ≤ 1199px */
+/* ── ≤ 1199px  show hamburger ─────────────────────────── */
 @media (max-width: 1199px) {
   .sidebar-toggle {
     display: flex;
   }
 }
 
-/* Responsive adjustments for tablet screens ≤ 768px */
+/* ── ≤ 768px  tablet ──────────────────────────────────── */
 @media (max-width: 768px) {
   .navbar {
     padding-inline: clamp(0.625rem, 1.5vw, 0.875rem);
@@ -292,7 +292,7 @@
   }
 }
 
-/* Responsive adjustments for screens ≤ 640px */
+/* ── ≤ 640px ──────────────────────────────────────────── */
 @media (max-width: 640px) {
   .navbar {
     padding-inline: clamp(0.5rem, 2vw, 0.75rem);
@@ -342,7 +342,7 @@
   }
 }
 
-/* Responsive adjustments for screens ≤ 480px */
+/* ── ≤ 480px ──────────────────────────────────────────── */
 @media (max-width: 480px) {
   .navbar {
     padding: 0 clamp(0.5rem, 2vw, 0.75rem);
@@ -393,7 +393,7 @@
   }
 }
 
-/* Responsive adjustments for screens ≤ 360px */
+/* ── ≤ 360px ──────────────────────────────────────────── */
 @media (max-width: 360px) {
   .navbar {
     padding: 0 clamp(0.4rem, 1.5vw, 0.55rem);

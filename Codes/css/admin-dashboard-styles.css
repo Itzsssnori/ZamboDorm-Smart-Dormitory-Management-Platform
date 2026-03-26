@@ -1,5 +1,5 @@
 
-/* Main content wrapper for admin dashboard with sidebar margin adjustments */
+/* Main content area - accounts for sidebar */
 .admin-main-content {
     margin-left: 24.3rem;
     margin-right: 1rem;
@@ -8,7 +8,7 @@
     min-height: calc(100vh - 70px);
 }
 
-/* Responsive adjustments for large screens (1280px and below) */
+/* Responsive Design - Large screens (1280px and below) */
 @media (max-width: 1280px) {
     .admin-main-content {
         margin-left: 17.5rem;
@@ -16,7 +16,7 @@
     }
 }
 
-/* Responsive adjustments for medium screens (1024px and below) */
+/* Responsive Design - Tablets (1024px and below) - Updated */
 @media (max-width: 1024px) {
     .admin-main-content {
         margin-left: 16.5rem;
@@ -25,7 +25,7 @@
     }
 }
 
-/* Responsive adjustments for smaller tablets (896px and below) */
+/* Responsive Design - Smaller tablets (896px and below) */
 @media (max-width: 896px) {
     .admin-main-content {
         margin-left: 15.5rem;
@@ -33,7 +33,8 @@
     }
 }
 
-/* Page header section with title and subtitle for dashboard */
+/* Content Header */
+
 .admin-content-header {
     margin-top: 1.5rem;
     margin-bottom: 2.1rem;
@@ -57,7 +58,8 @@
   font-weight: 400;
 }
 
-/* Grid layout for dashboard metrics cards */
+/* Metrics Grid */
+
 .admin-metrics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -65,7 +67,7 @@
     margin-bottom: 2.5rem;
 }
 
-/* Individual metric card styling with hover effects */
+/* Metric Card */
 .admin-metric-card {
     background: var(--bg-white);
     border-radius: var(--radius-lg);
@@ -81,7 +83,7 @@
     transform: translateY(-2px);
 }
 
-/* Header section of metric card with icon and change badge */
+/* Metric Header */
 .admin-metric-header {
     display: flex;
     align-items: flex-start;
@@ -89,7 +91,7 @@
     margin-bottom: 1rem;
 }
 
-/* Icon container for metric cards with category-specific colors */
+/* Metric Icon */
 .admin-metric-icon {
     width: 3rem;
     height: 3rem;
@@ -127,7 +129,7 @@
     color: var(--red-dark-text);
 }
 
-/* Change indicator badge for metric values */
+/* Metric Change Badge */
 .admin-metric-change {
     font-size: 0.75rem;
     font-weight: 700;
@@ -152,7 +154,7 @@
     background-color: var(--bg-light);
 }
 
-/* Label for metric card */
+/* Metric Label */
 .admin-metric-label {
     font-size: 0.85rem;
     color: var(--text-medium);
@@ -163,7 +165,7 @@
     display: block;
 }
 
-/* Main value display for metric card */
+/* Metric Value */
 .admin-metric-value {
     font-size: 2.1rem;
     font-weight: 700;
@@ -172,14 +174,15 @@
     line-height: 1.2;
 }
 
-/* Grid layout for charts section */
+/*Charts Grid */
+
 .admin-charts-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 1.5rem;
 }
 
-/* Container for chart components */
+/* Chart Container */
 .admin-chart-container {
     background: var(--bg-white);
     border-radius: var(--radius-lg);
@@ -201,7 +204,8 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Bar chart component for displaying data trends */
+/*  Bar Chart */
+
 .admin-bar-chart {
     display: flex;
     gap: 1.25rem;
@@ -350,7 +354,10 @@
     text-align: center;
 }
 
-/* Circle chart component for displaying occupancy rate */
+/* 
+   Circle Chart (Occupancy Rate)
+*/
+
 .admin-circle-chart {
     display: flex;
     align-items: center;
@@ -460,7 +467,10 @@
     margin-top: 0.5rem;
 }
 
-/* Custom scrollbar styling for main content area */
+/* 
+   Scrollbar Styling
+*/
+
 .admin-main-content::-webkit-scrollbar {
     width: 8px;
 }
@@ -478,7 +488,11 @@
     background: #94a3b8;
 }
 
-/* Responsive adjustments for iPad Air and similar screens (921px and below) */
+/* 
+   Responsive Design - Remaining styles for 921px and below
+*/
+
+/* Responsive Design - iPad Air (921px and below) */
 @media (max-width: 921px) {
     .admin-main-content {
         margin-left: 16.5rem;
@@ -514,7 +528,6 @@
     }
 }
 
-/* Responsive adjustments for tablet screens (768px and below) */
 @media (max-width: 768px) {
     .admin-main-content {
         margin-left: 0;
@@ -633,7 +646,6 @@
     }
 }
 
-/* Responsive adjustments for small tablet and large mobile screens (640px and below) */
 @media (max-width: 640px) {
     .admin-main-content {
         padding: 1rem;
@@ -763,7 +775,6 @@
     }
 }
 
-/* Responsive adjustments for mobile portrait screens (480px and below) */
 @media (max-width: 480px) {
     .admin-main-content {
         margin-right: 0;
@@ -846,7 +857,6 @@
     }
 }
 
-/* Responsive adjustments for very small mobile screens (360px and below) */
 @media (max-width: 360px) {
     .admin-main-content {
         margin-right: 0;

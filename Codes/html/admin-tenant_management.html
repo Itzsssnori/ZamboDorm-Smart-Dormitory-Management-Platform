@@ -15,7 +15,7 @@
 </head>
 
 <body>
-    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
+ <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -55,17 +55,17 @@
 
 </header>
 
-    <!-- Hidden checkbox for sidebar toggle functionality -->
+    <!-- Sidebar toggle checkbox -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Overlay to close sidebar when clicked outside -->
+<!-- Sidebar overlay - closes sidebar when clicked -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Collapsible sidebar navigation menu -->
+<!-- Left sidebar navigation -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable navigation items section -->
+    <!-- Scrollable nav items -->
     <div class="sidebar-nav-scrollable">
 
       <a href="admin-overview.html" class="sidebar-item">
@@ -88,7 +88,7 @@
         <span class="sidebar-label">Tenants</span>
       </a>
 
-      <a href="#" class="sidebar-item">
+      <a href="admin-room.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
           <polyline points="9 22 9 12 15 12 15 22"/>
@@ -135,7 +135,7 @@
   </svg>
   <span class="sidebar-label">Visitor Logs</span>
 </a>
-      <a href="#" class="sidebar-item">
+      <a href="admin-roomgallery.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2"/>
           <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -153,7 +153,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom navigation items -->
+    <!-- Fixed bottom items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -177,13 +177,10 @@
 
   </nav>
 </aside>
-
-    <!-- Main content wrapper for tenant management page -->
     <div class="tenant-mgmt-container">
-        <!-- Page header with title for tenant management -->
         <h1 class="tenant-mgmt-title">Tenant Management</h1>
 
-        <!-- Search and filter controls section -->
+        <!--Top Controls-->
         <div class="tenant-mgmt-search-box">
             <i class="fa fa-search"></i>
             <input class="tenant-mgmt-search" type="text" placeholder="Search by name, room, or school....">
@@ -199,9 +196,8 @@
             </button>
         </div>
 
-        <!-- Table container for tenant management data -->
+        <!--The Table-->
         <div class="tenant-mgmt-table-container">
-            <!-- Table displaying tenant information with actions -->
             <table class="tenant-mgmt-table">
                 <thead>
                     <tr>

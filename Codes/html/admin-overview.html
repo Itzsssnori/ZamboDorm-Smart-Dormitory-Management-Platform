@@ -12,7 +12,7 @@
     <title>Admin Dashboard - ZamboDorm</title>
 </head>
 <body>
-    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
+    <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -52,20 +52,20 @@
 
 </header>
 
-    <!-- Hidden checkbox for sidebar toggle functionality -->
+    <!-- Sidebar toggle checkbox -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Overlay to close sidebar when clicked outside -->
+<!-- Sidebar overlay - closes sidebar when clicked -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Collapsible sidebar navigation menu -->
+<!-- Left sidebar navigation -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable navigation items section -->
+    <!-- Scrollable nav items -->
     <div class="sidebar-nav-scrollable">
 
-      <a href="#" class="sidebar-item active">
+      <a href="admin-overview.html" class="sidebar-item active">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="7" height="7" rx="1"/>
           <rect x="14" y="3" width="7" height="7" rx="1"/>
@@ -150,7 +150,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom navigation items -->
+    <!-- Fixed bottom items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -175,17 +175,17 @@
   </nav>
 </aside>
 
-    <!-- Main dashboard content area -->
+    <!-- Main content section -->
     <main class="admin-main-content">
-        <!-- Page header with title and description -->
+        <!-- Header Section -->
         <div class="admin-content-header">
             <h1 class="admin-page-title">Admin Dashboard</h1>
             <p class="admin-page-subtitle">Welcome back! Here's what's happening today in ZamboDorm.</p>
         </div>
 
-        <!-- Grid layout for dashboard metrics cards -->
+        <!-- Metrics Cards Section -->
         <div class="admin-metrics-grid">
-            <!-- Metric card displaying total number of tenants -->
+            <!-- Total Tenants Card -->
             <div class="admin-metric-card">
                 <div class="admin-metric-header">
                     <div class="admin-metric-icon admin-metric-icon-tenants">
@@ -202,7 +202,7 @@
                 <div class="admin-metric-value">124</div>
             </div>
 
-            <!-- Metric card displaying available rooms count -->
+            <!-- Available Rooms Card -->
             <div class="admin-metric-card">
                 <div class="admin-metric-header">
                     <div class="admin-metric-icon admin-metric-icon-rooms">
@@ -218,7 +218,7 @@
                 <div class="admin-metric-value">18</div>
             </div>
 
-            <!-- Metric card displaying pending payments count -->
+            <!-- Pending Payments Card -->
             <div class="admin-metric-card">
                 <div class="admin-metric-header">
                     <div class="admin-metric-icon admin-metric-icon-payments">
@@ -233,7 +233,7 @@
                 <div class="admin-metric-value">8</div>
             </div>
 
-            <!-- Metric card displaying active complaints count -->
+            <!-- Active Complaints Card -->
             <div class="admin-metric-card">
                 <div class="admin-metric-header">
                     <div class="admin-metric-icon admin-metric-icon-complaints">
@@ -251,9 +251,9 @@
             </div>
         </div>
 
-        <!-- Grid layout for dashboard charts -->
+        <!-- Charts Section -->
         <div class="admin-charts-grid">
-            <!-- Bar chart showing monthly revenue analysis -->
+            <!-- Revenue Analysis Chart -->
             <div class="admin-chart-container">
                 <h2 class="admin-chart-title">Revenue Analysis</h2>
                 <div class="admin-bar-chart">
@@ -296,7 +296,7 @@
                 </div>
             </div>
 
-            <!-- Circular chart displaying room occupancy rate -->
+            <!-- Occupancy Rate Circle Chart -->
             <div class="admin-chart-container">
                 <h2 class="admin-chart-title">Occupancy Rate</h2>
                 <div class="admin-circle-chart">

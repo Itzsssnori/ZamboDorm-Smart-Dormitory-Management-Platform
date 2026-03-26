@@ -1,5 +1,5 @@
 
-/* Main content wrapper for tenant management page with sidebar margin adjustments */
+/* Main Container */
 .tenant-mgmt-container {
     margin-left: 24.3rem;
     margin-right: 6rem;
@@ -20,7 +20,7 @@
     line-height: 1.2;
 }
 
-/* Search and control bar with input field, filter button, and add tenant button */
+/* Search Box & Controls */
 .tenant-mgmt-search-box {
     display: flex;
     align-items: center;
@@ -101,7 +101,7 @@
     background: #7f1d1d;
 }
 
-/* Table container with white background and shadow for tenant data display */
+/* Table Container */
 .tenant-mgmt-table-container {
     background: white;
     padding: 2.5rem 1.5rem 3rem 1.5rem;
@@ -148,7 +148,7 @@
     background-color: #fff5f5;
 }
 
-/* Action button for table rows with hover effects */
+/* Action Button */
 .tenant-mgmt-action-btn {
     background: none;
     border: none;
@@ -172,13 +172,13 @@
     height: 1.25rem;
 }
 
-/* Styling for monetary values in table */
+/* Money Column */
 .tenant-mgmt-money {
     color: #16a34a !important;
     font-weight: 600;
 }
 
-/* Status badges for tenant states */
+/* Status Badges */
 .tenant-mgmt-status {
     display: inline-block;
     padding: 0.4rem 0.9rem;
@@ -198,7 +198,7 @@
     color: #b91c1c;
 }
 
-/* Responsive adjustments for tablet screens (1024px and below) */
+/* Responsive Design - Tablets (1024px and below) */
 @media (max-width: 1024px) {
     .tenant-mgmt-container {
         margin-left: 7.5rem;
@@ -251,7 +251,7 @@
     }
 }
 
-/* Responsive adjustments for medium-large screens (1199px to 769px) */
+/* Responsive Design - Medium-Large Screens (1199px to 769px) */
 @media (max-width: 1199px) and (min-width: 769px) {
     .tenant-mgmt-container {
         margin-left: 17rem;
@@ -305,7 +305,7 @@
     }
 }
 
-/* Responsive adjustments for medium screens (768px and below) with collapsed sidebar */
+/* Responsive Design - Medium Screens (768px and below) */
 @media (max-width: 768px) {
     .tenant-mgmt-container {
         margin-left: 0;
@@ -368,7 +368,7 @@
     }
 }
 
-/* Responsive adjustments for small screens (640px and below) */
+/* Responsive Design - Small Screens (640px and below) */
 @media (max-width: 640px) {
     .tenant-mgmt-container {
         padding: 1rem;
@@ -428,7 +428,7 @@
     }
 }
 
-/* Responsive adjustments for extra small screens (480px and below) */
+/* Responsive Design - Extra Small (480px and below) */
 @media (max-width: 480px) {
     .tenant-mgmt-container {
         padding: 0.75rem;
@@ -479,7 +479,7 @@
     }
 }
 
-/* Responsive adjustments for mobile phones (390px to 479px) */
+/* Responsive Design - Mobile Phones (390px and below / 390px-479px) */
 @media (max-width: 479px) and (min-width: 390px) {
     .tenant-mgmt-container {
         padding: 0.8rem;
@@ -548,7 +548,7 @@
     }
 }
 
-/* Responsive adjustments for very small screens (360px and below) */
+/* Responsive Design - Very Small (360px and below) */
 @media (max-width: 360px) {
     .tenant-mgmt-container {
         padding: 0.5rem;

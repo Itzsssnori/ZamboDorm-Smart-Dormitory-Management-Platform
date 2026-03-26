@@ -1,7 +1,7 @@
 
-/* Main content wrapper for admin service requests page, inheriting from dashboard styles */
+/* Main container for service requests - using admin-main-content from dashboard styles */
 
-/* Page title for service requests section */
+/* Service Request Title */
 .service-request-title {
     font-size: 2.3rem;
     font-weight: 700;
@@ -11,7 +11,7 @@
     line-height: 1.2;
 }
 
-/* Individual service request card container with hover effects */
+/* REQUEST BOX */
 .service-request-box {
     background: white;
     padding: 1.5rem;
@@ -57,7 +57,7 @@
     color: #6b7280;
 }
 
-/* Color-coded icons for different service request types */
+/* Icon colors for different service types */
 .service-request-icon.maintenance {
     background-color: #fee2e2;
     color: #dc2626;
@@ -110,7 +110,7 @@
     flex-shrink: 0;
 }
 
-/* Status badges for service request states */
+/* STATUS */
 .service-request-status {
     padding: 0.375rem 0.75rem;
     border-radius: 15px;
@@ -134,7 +134,7 @@
     color: #28a745;
 }
 
-/* Manage button and toggle for additional message display */
+/* Manage button & toggle */
 .service-request-toggle-message {
     display: none;
 }
@@ -156,7 +156,7 @@
     background: #b91c1c;
 }
 
-/* Collapsible message box for service request details */
+/* Message box */
 .service-request-manage-message {
     display: none;
     margin-top: 1rem;
@@ -174,7 +174,9 @@
     display: block;
 }
 
-/* Responsive adjustments for tablet screens (1024px and below) */
+/* 
+   Responsive Design - Tablets (1024px and below)
+*/
 @media (max-width: 1024px) {
     .service-request-title {
         font-size: 2rem;
@@ -226,7 +228,7 @@
     }
 }
 
-/* Responsive adjustments for iPad Air screens (921px and below) */
+/* Responsive Design - iPad Air (921px and below) */
 @media (max-width: 921px) {
     .service-request-title {
         font-size: 1.85rem;
@@ -260,7 +262,9 @@
     }
 }
 
-/* Responsive adjustments for medium screens (768px and below) */
+/* 
+   Responsive Design - Medium Screens (768px and below)
+*/
 @media (max-width: 768px) {
     .service-request-title {
         font-size: 1.5rem;
@@ -323,7 +327,9 @@
     }
 }
 
-/* Responsive adjustments for small screens (640px and below) */
+/* 
+   Responsive Design - Small Screens (640px and below)
+*/
 @media (max-width: 640px) {
     .service-request-title {
         font-size: 1.3rem;
@@ -385,7 +391,9 @@
     }
 }
 
-/* Responsive adjustments for extra small screens (480px and below) */
+/* 
+   Responsive Design - Extra Small (480px and below)
+*/
 @media (max-width: 480px) {
     .service-request-title {
         font-size: 1.15rem;
@@ -449,7 +457,9 @@
     }
 }
 
-/* Responsive adjustments for very small screens (360px and below) */
+/* 
+   Responsive Design - Very Small (360px and below)
+*/
 @media (max-width: 360px) {
     .service-request-title {
         font-size: 1rem;

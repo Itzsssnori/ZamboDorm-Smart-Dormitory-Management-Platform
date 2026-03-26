@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/ZamboDorm.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Codes/css/styles.css">
-    <link rel="stylesheet" href="Codes/css/header.css">
-    <link rel="stylesheet" href="Codes/css/section-bar.css">
-    <link rel="stylesheet" href="Codes/css/sys-administration.css">
-    <link rel="stylesheet" href="Codes/css/admin-dashboard-styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/section-bar.css">
+    <link rel="stylesheet" href="../css/sys-administration.css">
+    <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
     <title>System Administration - ZamboDorm</title>
 </head>
 <body>
-    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
+    <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
-    <img src="images/ZamboDorm.png" alt="ZamboDorm Logo">
+    <img src="../../images/ZamboDorm.png" alt="ZamboDorm Logo">
     <span class="brand">
       <span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span>
     </span>
@@ -33,8 +33,8 @@
   </label>
 
   <nav class="nav-links">
-    <a href="Codes/html/index.html">Home</a>
-    <a href="Codes/html/index.html#features">Features</a>
+    <a href="index.html">Home</a>
+    <a href="index.html#features">Features</a>
 
     <a href="#" class="user-profile-link">
       <svg class="profile-avatar" viewBox="0 0 40 40" width="40" height="40">
@@ -53,17 +53,17 @@
 
 </header>
 
-    <!-- Hidden checkbox for sidebar toggle functionality -->
+    <!-- Sidebar toggle checkbox -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Overlay to close sidebar when clicked outside -->
+<!-- Sidebar overlay - closes sidebar when clicked -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Collapsible sidebar navigation menu -->
+<!-- Left sidebar navigation -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable navigation items section -->
+    <!-- Scrollable nav items -->
     <div class="sidebar-nav-scrollable">
 
       <a href="#" class="sidebar-item active">
@@ -114,10 +114,10 @@
 
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom navigation items -->
+    <!-- Fixed bottom items -->
     <div class="sidebar-nav-fixed">
 
-      <a href="Codes/html/settings-A.html" class="sidebar-item">
+      <a href="settings-A.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"/>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
@@ -125,7 +125,7 @@
         <span class="sidebar-label">Settings</span>
       </a>
 
-      <a href="Codes/html/help-A.html" class="sidebar-item">
+      <a href="help-A.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -140,13 +140,13 @@
 </aside>
 
 <main class="admin-main-content">
-    <!-- Page header with title and description -->
+    <!-- Header Section -->
     <div class="admin-content-header">
         <h1 class="admin-page-title">System Administrator</h1>
         <p class="admin-page-subtitle">Manage all dormitories and administrators</p>
     </div>
 
-    <!-- Grid layout for system administration statistics cards -->
+    <!-- Stats Cards Section -->
     <div class="sa-stats-grid">
         <div class="sa-stat-card">
             <div class="sa-card-top">
@@ -211,14 +211,14 @@
         </div>
     </div>
 
-    <!-- Section containing platform revenue and user activity charts -->
+    <!-- Charts Section -->
     <div class="sa-charts-section">
         <div class="sa-chart-container">
             <h2>Platform Revenue Trend</h2>
             <div class="sa-chart-placeholder">
-                <!-- Bar chart displaying monthly revenue data -->
+                <!-- Bar Chart -->
                 <svg viewBox="0 0 700 350" width="100%" height="100%" style="max-width: 100%;">
-                    <!-- Horizontal grid lines for chart background -->
+                    <!-- Background grid -->
                     <defs>
                         <linearGradient id="barGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
                             <stop offset="0%" style="stop-color:#8b0000;stop-opacity:1" />
@@ -230,21 +230,21 @@
                         </linearGradient>
                     </defs>
                     
-                    <!-- Y-axis grid lines -->
+                    <!-- Y Axis grid -->
                     <line x1="60" y1="270" x2="680" y2="270" stroke="#e5e7eb" stroke-width="1"/>
                     <line x1="60" y1="220" x2="680" y2="220" stroke="#e5e7eb" stroke-width="1"/>
                     <line x1="60" y1="170" x2="680" y2="170" stroke="#e5e7eb" stroke-width="1"/>
                     <line x1="60" y1="120" x2="680" y2="120" stroke="#e5e7eb" stroke-width="1"/>
                     <line x1="60" y1="70" x2="680" y2="70" stroke="#e5e7eb" stroke-width="1"/>
                     
-                    <!-- Y-axis value labels -->
+                    <!-- Y Axis labels -->
                     <text x="50" y="278" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">0</text>
                     <text x="50" y="228" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">150K</text>
                     <text x="50" y="178" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">300K</text>
                     <text x="50" y="128" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">450K</text>
                     <text x="50" y="78" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">600K</text>
                     
-                    <!-- Revenue bars with gradient fill -->
+                    <!-- Bars with gradient -->
                     <rect x="75" y="180" width="35" height="90" fill="url(#barGradient2)" rx="3"/>
                     <rect x="120" y="150" width="35" height="120" fill="url(#barGradient2)" rx="3"/>
                     <rect x="165" y="110" width="35" height="160" fill="url(#barGradient2)" rx="3"/>
@@ -252,7 +252,7 @@
                     <rect x="255" y="50" width="35" height="220" fill="url(#barGradient1)" rx="3"/>
                     <rect x="300" y="30" width="35" height="240" fill="url(#barGradient1)" rx="3"/>
                     
-                    <!-- X-axis month labels -->
+                    <!-- Month labels -->
                     <text x="92" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Mar</text>
                     <text x="137" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Apr</text>
                     <text x="182" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">May</text>
@@ -260,7 +260,7 @@
                     <text x="272" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Jul</text>
                     <text x="317" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Aug</text>
                     
-                    <!-- Chart axes lines -->
+                    <!-- Axes -->
                     <line x1="60" y1="20" x2="60" y2="270" stroke="#1f2937" stroke-width="2"/>
                     <line x1="60" y1="270" x2="680" y2="270" stroke="#1f2937" stroke-width="2"/>
                 </svg>
@@ -270,13 +270,13 @@
         <div class="sa-chart-container">
             <h2>Dormitory Status</h2>
             <div class="sa-chart-placeholder">
-                <!-- Donut chart showing dormitory status -->
+                <!-- Pie Chart (Donut) -->
                 <svg viewBox="0 0 400 300" width="100%" height="100%" style="max-width: 100%;">
-                    <!-- Active dormitories slice (80%) -->
+                    <!-- Green slice (80% - 4 active) -->
                     <circle cx="150" cy="130" r="70" fill="none" stroke="#16a34a" stroke-width="35" 
                             stroke-dasharray="175.8 219.8" stroke-dashoffset="0" stroke-linecap="round" opacity="0.9"/>
                     
-                    <!-- Inactive dormitories slice (20%) -->
+                    <!-- Red slice (20% - 1 inactive) -->
                     <circle cx="150" cy="130" r="70" fill="none" stroke="#dc2626" stroke-width="35" 
                             stroke-dasharray="44 219.8" stroke-dashoffset="-175.8" stroke-linecap="round" opacity="0.9"/>
                     

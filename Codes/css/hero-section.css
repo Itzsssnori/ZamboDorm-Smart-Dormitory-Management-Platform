@@ -1,4 +1,4 @@
-/* Animated label with pulsing dot indicator above the hero section */
+/* Small label above hero */
 .label {
   display: inline-flex;
   align-items: center;
@@ -65,7 +65,7 @@
   }
 }
 
-/* Responsive two-column grid layout for hero section content */
+/* Two-column hero layout */
 .hero-section {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -99,7 +99,7 @@
   overflow-wrap: break-word;
 }
 
-/* Image slider container with overlay badge for mobile readiness */
+/* Image card and overlay badge */
 .hero-slider {
   position: relative;
   width: 100%;
@@ -215,7 +215,7 @@
   line-height: 1;
 }
 
-/* Responsive adjustments for large tablet screens (1280px and below) */
+/* Tablet spacing and sizing */
 @media (max-width: 1280px) {
   .label {
     margin-top: 7rem;
@@ -263,7 +263,7 @@
   }
 }
 
-/* Responsive adjustments for medium tablet screens (1024px and below) with single column layout */
+@media (max-width: 1024px) {
   .label {
     margin-top: clamp(4rem, 6vw, 6rem);
     margin-left: auto;
@@ -300,7 +300,7 @@
   }
 }
 
-/* Responsive adjustments for mobile screens (768px and below) with stacked layout */
+/* Mobile stacking and button sizing */
 @media (max-width: 768px) {
   .label {
     margin-top: clamp(3.5rem, 5vw, 5.5rem);
@@ -397,7 +397,7 @@
   }
 }
 
-/* Shared styling for hero section call-to-action buttons */
+/* Shared hero buttons */
 .btn {
   padding: 0.875rem 2rem;
   margin-top: clamp(0.875rem, 1.5vw, 1.5625rem);

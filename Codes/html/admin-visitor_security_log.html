@@ -13,7 +13,7 @@
     <title>Admin - Visitor Security Log</title>
 </head>
 <body>
-    <!-- Main navigation bar with logo, sidebar toggle, and user profile -->
+    <!-- Navigation header -->
 <header class="navbar">
 
   <div class="nav-logo">
@@ -53,17 +53,17 @@
 
 </header>
 
-    <!-- Hidden checkbox for sidebar toggle functionality -->
+    <!-- Sidebar toggle checkbox -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 
-<!-- Overlay to close sidebar when clicked outside -->
+<!-- Sidebar overlay - closes sidebar when clicked -->
 <label for="sidebarToggle" class="sidebar-overlay"></label>
 
-<!-- Collapsible sidebar navigation menu -->
+<!-- Left sidebar navigation -->
 <aside class="sidebar">
   <nav class="sidebar-nav">
 
-    <!-- Scrollable navigation items section -->
+    <!-- Scrollable nav items -->
     <div class="sidebar-nav-scrollable">
 
       <a href="admin-overview.html" class="sidebar-item">
@@ -123,7 +123,7 @@
         </svg>
         <span class="sidebar-label">Announcements</span>
       </a>
-<a href="#" class="sidebar-item active">
+<a href="admin-visitor_security_log.html" class="sidebar-item active">
   <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
     <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
     <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
@@ -151,7 +151,7 @@
 </a>
     </div><!-- /sidebar-nav-scrollable -->
 
-    <!-- Fixed bottom navigation items -->
+    <!-- Fixed bottom items -->
     <div class="sidebar-nav-fixed">
 
       <a href="settings-A.html" class="sidebar-item">
@@ -176,16 +176,13 @@
   </nav>
 </aside>
 
-    <!-- Main content section for visitor security logs -->
     <section class="visitor-logs">
 
-        <!-- Page header with title for visitor logs -->
         <h2 class="visitor-logs-title">Visitor Security Logs</h2>
 
-        <!-- Table container for visitor log entries -->
         <div class="visitor-logs-table-container">
 
-            <!-- Table displaying visitor security log data -->
+            <table class="visitor-logs-table">
 
                 <thead>
                     <tr>
