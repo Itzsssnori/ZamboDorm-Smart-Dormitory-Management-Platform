@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="../css/section-bar.css">
     <link rel="stylesheet" href="../css/sys-administration.css">
     <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
+    <!-- Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
     <title>System Administration - ZamboDorm</title>
+
 </head>
 <body>
     <!-- Navigation header -->
@@ -76,48 +79,12 @@
         <span class="sidebar-label">System Admin</span>
       </a>
 
-      <a href="#" class="sidebar-item">
-        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-        <span class="sidebar-label">Dormitory</span>
-      </a>
-
-      <a href="#" class="sidebar-item">
-        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-          <polyline points="9 22 9 12 15 12 15 22"/>
-        </svg>
-        <span class="sidebar-label">Rooms</span>
-      </a>
-
-      <a href="#" class="sidebar-item">
-        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-        <span class="sidebar-label">Tenants</span>
-      </a>
-
-      <a href="#" class="sidebar-item">
-        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="5" width="20" height="14" rx="2"/>
-          <line x1="2" y1="10" x2="22" y2="10"/>
-        </svg>
-        <span class="sidebar-label">Payments</span>
-      </a>
-
     </div><!-- /sidebar-nav-scrollable -->
 
     <!-- Fixed bottom items -->
     <div class="sidebar-nav-fixed">
 
-      <a href="settings-A.html" class="sidebar-item">
+      <a href="#" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="3"/>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
@@ -125,7 +92,7 @@
         <span class="sidebar-label">Settings</span>
       </a>
 
-      <a href="help-A.html" class="sidebar-item">
+      <a href="#" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
@@ -213,94 +180,123 @@
 
     <!-- Charts Section -->
     <div class="sa-charts-section">
+
+        <!-- Bar Chart: Platform Revenue Trend -->
         <div class="sa-chart-container">
             <h2>Platform Revenue Trend</h2>
             <div class="sa-chart-placeholder">
-                <!-- Bar Chart -->
-                <svg viewBox="0 0 700 350" width="100%" height="100%" style="max-width: 100%;">
-                    <!-- Background grid -->
-                    <defs>
-                        <linearGradient id="barGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#8b0000;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#c41e3a;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="barGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" style="stop-color:#6d28d9;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#8b5cf6;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    
-                    <!-- Y Axis grid -->
-                    <line x1="60" y1="270" x2="680" y2="270" stroke="#e5e7eb" stroke-width="1"/>
-                    <line x1="60" y1="220" x2="680" y2="220" stroke="#e5e7eb" stroke-width="1"/>
-                    <line x1="60" y1="170" x2="680" y2="170" stroke="#e5e7eb" stroke-width="1"/>
-                    <line x1="60" y1="120" x2="680" y2="120" stroke="#e5e7eb" stroke-width="1"/>
-                    <line x1="60" y1="70" x2="680" y2="70" stroke="#e5e7eb" stroke-width="1"/>
-                    
-                    <!-- Y Axis labels -->
-                    <text x="50" y="278" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">0</text>
-                    <text x="50" y="228" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">150K</text>
-                    <text x="50" y="178" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">300K</text>
-                    <text x="50" y="128" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">450K</text>
-                    <text x="50" y="78" font-size="11" fill="#9ca3af" text-anchor="end" font-weight="500">600K</text>
-                    
-                    <!-- Bars with gradient -->
-                    <rect x="75" y="180" width="35" height="90" fill="url(#barGradient2)" rx="3"/>
-                    <rect x="120" y="150" width="35" height="120" fill="url(#barGradient2)" rx="3"/>
-                    <rect x="165" y="110" width="35" height="160" fill="url(#barGradient2)" rx="3"/>
-                    <rect x="210" y="80" width="35" height="190" fill="url(#barGradient2)" rx="3"/>
-                    <rect x="255" y="50" width="35" height="220" fill="url(#barGradient1)" rx="3"/>
-                    <rect x="300" y="30" width="35" height="240" fill="url(#barGradient1)" rx="3"/>
-                    
-                    <!-- Month labels -->
-                    <text x="92" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Mar</text>
-                    <text x="137" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Apr</text>
-                    <text x="182" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">May</text>
-                    <text x="227" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Jun</text>
-                    <text x="272" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Jul</text>
-                    <text x="317" y="305" font-size="11" fill="#6b7280" text-anchor="middle" font-weight="500">Aug</text>
-                    
-                    <!-- Axes -->
-                    <line x1="60" y1="20" x2="60" y2="270" stroke="#1f2937" stroke-width="2"/>
-                    <line x1="60" y1="270" x2="680" y2="270" stroke="#1f2937" stroke-width="2"/>
+                <svg class="sa-bar-svg" viewBox="0 0 620 300" xmlns="http://www.w3.org/2000/svg" aria-label="Platform Revenue Trend bar chart">
+
+                    <!-- Grid lines -->
+                    <line x1="52" y1="20"  x2="610" y2="20"  stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="52" y1="68"  x2="610" y2="68"  stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="52" y1="116" x2="610" y2="116" stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="52" y1="164" x2="610" y2="164" stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="52" y1="212" x2="610" y2="212" stroke="#e5e7eb" stroke-width="1"/>
+                    <line x1="52" y1="248" x2="610" y2="248" stroke="#e5e7eb" stroke-width="1"/>
+
+                    <!-- Y-axis labels -->
+                    <text x="46" y="252" class="sa-svg-tick" text-anchor="end">0</text>
+                    <text x="46" y="216" class="sa-svg-tick" text-anchor="end">₱100K</text>
+                    <text x="46" y="168" class="sa-svg-tick" text-anchor="end">₱200K</text>
+                    <text x="46" y="120" class="sa-svg-tick" text-anchor="end">₱300K</text>
+                    <text x="46" y="72"  class="sa-svg-tick" text-anchor="end">₱400K</text>
+                    <text x="46" y="24"  class="sa-svg-tick" text-anchor="end">₱600K</text>
+
+                    <!-- Bars: max value 495K maps to y=20 (height=228). Scale: 228/500000 ≈ 0.000456 per ₱ -->
+                    <!-- Aug 160K → h=72.96 → y=248-73=175 | purple -->
+                    <rect x="60"  y="175" width="34" height="73"  fill="#6d28d9" rx="4"/>
+                    <!-- Sep 195K → h=88.92 → y=248-89=159 | red -->
+                    <rect x="105" y="159" width="34" height="89"  fill="#c41e3a" rx="4"/>
+                    <!-- Oct 215K → h=98.04 → y=248-98=150 | purple -->
+                    <rect x="150" y="150" width="34" height="98"  fill="#6d28d9" rx="4"/>
+                    <!-- Nov 245K → h=111.7 → y=248-112=136 | red -->
+                    <rect x="195" y="136" width="34" height="112" fill="#c41e3a" rx="4"/>
+                    <!-- Dec 272K → h=124.0 → y=248-124=124 | purple -->
+                    <rect x="240" y="124" width="34" height="124" fill="#6d28d9" rx="4"/>
+                    <!-- Jan 315K → h=143.6 → y=248-144=104 | red -->
+                    <rect x="285" y="104" width="34" height="144" fill="#c41e3a" rx="4"/>
+                    <!-- Feb 362K → h=165.0 → y=248-165=83 | purple -->
+                    <rect x="330" y="83"  width="34" height="165" fill="#6d28d9" rx="4"/>
+                    <!-- Mar 402K → h=183.3 → y=248-183=65 | red -->
+                    <rect x="375" y="65"  width="34" height="183" fill="#c41e3a" rx="4"/>
+                    <!-- Apr 432K → h=197.0 → y=248-197=51 | purple -->
+                    <rect x="420" y="51"  width="34" height="197" fill="#6d28d9" rx="4"/>
+                    <!-- May 460K → h=209.8 → y=248-210=38 | red -->
+                    <rect x="465" y="38"  width="34" height="210" fill="#c41e3a" rx="4"/>
+                    <!-- Jun 488K → h=222.6 → y=248-223=25 | purple -->
+                    <rect x="510" y="25"  width="34" height="223" fill="#6d28d9" rx="4"/>
+                    <!-- Jul 495K → h=225.8 → y=248-226=22 | red -->
+                    <rect x="555" y="22"  width="34" height="226" fill="#c41e3a" rx="4"/>
+
+                    <!-- X-axis baseline -->
+                    <line x1="52" y1="248" x2="610" y2="248" stroke="#d1d5db" stroke-width="1"/>
+
+                    <!-- X-axis month labels -->
+                    <text x="77"  y="266" class="sa-svg-tick" text-anchor="middle">Aug</text>
+                    <text x="122" y="266" class="sa-svg-tick" text-anchor="middle">Sep</text>
+                    <text x="167" y="266" class="sa-svg-tick" text-anchor="middle">Oct</text>
+                    <text x="212" y="266" class="sa-svg-tick" text-anchor="middle">Nov</text>
+                    <text x="257" y="266" class="sa-svg-tick" text-anchor="middle">Dec</text>
+                    <text x="302" y="266" class="sa-svg-tick" text-anchor="middle">Jan</text>
+                    <text x="347" y="266" class="sa-svg-tick" text-anchor="middle">Feb</text>
+                    <text x="392" y="266" class="sa-svg-tick" text-anchor="middle">Mar</text>
+                    <text x="437" y="266" class="sa-svg-tick" text-anchor="middle">Apr</text>
+                    <text x="482" y="266" class="sa-svg-tick" text-anchor="middle">May</text>
+                    <text x="527" y="266" class="sa-svg-tick" text-anchor="middle">Jun</text>
+                    <text x="572" y="266" class="sa-svg-tick" text-anchor="middle">Jul</text>
                 </svg>
             </div>
         </div>
 
+        <!-- Donut Chart: Dormitory Status -->
         <div class="sa-chart-container">
             <h2>Dormitory Status</h2>
-            <div class="sa-chart-placeholder">
-                <!-- Pie Chart (Donut) -->
-                <svg viewBox="0 0 400 300" width="100%" height="100%" style="max-width: 100%;">
-                    <!-- Green slice (80% - 4 active) -->
-                    <circle cx="150" cy="130" r="70" fill="none" stroke="#16a34a" stroke-width="35" 
-                            stroke-dasharray="175.8 219.8" stroke-dashoffset="0" stroke-linecap="round" opacity="0.9"/>
-                    
-                    <!-- Red slice (20% - 1 inactive) -->
-                    <circle cx="150" cy="130" r="70" fill="none" stroke="#dc2626" stroke-width="35" 
-                            stroke-dasharray="44 219.8" stroke-dashoffset="-175.8" stroke-linecap="round" opacity="0.9"/>
-                    
-                    <!-- Center circle (for donut effect) -->
-                    <circle cx="150" cy="130" r="35" fill="#ffffff"/>
-                    
-                    <!-- Center text -->
-                    <text x="150" y="140" font-size="24" fill="#1f2937" font-weight="700" text-anchor="middle">80%</text>
-                    
-                    <!-- Legend -->
-                    <g>
-                        <!-- Active -->
-                        <circle cx="295" cy="70" r="6" fill="#16a34a"/>
-                        <text x="310" y="76" font-size="13" fill="#1f2937" font-weight="600">Active</text>
-                        <text x="310" y="92" font-size="13" fill="#6b7280" font-weight="500">4 Dormitories</text>
-                        
-                        <!-- Inactive -->
-                        <circle cx="295" cy="130" r="6" fill="#dc2626"/>
-                        <text x="310" y="136" font-size="13" fill="#1f2937" font-weight="600">Inactive</text>
-                        <text x="310" y="152" font-size="13" fill="#6b7280" font-weight="500">1 Dormitory</text>
-                    </g>
+            <div class="sa-chart-placeholder sa-donut-wrapper">
+
+                <!-- SVG donut: cx=110 cy=110 r=80. Circumference = 2π×80 ≈ 502.65
+                     Green 80% → dasharray="402.12 502.65", rotation starts at -90deg (top)
+                     Red   20% → dasharray="100.53 502.65", offset=-402.12 -->
+                <svg class="sa-donut-svg" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" aria-label="Dormitory status donut chart">
+                    <!-- Track -->
+                    <circle cx="110" cy="110" r="80" fill="none" stroke="#f3f4f6" stroke-width="36"/>
+                    <!-- Green slice: 80% -->
+                    <circle cx="110" cy="110" r="80" fill="none"
+                            stroke="#27ae60" stroke-width="36"
+                            stroke-dasharray="402.12 502.65"
+                            stroke-dashoffset="125.66"
+                            stroke-linecap="butt"/>
+                    <!-- Red slice: 20% -->
+                    <circle cx="110" cy="110" r="80" fill="none"
+                            stroke="#c0392b" stroke-width="36"
+                            stroke-dasharray="100.53 502.65"
+                            stroke-dashoffset="-276.46"
+                            stroke-linecap="butt"/>
+                    <!-- Center label -->
+                    <text x="110" y="104" class="sa-donut-svg-pct" text-anchor="middle">80%</text>
+                    <text x="110" y="124" class="sa-donut-svg-lbl" text-anchor="middle">Active</text>
                 </svg>
+
+                <!-- Legend -->
+                <div class="sa-donut-legend">
+                    <div class="sa-legend-item">
+                        <span class="sa-legend-dot" style="background:#27ae60;"></span>
+                        <div>
+                            <div class="sa-legend-title">Active</div>
+                            <div class="sa-legend-sub">4 Dormitories</div>
+                        </div>
+                    </div>
+                    <div class="sa-legend-item">
+                        <span class="sa-legend-dot" style="background:#c0392b;"></span>
+                        <div>
+                            <div class="sa-legend-title">Inactive</div>
+                            <div class="sa-legend-sub">1 Dormitory</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
 </main>

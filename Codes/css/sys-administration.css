@@ -1,14 +1,3 @@
-/* GLOBAL RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins', sans-serif;
-}
-
-body{
-  background:transparent;
-}
 
 /* HEADER AND FOOTER SPACE */
 .sa-header-space, .sa-footer-space{
@@ -21,6 +10,8 @@ body{
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
   margin-bottom: 3.5rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .sa-stat-card {
@@ -79,6 +70,8 @@ body{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .sa-chart-container {
@@ -97,8 +90,9 @@ body{
   letter-spacing: -0.5px;
 }
 
+/* ── Chart placeholder ── */
 .sa-chart-placeholder {
-  min-height: 320px;
+  min-height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,12 +101,96 @@ body{
   border: none;
 }
 
+/* ── Bar chart SVG ── */
+.sa-bar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.sa-svg-tick {
+  font-family: 'Poppins', sans-serif;
+  font-size: 10px;
+  fill: #9ca3af;
+  font-weight: 500;
+}
+
+/* ── Donut chart layout ── */
+.sa-donut-wrapper {
+  flex-direction: column;
+  gap: 1.5rem;
+  min-height: unset;
+  padding-top: 0.5rem;
+}
+
+.sa-donut-svg {
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+/* Center text rendered inside the SVG */
+.sa-donut-svg-pct {
+  font-family: 'Poppins', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  fill: #1f2937;
+}
+
+.sa-donut-svg-lbl {
+  font-family: 'Poppins', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  fill: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── Donut legend ── */
+.sa-donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.sa-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sa-legend-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sa-legend-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.sa-legend-sub {
+  font-size: 0.775rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
 /* ── Large desktops (1280px+) ── */
 @media (min-width: 1280px) {
     .admin-main-content {
         margin-left: 24.3rem;
         margin-right: 1.5rem;
         padding: 2rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 
@@ -122,6 +200,9 @@ body{
         margin-left: 18rem;
         margin-right: 1rem;
         padding: 1.75rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .admin-page-title {
@@ -154,6 +235,9 @@ body{
         margin-left: 0;
         margin-right: 0;
         padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .admin-content-header {
@@ -200,12 +284,19 @@ body{
     .sa-chart-placeholder {
         min-height: 250px;
     }
+
+    .sa-donut-wrapper {
+        min-height: unset;
+    }
 }
 
 /* ── Mobile landscape / small tablets (600px) ── */
 @media (max-width: 600px) {
     .admin-main-content {
         padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .admin-page-title {
@@ -224,6 +315,15 @@ body{
 
     .sa-chart-placeholder {
         min-height: 200px;
+    }
+
+    .sa-donut-wrapper {
+        min-height: unset;
+    }
+
+    .sa-donut-svg {
+        width: 170px;
+        height: 170px;
     }
 }
 
@@ -290,8 +390,17 @@ body{
         min-height: 180px;
     }
 
-    .sa-chart-placeholder p {
-        font-size: 0.875rem;
+    .sa-donut-wrapper {
+        min-height: unset;
+    }
+
+    .sa-donut-svg {
+        width: 160px;
+        height: 160px;
+    }
+
+    .sa-donut-svg-pct {
+        font-size: 24px;
     }
 }
 
@@ -332,5 +441,10 @@ body{
 
     .sa-chart-placeholder {
         min-height: 150px;
+    }
+
+    .sa-donut-svg {
+        width: 145px;
+        height: 145px;
     }
 }

@@ -36,29 +36,30 @@
     <!-- User Role Labels -->
     <div class="signin-role-selector">
       <label class="signin-role-label signin-role-admin" for="signinAdmin">
-        <input type="radio" id="signinAdmin" name="signinRole" value="admin">
+        <input type="radio" id="signinAdmin" name="signinRole" value="admin" onchange="document.getElementById('signinForm').action='admin-overview.html'">
         <span>Admin</span>
       </label>
       <label class="signin-role-label signin-role-tenant" for="signinTenant">
-        <input type="radio" id="signinTenant" name="signinRole" value="tenant" checked>
+        <input type="radio" id="signinTenant" name="signinRole" value="tenant" checked onchange="document.getElementById('signinForm').action='tenant-myroom.html'">
         <span>Tenant</span>
       </label>
     </div>
 
-    <form action="dashboard.html" method="post">
+    <form id="signinForm" method="get" action="tenant-myroom.html">
       <div class="input-group">
         <input type="email" name="email" placeholder="Email Address" required pattern=".+@.+\.com">
       </div>
 
       <div class="input-group">
-        <input type="password" name="password" placeholder="Password" required minlength="12">
+        <input type="password" name="password" placeholder="Password" required minlength="5">
       </div>
 
       <div class="forgot">
         <a href="#">Forgot Password?</a>
       </div>
 
-      <button type="submit" class="btn">Sign In &#8594;</button>
+      <input type="hidden" id="roleInput" name="role" value="tenant">
+      <button type="submit" class="btn">Sign In &#8594;</button>  
     </form>
 
     <div class="signup">

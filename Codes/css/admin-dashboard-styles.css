@@ -39,6 +39,9 @@
     margin-top: 1.5rem;
     margin-bottom: 2.1rem;
     margin-left: 0;
+    text-align: left;
+    align-self: flex-start;
+    width: 100%;
 }
 
 .admin-page-title {
