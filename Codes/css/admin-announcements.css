@@ -56,13 +56,13 @@
 .aa-header h2 {
     font-size: 1.25rem;
     font-weight: 700;
-    color: #8b0000;
+    color: #6a0dad;
     margin: 0;
     font-family: 'Poppins', sans-serif;
 }
 
 .aa-new-post {
-    background: #c41e3a;
+    background: #a855f7;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -76,7 +76,7 @@
 }
 
 .aa-new-post:hover {
-    background: #8b0000;
+    background: #6a0dad;
 }
 
 /* ── Cards ── */

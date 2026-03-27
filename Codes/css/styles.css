@@ -3,19 +3,19 @@
    ======================================== */
 :root {
   /* Primary Colors */
-  --primary-red: #8b0000;
-  --primary-red-dark: #8b0000;
-  --primary-red-hover: #b30000;
-  --primary-red-active: #a52a2a;
-  --secondary-red: #b31818;
-  --red-accent: #a40000;
-  --red-badge: #c41e3a;
-  --red: #8b0000;
-  --red-light: #fff0f0;
-  --red-mid: #ffd6d6;
-  --red-feature-bg: #fdecec;
-  --red-light-bg: #fecaca;
-  --red-dark-text: #dc2626;
+  --primary-red: #6a0dad;
+  --primary-red-dark: #6a0dad;
+  --primary-red-hover: #7c3aed;
+  --primary-red-active: #5b21b6;
+  --secondary-red: #7c3aed;
+  --red-accent: #a855f7;
+  --red-badge: #a855f7;
+  --red: #6a0dad;
+  --red-light: #f3e8ff;
+  --red-mid: #e9d5ff;
+  --red-feature-bg: #faf5ff;
+  --red-light-bg: #dbeafe;
+  --red-dark-text: #a855f7;
   
   /* Text Colors */
   --text-dark: #1a1a2e;
@@ -25,7 +25,7 @@
   --text-lighter: #b0c4de;
   --text-white: #ffffff;
   --blue-primary: #b80000;
-  --blue-hover: #8b0000;
+  --blue-hover: #6a0bad;
   
   /* Background Colors */
   --bg-white: #ffffff;

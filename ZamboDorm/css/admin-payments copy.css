@@ -1,0 +1,454 @@
+
+/* HEADER AND FOOTER SPACE */
+.ap-header-space, .ap-footer-space{
+  height:80px;
+}
+
+/* ── Stats Grid ── */
+.ap-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem;
+  margin-bottom: 3.5rem;
+}
+
+.ap-stat-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ap-stat-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+.ap-stat-label {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.ap-stat-value {
+  font-size: 2.125rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+/* ── Payment Methods Section ── */
+.ap-payment-methods-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ap-section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ap-section-header > div:first-child {
+  flex: 1;
+}
+
+.ap-section-header h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.5px;
+}
+
+.ap-section-subtitle {
+  font-size: 0.9375rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.ap-manage-btn {
+  background: #9333ea;
+  color: #ffffff;
+  border: none;
+  padding: 0.6875rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(147, 51, 234, 0.2);
+}
+
+.ap-manage-btn:hover {
+  background: #7c3aed;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+}
+
+/* ── Payment Categories Grid ── */
+.ap-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.ap-payment-category {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1.25rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  align-items: flex-start;
+}
+
+.ap-payment-category:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+  transform: translateY(-2px);
+}
+
+.ap-category-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 24px;
+}
+
+.ap-category-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.75;
+}
+
+.ap-category-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.ap-category-content h3 {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.ap-category-content > p {
+  color: #6b7280;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.ap-category-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.ap-category-item {
+  background: #f3f4f6;
+  color: #4b5563;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.15s ease;
+}
+
+.ap-category-item:hover {
+  background: #e5e7eb;
+}
+
+/* ── Large desktops (1280px+) ── */
+@media (min-width: 1280px) {
+    .admin-main-content {
+        margin-left: 24.3rem;
+        margin-right: 1.5rem;
+        padding: 2rem 2.5rem;
+    }
+}
+
+/* ── Small desktops / large tablets (1024px) ── */
+@media (max-width: 1024px) {
+    .admin-main-content {
+        margin-left: 18rem;
+        margin-right: 1rem;
+        padding: 1.75rem;
+    }
+
+    .admin-page-title {
+        font-size: 2rem;
+    }
+
+    .ap-stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+    }
+
+    .ap-stat-card {
+        padding: 1.75rem;
+    }
+
+    .ap-stat-value {
+        font-size: 1.875rem;
+    }
+
+    .ap-categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+    }
+
+    .ap-section-header {
+        gap: 1.5rem;
+    }
+}
+
+/* ── Tablets (768px) — sidebar collapses ── */
+@media (max-width: 768px) {
+    .admin-main-content {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 1.25rem;
+    }
+
+    .admin-content-header {
+        margin-top: 1rem;
+        margin-bottom: 1.75rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.75rem;
+    }
+
+    .admin-page-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .ap-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .ap-stat-card {
+        padding: 1.5rem;
+    }
+
+    .ap-stat-label {
+        font-size: 0.8125rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .ap-stat-value {
+        font-size: 1.5rem;
+    }
+
+    .ap-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .ap-manage-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+
+    .ap-categories-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .ap-payment-category {
+        padding: 1.25rem;
+        gap: 1rem;
+    }
+
+    .ap-category-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .ap-category-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .ap-section-header h2 {
+        font-size: 1.1875rem;
+    }
+}
+
+/* ── Mobile landscape / small tablets (600px) ── */
+@media (max-width: 600px) {
+    .admin-main-content {
+        padding: 1rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.5rem;
+    }
+
+    .ap-stats-grid {
+        gap: 0.875rem;
+    }
+
+    .ap-payment-category {
+        gap: 0.75rem;
+    }
+}
+
+/* ── Mobile portrait (480px) ── */
+@media (max-width: 480px) {
+    .admin-content-header {
+        margin-bottom: 1.25rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.35rem;
+    }
+
+    .admin-page-subtitle {
+        font-size: 0.825rem;
+    }
+
+    .ap-stats-grid {
+        margin-bottom: 2rem;
+    }
+
+    .ap-stat-card {
+        padding: 1rem;
+    }
+
+    .ap-stat-label {
+        font-size: 0.75rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .ap-stat-value {
+        font-size: 1.375rem;
+    }
+
+    .ap-section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .ap-section-header h2 {
+        font-size: 1rem;
+    }
+
+    .ap-manage-btn {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+        padding: 0.6rem 1rem;
+    }
+
+    .ap-payment-category {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    .ap-category-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .ap-category-icon svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .ap-category-content h3 {
+        font-size: 0.9375rem;
+    }
+
+    .ap-category-content > p {
+        font-size: 0.8rem;
+    }
+
+    .ap-category-items {
+        width: 100%;
+        gap: 0.375rem;
+    }
+
+    .ap-category-item {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+}
+
+/* ── Very small phones (360px) ── */
+@media (max-width: 360px) {
+    .admin-main-content {
+        padding: 0.75rem;
+    }
+
+    .admin-page-title {
+        font-size: 1.2rem;
+    }
+
+    .ap-stat-card {
+        padding: 0.875rem;
+    }
+
+    .ap-stat-label {
+        font-size: 0.7rem;
+    }
+
+    .ap-stat-value {
+        font-size: 1.25rem;
+    }
+
+    .ap-manage-btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.875rem;
+    }
+
+    .ap-section-header h2 {
+        font-size: 0.9375rem;
+    }
+
+    .ap-payment-category {
+        padding: 0.875rem;
+    }
+
+    .ap-category-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ap-category-content h3 {
+        font-size: 0.875rem;
+    }
+}

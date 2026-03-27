@@ -289,7 +289,7 @@
 }
 
 .view-receipt:hover {
-  color: #8b0000;
+  color: #6a0bad;
 }
 
 /* Payment Modal */
@@ -608,12 +608,12 @@
 }
 
 .payment-btn-submit {
-    background-color: #c40000;
+    background-color: #a855f7;
     color: white;
 }
 
 .payment-btn-submit:hover {
-    background-color: #8b0000;
+    background-color: #6a0bad;
     transform: translateY(-2px);
 }
 
@@ -649,12 +649,12 @@
 .modal-content input:focus,
 .modal-content select:focus {
     outline: none;
-    border-color: #c40000;
+    border-color: #a855f7;
     background-color: #fff;
 }
 
 .confirm-btn {
-    background: #c40000;
+    background: #a855f7;
     color: white;
     border: none;
     padding: 1rem;
@@ -667,7 +667,7 @@
 }
 
 .confirm-btn:hover {
-    background: #8b0000;
+    background: #6a0bad;
 }
 
 .close-btn {

@@ -49,7 +49,7 @@
 
 .tenant-mgmt-search:focus {
     outline: none;
-    border-color: #dc2626;
+    border-color: #a855f7;
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.05);
 }
 
@@ -164,7 +164,7 @@
 
 .tenant-mgmt-action-btn:hover {
     background: #f3f4f6;
-    color: #dc2626;
+    color: #a855f7;
 }
 
 .tenant-mgmt-action-icon {

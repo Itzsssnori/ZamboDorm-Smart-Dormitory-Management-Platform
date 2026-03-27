@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZamboDorm – Complaints</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/tenant-payment.css"/>
+  <link rel="stylesheet" href="../css/tenant-complaint.css"/>
+</head>
+<body>
+
+<!-- Navigation Header -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z" fill="white" fill-opacity="0.95"/>
+          <rect x="9" y="14" width="6" height="7" rx="1" fill="rgba(124,58,237,0.65)"/>
+        </svg>
+      </div>
+      <span class="logo-text">Zambo<span>Dorm</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#features">Features</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="user-profile-container">
+        <div class="user-profile">
+          <div class="user-avatar">NJ</div>
+          <span class="user-name">John Doe</span>
+        </div>
+      </div>
+      <a href="#" class="btn-signin">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+        </svg>
+        Log Out
+      </a>
+    </div>
+    <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="index.html">Home</a>
+  <a href="index.html#features">Features</a>
+  <a href="#" class="btn-signin">Log Out</a>
+</div>
+
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="tenant-myroom.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>My Room</span>
+    </a>
+    <a href="tenant-payment.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <line x1="2" y1="10" x2="22" y2="10"/>
+        <circle cx="18" cy="17" r="1" fill="currentColor"/>
+      </svg>
+      <span>Payments</span>
+    </a>
+    <a href="service-request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="10" y1="14" x2="14" y2="14"/>
+      </svg>
+      <span>Request Service</span>
+    </a>
+    <a href="tenant-complaint.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>Complaints</span>
+    </a>
+    <a href="tenant-visitor.html" class="sidebar-item">
+    <div class="sidebar-divider"></div>
+    <a href="#" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      <span>Settings</span>
+    </a>
+    <a href="#" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <span>Help</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- Main Content -->
+<div class="main-content">
+
+  <div class="welcome-header" style="flex-direction: column; align-items: flex-start; gap: 0.25rem;">
+    <h1 class="greeting-title">Maintenance & Feedback</h1>
+    <p class="greeting-subtitle">Report issues or provide feedback</p>
+  </div>
+
+  <!-- Category Selection -->
+  <div id="category-selection-container" style="margin-left: 3rem; margin-right: 3rem;">
+    <div class="category-intro">
+      <svg class="intro-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <h2>Select Issue Category</h2>
+      <p>Choose the category that best describes your issue. We'll guide you through the reporting process.</p>
+    </div>
+
+    <div class="category-grid">
+      <div class="category-card" onclick="selectCategory(this, 'electrical')">
+        <div class="category-emoji">⚡</div>
+        <h3>Electrical Issues</h3>
+        <p>Power outage, faulty outlets, lighting problems</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'plumbing')">
+        <div class="category-emoji">💧</div>
+        <h3>Plumbing Issues</h3>
+        <p>Leaks, clogged drains, water pressure</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'aircon')">
+        <div class="category-emoji">❄️</div>
+        <h3>Air Conditioning</h3>
+        <p>Not cooling, strange noises, leaking</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'furniture')">
+        <div class="category-emoji">🪑</div>
+        <h3>Furniture & Fixtures</h3>
+        <p>Broken furniture, damaged fixtures</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'internet')">
+        <div class="category-emoji">📡</div>
+        <h3>Internet/WiFi</h3>
+        <p>Slow connection, no signal, connectivity issues</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'cleanliness')">
+        <div class="category-emoji">🧹</div>
+        <h3>Cleanliness</h3>
+        <p>Common areas, pest control, garbage</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'noise')">
+        <div class="category-emoji">🔊</div>
+        <h3>Noise Complaint</h3>
+        <p>Loud neighbors, disturbances</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'safety')">
+        <div class="category-emoji">🔒</div>
+        <h3>Safety & Security</h3>
+        <p>Door locks, security concerns</p>
+      </div>
+
+      <div class="category-card" onclick="selectCategory(this, 'other')">
+        <div class="category-emoji">💬</div>
+        <h3>Other Issues</h3>
+        <p>Any other concerns or feedback</p>
+      </div>
+    </div>
+
+    <div class="category-tip">
+      <span class="tip-icon">💡</span>
+      <span>Our system will help you describe your issue by asking specific questions. This ensures your request is clear and can be resolved quickly.</span>
+    </div>
+  </div>
+
+  <!-- Complaint Form (hidden initially) -->
+  <div id="complaint-form-container" style="display:none; margin-left: 3rem; margin-right: 3rem;">
+    <div class="complaint-section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="section-title" id="form-title">Issue Details</h2>
+          <p class="section-subtitle" id="form-subtitle">Help us understand your issue better</p>
+        </div>
+      </div>
+
+      <form id="complaint-form">
+        <div id="form-fields"></div>
+        <div class="form-buttons">
+          <button type="button" class="btn-back" onclick="goBackToCategories()">Back</button>
+          <button type="button" class="btn-review" onclick="reviewComplaint()">Review Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Review Section (hidden initially) -->
+  <div id="review-container" style="display:none; margin-left: 3rem; margin-right: 3rem;">
+    <div class="complaint-section review-section">
+      <h2 class="section-title-review">Review Your Complaint</h2>
+
+      <div class="review-items" id="review-items"></div>
+
+      <div class="review-info-box">
+        <span class="info-icon">ℹ️</span>
+        <div>
+          <strong>Note:</strong> Your complaint will be submitted to the admin for review and appropriate action will be taken.
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="button" class="btn-back" onclick="goBackToForm()">Back</button>
+        <button type="button" class="btn-submit" onclick="submitComplaint()">Submit Complaint</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Dialog -->
+  <div class="complaint-overlay" id="success-overlay">
+    <div class="complaint-dialog">
+      <div class="dialog-icon">✓</div>
+      <div class="dialog-title">Complaint Submitted!</div>
+      <div class="dialog-msg">Your complaint has been received and submitted to admin for review. We'll address it as soon as possible.</div>
+      <button class="btn-next" onclick="redirectToRoom()">Back to Room</button>
+    </div>
+  </div>
+
+</div><!-- end .main-content -->
+
+<!-- TOAST -->
+<div class="toast" id="toast"><span id="toast-msg"></span></div>
+
+<script src="../js/navbar.js"></script>
+<script src="../js/tenant-complaint.js"></script>
+</body>
+</html>

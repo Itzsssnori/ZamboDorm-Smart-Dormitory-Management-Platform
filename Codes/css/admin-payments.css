@@ -80,7 +80,7 @@
 }
 
 .ap-manage-btn {
-  background: #c41e3a;
+  background: #a855f7;
   color: #ffffff;
   border: none;
   padding: 0.6875rem 1.5rem;
@@ -95,7 +95,7 @@
 }
 
 .ap-manage-btn:hover {
-  background: #8b0000;
+  background: #6a0dad;
   box-shadow: 0 2px 8px rgba(139, 0, 0, 0.3);
 }
 

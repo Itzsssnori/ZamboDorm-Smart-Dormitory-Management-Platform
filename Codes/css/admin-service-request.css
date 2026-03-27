@@ -60,12 +60,12 @@
 /* Icon colors for different service types */
 .service-request-icon.maintenance {
     background-color: #fee2e2;
-    color: #dc2626;
+    color: #a855f7;
 }
 
 .service-request-icon.maintenance svg {
-    color: #dc2626;
-    stroke: #dc2626;
+    color: #a855f7;
+    stroke: #a855f7;
     fill: none;
 }
 
@@ -140,7 +140,7 @@
 }
 
 .service-request-manage-btn {
-    background: #dc2626;
+    background: #a855f7;
     color: white;
     border: none;
     padding: 0.5rem 1rem;

@@ -105,16 +105,16 @@
 
 .forgot a {
     text-decoration: none;
-    color: #8b0000;
+    color: #6a0bad;
     font-weight: 600;
 }
 
 .forgot a:hover {
-    color: #b30000;
+    color: #7c3aed;
 }
 
 .forgot a:active {
-    color: #8b0000;
+    color: #6a0bad;
 }
 
 /* Primary submit button */

@@ -79,7 +79,7 @@ body {
 }
 
 .room-card .occupied-full {
-    background-color: #ffd6d6;
+    background-color: #e0f2fe;
 }
 
 .room-status {
@@ -111,8 +111,8 @@ body {
 
 /* Full/Partial Occupancy */
 .room-card.occupied-full{
-    background-color: #fff0f0;
-    border-color: #ffafaf;
+    background-color: #f0f9ff;
+    border-color: #7dd3fc;
 }
 .room-card.occupied-partial {
     background-color: #f0f7ff;
@@ -120,7 +120,7 @@ body {
 }
 
 .room-card.occupied-full .dotoccupy{
-    background-color: #8b0000;
+    background-color: #6a0dad;
     box-shadow: 0 0 0 4px rgba(247, 89, 89, 0.1);
 }
 .room-card.occupied-partial .dot {

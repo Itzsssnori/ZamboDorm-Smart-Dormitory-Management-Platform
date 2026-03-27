@@ -69,7 +69,7 @@
 .form-select:focus,
 .form-textarea:focus {
   outline: none;
-  border-color: #8b0000;
+  border-color: #6a0bad;
   box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
 }
 
@@ -88,7 +88,7 @@
   padding: 1rem 2rem;
   width: 100%;
   border-radius: 14px;
-  background: #c40000;
+  background: #a855f7;
   color: white;
   cursor: pointer;
   font-weight: 600;
@@ -101,7 +101,7 @@
 }
 
 .submit-btn:hover {
-  background: #8b0000;
+  background: #6a0bad;
   box-shadow: 0 4px 14px rgba(139, 0, 0, 0.3);
 }
 

@@ -33,6 +33,33 @@
     }
 }
 
+/* Responsive Design - Medium screens (768px and below) */
+@media (max-width: 768px) {
+    .admin-main-content {
+        margin-left: 12rem;
+        margin-right: 0.75rem;
+        padding: 1rem;
+    }
+}
+
+/* Responsive Design - Small screens (640px and below) */
+@media (max-width: 640px) {
+    .admin-main-content {
+        margin-left: 3.5rem;
+        margin-right: 0.5rem;
+        padding: 0.75rem;
+    }
+}
+
+/* Responsive Design - Extra small (480px and below) */
+@media (max-width: 480px) {
+    .admin-main-content {
+        margin-left: 3rem;
+        margin-right: 0.5rem;
+        padding: 0.5rem;
+    }
+}
+
 /* Content Header */
 
 .admin-content-header {
@@ -533,9 +560,9 @@
 
 @media (max-width: 768px) {
     .admin-main-content {
-        margin-left: 0;
-        margin-right: 0;
-        padding: 1.25rem 1rem;
+        margin-left: 12rem;
+        margin-right: 0.75rem;
+        padding: 1rem;
         padding-top: 1.5rem;
     }
 
@@ -651,10 +678,10 @@
 
 @media (max-width: 640px) {
     .admin-main-content {
-        padding: 1rem;
-        padding-top: 3.5rem;
-        margin-left: 0;
-        margin-right: 0;
+        padding: 0.75rem;
+        padding-top: 1rem;
+        margin-left: 3.5rem;
+        margin-right: 0.5rem;
     }
 
     .admin-content-header {

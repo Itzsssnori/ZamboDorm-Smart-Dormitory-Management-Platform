@@ -89,18 +89,18 @@
 
 /* ── Active state ─────────────────────────────────────── */
 .sidebar-item.active {
-  background-color: #fff0f0;
-  border-left-color: #8b0000;
-  color: #8b0000;
+  background-color: #f0f9ff;
+  border-left-color: #6a0bad;
+  color: #6a0bad;
 }
 
 .sidebar-item.active .sidebar-icon {
-  color: #8b0000;
+  color: #6a0bad;
   opacity: 1;
 }
 
 .sidebar-item.active .sidebar-label {
-  color: #8b0000;
+  color: #6a0bad;
   font-weight: 600;
 }
 
@@ -176,10 +176,10 @@
 
 /* ── Focus state ──────────────────────────────────────── */
 .sidebar-item:focus-visible {
-  outline: 2px solid #8b0000;
+  outline: 2px solid #6a0bad;
   outline-offset: -2px;
-  background-color: #fff0f0;
-  border-left-color: #8b0000;
+  background-color: #f0f9ff;
+  border-left-color: #6a0bad;
 }
 
 /* ═══════════════════════════════════════════════════════

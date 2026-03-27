@@ -88,7 +88,7 @@
 }
 
 .settings-styled-input:focus {
-    border-color: #dc2626;
+    border-color: #a855f7;
     box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.05);
 }
 
@@ -151,7 +151,7 @@
 }
 
 .settings-save-btn {
-    background-color: #dc2626;
+    background-color: #a855f7;
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
@@ -294,7 +294,7 @@
 }
 
 .settings-actions-btn:hover {
-    color: #dc2626;
+    color: #a855f7;
     background-color: #f3f4f6;
 }
 
@@ -345,7 +345,7 @@
 .settings-card-icon { width: 24px; height: 24px; }
 .settings-icon-blue { color: #0284c7; }
 .settings-icon-orange { color: #f97316; }
-.settings-icon-red { color: #dc2626; }
+.settings-icon-red { color: #a855f7; }
 
 .settings-stat-value {
     font-size: 2rem;

@@ -7,7 +7,7 @@
 .features-logo-circle {
     width: 2.375rem;
     height: 2.375rem;
-    background-color: #8B0000;
+    background-color: #6a0bad;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -22,7 +22,7 @@
 .features-logo-text {
     font-size: 1.125rem;
     font-weight: 700;
-    color: #8B0000;
+    color: #6a0bad;
 }
 
 /* Navigation on features page */
