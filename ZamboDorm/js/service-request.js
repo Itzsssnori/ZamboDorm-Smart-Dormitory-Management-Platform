@@ -67,18 +67,23 @@ function buildReview() {
   let service = '';
   let details = '';
   let weight = '';
+  let location = '';
 
   if (selectedService === 'water') {
     const size = document.getElementById('water-size').value;
     const qty = document.getElementById('water-qty').value;
+    const deliveryLoc = document.getElementById('water-delivery-location').value;
     service = 'Water Delivery';
     details = `${qty}x ${size === '5gallon' ? '5-Gallon Container' : size === '3gallon' ? '3-Gallon Container' : '1-Gallon Bottle'}`;
+    location = deliveryLoc;
     document.getElementById('review-weight-item').style.display = 'none';
   } else {
     const type = document.getElementById('laundry-type').value;
     weight = document.getElementById('laundry-weight').value;
+    const pickupLoc = document.getElementById('laundry-pickup-location').value;
     service = 'Laundry Service';
     details = `${type === 'wash-fold' ? 'Wash & Fold' : type === 'wash-iron' ? 'Wash & Iron' : 'Dry Cleaning'}`;
+    location = pickupLoc;
     document.getElementById('review-weight-item').style.display = '';
     document.getElementById('review-weight').textContent = `${weight} kg`;
   }
@@ -87,12 +92,11 @@ function buildReview() {
   const contact = document.getElementById('contact-number').value;
   const date = document.getElementById('service-date').value;
   const time = document.getElementById('service-time').value;
-  const location = document.getElementById('pickup-location').value;
 
-  const locationLabel = location === 'room-entrance' ? 'Room entrance' : 
-                        location === 'front-desk' ? 'Front desk' :
-                        location === 'main-lobby' ? 'Main lobby' :
-                        location === 'building-entrance' ? 'Building entrance' : '-';
+  const locationLabel = location === 'room-entrance' ? 'Room Entrance' : 
+                        location === 'ground-area' ? 'Ground Area' :
+                        location === 'reception-desk' ? 'Reception Desk' :
+                        location === 'building-entrance' ? 'Building Entrance' : '-';
 
   document.getElementById('review-service').textContent = service;
   document.getElementById('review-details').textContent = details;
@@ -107,16 +111,18 @@ function validateStep2() {
   if (selectedService === 'water') {
     const sizeField = document.getElementById('water-size');
     const qtyField = document.getElementById('water-qty');
+    const locationField = document.getElementById('water-delivery-location');
     
-    if (!sizeField.value || !qtyField.value) {
+    if (!sizeField.value || !qtyField.value || !locationField.value) {
       errorBox.style.display = 'block';
       return;
     }
   } else {
     const typeField = document.getElementById('laundry-type');
     const weightField = document.getElementById('laundry-weight');
+    const locationField = document.getElementById('laundry-pickup-location');
     
-    if (!typeField.value || !weightField.value) {
+    if (!typeField.value || !weightField.value || !locationField.value) {
       errorBox.style.display = 'block';
       return;
     }
