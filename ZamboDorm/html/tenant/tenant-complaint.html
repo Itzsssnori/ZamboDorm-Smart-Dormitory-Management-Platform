@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZamboDorm – Report an Issue</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/variables.css"/>
+  <link rel="stylesheet" href="../css/base.css"/>
+  <link rel="stylesheet" href="../css/components.css"/>
+  <link rel="stylesheet" href="../css/layout.css"/>
+  <link rel="stylesheet" href="../css/utilities.css"/>
+  <link rel="stylesheet" href="../css/complaint.css"/>
+  <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+</head>
+<body>
+
+<!-- Navbar Web Component -->
+<zd-navbar authenticated></zd-navbar>
+  <script src="../js/hamburger.js"></script>
+  <script src="../js/navbar-scroll.js"></script>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- ── SIDEBAR ── -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="tenant-myroom.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>My Room</span>
+    </a>
+    <a href="tenant-payment.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <line x1="2" y1="10" x2="22" y2="10"/>
+        <circle cx="18" cy="17" r="1" fill="currentColor"/>
+      </svg>
+      <span>Payments</span>
+    </a>
+    <a href="service-request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <line x1="12" y1="12" x2="12" y2="16"/>
+        <line x1="10" y1="14" x2="14" y2="14"/>
+      </svg>
+      <span>Request Service</span>
+    </a>
+    <a href="tenant-complaint.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>Complaints</span>
+    </a>
+    <a href="tenant-visitors.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Visitors</span>
+    </a>
+    <div class="sidebar-divider"></div>
+    <a href="settings-B.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      <span>Settings</span>
+    </a>
+    <a href="help-B.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <span>Help</span>
+    </a>
+  </nav>
+</aside>
+
+<!-- ── MAIN LAYOUT ── -->
+<main class="layout">
+
+  <!-- Page header -->
+  <div class="page-header">
+    <h1>Report an Issue</h1>
+    <p>Report issues or provide feedback about your stay</p>
+  </div>
+
+  <!-- Step bar -->
+  <div class="step-bar">
+    <div class="step active" id="step1">
+      <div class="step-num">1</div>
+      <span class="step-label">Select Category</span>
+    </div>
+    <div class="step" id="step2">
+      <div class="step-num">2</div>
+      <span class="step-label">Describe Issue</span>
+    </div>
+    <div class="step" id="step3">
+      <div class="step-num">3</div>
+      <span class="step-label">Review & Submit</span>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 1: Category ══ -->
+  <div id="screen-category">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 16v-4M12 8h.01"/>
+          </svg>
+        </div>
+        <div>
+          <h2>Select Issue Category</h2>
+          <p>Choose the category that best describes your issue. We'll guide you through the reporting process.</p>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="category-grid">
+
+          <div class="cat-card cat-electrical" data-cat="Electrical Issues" onclick="selectCategory(this)">
+            <span class="cat-emoji">⚡</span>
+            <div class="cat-title">Electrical Issues</div>
+            <div class="cat-desc">Power outage, faulty outlets, lighting problems</div>
+          </div>
+
+          <div class="cat-card cat-plumbing" data-cat="Plumbing Issues" onclick="selectCategory(this)">
+            <span class="cat-emoji">💧</span>
+            <div class="cat-title">Plumbing Issues</div>
+            <div class="cat-desc">Leaks, clogged drains, water pressure</div>
+          </div>
+
+          <div class="cat-card cat-ac" data-cat="Air Conditioning" onclick="selectCategory(this)">
+            <span class="cat-emoji">❄️</span>
+            <div class="cat-title">Air Conditioning</div>
+            <div class="cat-desc">Not cooling, strange noises, leaking</div>
+          </div>
+
+          <div class="cat-card cat-furniture" data-cat="Furniture & Fixtures" onclick="selectCategory(this)">
+            <span class="cat-emoji">🪑</span>
+            <div class="cat-title">Furniture & Fixtures</div>
+            <div class="cat-desc">Broken furniture, damaged fixtures</div>
+          </div>
+
+          <div class="cat-card cat-internet" data-cat="Internet / WiFi" onclick="selectCategory(this)">
+            <span class="cat-emoji">📶</span>
+            <div class="cat-title">Internet / WiFi</div>
+            <div class="cat-desc">Slow connection, no signal, connectivity issues</div>
+          </div>
+
+          <div class="cat-card cat-cleanliness" data-cat="Cleanliness" onclick="selectCategory(this)">
+            <span class="cat-emoji">🧹</span>
+            <div class="cat-title">Cleanliness</div>
+            <div class="cat-desc">Common areas, pest control, garbage</div>
+          </div>
+
+          <div class="cat-card cat-noise" data-cat="Noise Complaint" onclick="selectCategory(this)">
+            <span class="cat-emoji">🔊</span>
+            <div class="cat-title">Noise Complaint</div>
+            <div class="cat-desc">Loud neighbors, disturbances</div>
+          </div>
+
+          <div class="cat-card cat-security" data-cat="Safety & Security" onclick="selectCategory(this)">
+            <span class="cat-emoji">🔒</span>
+            <div class="cat-title">Safety & Security</div>
+            <div class="cat-desc">Door locks, security concerns</div>
+          </div>
+
+          <div class="cat-card cat-other" data-cat="Other Issues" onclick="selectCategory(this)">
+            <span class="cat-emoji">💬</span>
+            <div class="cat-title">Other Issues</div>
+            <div class="cat-desc">Any other concerns or feedback</div>
+          </div>
+
+        </div>
+
+        <div class="tip-box">
+          <span>💡</span>
+          <div><strong>Tip:</strong> Our system will help you describe your issue by asking specific questions. This ensures your request is clear and can be resolved quickly.</div>
+        </div>
+
+        <div class="action-row">
+          <button class="btn-primary" id="btn-next-1" onclick="goToDetail()" disabled>
+            Continue
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 2: Detail Form ══ -->
+  <div id="screen-detail">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 id="detail-title">Describe Your Issue</h2>
+          <p id="detail-sub">Provide more details so we can address it promptly.</p>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="form-row">
+          <div class="form-section">
+            <label class="form-label">Category <span>*</span></label>
+            <input type="text" class="form-control" id="field-category" readonly style="background:#f5f3ff; color:var(--primary); font-weight:600;" />
+          </div>
+          <div class="form-section">
+            <label class="form-label">Room Number <span>*</span></label>
+            <input type="text" class="form-control" value="Room 204" readonly style="background:#f9fafb;" />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Issue Title <span>*</span></label>
+          <input type="text" class="form-control" id="field-title" placeholder="e.g. No electricity in my room since last night" />
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Detailed Description <span>*</span></label>
+          <textarea class="form-control" id="field-desc" placeholder="Please describe the issue in as much detail as possible. When did it start? How does it affect you? Have you tried anything to fix it?"></textarea>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Urgency Level <span>*</span></label>
+          <div class="urgency-grid">
+            <button class="urgency-btn" id="urg-low"    onclick="setUrgency('low')"   >🟢 Low</button>
+            <button class="urgency-btn" id="urg-medium" onclick="setUrgency('medium')">🟡 Medium</button>
+            <button class="urgency-btn" id="urg-high"   onclick="setUrgency('high')"  >🔴 High / Urgent</button>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Preferred Time for Visit <span>*</span></label>
+          <div class="form-row">
+            <input type="date" class="form-control" id="field-date" />
+            <select class="form-control" id="field-time">
+              <option value="">Select time slot</option>
+              <option>Morning (8:00 AM – 12:00 PM)</option>
+              <option>Afternoon (12:00 PM – 5:00 PM)</option>
+              <option>Evening (5:00 PM – 8:00 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <label class="form-label">Attach Photo (optional)</label>
+          <div class="upload-zone" onclick="document.getElementById('fileInput').click()">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="1.5" stroke-linecap="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+            <p>Click to upload or drag & drop</p>
+            <span>PNG, JPG, GIF up to 10MB</span>
+            <input type="file" id="fileInput" accept="image/*" style="display:none" onchange="handleFile(this)" />
+          </div>
+          <div id="file-preview" style="margin-top:0.5rem; font-size:0.83rem; color:var(--primary); font-weight:600;"></div>
+        </div>
+
+        <div class="action-row" style="gap:0.75rem; justify-content:space-between;">
+          <button class="btn-secondary" onclick="goBack(1)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Back
+          </button>
+          <button class="btn-primary" onclick="goToReview()">
+            Review Request
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 3: Review ══ -->
+  <div id="screen-review">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <div>
+          <h2>Review Your Request</h2>
+          <p>Please verify all details before submitting.</p>
+        </div>
+      </div>
+      <div class="card-body">
+
+        <div class="review-block">
+          <div class="review-block-title">Issue Details</div>
+          <div class="review-row">
+            <span class="review-key">Category</span>
+            <span class="review-val" id="rv-category">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-key">Room</span>
+            <span class="review-val">Room 204</span>
+          </div>
+          <div class="review-row">
+            <span class="review-key">Title</span>
+            <span class="review-val" id="rv-title">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-key">Description</span>
+            <span class="review-val" id="rv-desc" style="white-space:pre-wrap;">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-key">Urgency</span>
+            <span class="review-val" id="rv-urgency">—</span>
+          </div>
+        </div>
+
+        <div class="review-block">
+          <div class="review-block-title">Preferred Visit</div>
+          <div class="review-row">
+            <span class="review-key">Date</span>
+            <span class="review-val" id="rv-date">—</span>
+          </div>
+          <div class="review-row">
+            <span class="review-key">Time Slot</span>
+            <span class="review-val" id="rv-time">—</span>
+          </div>
+        </div>
+
+        <div class="disclaimer">
+          By submitting this request, you confirm that the information provided is accurate. Our team will review your report and respond within <strong>24–48 hours</strong>. For emergencies, please contact the admin directly.
+        </div>
+
+        <div class="action-row" style="gap:0.75rem; justify-content:space-between; margin-top:1.25rem;">
+          <button class="btn-secondary" onclick="goBack(2)">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+            Edit
+          </button>
+          <button class="btn-primary" onclick="submitReport()">
+            Submit Report
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SCREEN 4: Done ══ -->
+  <div id="screen-done">
+    <div class="card">
+      <div class="done-wrap">
+        <div class="done-icon">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="done-ticket" id="done-ticket">#SR-2025-0042</div>
+        <div class="done-title">Report Submitted!</div>
+        <div class="done-sub">Your request has been received. Our maintenance team will review it and reach out to you within <strong>24–48 hours</strong>.</div>
+        <div class="done-actions">
+          <button class="btn-secondary" onclick="resetForm()">Submit Another</button>
+          <a href="tenant-myroom.html" class="btn-primary" style="text-decoration:none;">
+            Go to My Room
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  /* ── State ── */
+  let selectedCategory = null;
+  let selectedUrgency  = null;
+
+  /* ── Sidebar toggle (mobile) ── */
+  function toggleSidebar() {
+    const sb  = document.getElementById('sidebar');
+    const ov  = document.getElementById('overlay');
+    sb.classList.toggle('open');
+    ov.classList.toggle('active');
+  }
+
+  /* ── Step helpers ── */
+  function setStep(n) {
+    [1,2,3].forEach(i => {
+      const el = document.getElementById('step' + i);
+      el.classList.remove('active','done');
+      if (i < n)  el.classList.add('done');
+      if (i === n) el.classList.add('active');
+    });
+  }
+
+  function showScreen(name) {
+    ['category','detail','review','done'].forEach(s => {
+      document.getElementById('screen-' + s).style.display = 'none';
+    });
+    document.getElementById('screen-' + name).style.display = 'block';
+  }
+
+  /* ── Screen 1 ── */
+  function selectCategory(el) {
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedCategory = el.dataset.cat;
+    document.getElementById('btn-next-1').disabled = false;
+  }
+
+  function goToDetail() {
+    if (!selectedCategory) return;
+    document.getElementById('field-category').value = selectedCategory;
+    document.getElementById('detail-title').textContent = selectedCategory;
+    document.getElementById('detail-sub').textContent   = 'Provide more details so we can address your ' + selectedCategory.toLowerCase() + ' promptly.';
+    setStep(2);
+    showScreen('detail');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* ── Screen 2 ── */
+  function setUrgency(level) {
+    selectedUrgency = level;
+    document.getElementById('urg-low').className    = 'urgency-btn';
+    document.getElementById('urg-medium').className = 'urgency-btn';
+    document.getElementById('urg-high').className   = 'urgency-btn';
+
+    if (level === 'low')    document.getElementById('urg-low').classList.add('selected');
+    if (level === 'medium') document.getElementById('urg-medium').classList.add('selected-yellow');
+    if (level === 'high')   document.getElementById('urg-high').classList.add('selected-red');
+  }
+
+  function handleFile(input) {
+    if (input.files.length > 0) {
+      document.getElementById('file-preview').textContent = '📎 ' + input.files[0].name;
+    }
+  }
+
+  function goToReview() {
+    const title = document.getElementById('field-title').value.trim();
+    const desc  = document.getElementById('field-desc').value.trim();
+    const date  = document.getElementById('field-date').value;
+    const time  = document.getElementById('field-time').value;
+
+    if (!title) { alert('Please enter an issue title.'); return; }
+    if (!desc)  { alert('Please describe your issue.'); return; }
+    if (!selectedUrgency) { alert('Please select an urgency level.'); return; }
+    if (!date)  { alert('Please select a preferred date.'); return; }
+    if (!time)  { alert('Please select a preferred time slot.'); return; }
+
+    /* Populate review */
+    document.getElementById('rv-category').textContent = selectedCategory;
+    document.getElementById('rv-title').textContent    = title;
+    document.getElementById('rv-desc').textContent     = desc;
+
+    const urgencyLabels = { low:'🟢 Low', medium:'🟡 Medium', high:'🔴 High / Urgent' };
+    const urgencyClasses = { low:'badge-low', medium:'badge-medium', high:'badge-high' };
+    const rvU = document.getElementById('rv-urgency');
+    rvU.innerHTML = `<span class="badge ${urgencyClasses[selectedUrgency]}">${urgencyLabels[selectedUrgency]}</span>`;
+
+    const dateObj = new Date(date + 'T00:00:00');
+    document.getElementById('rv-date').textContent = dateObj.toLocaleDateString('en-PH', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+    document.getElementById('rv-time').textContent = time;
+
+    setStep(3);
+    showScreen('review');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function goBack(from) {
+    if (from === 1) { setStep(1); showScreen('category'); }
+    if (from === 2) { setStep(2); showScreen('detail'); }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* ── Screen 3: Submit ── */
+  function submitReport() {
+    /* Generate a ticket number */
+    const ticketNum = '#SR-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+    document.getElementById('done-ticket').textContent = ticketNum;
+    showScreen('done');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* ── Reset ── */
+  function resetForm() {
+    selectedCategory = null;
+    selectedUrgency  = null;
+    document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('selected'));
+    document.getElementById('btn-next-1').disabled = true;
+    document.getElementById('field-title').value = '';
+    document.getElementById('field-desc').value  = '';
+    document.getElementById('field-date').value  = '';
+    document.getElementById('field-time').value  = '';
+    document.getElementById('urg-low').className    = 'urgency-btn';
+    document.getElementById('urg-medium').className = 'urgency-btn';
+    document.getElementById('urg-high').className   = 'urgency-btn';
+    document.getElementById('file-preview').textContent = '';
+    setStep(1);
+    showScreen('category');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  /* Set today as min date */
+  document.getElementById('field-date').min = new Date().toISOString().split('T')[0];
+</script>
+</body>
+</html>
+
+
+
+

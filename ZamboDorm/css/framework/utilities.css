@@ -1,0 +1,140 @@
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* UTILITIES.CSS - HELPER CLASSES & OVERRIDES                                  */
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* Single-purpose utility classes for common patterns. Last layer before       */
+/* page-specific CSS for maximum priority on overrides.                        */
+
+/* ── TEXT ALIGNMENT ── */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+/* ── TEXT COLOR ── */
+.text-primary { color: var(--primary); }
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-muted { color: var(--text-muted); }
+.text-white { color: #fff; }
+
+/* ── TEXT SIZE ── */
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.875rem; }
+.text-base { font-size: 1rem; }
+.text-lg { font-size: 1.125rem; }
+.text-xl { font-size: 1.25rem; }
+.text-2xl { font-size: 1.5rem; }
+
+/* ── TEXT WEIGHT ── */
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-extrabold { font-weight: 800; }
+
+/* ── TEXT DECORATION ── */
+.underline { text-decoration: underline; }
+.line-through { text-decoration: line-through; }
+.no-underline { text-decoration: none; }
+
+/* ── DISPLAY ── */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.none { display: none; }
+.hidden { visibility: hidden; }
+
+/* ── VISIBILITY ── */
+.visible { visibility: visible; }
+
+/* ── OPACITY ── */
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+/* ── BACKGROUND ── */
+.bg-white { background: #fff; }
+.bg-primary { background: var(--primary); }
+.bg-transparent { background: transparent; }
+
+/* ── BORDER ── */
+.border { border: 1px solid var(--card-border); }
+.border-primary { border: 1px solid var(--primary); }
+.rounded { border-radius: var(--radius); }
+.rounded-sm { border-radius: 0.5rem; }
+.rounded-md { border-radius: 1rem; }
+.rounded-lg { border-radius: 1.5rem; }
+.rounded-full { border-radius: 9999px; }
+
+/* ── SHADOW ── */
+.shadow-sm { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); }
+.shadow-md { box-shadow: var(--shadow-card); }
+.shadow-lg { box-shadow: var(--shadow-brand); }
+
+/* ── CURSOR ── */
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+
+/* ── POSITION ── */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* ── Z-INDEX ── */
+.z-0 { z-index: 0; }
+.z-10 { z-index: 10; }
+.z-50 { z-index: 50; }
+.z-100 { z-index: 100; }
+.z-999 { z-index: 999; }
+
+/* ── WIDTH ── */
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-screen { width: 100vw; }
+
+/* ── HEIGHT ── */
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+.h-screen { height: 100vh; }
+
+/* ── MAX WIDTH ── */
+.max-w-sm { max-width: 24rem; }
+.max-w-md { max-width: 28rem; }
+.max-w-lg { max-width: 32rem; }
+.max-w-xl { max-width: 36rem; }
+.max-w-2xl { max-width: 42rem; }
+.max-w-full { max-width: 100%; }
+
+/* ── OVERFLOW ── */
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-x-hidden { overflow-x: hidden; }
+
+/* ── POINTER EVENTS ── */
+.pointer-events-none { pointer-events: none; }
+.pointer-events-auto { pointer-events: auto; }
+
+/* ── TRANSITION ── */
+.transition-fast { transition: all var(--transition-fast); }
+.transition-smooth { transition: all var(--transition-smooth); }
+
+/* ── RESPONSIVE DISPLAY ── */
+@media (max-width: 768px) {
+  .hide-tablet { display: none; }
+}
+
+@media (max-width: 480px) {
+  .hide-mobile { display: none; }
+}
+
+@media (min-width: 769px) {
+  .hide-desktop { display: none; }
+}
+
+/* ── RESPONSIVE TEXT SIZE ── */
+@media (max-width: 480px) {
+  .text-sm-mobile { font-size: 0.75rem; }
+  .text-base-mobile { font-size: 0.875rem; }
+  .text-lg-mobile { font-size: 1rem; }
+}

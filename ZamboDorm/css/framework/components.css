@@ -1,0 +1,477 @@
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* COMPONENTS.CSS - REUSABLE UI COMPONENTS                                     */
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* Form inputs, buttons, cards, and common UI patterns used across all pages.  */
+/* Import after variables.css but before page-specific CSS.                    */
+
+/* ── ANIMATIONS ── */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(22px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ── FORM GROUP ── */
+.form-group {
+  margin-bottom: 1.1rem;
+}
+
+/* ── FORM LABEL ── */
+.form__label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 0.45rem;
+}
+
+/* ── FORM INPUT WRAPPER ── */
+.form__input-wrap {
+  position: relative;
+}
+
+/* ── FORM INPUT ICON ── */
+.form__input-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-soft);
+  display: flex;
+  pointer-events: none;
+  transition: color var(--transition-smooth);
+}
+
+.form__input-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ── FORM INPUT ── */
+.form__input {
+  width: 100%;
+  padding: 0.75rem 1rem 0.75rem 2.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  background: rgba(245, 243, 255, 0.7);
+  border: 1.5px solid rgba(var(--primary-rgba), 0.15);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), background var(--transition-smooth);
+}
+
+.form__input::placeholder {
+  color: var(--text-soft);
+  font-weight: 400;
+}
+
+.form__input:focus {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3.5px rgba(var(--primary-rgba), 0.12);
+}
+
+.form__input:focus ~ .form__input-icon,
+.form__input-wrap:focus-within .form__input-icon {
+  color: var(--primary);
+}
+
+/* ── INPUT ERROR STATE ── */
+.form__input.input--error,
+.input--error {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.form__input.input--error:focus,
+.input--error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.08);
+}
+
+/* ── PASSWORD TOGGLE BUTTON ── */
+.form__password-toggle {
+  position: absolute;
+  right: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-soft);
+  display: flex;
+  transition: color var(--transition-smooth);
+  padding: 2px;
+}
+
+.form__password-toggle:hover {
+  color: var(--primary);
+}
+
+.form__password-toggle svg {
+  width: 17px;
+  height: 17px;
+}
+
+/* ── FORM ACTIONS (Forgot Link Row) ── */
+.form__actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: -0.5rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ── FORGOT/LINK ── */
+.form__forgot-link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity var(--transition-smooth);
+}
+
+.form__forgot-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* ── ERROR BOX ── */
+.error-box {
+  display: none;
+  background: linear-gradient(135deg, rgba(var(--primary-light-rgba), 0.08) 0%, rgba(var(--primary-rgba), 0.06) 100%);
+  border: 1.5px solid rgba(var(--primary-rgba), 0.25);
+  color: var(--primary);
+  padding: 1rem 1.2rem;
+  border-radius: 14px;
+  margin-bottom: 1.2rem;
+  align-items: center;
+  gap: 0.875rem;
+  animation: slideDown 0.3s var(--transition-easing);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgba), 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.error-box.show {
+  display: flex;
+}
+
+.error-box-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+  flex-shrink: 0;
+  stroke-width: 2.5;
+}
+
+.error-box span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* ── BUTTONS BASE ── */
+.form__btn,
+.form__btn-secondary {
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+  letter-spacing: -0.01em;
+  border-radius: 12px;
+  border: none;
+  padding: 0.82rem 1.5rem;
+  font-weight: 700;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  font-size: 0.95rem;
+}
+
+/* ── PRIMARY BUTTON ── */
+.form__btn {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  color: #fff;
+  box-shadow: var(--shadow-btn-primary);
+  margin-bottom: 1rem;
+  min-height: 44px;
+}
+
+.form__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-btn-hover);
+  filter: brightness(1.05);
+}
+
+.form__btn:active {
+  transform: translateY(-2px);
+  filter: brightness(0.98);
+}
+
+.form__btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.form__btn.loading svg,
+.form__btn.loading .form__btn-label,
+.form__btn.loading .form__btn-arrow {
+  min-height: 18px;
+}
+
+/* ── LOADING SPINNER ── */
+.spinner {
+  display: none;
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.form__btn.loading .spinner {
+  display: block;
+}
+
+.form__btn.loading .form__btn-label,
+.form__btn.loading .form__btn-arrow {
+  display: none;
+}
+
+/* ── DIVIDER ── */
+.form__divider {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.form__divider::before,
+.form__divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(var(--primary-rgba), 0.1);
+}
+
+/* ── SECONDARY BUTTON ── */
+.form__btn-secondary {
+  background: transparent;
+  color: var(--primary);
+  border: 1.8px solid rgba(var(--primary-rgba), 0.3);
+}
+
+.form__btn-secondary:hover {
+  background: rgba(var(--primary-rgba), 0.05);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+
+/* ── CARD BASE ── */
+.card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-card);
+  padding: 2.5rem 2.25rem 2.25rem;
+}
+
+/* ── CARD HEADER ── */
+.card__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ── CARD BRAND/ICON ── */
+.card__brand {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-brand);
+  margin-bottom: 1.1rem;
+}
+
+.card__brand svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* ── CARD TITLE ── */
+.card__title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  margin-bottom: 0.35rem;
+}
+
+/* ── CARD SUBTITLE ── */
+.card__subtitle {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.card__subtitle span {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ── TOAST NOTIFICATION ── */
+.toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(80px);
+  background: var(--text);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.65rem 1.25rem;
+  border-radius: 50px;
+  box-shadow: var(--shadow-toast);
+  z-index: 999;
+  transition: transform 0.35s var(--transition-easing), opacity var(--transition-smooth);
+  opacity: 0;
+  white-space: nowrap;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* ── RESPONSIVE: Tablet ── */
+@media (max-width: 768px) {
+  .form__label {
+    font-size: 0.75rem;
+  }
+
+  .form__input {
+    font-size: 0.85rem;
+    padding: 0.65rem 0.9rem 0.65rem 2.5rem;
+  }
+
+  .form__password-toggle {
+    right: 0.8rem;
+  }
+
+  .form__forgot-link {
+    font-size: 0.75rem;
+  }
+
+  .form__btn {
+    font-size: 0.9rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .form__btn-secondary {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.25rem;
+  }
+
+  .card__title {
+    font-size: 1.5rem;
+  }
+
+  .card__subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* ── RESPONSIVE: Mobile ── */
+@media (max-width: 480px) {
+  .form__label {
+    font-size: 0.7rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .form__input {
+    font-size: 0.8rem;
+    padding: 0.6rem 0.8rem 0.6rem 2.3rem;
+  }
+
+  .form__input-icon svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .form__password-toggle svg {
+    width: 15px;
+    height: 15px;
+  }
+
+  .form__actions {
+    margin-bottom: 0.95rem;
+  }
+
+  .form__btn {
+    font-size: 0.85rem;
+    padding: 0.7rem 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .form__btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .form__divider {
+    font-size: 0.7rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .form__btn-secondary {
+    font-size: 0.8rem;
+    padding: 0.65rem 1rem;
+  }
+
+  .card__title {
+    font-size: 1.35rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .card__brand {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0.9rem;
+  }
+
+  .card__brand svg {
+    width: 26px;
+    height: 26px;
+  }
+}

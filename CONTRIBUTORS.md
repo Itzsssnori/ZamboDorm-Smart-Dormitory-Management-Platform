@@ -29,10 +29,14 @@ Below is a record of our team members and development progress.
   Started the admin page and distributed tasks among the team. The page is currently halfway done and actively being developed.
 - **03/19/2026**
   Developed the settings and help page for admin and tenants use for quick navigation and easy web-app accessibility.
+- **03/27/2026**
+  Started implementing a new system design architecture to improve code organization and maintainability.
+- **03/28/2026**
+  Reorganized entire codebase into clean structure: CSS framework/pages separation with 6-layer ITCSS, HTML organized by domain (admin, tenant, auth, public, dorm, services), and JavaScript split into core utilities and page-specific logic, with comprehensive README documentation for navigation.
 ---
 ## Notes  
-- Git commits may appear under Norielle’s name due to repository management.  
+- Git commits may appear under Norielle's name due to repository management.  
 - Everyone created their own branch for contributions.  
 - **This file is a work-in-progress and will be updated as the system develops.**  
 
-_Last updated: 03/20/2026, 02:39 aM_  
+_Last updated: 03/28/2026, GitHub Copilot_
