@@ -942,3 +942,19 @@ body {
     width: 100%;
   }
 }
+
+/* SlideIn Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-content, .page-header {
+  animation: slideIn 0.3s ease;
+}

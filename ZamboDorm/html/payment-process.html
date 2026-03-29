@@ -7,13 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="../css/style.css"/>
-<link rel="stylesheet" href="../css/variables.css"/>
-<link rel="stylesheet" href="../css/base.css"/>
-<link rel="stylesheet" href="../css/components.css"/>
-<link rel="stylesheet" href="../css/layout.css"/>
-<link rel="stylesheet" href="../css/utilities.css"/>
 <link rel="stylesheet" href="../css/payment-process.css"/>
-<link rel="stylesheet" href="../css/tenant-myroom.css"/>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
@@ -24,6 +18,7 @@
   <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
 
+<div class="page-wrapper">
   <!-- HEADER -->
   <div class="page-header">
     <div class="header-left">
@@ -338,15 +333,23 @@
     </div>
   </div>
 
-  <!-- ══ SUCCESS SCREEN ══ -->
-  <div id="success-screen" class="success-screen">
-    <div class="success-circle">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-    </div>
-    <div class="success-title">Payment Submitted!</div>
-    <div class="success-sub">Your payment has been submitted for verification.<br>The dorm admin will confirm within 24 hours.</div>
-    <button class="btn-next" onclick="resetFlow()">Make Another Payment</button>
+ <!-- ══ SUCCESS SCREEN ══ -->
+<div id="success-screen" class="success-screen">
+  <div class="success-circle">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="20 6 9 17 4 12"/>
+    </svg>
   </div>
+  <div class="success-title">Payment Submitted!</div>
+  <div class="success-sub">
+    Your payment has been submitted for verification.<br>
+    The dorm admin will confirm within 24 hours.
+  </div>
+  <div class="success-actions">
+    <button class="btn-back" onclick="resetFlow()">Make Another Payment</button>
+    <a href="tenant-myroom.html" class="btn-next">Go to Dashboard →</a>
+  </div>
+</div>
 
 </div><!-- /page -->
 
@@ -374,6 +377,7 @@
       <button class="btn-back" onclick="confirmExit()">Exit</button>
     </div>
   </div>
+</div>
 </div>
 
 <!-- TOAST -->

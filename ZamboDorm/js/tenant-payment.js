@@ -165,11 +165,11 @@ const style = document.createElement('style');
 style.textContent = `
   @keyframes slideIn {
     from {
-      transform: translateX(400px);
+      transform: translateY(10px);
       opacity: 0;
     }
     to {
-      transform: translateX(0);
+      transform: translateY(0);
       opacity: 1;
     }
   }

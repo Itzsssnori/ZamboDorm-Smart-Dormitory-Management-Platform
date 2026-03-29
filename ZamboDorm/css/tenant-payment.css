@@ -293,6 +293,7 @@ body {
 .main-content {
   margin-left: 260px;
   padding: 2rem 3rem;
+  animation: slideIn 0.3s ease;
 }
 
 .page-header {
@@ -923,4 +924,20 @@ body {
   .payment-history-item { padding: 0.85rem 0; }
   .payment-history-status { padding: 0.3rem 0.75rem; font-size: 0.65rem; }
   .payment-history-amount { font-size: 0.95rem; }
+}
+
+/* SlideIn Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.main-content, .page-header {
+  animation: slideIn 0.3s ease;
 }

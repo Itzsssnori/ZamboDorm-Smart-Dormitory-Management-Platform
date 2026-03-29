@@ -77,26 +77,27 @@
 
 /* ── MAIN LAYOUT (Block) ── */
 .layout {
-  margin-left: 260px;
-  margin-right: 0;
+  margin-left: 280px;
   min-height: calc(100vh - 68px);
   padding: 2.5rem 2rem;
   max-width: calc(100vw - 260px - 4rem);
-  margin-right: 2rem;
+  margin-right: 2.5rem;
   overflow-x: hidden;
+  animation: slideIn 0.3s ease;
 }
 
 /* ── PAGE HEADER (Block) ── */
 .page-header {
   margin-bottom: 2rem;
+  margin-top: 2.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
 }
 
 .page-header h1 {
-  font-size: 1.65rem;
+  font-size: 2.3rem;
   font-weight: 800;
-  color: #1a1a2e;
+  color: var(--text); 
   letter-spacing: -0.02em;
 }
 
@@ -787,4 +788,15 @@ textarea.form-control {
 
 .sidebar-overlay.active {
   display: block;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

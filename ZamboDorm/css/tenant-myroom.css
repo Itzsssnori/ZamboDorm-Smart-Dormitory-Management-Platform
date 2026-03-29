@@ -309,6 +309,7 @@ body {
   margin-left: 260px;
   padding: 2rem;
   min-height: 100vh;
+  animation: slideIn 0.3s ease;
 }
 
 /* Welcome Header */
@@ -2020,102 +2021,58 @@ body {
   .items-section {
     margin-left: 0;
     margin-right: 0;
-  }
-
-  .item-row {
-    grid-template-columns: auto 1fr auto;
-    gap: 0.75rem;
-    padding: 0.9rem;
-  }
-
-  .notices-section {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .two-column-section {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .announcement-title {
-    font-size: 1.3rem;
-  }
-
-  .balance-amount {
-    font-size: 2rem;
-  }
-
-  .roommate-card {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .roommate-info {
-    flex: none;
-  }
-
-  .lease-status-content {
-    gap: 1.5rem;
-  }
-
-  .divider-vertical {
-    width: 1px;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .roommate-section {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .two-column-section {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .notices-section {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .notices-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .notice-box {
     padding: 1.25rem;
   }
 
-  .btn-signin {
-    padding: 0.32rem 0.65rem;
+  .items-list {
+    gap: 0.6rem;
+  }
+
+  .item-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.6rem;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .item-number {
+    width: 24px;
+    height: 24px;
+    font-size: 0.75rem;
+  }
+
+  .item-name {
+    font-size: 0.85rem;
+  }
+
+  .item-date {
     font-size: 0.7rem;
   }
 
-  .btn-signin svg {
-    width: 13px;
-    height: 13px;
+  .item-delete-btn {
+    padding: 0.3rem 0.5rem;
   }
 
-  .user-profile-container {
-    min-width: 130px;
-    padding: 0.25rem 0.65rem 0.25rem 0.25rem;
+  .notices-section {
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  .user-avatar {
-    width: 28px;
-    height: 28px;
-    font-size: 0.65rem;
+  .announcement-item {
+    padding: 1.25rem;
   }
 
-  .user-name {
+  .announcement-item-title {
+    font-size: 0.95rem;
+  }
+
+  .announcement-item-date {
     font-size: 0.75rem;
+  }
+
+  .announcement-item-body {
+    font-size: 0.85rem;
   }
 }
 
@@ -2272,4 +2229,20 @@ body {
   .announcement-item-body {
     font-size: 0.85rem;
   }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* SlideIn Animation */
+.main-content, .page-header {
+  animation: slideIn 0.3s ease;
 }
