@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="sysadmin-properties.css" />
+</head>
+<body>
+
+<!-- page -->
+<div class="page">
+
+  <!-- page-header -->
+  <header class="page-header">
+    <div>
+      <h1 class="page-header__title">Property Management</h1>
+      <p class="page-header__subtitle">Manage dormitory properties</p>
+    </div>
+    <button class="btn btn--primary" id="open-btn">＋ Add New Property</button>
+  </header>
+
+  <!-- card > table -->
+  <div class="card">
+    <div class="card__header">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="card__title">All Properties</span>
+        <span class="card__badge" id="prop-count"></span>
+      </div>
+    </div>
+    <table class="table">
+      <thead>
+        <tr class="table__head-row">
+          <th class="table__th">Property Name</th>
+          <th class="table__th">Owner</th>
+          <th class="table__th">Address</th>
+          <th class="table__th">Rooms</th>
+          <th class="table__th">Date Added</th>
+          <th class="table__th">Actions</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- modal -->
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal__overlay" id="modal-overlay"></div>
+  <div class="modal__dialog">
+
+    <div class="modal__header">
+      <h2 class="modal__title" id="modal-title">Add New Property</h2>
+      <button class="modal__close" id="close-btn">&times;</button>
+    </div>
+
+    <div class="modal__body">
+      <div class="field">
+        <label class="field__label field__label--required" for="f-name">Property Name</label>
+        <input class="field__input" id="f-name" type="text" placeholder="Enter property name" />
+        <span class="field__error" id="err-name" hidden>Required.</span>
+      </div>
+
+      <div class="field field--row">
+        <div class="field">
+          <label class="field__label field__label--required" for="f-first">First Name</label>
+          <input class="field__input" id="f-first" type="text" placeholder="First name" />
+          <span class="field__error" id="err-first" hidden>Required.</span>
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="f-last">Last Name</label>
+          <input class="field__input" id="f-last" type="text" placeholder="Last name" />
+          <span class="field__error" id="err-last" hidden>Required.</span>
+        </div>
+      </div>
+
+      <div class="field field--row">
+        <div class="field">
+          <label class="field__label" for="f-middle">Middle Name <small style="text-transform:none;font-weight:400">(Optional)</small></label>
+          <input class="field__input" id="f-middle" type="text" placeholder="Middle name" />
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-suffix">Suffix <small style="text-transform:none;font-weight:400">(Optional)</small></label>
+          <input class="field__input" id="f-suffix" type="text" placeholder="Jr., Sr…" />
+        </div>
+      </div>
+
+      <div class="field field--row">
+        <div class="field">
+          <label class="field__label field__label--required" for="f-rooms">Rooms</label>
+          <input class="field__input" id="f-rooms" type="number" min="1" placeholder="e.g. 20" />
+          <span class="field__error" id="err-rooms" hidden>Enter a valid number.</span>
+        </div>
+        <div class="field">
+          <label class="field__label" for="f-date">Date Added</label>
+          <input class="field__input" id="f-date" type="date" />
+          <span class="field__hint">Auto-filled with today's date</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field__label field__label--required" for="f-address">Address</label>
+        <input class="field__input" id="f-address" type="text" placeholder="Full property address" />
+        <span class="field__error" id="err-address" hidden>Required.</span>
+      </div>
+    </div>
+
+    <div class="modal__footer">
+      <button class="btn btn--ghost" id="cancel-btn">Cancel</button>
+      <button class="btn btn--primary" id="submit-btn">Add Property</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- toast -->
+<div class="toast" id="toast" role="alert"></div>
+
+
+<script>
+
+/* --- STORE: manages property data in localStorage --- */
+const Store = (() => {
+  const SEED = [
+    { id: 1, name: 'Sunshine Dormitory',     first: 'Juan',  last: 'dela Cruz', middle: '',   suffix: '', address: '123 Zamboanga St., Zamboanga City',     rooms: 20, date: '2025-01-15' },
+    { id: 2, name: 'Blue Haven Dorms',       first: 'Maria', last: 'Santos',    middle: '',   suffix: '', address: '456 Seaside Ave., Zamboanga City',      rooms: 15, date: '2025-02-10' },
+    { id: 3, name: 'Green Valley Residence', first: 'Pedro', last: 'Reyes',     middle: 'A.', suffix: '', address: '789 Mountain View Rd., Zamboanga City', rooms: 25, date: '2025-03-05' },
+  ];
+
+  let _data   = JSON.parse(localStorage.getItem('properties') || 'null') || SEED;
+  let _nextId = Math.max(..._data.map(p => p.id), 0) + 1;
+
+  const save = () => localStorage.setItem('properties', JSON.stringify(_data));
+
+  return {
+    getAll: ()     => [..._data],
+    find:   (id)   => _data.find(p => p.id === id) || null,
+    add(prop)      { const e = { id: _nextId++, ...prop }; _data.push(e); save(); return e; },
+    update(id, prop) { const i = _data.findIndex(p => p.id === id); if (i > -1) { _data[i] = { ..._data[i], ...prop }; save(); } },
+    remove(id)     { _data = _data.filter(p => p.id !== id); save(); },
+  };
+})();
+
+
+/* --- TOAST: shows a brief status message then fades out --- */
+const Toast = {
+  _t: null,
+  show(msg, type = 'success') {
+    clearTimeout(this._t);
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className   = `toast toast--show toast--${type}`;
+    this._t = setTimeout(() => el.classList.remove('toast--show'), 2500);
+  },
+};
+
+
+/* --- MODAL: handles open/close and form submit for add and edit --- */
+const Modal = (() => {
+  let _editId = null; // null = add mode, number = edit mode
+
+  const today   = () => new Date().toISOString().split('T')[0];
+  const val     = id => document.getElementById(id).value.trim();
+
+  // show or hide a field's error message
+  const setErr  = (f, show) => {
+    document.getElementById(`err-${f}`).hidden = !show;
+    document.getElementById(`f-${f}`).classList.toggle('field__input--error', show);
+  };
+
+  const clearErrors = () =>
+    ['name','first','last','rooms','address'].forEach(f => setErr(f, false));
+
+  // fill form fields when editing an existing property
+  const populate = p => {
+    ['name','first','last','middle','suffix','address'].forEach(f => document.getElementById(`f-${f}`).value = p[f]);
+    document.getElementById('f-rooms').value = p.rooms;
+    document.getElementById('f-date').value  = p.date;
+  };
+
+  // clear all fields for a fresh add form
+  const reset = () => {
+    ['f-name','f-first','f-last','f-middle','f-suffix','f-rooms','f-address'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('f-date').value = today();
+    clearErrors();
+  };
+
+  return {
+    open(editId = null) {
+      _editId = editId;
+      editId !== null ? populate(Store.find(editId)) : reset();
+
+      // update modal title and button label based on mode
+      document.getElementById('modal-title').textContent = editId !== null ? 'Edit Property' : 'Add New Property';
+      document.getElementById('submit-btn').textContent  = editId !== null ? 'Save Changes'  : 'Add Property';
+
+      document.getElementById('modal').classList.add('modal--open');
+      setTimeout(() => document.getElementById('f-name').focus(), 100);
+    },
+
+    close() {
+      document.getElementById('modal').classList.remove('modal--open');
+      _editId = null;
+    },
+
+    validate() {
+      clearErrors();
+      let ok = true;
+      // each rule: [field, fails when true]
+      [['name', v => !v], ['first', v => !v], ['last', v => !v],
+       ['rooms', v => !v || +v < 1], ['address', v => !v]]
+        .forEach(([f, fails]) => { if (fails(val(`f-${f}`))) { setErr(f, true); ok = false; } });
+      return ok;
+    },
+
+    submit() {
+      if (!this.validate()) return;
+      const data = {
+        name: val('f-name'), first: val('f-first'), last: val('f-last'),
+        middle: val('f-middle'), suffix: val('f-suffix'),
+        rooms: +val('f-rooms'),
+        date: document.getElementById('f-date').value || today(),
+        address: val('f-address'),
+      };
+      _editId !== null ? Store.update(_editId, data) : Store.add(data);
+      Toast.show(_editId !== null ? 'Property updated!' : 'Property added!');
+      this.close();
+      Table.render();
+    },
+  };
+})();
+
+
+/* --- TABLE: renders the property list into the page --- */
+const Table = {
+  esc:       s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'),
+  initials:  p => (p.first[0] + p.last[0]).toUpperCase(),
+  fullName:  p => [p.first, p.middle, p.last, p.suffix].filter(Boolean).join(' '),
+
+  buildRow(p, i) {
+    return `
+      <tr class="table__row" style="animation-delay:${i * 40}ms">
+        <td class="table__td"><strong>${this.esc(p.name)}</strong></td>
+        <td class="table__td">
+          <div class="owner">
+            <div class="owner__avatar">${this.initials(p)}</div>
+            <span class="owner__name">${this.esc(this.fullName(p))}</span>
+          </div>
+        </td>
+        <td class="table__td table__td--muted">${this.esc(p.address)}</td>
+        <td class="table__td"><span class="badge">${p.rooms} Rooms</span></td>
+        <td class="table__td table__td--muted">${p.date}</td>
+        <td class="table__td table__td--right">
+          <button class="btn btn--ghost btn--sm" onclick="Modal.open(${p.id})">Edit</button>
+          <button class="btn btn--danger btn--sm" onclick="Table.remove(${p.id})">Delete</button>
+        </td>
+      </tr>`;
+  },
+
+  render() {
+    const data  = Store.getAll();
+    const tbody = document.getElementById('table-body');
+
+    tbody.innerHTML = data.length
+      ? data.map((p, i) => this.buildRow(p, i)).join('')
+      : `<tr><td colspan="6"><div class="empty-state"><span class="empty-state__icon"></span>No properties yet.</div></td></tr>`;
+
+    // update the count badge
+    document.getElementById('prop-count').textContent =
+      `${data.length} ${data.length === 1 ? 'property' : 'properties'} registered`;
+  },
+
+  remove(id) {
+    if (!confirm(`Delete "${Store.find(id)?.name}"? This cannot be undone.`)) return;
+    Store.remove(id);
+    Toast.show('Property deleted.', 'danger');
+    this.render();
+  },
+};
+
+
+/* --- EVENT LISTENERS --- */
+document.getElementById('open-btn').addEventListener('click',    () => Modal.open());
+document.getElementById('close-btn').addEventListener('click',   () => Modal.close());
+document.getElementById('cancel-btn').addEventListener('click',  () => Modal.close());
+document.getElementById('modal-overlay').addEventListener('click',() => Modal.close());
+document.getElementById('submit-btn').addEventListener('click',  () => Modal.submit());
+document.addEventListener('keydown', e => { if (e.key === 'Escape') Modal.close(); });
+
+
+/* --- INIT --- */
+Table.render();
+
+</script>
+</body>
+</html>
