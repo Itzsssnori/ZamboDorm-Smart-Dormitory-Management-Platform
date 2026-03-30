@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Application Tracking</title>
+<link rel="stylesheet" href="sysadmin-application.css" />
+</head>
+<body>
+
+<h1>Application Tracking</h1>
+<p class="sub">Review pending landlord applications</p>
+
+<div class="cards">
+  <div class="card">
+    <h2>4</h2>
+    <p>Total Applications</p>
+  </div>
+  <div class="card">
+    <h2>3</h2>
+    <p>Pending Review</p>
+  </div>
+  <div class="card">
+    <h2>1</h2>
+    <p>Approved</p>
+  </div>
+</div>
+
+<h2>Pending Applications (3)</h2>
+
+<!-- APPLICATION 1 -->
+<div class="app-card">
+  <div class="header-row">
+    <strong class="applicant-name">Pedro Reyes</strong>
+    <span class="badge pending">Pending</span>
+    <div class="actions">
+      <button class="btn btn-view" onclick="openView('Pedro Reyes','Reyes Dormitories Inc.','pedro.reyes@example.com','+63 912 345 6789',3,'2026-03-28',['Business Permit','Valid ID','Property Documents'])">
+        <span class="icon">View</span>
+      </button>
+      <button class="btn btn-edit">Edit Status</button>
+      <button class="btn btn-comment" onclick="openComment('Pedro Reyes')">
+        <span class="icon">Comment</span>
+      </button>
+    </div>
+  </div>
+  <div class="details">
+    <p><strong>Business:</strong> Reyes Dormitories Inc.</p>
+    <p><strong>Email:</strong> pedro.reyes@example.com</p>
+    <p><strong>Phone:</strong> +63 912 345 6789</p>
+    <p><strong>Dormitories:</strong> 3 &bull; <strong>Applied on:</strong> 2026-03-28</p>
+  </div>
+</div>
+
+<!-- APPLICATION 2 -->
+<div class="app-card">
+  <div class="header-row">
+    <strong class="applicant-name">Maria Santos</strong>
+    <span class="badge pending">Pending</span>
+    <div class="actions">
+      <button class="btn btn-view" onclick="openView('Maria Santos','Santos Housing Solutions','maria.santos@example.com','+63 923 456 7890',1,'2026-03-27',['Business Permit','Valid ID','Tax Documents'])">
+        <span class="icon">View</span>
+      </button>
+      <button class="btn btn-edit">Edit Status</button>
+      <button class="btn btn-comment" onclick="openComment('Maria Santos')">
+        <span class="icon">Comment</span>
+      </button>
+    </div>
+  </div>
+  <div class="details">
+    <p><strong>Business:</strong> Santos Housing Solutions</p>
+    <p><strong>Email:</strong> maria.santos@example.com</p>
+    <p><strong>Phone:</strong> +63 923 456 7890</p>
+    <p><strong>Dormitories:</strong> 1 &bull; <strong>Applied on:</strong> 2026-03-27</p>
+  </div>
+</div>
+
+<!-- APPLICATION 3 -->
+<div class="app-card">
+  <div class="header-row">
+    <strong class="applicant-name">Ana Lopez</strong>
+    <span class="badge pending">Pending</span>
+    <div class="actions">
+      <button class="btn btn-view" onclick="openView('Ana Lopez','Lopez Residences','ana.lopez@example.com','+63 945 678 9012',1,'2026-03-26',['Business Permit','Valid ID','Sanitary Permit'])">
+        <span class="icon">View</span>
+      </button>
+      <button class="btn btn-edit">Edit Status</button>
+      <button class="btn btn-comment" onclick="openComment('Ana Lopez')">
+        <span class="icon">Comment</span>
+      </button>
+    </div>
+  </div>
+  <div class="details">
+    <p><strong>Business:</strong> Lopez Residences</p>
+    <p><strong>Email:</strong> ana.lopez@example.com</p>
+    <p><strong>Phone:</strong> +63 945 678 9012</p>
+    <p><strong>Dormitories:</strong> 1 &bull; <strong>Applied on:</strong> 2026-03-26</p>
+  </div>
+</div>
+
+<!-- VIEW MODAL -->
+<div class="modal" id="viewModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeView()">&times;</span>
+    <h2>Application Details</h2>
+
+    <p><strong>Name:</strong> <span id="viewName"></span></p>
+    <p><strong>Business:</strong> <span id="viewBusiness"></span></p>
+    <p><strong>Email:</strong> <span id="viewEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="viewPhone"></span></p>
+    <p><strong>Dormitories:</strong> <span id="viewDorms"></span></p>
+    <p><strong>Applied Date:</strong> <span id="viewDate"></span></p>
+
+    <h4>Documents</h4>
+    <ul id="viewDocs"></ul>
+  </div>
+</div>
+
+<!-- COMMENT MODAL -->
+<div class="modal" id="commentModal">
+  <div class="modal-content">
+    <span class="close" onclick="closeComment()">&times;</span>
+
+    <h2>Add Comment</h2>
+    <p>Application from: <strong id="commentName"></strong></p>
+
+    <textarea placeholder="Enter your feedback..."></textarea>
+
+    <div class="modal-footer">
+      <button class="btn cancel" onclick="closeComment()">Cancel</button>
+      <button class="btn submit">Submit Comment</button>
+    </div>
+  </div>
+</div>
+
+<script src="sysadmin-application.js"></script>
+</body>
+</html>
