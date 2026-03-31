@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Management</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="system-admin-styles.css">
+</head>
+<body>
+
+<div class="header">
+  <div class="header__logo">U</div>
+  <span class="header__name">UserAdmin</span>
+  <div class="header__spacer"></div>
+  <span class="header__badge">SYSTEM ADMIN</span>
+</div>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar__label">Menu</div>
+    <div class="sidebar__item sidebar__item--active"><span class="sidebar__icon">👥</span>User Management</div>
+    <div class="sidebar__item"><span class="sidebar__icon">🏠</span>Dormitories</div>
+    <div class="sidebar__item"><span class="sidebar__icon">📋</span>Reports</div>
+    <div class="sidebar__label" style="margin-top:12px">Settings</div>
+    <div class="sidebar__item"><span class="sidebar__icon">⚙️</span>Configuration</div>
+  </aside>
+
+  <main class="main">
+    <div class="main__header">
+      <h1 class="main__title">User Management</h1>
+      <p class="main__subtitle">Review and manage landlord registrations</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tabs__tab tabs__tab--active" data-tab="overview">Overview</button>
+      <button class="tabs__tab" data-tab="landlords">Landlords</button>
+    </div>
+
+    <!-- OVERVIEW -->
+    <section id="overview" class="tab-content tab-content--active">
+      <div class="cards">
+        <div class="card card--total" id="card-total">
+          <div class="card__num">0</div>
+          <div class="card__label"><span class="card__dot"></span>Total Users</div>
+        </div>
+        <div class="card card--landlords" id="card-landlords">
+          <div class="card__num">0</div>
+          <div class="card__label"><span class="card__dot"></span>Landlords</div>
+        </div>
+        <div class="card card--approved" id="card-approved">
+          <div class="card__num">0</div>
+          <div class="card__label"><span class="card__dot"></span>Approved</div>
+        </div>
+        <div class="card card--declined" id="card-declined">
+          <div class="card__num">0</div>
+          <div class="card__label"><span class="card__dot"></span>Declined</div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <div class="table-container__header">
+          <span class="table-container__title">Approval / Decline History</span>
+          <span class="table-container__count" id="history-count">0 records</span>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Status</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="history-table-body">
+            <tr><td colspan="4"><div class="empty-state"><div class="empty-state__icon">📭</div><div class="empty-state__text">No activity yet</div></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- LANDLORDS -->
+    <section id="landlords" class="tab-content">
+      <div class="table-container">
+        <div class="table-container__header">
+          <span class="table-container__title">All Landlords</span>
+          <span class="table-container__count" id="landlord-count">0 landlords</span>
+          <div class="table-container__spacer"></div>
+          <div class="search-wrap">
+            <span class="search-wrap__icon">🔍</span>
+            <input type="text" id="landlord-search" class="search-input" placeholder="Search name, business, email…">
+          </div>
+        </div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Business</th>
+              <th>Owner</th>
+              <th>Dormitories</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="landlord-table-body"></tbody>
+        </table>
+        <div class="pagination" id="landlord-pagination">
+          <span class="pagination__info" id="pagination-info"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="system-admin-user-javascript.js"></script>
+</body>
+</html>
