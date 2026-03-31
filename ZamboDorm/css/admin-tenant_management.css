@@ -165,7 +165,8 @@ body {
   background:    white;
   border:        1px solid var(--card-border);
   border-radius: 12px;
-  padding:       1rem 1.25rem;
+  padding:       1.5rem 1.25rem;
+  min-height:    90px;
   box-shadow:    var(--shadow-sm);
   display:       flex;
   flex-direction: column;
@@ -777,4 +778,34 @@ body {
   .tm-stats { grid-template-columns: 1fr 1fr; }
   .main-content { padding: 1rem 0.875rem 4rem; }
   .tm-header h1 { font-size: 1.6rem; }
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 260px;
+    background: #fff;
+    box-shadow: 2px 0 16px rgba(30,27,75,0.10);
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    z-index: 200;
+    overflow-y: auto;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,27,75,0.3);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
 }

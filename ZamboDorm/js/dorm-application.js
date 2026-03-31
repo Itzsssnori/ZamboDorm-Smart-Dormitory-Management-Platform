@@ -77,7 +77,7 @@ const DORMS = [
     desc: "A friendly, affordable dormitel with spacious double rooms and sea glimpses from upper floors. Well-connected by public transport to the city center and universities.",
     amenities: ["WiFi", "Common Area", "Laundry", "Water", "Parking"],
     heroImg: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
-    roomImgs: ["https://images.unsplash.com/photo-1558618666-fcd25c85cd58?w=500&q=75", "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=500&q=75"]
+    roomImgs: ["https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?w=500&q=75", "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=500&q=75"]
   },
   {
     id: 6,

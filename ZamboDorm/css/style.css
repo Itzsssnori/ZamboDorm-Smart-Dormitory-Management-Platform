@@ -323,6 +323,14 @@ body {
   }
 }
 
+/* Fix: Only allow pointer events when mobile menu is open */
+.mobile-menu {
+  pointer-events: none;
+}
+.mobile-menu.mobile-menu--open {
+  pointer-events: auto;
+}
+
 /* ═══════════════════════════════════════
    HERO SECTION (BLOCK)
 ═══════════════════════════════════════ */

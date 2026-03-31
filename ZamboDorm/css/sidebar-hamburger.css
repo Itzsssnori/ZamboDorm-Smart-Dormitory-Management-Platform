@@ -1,0 +1,61 @@
+/* Sidebar Hamburger Button (Reusable) */
+.sidebar-hamburger {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 120;
+  width: 48px;
+  height: 48px;
+  background: var(--primary, #7c3aed);
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(124,58,237,0.10);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  cursor: pointer;
+  padding: 8px;
+  transition: background 0.2s;
+}
+.sidebar-hamburger:hover {
+  background: #5b21b6;
+}
+.sidebar-hamburger span {
+  display: block;
+  width: 26px;
+  height: 4px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+@media (max-width: 900px) {
+  .sidebar-hamburger { display: flex; }
+}
+@media (min-width: 901px) {
+  .sidebar-hamburger { display: none !important; }
+}
+
+/* Sidebar mobile overlay */
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    z-index: 200;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(30,27,75,0.3);
+    z-index: 199;
+    backdrop-filter: blur(2px);
+  }
+  .sidebar-overlay.active {
+    display: block;
+  }
+}

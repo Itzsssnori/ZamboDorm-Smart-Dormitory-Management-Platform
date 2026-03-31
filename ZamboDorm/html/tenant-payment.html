@@ -7,15 +7,25 @@
   <link rel="stylesheet" href="../css/style.css"/>
   <link rel="stylesheet" href="../css/tenant-payment.css"/>
   <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
+  <link rel="stylesheet" href="../css/tenant-sidebar-hamburger.css">
+  <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
 <body>
 
 <!-- Navbar Web Component -->
-  <zd-navbar authenticated></zd-navbar>
+<zd-navbar authenticated></zd-navbar>
   <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Tenant Mobile Sidebar Hamburger (Reusable) -->
+<button class="tenant-sidebar-hamburger" id="tenantSidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/tenant-sidebar-hamburger.js"></script>
+
 <aside class="sidebar" id="sidebar">
   <nav class="sidebar-nav">
     <a href="tenant-myroom.html" class="sidebar-item">
@@ -200,5 +210,6 @@
 </main>
 
 <script src="../js/tenant-payment.js"></script>
+
 </body>
 </html>

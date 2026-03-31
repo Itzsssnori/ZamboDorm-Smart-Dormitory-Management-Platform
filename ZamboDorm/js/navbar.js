@@ -4,8 +4,9 @@
  * Pulls user data dynamically from UserManager (localStorage)
  * Usage:
  *   Public: <zd-navbar></zd-navbar>
- *   Auth: <zd-navbar authenticated></zd-navbar> (pulls user data from localStorage)
+ *   Auth:   <zd-navbar authenticated></zd-navbar>
  */
+
 class ZDNavBar extends HTMLElement {
   constructor() {
     super();
@@ -90,21 +91,13 @@ class ZDNavBar extends HTMLElement {
 
       <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu__inner">
-          <a href="../html/index.html#hero" class="mobile-menu__link">
-            Home
-          </a>
-          <a href="../html/index.html#core-features" class="mobile-menu__link">
-            Features
-          </a>
-          <a href="../html/index.html#about" class="mobile-menu__link">
-            About
-          </a>
-          <a href="../html/index.html#contact" class="mobile-menu__link">
-            Contact
-          </a>
+          <a href="../html/index.html#hero" class="mobile-menu__link">Home</a>
+          <a href="../html/index.html#core-features" class="mobile-menu__link">Features</a>
+          <a href="../html/index.html#about" class="mobile-menu__link">About</a>
+          <a href="../html/index.html#contact" class="mobile-menu__link">Contact</a>
           <div class="mobile-menu__divider"></div>
           ${isAuth ? `
-            <a href="../html/index.html" class="btn btn--signin mobile-menu__link" id="logoutBtnMobile">
+            <a href="javascript:void(0)" class="btn btn--signin mobile-menu__link" id="logoutBtnMobile">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
               </svg>
@@ -133,68 +126,72 @@ class ZDNavBar extends HTMLElement {
         mobileMenu.classList.toggle('mobile-menu--open');
       });
 
-      // Close menu when a link is clicked
-      mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          hamburger.classList.remove('hamburger--open');
-          mobileMenu.classList.remove('mobile-menu--open');
-        });
+      // ✅ FIX: Only listen to clicks that originate INSIDE mobileMenu
+      // and only when mobileMenu is actually open. This prevents the
+      // listener from intercepting sidebar link clicks when menu is closed.
+      mobileMenu.addEventListener('click', (e) => {
+        // Ignore clicks if the mobile menu isn't open
+        if (!mobileMenu.classList.contains('mobile-menu--open')) return;
+
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        // ✅ Make sure the clicked link is actually inside THIS mobileMenu,
+        // not a sidebar item or any other element in the document
+        if (!mobileMenu.contains(link)) return;
+
+        hamburger.classList.remove('hamburger--open');
+        mobileMenu.classList.remove('mobile-menu--open');
       });
     }
 
-    // Handle logout with confirmation using UserManager
+    // Handle logout
     const logoutBtn = this.querySelector('#logoutBtn');
     const logoutBtnMobile = this.querySelector('#logoutBtnMobile');
-    
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (typeof UserManager !== 'undefined') {
-          UserManager.logout();
-        } else {
-          if (confirm('Are you sure you want to logout?')) {
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.href = '../html/index.html';
-          }
-        }
-      });
-    }
 
-    if (logoutBtnMobile) {
-      logoutBtnMobile.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (typeof UserManager !== 'undefined') {
-          UserManager.logout();
-        } else {
-          if (confirm('Are you sure you want to logout?')) {
-            localStorage.clear();
-            sessionStorage.clear();
-            window.location.href = '../html/index.html';
-          }
+    const doLogout = (e) => {
+      e.preventDefault();
+      // ✅ Stop logout clicks from bubbling anywhere else
+      e.stopPropagation();
+      if (typeof UserManager !== 'undefined') {
+        UserManager.logout();
+      } else {
+        if (confirm('Are you sure you want to logout?')) {
+          localStorage.clear();
+          sessionStorage.clear();
+          window.location.href = '../html/index.html';
         }
-      });
-    }
+      }
+    };
 
-    // Update active nav link based on scroll position
-    this.setupScrollNavigation();
+    if (logoutBtn) logoutBtn.addEventListener('click', doLogout);
+    if (logoutBtnMobile) logoutBtnMobile.addEventListener('click', doLogout);
+
+    // ── Scroll-based active link: ONLY run on the landing page ──────────────
+    const currentFile = window.location.pathname.split('/').pop();
+    const isLandingPage = currentFile === 'index.html' || currentFile === '';
+
+    if (isLandingPage) {
+      this.setupScrollNavigation();
+    }
   }
 
   setupScrollNavigation() {
     const sections = document.querySelectorAll('section, .hero, footer');
     const navLinks = this.querySelectorAll('.navbar__link, .mobile-menu__link');
 
-    const observerOptions = {
-      threshold: 0.3
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const id = entry.target.id;
           navLinks.forEach(link => {
+            // ✅ FIX: Only update links that are anchor-style (#section)
+            // Never touch links pointing to .html pages (sidebar pages)
+            const href = link.getAttribute('href') || '';
+            if (!href.includes('#')) return;
+
             link.classList.remove('navbar__link--active', 'mobile-menu__link--active');
-            if (link.getAttribute('href') === `#${id}`) {
+            if (href === `#${id}` || href.endsWith(`#${id}`)) {
               if (link.closest('.navbar__links')) {
                 link.classList.add('navbar__link--active');
               } else if (link.closest('.mobile-menu__inner')) {
@@ -204,11 +201,9 @@ class ZDNavBar extends HTMLElement {
           });
         }
       });
-    }, observerOptions);
+    }, { threshold: 0.3 });
 
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+    sections.forEach(section => observer.observe(section));
   }
 }
 

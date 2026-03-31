@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="../css/layout.css"/>
   <link rel="stylesheet" href="../css/utilities.css"/>
   <link rel="stylesheet" href="../css/complaint.css"/>
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+  
   <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
@@ -24,6 +26,12 @@
   <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
 <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Mobile Sidebar Hamburger (Reusable) -->
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/sidebar-hamburger.js"></script>
 
 <!-- ── SIDEBAR ── -->
 <aside class="sidebar" id="sidebar">
@@ -397,6 +405,7 @@
 
 </main>
 <script src="../js/tenant-complaint.js"></script>
+
 </body>
 </html>
 
