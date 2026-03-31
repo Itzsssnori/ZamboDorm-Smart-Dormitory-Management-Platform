@@ -9,22 +9,10 @@
 </head>
 <body>
 
-<div class="header">
-  <div class="header__logo">U</div>
-  <span class="header__name">UserAdmin</span>
-  <div class="header__spacer"></div>
-  <span class="header__badge">SYSTEM ADMIN</span>
-</div>
+<div class="header"></div>
 
 <div class="layout">
-  <aside class="sidebar">
-    <div class="sidebar__label">Menu</div>
-    <div class="sidebar__item sidebar__item--active"><span class="sidebar__icon">👥</span>User Management</div>
-    <div class="sidebar__item"><span class="sidebar__icon">🏠</span>Dormitories</div>
-    <div class="sidebar__item"><span class="sidebar__icon">📋</span>Reports</div>
-    <div class="sidebar__label" style="margin-top:12px">Settings</div>
-    <div class="sidebar__item"><span class="sidebar__icon">⚙️</span>Configuration</div>
-  </aside>
+  <aside class="sidebar"></aside>
 
   <main class="main">
     <div class="main__header">
@@ -41,20 +29,47 @@
     <section id="overview" class="tab-content tab-content--active">
       <div class="cards">
         <div class="card card--total" id="card-total">
+          <div class="card__icon card__icon--total">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="7" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/>
+              <circle cx="13" cy="6" r="3" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M1 16c0-2.8 2.7-5 6-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M10 16c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div class="card__num">0</div>
-          <div class="card__label"><span class="card__dot"></span>Total Users</div>
+          <div class="card__label">Total Users</div>
         </div>
         <div class="card card--landlords" id="card-landlords">
+          <div class="card__icon card__icon--landlords">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <rect x="2" y="8" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6 8V6a4 4 0 0 1 8 0v2" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M10 12v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div class="card__num">0</div>
-          <div class="card__label"><span class="card__dot"></span>Landlords</div>
+          <div class="card__label">Landlords</div>
         </div>
         <div class="card card--approved" id="card-approved">
+          <div class="card__icon card__icon--approved">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M6.5 10.5l2.5 2.5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
           <div class="card__num">0</div>
-          <div class="card__label"><span class="card__dot"></span>Approved</div>
+          <div class="card__label">Approved</div>
         </div>
         <div class="card card--declined" id="card-declined">
+          <div class="card__icon card__icon--declined">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M7 7l6 6M13 7l-6 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
           <div class="card__num">0</div>
-          <div class="card__label"><span class="card__dot"></span>Declined</div>
+          <div class="card__label">Declined</div>
         </div>
       </div>
 
@@ -66,14 +81,19 @@
         <table class="table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Type</th>
-              <th>Status</th>
-              <th>Date</th>
+              <th>Name</th><th>Type</th><th>Status</th><th>Date</th>
             </tr>
           </thead>
           <tbody id="history-table-body">
-            <tr><td colspan="4"><div class="empty-state"><div class="empty-state__icon">📭</div><div class="empty-state__text">No activity yet</div></div></td></tr>
+            <tr><td colspan="4"><div class="empty-state">
+              <div class="empty-state__icon">
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <rect x="6" y="4" width="24" height="28" rx="3" stroke="currentColor" stroke-width="1.5" opacity=".3"/>
+                  <path d="M12 12h12M12 17h12M12 22h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".3"/>
+                </svg>
+              </div>
+              <div class="empty-state__text">No activity yet</div>
+            </div></td></tr>
           </tbody>
         </table>
       </div>
@@ -87,19 +107,17 @@
           <span class="table-container__count" id="landlord-count">0 landlords</span>
           <div class="table-container__spacer"></div>
           <div class="search-wrap">
-            <span class="search-wrap__icon">🔍</span>
+            <svg class="search-wrap__icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
             <input type="text" id="landlord-search" class="search-input" placeholder="Search name, business, email…">
           </div>
         </div>
         <table class="table">
           <thead>
             <tr>
-              <th>Business</th>
-              <th>Owner</th>
-              <th>Dormitories</th>
-              <th>Email</th>
-              <th>Status</th>
-              <th>Action</th>
+              <th>Business</th><th>Owner</th><th>Dormitories</th><th>Email</th><th>Status</th><th>Action</th>
             </tr>
           </thead>
           <tbody id="landlord-table-body"></tbody>
