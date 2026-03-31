@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<title>ZamboDorm – Room Occupancy Tracker</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+ <link rel="stylesheet" href="../css/style.css"/> 
+<link rel="stylesheet" href="../css/admin-announcements.css"/>
+
+   <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+   <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+<style>.sr-card-icon-wrap svg{width:24px;height:24px;}</style>
+</head>
+<body>
+
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
+<script src="../js/navbar-scroll.js"></script>
+<!-- Mobile Sidebar Hamburger (Reusable) -->
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/sidebar-hamburger.js"></script>
+  
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+
+    <a href="admin-overview.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Overview</span>
+    </a>
+
+    <a href="admin-tenant_management.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Tenants</span>
+    </a>
+
+    <a href="admin-rooms.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>Rooms</span>
+    </a>
+
+    <a href="admin-payments.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <line x1="2" y1="10" x2="22" y2="10"/>
+        <line x1="6" y1="15" x2="10" y2="15"/>
+      </svg>
+      <span>Payments</span>
+    </a>
+
+    <a href="admin-service_request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
+        <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+        <line x1="9" y1="12" x2="15" y2="12"/>
+        <line x1="9" y1="16" x2="13" y2="16"/>
+      </svg>
+      <span>Service Requests</span>
+    </a>
+
+    <a href="admin-announcements.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <circle cx="9" cy="10" r="1" fill="currentColor"/>
+        <circle cx="12" cy="10" r="1" fill="currentColor"/>
+        <circle cx="15" cy="10" r="1" fill="currentColor"/>
+      </svg>
+      <span>Announcements</span>
+    </a>
+
+    <a href="admin-visitor_security_log.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Visitor Logs</span>
+    </a>
+
+    <a href="admin-room_gallery.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span>Room Gallery</span>
+    </a>
+
+    <a href="admin-settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+        <path d="M7.5 19a4.5 4.5 0 0 1 9 0"/>
+      </svg>
+      <span>Admin Settings</span>
+    </a>
+
+    <div class="sidebar-divider"></div>
+
+    <a href="tenant-settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+      </svg>
+      <span>Settings</span>
+    </a>
+
+    <a href="help-B.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <span>Help</span>
+    </a>
+
+  </nav>
+</aside>
+
+
+</head>
+<body>
+  <!-- ── MAIN CONTENT ───────────────────────── -->
+  <main class="main-content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div class="page-header__left">
+        <h1>Announcements</h1>
+        <p>Post and manage notices visible to all tenants</p>
+      </div>
+      <button class="btn-new" onclick="openPostModal()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        New Announcement
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-info__label">Total</div>
+          <div class="stat-info__value" id="statTotal">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--amber">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-info__label">Pinned</div>
+          <div class="stat-info__value" id="statPinned">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--blue">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-info__label">Info</div>
+          <div class="stat-info__value" id="statInfo">0</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon stat-icon--green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <div class="stat-info">
+          <div class="stat-info__label">Urgent</div>
+          <div class="stat-info__value" id="statUrgent">0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search announcements…" oninput="filterAnnouncements()">
+      </div>
+      <select class="filter-select" id="filterCategory" onchange="filterAnnouncements()">
+        <option value="all">All Categories</option>
+        <option value="general">General</option>
+        <option value="urgent">Urgent</option>
+        <option value="info">Info</option>
+        <option value="resolved">Resolved</option>
+      </select>
+      <select class="filter-select" id="filterSort" onchange="filterAnnouncements()">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="pinned">Pinned First</option>
+      </select>
+    </div>
+
+    <!-- Announcements List -->
+    <div class="announcements-list" id="announcementsList"></div>
+
+  </main>
+
+  <!-- ── POST / EDIT MODAL ──────────────────── -->
+  <div class="modal-overlay" id="postModal" onclick="handleOverlayClick(event, 'postModal')">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal__header">
+        <h2 class="modal__title" id="modalTitle">New Announcement</h2>
+        <button class="modal__close" onclick="closePostModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <input type="hidden" id="editId">
+
+        <div class="form-group">
+          <label class="form-label" for="inputTitle">Title <span>*</span></label>
+          <input type="text" class="form-input" id="inputTitle" placeholder="e.g. General Dorm Cleaning" maxlength="100" oninput="updateCharCount(this, 'titleCount', 100)">
+          <span class="char-count" id="titleCount">0 / 100</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="inputBody">Message <span>*</span></label>
+          <textarea class="form-textarea" id="inputBody" placeholder="Write the full announcement here…" maxlength="600" oninput="updateCharCount(this, 'bodyCount', 600)"></textarea>
+          <span class="char-count" id="bodyCount">0 / 600</span>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="inputCategory">Category <span>*</span></label>
+            <select class="form-select" id="inputCategory">
+              <option value="general">General</option>
+              <option value="urgent">Urgent</option>
+              <option value="info">Info</option>
+              <option value="resolved">Resolved</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-bottom:0">
+            <label class="form-label" for="inputDate">Post Date</label>
+            <input type="date" class="form-input" id="inputDate">
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1.25rem">
+          <label class="form-checkbox-group">
+            <input type="checkbox" id="inputPinned">
+            <label for="inputPinned">📌 Pin this announcement (shows at the top for tenants)</label>
+          </label>
+        </div>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-cancel" onclick="closePostModal()">Cancel</button>
+        <button class="btn-post" onclick="saveAnnouncement()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <path d="M22 2L11 13"/><path d="M22 2L15 22 11 13 2 9l20-7z"/>
+          </svg>
+          <span id="postBtnLabel">Post Announcement</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── DELETE CONFIRM MODAL ───────────────── -->
+  <div class="modal-overlay" id="deleteModal" onclick="handleOverlayClick(event, 'deleteModal')">
+    <div class="modal confirm-modal" onclick="event.stopPropagation()">
+      <div class="modal__header">
+        <h2 class="modal__title">Delete Announcement</h2>
+        <button class="modal__close" onclick="closeDeleteModal()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="modal__body">
+        <div class="confirm-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
+          </svg>
+        </div>
+        <h3>Are you sure?</h3>
+        <p>This announcement will be permanently deleted and tenants will no longer see it.</p>
+      </div>
+      <div class="modal__footer">
+        <button class="btn-cancel" onclick="closeDeleteModal()">Cancel</button>
+        <button class="btn-delete-confirm" onclick="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ── JAVASCRIPT ─────────────────────────── -->
+  <script src="../js/admin-announcements.js">
+   
+  </script>
+</body>
+</html>

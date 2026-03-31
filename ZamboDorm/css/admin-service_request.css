@@ -145,9 +145,10 @@ padding-top: 0 !important;
 
 /* ── MAIN CONTENT ────────────────────────────────────── */
 .main-content {
-  margin-left: var(--sidebar-w);
+  margin-left: 245px;
   min-height: calc(100vh - var(--nav-h));
   padding-top: 0;
+  
 }
 
 /* ── SR PAGE ─────────────────────────────────────────── */
