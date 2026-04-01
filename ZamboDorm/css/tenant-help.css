@@ -1,3 +1,9 @@
+/* ═══════════════════════════════════════
+   TENANT HELP PAGE STYLES
+   Page: /html/tenant-help.html
+   Includes: sidebar, FAQ accordion, help UI
+═══════════════════════════════════════ */
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 

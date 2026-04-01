@@ -1,3 +1,9 @@
+/* ═══════════════════════════════════════
+   ADMIN HELP PAGE STYLES
+   Page: /html/admin-help.html
+   Includes: sidebar, FAQ, help documentation UI
+═══════════════════════════════════════ */
+
 /* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
