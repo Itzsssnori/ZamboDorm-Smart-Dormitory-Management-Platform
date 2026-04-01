@@ -3,9 +3,3 @@
   # No build command needed - static site
   command = ""
   publish = "."
-
-# Redirect 404s to index for SPA routing (optional, remove if not needed)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
