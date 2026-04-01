@@ -1,9 +1,3 @@
-/* ═══════════════════════════════════════
-   SIGN IN PAGE STYLES
-   Page: /html/signin-page.html
-   Includes: login form, authentication UI
-═══════════════════════════════════════ */
-
 /* ── BG DECORATION ── */
 body::before {
   content: '';
