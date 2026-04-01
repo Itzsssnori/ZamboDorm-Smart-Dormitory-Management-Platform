@@ -1,3 +1,5 @@
+@import url("../css/animations.css");
+
 /* complaint.css — fully rewritten, responsive */
 :root {
   --primary:#7c3aed;--primary-light:#a855f7;
@@ -20,12 +22,6 @@
 .sidebar-overlay.active { display:block; }
 
 .sidebar { z-index: 200; }
-
-/* ── KEYFRAME ANIMATIONS ── */
-@keyframes slideUpFadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
 
 /* Main layout — key: margin-left matches sidebar width on desktop */
 .layout { margin-left:var(--sidebar-w); padding:2rem 3rem 5rem; min-height:calc(100vh - var(--nav-h)); overflow-x:hidden; animation: slideUpFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards; }

@@ -1,3 +1,5 @@
+@import url("../css/animations.css");
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -118,9 +120,6 @@ body {
 .sidebar-overlay.active { display: block; }
 
 /* ── KEYFRAME ANIMATIONS ── */
-@keyframes slideUpFadeIn {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 /* ── LAYOUT ── */
 .layout { min-height: calc(100vh - var(--nav-h)); }

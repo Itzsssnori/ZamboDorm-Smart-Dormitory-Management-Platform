@@ -1,3 +1,5 @@
+@import url("../css/animations.css");
+
   /* ═══════════════════════════════════════
     SIDEBAR (Uses sidebar-hamburger.css for hamburger styling)
     ═══════════════════════════════════════ */
@@ -44,10 +46,6 @@
       padding-right: 1.2rem;
       animation: slideUpFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
-  }
-  @keyframes slideUpFadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
   }
   :root {
     --primary: #7c3aed;
