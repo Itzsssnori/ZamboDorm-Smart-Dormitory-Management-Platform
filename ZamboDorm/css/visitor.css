@@ -24,7 +24,7 @@
   background: #fff;
   border-right: 1px solid var(--card-border);
   overflow-y: auto;
-  z-index: 99;
+  z-index: 200;
   transition: transform 0.3s;
 }
 
@@ -79,9 +79,36 @@
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.3);
-  z-index: 98;
+  z-index: 100;
 }
 .sidebar-overlay.active { display: block; }
+
+.sidebar { z-index: 200; }
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}
+
+.sidebar-hamburger.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.sidebar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.sidebar-hamburger.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
 
 /* ── MAIN LAYOUT ── */
 .layout {

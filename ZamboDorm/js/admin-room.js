@@ -1,8 +1,16 @@
 // ── DATA ──────────────────────────────────────────────────────────────────────
+const DORM_IMAGES = [
+  'https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1540932239986-a128078c3020?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop',
+  'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=600&h=400&fit=crop'
+];
+
 const ROOMS = [
   {
     id:'100', type:'Double', capacity:2, rate:4500,
-    photo:'https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=600&q=80', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[0],
     floor:'1st Floor', wing:'Block A',
     amenities:['Aircon','Private Bath','Study Desk'],
     tenants:[
@@ -12,7 +20,7 @@ const ROOMS = [
   },
   {
     id:'101', type:'Double', capacity:2, rate:4500,
-    photo:'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80', floor:'1st Floor', wing:'Block A', // dormitory room (shared)
+    photo:DORM_IMAGES[1], floor:'1st Floor', wing:'Block A',
     amenities:['Fan','Shared Bath','Study Desk'],
     tenants:[
       {id:3,name:'Norielle John Buhawe',initials:'NB',course:'BS Computer Science',year:'4th Year',school:'WMSU',bed:'Lower Bunk',joinDate:'Jan 20, 2025',status:'active',phone:'09193456789',email:'norielle@email.com',deposit:10000},
@@ -20,13 +28,13 @@ const ROOMS = [
   },
   {
     id:'102', type:'Double', capacity:2, rate:4200,
-    photo:'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80', floor:'1st Floor', wing:'Block A', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[2], floor:'1st Floor', wing:'Block A',
     amenities:['Fan','Shared Bath'],
     tenants:[]
   },
   {
     id:'103', type:'Double', capacity:2, rate:4500,
-    photo:'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80', floor:'1st Floor', wing:'Block B', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[3], floor:'1st Floor', wing:'Block B',
     amenities:['Aircon','Private Bath','Study Desk','Wifi'],
     tenants:[
       {id:4,name:'Maria Santos',initials:'MS',course:'BS Accountancy',year:'3rd Year',school:'ZamPen',bed:'Lower Bunk',joinDate:'Mar 1, 2025',status:'active',phone:'09204567890',email:'maria@email.com',deposit:8000},
@@ -35,13 +43,13 @@ const ROOMS = [
   },
   {
     id:'104', type:'Double', capacity:2, rate:4000,
-    photo:'https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80', floor:'1st Floor', wing:'Block B', // dormitory room (shared)
+    photo:DORM_IMAGES[4], floor:'1st Floor', wing:'Block B',
     amenities:['Fan','Shared Bath'],
     tenants:[]
   },
   {
     id:'105', type:'Double', capacity:2, rate:4500,
-    photo:'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=600&q=80', floor:'1st Floor', wing:'Block B', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[0], floor:'1st Floor', wing:'Block B',
     amenities:['Aircon','Shared Bath','Study Desk'],
     tenants:[
       {id:6,name:'Leilani Gomez',initials:'LG',course:'BS Psychology',year:'1st Year',school:'ZamPen',bed:'Lower Bunk',joinDate:'Mar 10, 2025',status:'active',phone:'09248901234',email:'leilani@email.com',deposit:11000},
@@ -49,7 +57,7 @@ const ROOMS = [
   },
   {
     id:'106', type:'Double', capacity:2, rate:4800,
-    photo:'https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block A', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[1], floor:'2nd Floor', wing:'Block A',
     amenities:['Aircon','Private Bath','Study Desk','Wifi','Ref'],
     tenants:[
       {id:7,name:'Ramon Flores',initials:'RF',course:'BS Architecture',year:'4th Year',school:'Ateneo de Zamboanga',bed:'Lower Bunk',joinDate:'Feb 14, 2025',status:'active',phone:'09237890123',email:'ramon@email.com',deposit:9000},
@@ -58,13 +66,13 @@ const ROOMS = [
   },
   {
     id:'107', type:'Single', capacity:1, rate:3500,
-    photo:'https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block A', // dormitory room (shared)
+    photo:DORM_IMAGES[2], floor:'2nd Floor', wing:'Block A',
     amenities:['Fan','Private Bath'],
     tenants:[]
   },
   {
     id:'108', type:'Single', capacity:1, rate:3800,
-    photo:'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block A', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[3], floor:'2nd Floor', wing:'Block A',
     amenities:['Aircon','Shared Bath','Study Desk'],
     tenants:[
       {id:9,name:'Sherwin Hernandez',initials:'SH',course:'BS Information Technology',year:'3rd Year',school:'WMSU',bed:'Single Bed',joinDate:'Feb 10, 2025',status:'active',phone:'09171111222',email:'sherwin@email.com',deposit:10000},
@@ -72,7 +80,7 @@ const ROOMS = [
   },
   {
     id:'109', type:'Double', capacity:2, rate:4500,
-    photo:'https://images.unsplash.com/photo-1465101178521-c1a9136a3fd8?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block B', // dormitory room (shared)
+    photo:DORM_IMAGES[4], floor:'2nd Floor', wing:'Block B',
     amenities:['Aircon','Private Bath','Study Desk','Wifi'],
     tenants:[
       {id:10,name:'Fay Lim',initials:'FL',course:'BS Nursing',year:'3rd Year',school:'ADZU',bed:'Lower Bunk',joinDate:'Aug 1, 2025',status:'active',phone:'09172223334',email:'fay@email.com',deposit:8500},
@@ -81,13 +89,13 @@ const ROOMS = [
   },
   {
     id:'110', type:'Double', capacity:2, rate:3800,
-    photo:'https://images.unsplash.com/photo-1468421870903-4df1664ac249?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block B', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[0], floor:'2nd Floor', wing:'Block B',
     amenities:['Fan','Shared Bath'],
     tenants:[]
   },
   {
     id:'111', type:'Double', capacity:2, rate:4200,
-    photo:'https://images.unsplash.com/photo-1517971071642-34a2d3eccb8a?auto=format&fit=crop&w=600&q=80', floor:'2nd Floor', wing:'Block B', // dormitory room (bunk beds)
+    photo:DORM_IMAGES[1], floor:'2nd Floor', wing:'Block B',
     amenities:['Fan','Shared Bath','Study Desk'],
     tenants:[
       {id:12,name:'Rosa Buhawe',initials:'RB',course:'BS Social Work',year:'4th Year',school:'WMSU',bed:'Lower Bunk',joinDate:'Sep 12, 2024',status:'notice',phone:'09194445556',email:'rosa@email.com',deposit:4500},
@@ -178,7 +186,11 @@ function buildCard(r){
   return `
     <div class="room-card" onclick="openModal('${r.id}')">
       <div class="room-photo">
-        ${r.photo ? `<img src="${r.photo}" alt="Room ${r.id}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;">` : `
+        ${r.photo ? `<img src="${r.photo}" alt="Room ${r.id}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="room-photo-placeholder" style="display:none;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span>Room ${r.id}</span>
+        </div>` : `
         <div class="room-photo-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
           <span>Room ${r.id}</span>

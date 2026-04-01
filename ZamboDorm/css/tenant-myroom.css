@@ -1,53 +1,35 @@
   /* ═══════════════════════════════════════
-    SIDEBAR HAMBURGER (Section Navigation)
+    SIDEBAR (Uses sidebar-hamburger.css for hamburger styling)
     ═══════════════════════════════════════ */
-  .sidebar-hamburger {
+  .sidebar-overlay {
+    display: none;
     position: fixed;
-    top: 80px;
-    left: 18px;
-    z-index: 120;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background: white;
-    border: 1px solid var(--card-border);
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(124,58,237,0.10);
-    padding: 8px 7px;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
+    inset: 0;
+    background: rgba(30, 27, 75, 0.3);
+    z-index: 100;
   }
-  .sidebar-hamburger span {
-    width: 24px;
-    height: 3px;
-    background: var(--primary);
-    border-radius: 2px;
-    transition: all 0.3s;
+  .sidebar-overlay.active {
+    display: block;
   }
-  .sidebar-hamburger--open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-  .sidebar-hamburger--open span:nth-child(2) {
-    opacity: 0;
-  }
-  .sidebar-hamburger--open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
-  /* Hide sidebar hamburger on large screens */
-  @media (min-width: 900px) {
-    .sidebar-hamburger {
-      display: none;
-    }
-  }
-
-  /* Sidebar open/close state */
-  .sidebar--closed {
-    transform: translateX(-110%);
-    transition: transform 0.3s cubic-bezier(.4,2,.6,1);
-  }
+  
   .sidebar {
     transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+    z-index: 200;
+  }
+  
+  @media (max-width: 768px) {
+    .sidebar {
+      transform: translateX(-100%);
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .sidebar {
+      transform: translateX(0) !important;
+    }
   }
 
   @media (max-width: 899px) {
@@ -60,7 +42,12 @@
       margin-left: 0;
       padding-left: 1.2rem;
       padding-right: 1.2rem;
+      animation: slideUpFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
+  }
+  @keyframes slideUpFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
   }
   :root {
     --primary: #7c3aed;
@@ -2036,18 +2023,16 @@
     }
 
     .sidebar {
-      width: 100%;
-      height: auto;
-      position: static;
-      border-right: none;
-      border-bottom: 1px solid var(--card-border);
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s;
+      transform: translateX(-100%);
+      width: 260px;
+      position: fixed;
+      top: 68px;
+      height: calc(100vh - 68px);
+      transition: transform 0.3s;
     }
 
-    .sidebar.active {
-      max-height: 600px;
+    .sidebar.open {
+      transform: translateX(0);
     }
 
     .mob.active {

@@ -64,7 +64,8 @@ body {
   background: white;
   border-right: 1px solid #e9e6f5;
   overflow-y: auto;
-  z-index: 99;
+  z-index: 200;
+  transition: transform 0.3s ease;
 }
 
 .sidebar-nav {
@@ -91,12 +92,12 @@ body {
 
 .sidebar-item:hover {
   background: rgba(124,58,237,0.07);
-  color: var(--dark);
+  color: var(--v);
 }
 
 .sidebar-item.active {
   background: rgba(124,58,237,0.12);
-  color: var(--dark);
+  color: var(--v);
 }
 
 .sidebar-item.active::before {
@@ -240,13 +241,13 @@ body {
 }
 
 .main-content, .page-header {
-  animation: slideIn 0.3s ease;
+  animation: slideUpFadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-@keyframes slideIn {
+@keyframes slideUpFadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -625,6 +626,47 @@ body {
   bottom: 2rem;
 }
 
+/* Sidebar Overlay & Open States */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(30, 27, 75, 0.3);
+  z-index: 100;
+}
+.sidebar-overlay.active {
+  display: block;
+}
+
+.sidebar {
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar {
+    transform: translateX(0) !important;
+  }
+}
+
+.sidebar-hamburger.open span:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+}
+.sidebar-hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.sidebar-hamburger.open span:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   .container {
@@ -680,11 +722,19 @@ body {
 
 @media (max-width: 768px) {
   .sidebar {
-    width: 240px;
+    transform: translateX(-100%);
+    width: 260px;
+    position: fixed;
+    top: 68px;
+    height: calc(100vh - 68px);
+    transition: transform 0.3s;
+  }
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .container {
-    margin: 0 0 0 240px;
+    margin: 0;
     padding: 1.5rem 1rem;
   }
 
@@ -714,7 +764,16 @@ body {
 
 @media (max-width: 640px) {
   .sidebar {
-    display: none;
+    width: 260px;
+    position: fixed;
+    left: 0;
+    top: 68px;
+    height: calc(100vh - 68px);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .sidebar.open {
+    transform: translateX(0);
   }
 
   .container {

@@ -1,33 +1,3 @@
-/* ── HAMBURGER ─────────────────────────────────────────── */
-const hamburger = document.getElementById('sidebarHamburger');
-const sidebar   = document.getElementById('sidebar');
-const overlay   = document.getElementById('overlay');
-
-function openSidebar(){
-  sidebar.classList.add('open');
-  overlay.classList.add('active');
-  hamburger.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeSidebar(){
-  sidebar.classList.remove('open');
-  overlay.classList.remove('active');
-  hamburger.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-hamburger.addEventListener('click', () => {
-  sidebar.classList.contains('open') ? closeSidebar() : openSidebar();
-});
-overlay.addEventListener('click', closeSidebar);
-
-/* Close sidebar when a nav link is clicked on mobile */
-sidebar.querySelectorAll('.sidebar-item').forEach(item => {
-  item.addEventListener('click', () => {
-    if(window.innerWidth <= 900) closeSidebar();
-  });
-});
-
 /* ── DATA ──────────────────────────────────────────────── */
 const ICONS = {
   Maintenance: `<svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19.07l-1.41 1.41a2 2 0 0 1-2.83 0l-7.34-7.34a2 2 0 0 1 0-2.83l1.41-1.41a2 2 0 0 1 2.83 0l7.34 7.34a2 2 0 0 1 0 2.83z"/><path d="M14.34 17.66l-1.41-1.41"/></svg>`,

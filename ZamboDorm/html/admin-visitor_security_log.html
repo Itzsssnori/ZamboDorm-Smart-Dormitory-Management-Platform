@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZamboDorm – Visitor Security Log</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/admin-visitor_security_log.css"/>
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+</head>
+<body>
+
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
+<script src="../js/navbar-scroll.js"></script>
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/sidebar-hamburger.js"></script>
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+    <a href="admin-overview.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Overview</span>
+    </a>
+    <a href="admin-tenant_management.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Tenants</span>
+    </a>
+    <a href="admin-rooms.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span>Rooms</span>
+    </a>
+    <a href="admin-payments.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="15" x2="10" y2="15"/></svg>
+      <span>Payments</span>
+    </a>
+    <a href="admin-service_request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/><path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg>
+      <span>Service Requests</span>
+    </a>
+    <a href="admin-announcements.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><circle cx="9" cy="10" r="1" fill="currentColor"/><circle cx="12" cy="10" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/></svg>
+      <span>Announcements</span>
+    </a>
+    <a href="admin-visitor_security_log.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <span>Visitor Logs</span>
+    </a>
+    <a href="admin-room_gallery.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      <span>Room Gallery</span>
+    </a>
+    <a href="admin-settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="2.5"/><path d="M7.5 19a4.5 4.5 0 0 1 9 0"/></svg>
+      <span>Admin Settings</span>
+    </a>
+    <div class="sidebar-divider"></div>
+    <a href="tenant-settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+      <span>Settings</span>
+    </a>
+    <a href="help-B.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+      <span>Help</span>
+    </a>
+  </nav>
+</aside>
+
+<main class="main-content">
+
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <h1>Visitor Security Log</h1>
+      <p>Review visitor requests and manage dorm access</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn-outline" onclick="exportLog()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Export Log
+      </button>
+      <button class="btn-primary" onclick="openWalkInModal()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Log Walk-In
+      </button>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-top">
+        <div class="stat-icon" style="background:rgba(245,158,11,0.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <span class="stat-badge warn" id="badge-pending">3 new</span>
+      </div>
+      <div class="stat-label">Pending Approval</div>
+      <div class="stat-value amber" id="sv-pending">3</div>
+      <div class="stat-sub">Awaiting admin review</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-top">
+        <div class="stat-icon" style="background:rgba(16,185,129,0.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.75" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><polyline points="16 11 18 13 22 9"/></svg>
+        </div>
+        <span class="stat-badge up">Today</span>
+      </div>
+      <div class="stat-label">Approved Today</div>
+      <div class="stat-value green" id="sv-approved">5</div>
+      <div class="stat-sub">Cleared for entry</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-top">
+        <div class="stat-icon" style="background:rgba(59,130,246,0.12)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <span class="stat-badge up">Active</span>
+      </div>
+      <div class="stat-label">Currently Inside</div>
+      <div class="stat-value blue" id="sv-inside">2</div>
+      <div class="stat-sub">Checked in, not yet out</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-top">
+        <div class="stat-icon" style="background:rgba(124,58,237,0.10)">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <span class="stat-badge up">This month</span>
+      </div>
+      <div class="stat-label">Total Visits</div>
+      <div class="stat-value purple" id="sv-total">47</div>
+      <div class="stat-sub">April 2026</div>
+    </div>
+  </div>
+
+  <!-- Tab Bar -->
+  <div class="tab-bar">
+    <button class="tab-btn active" id="tab-pending-btn" onclick="openTab('pending')">
+      Pending Approval
+      <span class="tab-badge" id="tab-pending-count">3</span>
+    </button>
+    <button class="tab-btn" id="tab-log-btn" onclick="openTab('log')">All Visitor Logs</button>
+    <button class="tab-btn" id="tab-inside-btn" onclick="openTab('inside')">Currently Inside</button>
+  </div>
+
+  <!-- TAB: PENDING -->
+  <div class="tab-panel active" id="panel-pending">
+    <p class="panel-desc">Visitor requests submitted by tenants. Review details and approve or deny entry.</p>
+    <div class="request-list" id="pending-list"></div>
+  </div>
+
+  <!-- TAB: ALL LOGS -->
+  <div class="tab-panel" id="panel-log">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <input class="search-input" type="text" id="log-search" placeholder="Search visitor, tenant, room…" oninput="filterLog()"/>
+        <select class="filter-select" id="log-status" onchange="filterLog()">
+          <option value="all">All Statuses</option>
+          <option value="approved">Approved</option>
+          <option value="denied">Denied</option>
+          <option value="pending">Pending</option>
+          <option value="checked-out">Checked Out</option>
+        </select>
+        <select class="filter-select" id="log-purpose" onchange="filterLog()">
+          <option value="all">All Purposes</option>
+          <option value="Family Visit">Family Visit</option>
+          <option value="Study Group">Study Group</option>
+          <option value="Delivery">Delivery</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <table class="log-table">
+        <thead>
+          <tr>
+            <th>Visitor</th>
+            <th>Visiting Tenant</th>
+            <th>Room</th>
+            <th>Purpose</th>
+            <th>Check-in Date</th>
+            <th>In Time</th>
+            <th>Out Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="log-tbody"></tbody>
+      </table>
+      <div id="log-empty" class="empty-state" style="display:none">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <p>No visitor records found</p>
+      </div>
+    </div>
+    <div class="table-footer"><span id="log-info" class="table-info"></span></div>
+  </div>
+
+  <!-- TAB: CURRENTLY INSIDE -->
+  <div class="tab-panel" id="panel-inside">
+    <p class="panel-desc">Visitors who have checked in and haven't checked out yet.</p>
+    <div class="inside-list" id="inside-list"></div>
+  </div>
+
+</main>
+
+<!-- MODAL: REVIEW REQUEST -->
+<div class="modal-overlay" id="modal-review">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <div>
+          <p class="modal-title">Review Visit Request</p>
+          <p class="modal-subtitle" id="mr-sub">Approve or deny this visitor request</p>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-review')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="rv-header">
+        <div class="rv-avatar" id="rv-avatar"></div>
+        <div class="rv-info">
+          <strong id="rv-visitor-name"></strong>
+          <span id="rv-phone"></span>
+        </div>
+        <div class="rv-purpose-wrap">
+          <span class="rv-purpose-label">Purpose</span>
+          <span class="rv-purpose" id="rv-purpose"></span>
+        </div>
+      </div>
+      <div class="rv-rows">
+        <div class="rv-row"><span class="rv-lbl">Visiting Tenant</span><span class="rv-val" id="rv-tenant"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Room</span><span class="rv-val" id="rv-room"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Government ID</span><span class="rv-val" id="rv-govid"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Expected Date</span><span class="rv-val" id="rv-date"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Expected Time</span><span class="rv-val" id="rv-time"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Duration</span><span class="rv-val" id="rv-duration"></span></div>
+        <div class="rv-row"><span class="rv-lbl">Submitted</span><span class="rv-val" id="rv-submitted"></span></div>
+      </div>
+      <div id="deny-reason-wrap" style="display:none; margin-top:1rem;">
+        <label class="mf-label">Reason for Denial <span style="color:#ef4444">*</span></label>
+        <textarea class="mf-textarea" id="deny-reason" placeholder="e.g. Visitor not on approved list, suspicious activity…"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-deny" id="btn-deny-toggle" onclick="toggleDenyMode()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        Deny
+      </button>
+      <button class="btn-modal-approve" id="btn-approve-action" onclick="approveRequest()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+        Approve Visit
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: WALK-IN LOG -->
+<div class="modal-overlay" id="modal-walkin">
+  <div class="modal-box" style="max-width:460px">
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div><p class="modal-title">Log Walk-In Visitor</p><p class="modal-subtitle">Record an unscheduled visitor at the gate</p></div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-walkin')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Visitor Full Name <span style="color:#ef4444">*</span></label>
+          <input class="mf-input" id="wi-name" placeholder="Juan dela Cruz"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Phone Number</label>
+          <input class="mf-input" id="wi-phone" placeholder="09XX XXX XXXX"/>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Gov't ID Number <span style="color:#ef4444">*</span></label>
+          <input class="mf-input" id="wi-govid" placeholder="National ID, License…"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Visiting Tenant / Room <span style="color:#ef4444">*</span></label>
+          <input class="mf-input" id="wi-tenant" placeholder="e.g. Maria Santos – 101-A"/>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Purpose</label>
+          <select class="mf-input" id="wi-purpose">
+            <option value="Family Visit">Family Visit</option>
+            <option value="Study Group">Study Group</option>
+            <option value="Delivery">Delivery</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">In Time</label>
+          <input class="mf-input" id="wi-intime" type="time"/>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="closeModal('modal-walkin')">Cancel</button>
+      <button class="btn-modal-submit" onclick="logWalkIn()">Log Visitor</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: VIEW RECORD -->
+<div class="modal-overlay" id="modal-view">
+  <div class="modal-box" style="max-width:460px">
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-icon purple">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div><p class="modal-title">Visitor Record</p><p class="modal-subtitle" id="view-sub"></p></div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-view')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="view-body"></div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="closeModal('modal-view')">Close</button>
+      <button class="btn-checkout" id="btn-checkout" style="display:none" onclick="checkoutVisitor()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Check Out
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="admin-toast" id="admin-toast"></div>
+
+<script src="../js/admin-visitor_security_log.js"></script>
+</body>
+</html>

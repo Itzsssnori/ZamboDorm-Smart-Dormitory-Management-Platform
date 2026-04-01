@@ -8,7 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/tenant-help.css">
-<link rel="stylesheet" href="../css/tenant-sidebar-hamburger.css">
+<link rel="stylesheet" href="../css/sidebar-hamburger.css">
 <script src="../js/user-manager.js"></script>
 <script src="../js/navbar.js"></script>
 <style>
@@ -21,6 +21,13 @@
 <zd-navbar authenticated></zd-navbar>
 <script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
+<div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+<!-- Mobile Sidebar Hamburger (Reusable) -->
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/tenant-sidebar-hamburger.js"></script>
 
 <div class="layout">
   <!-- SIDEBAR -->
