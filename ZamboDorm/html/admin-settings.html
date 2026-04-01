@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZamboDorm – Admin Settings</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+   <link rel="stylesheet" href="../css/admin-settings.css"/>
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+
+</head>
+<body>
+
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
+<script src="../js/navbar-scroll.js"></script>
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/sidebar-hamburger.js"></script>
+
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+
+    <a href="admin-overview.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Overview</span>
+    </a>
+
+    <a href="admin-tenant_management.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Tenants</span>
+    </a>
+
+    <a href="admin-rooms.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>Rooms</span>
+    </a>
+
+    <a href="admin-payments.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <line x1="2" y1="10" x2="22" y2="10"/>
+        <line x1="6" y1="15" x2="10" y2="15"/>
+      </svg>
+      <span>Payments</span>
+    </a>
+
+    <a href="admin-service_request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
+        <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+        <line x1="9" y1="12" x2="15" y2="12"/>
+        <line x1="9" y1="16" x2="13" y2="16"/>
+      </svg>
+      <span>Service Requests</span>
+    </a>
+
+    <a href="admin-announcements.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <circle cx="9" cy="10" r="1" fill="currentColor"/>
+        <circle cx="12" cy="10" r="1" fill="currentColor"/>
+        <circle cx="15" cy="10" r="1" fill="currentColor"/>
+      </svg>
+      <span>Announcements</span>
+    </a>
+
+    <a href="admin-visitor_security_log.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Visitor Logs</span>
+    </a>
+
+    <a href="admin-room_gallery.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span>Room Gallery</span>
+    </a>
+
+    <a href="admin-settings.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+        <path d="M7.5 19a4.5 4.5 0 0 1 9 0"/>
+      </svg>
+      <span>Admin Settings</span>
+    </a>
+
+    <div class="sidebar-divider"></div>
+
+    <a href="admin-user_settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+      </svg>
+      <span>Settings</span>
+    </a>
+
+    <a href="admin-help.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <span>Help</span>
+    </a>
+
+  </nav>
+</aside>
+
+<!-- ════════════════════════════════════
+     MAIN CONTENT
+════════════════════════════════════ -->
+<main class="main-content">
+
+  <div class="page-header">
+    <h1>Admin Settings</h1>
+    <p>Manage rental configuration, inventory policies, and system preferences</p>
+  </div>
+
+  <!-- ══ SECTION 1: RENTAL & INVENTORY MANAGEMENT ══ -->
+  <div class="section-label">
+    <div class="section-icon" style="background:rgba(124,58,237,0.10)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    </div>
+    <div>
+      <h2>Rental &amp; Inventory Management</h2>
+      <p>Configure deck counts, rental rates, and duration types</p>
+    </div>
+  </div>
+
+  <div class="settings-card">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div>
+          <h3>Deck Rental Configuration</h3>
+          <p>Set total decks available and how tenants are billed</p>
+        </div>
+      </div>
+      <span class="badge-active" id="deck-status-badge">Active</span>
+    </div>
+
+    <div class="card-body">
+      <div class="rental-grid">
+
+        <!-- Number of decks -->
+        <div class="rental-field">
+          <label>Number of Decks Available</label>
+          <div class="rental-input-wrap">
+            <input class="rental-input" id="deck-count" type="number" min="0" max="999" value="10" oninput="updateDeckDisplay()"/>
+            <span class="rental-input-unit">decks</span>
+          </div>
+          <div class="avail-chips">
+            <span class="avail-chip chip-rented" id="chip-rented">7 rented</span>
+            <span class="avail-chip chip-avail"  id="chip-avail">3 available</span>
+          </div>
+        </div>
+
+        <!-- Duration type -->
+        <div class="rental-field">
+          <label>Rental Duration Type</label>
+          <div class="dur-toggle">
+            <button class="dur-btn" id="dur-day"   onclick="setDuration('day')">By Day</button>
+            <button class="dur-btn active" id="dur-month" onclick="setDuration('month')">By Month</button>
+          </div>
+        </div>
+
+        <!-- Rate display -->
+        <div class="rental-field">
+          <label>Current Rate</label>
+          <div class="rate-display">
+            <div class="rate-display-label" id="rate-label">Per Month</div>
+            <div class="rate-display-value" id="rate-value">₱2,500</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Rate setter -->
+      <div style="margin-top:1.25rem; display:grid; grid-template-columns:1fr 1fr; gap:1rem; max-width:520px;">
+        <div class="rental-field">
+          <label>Rate per Day (₱)</label>
+          <div class="rental-input-wrap">
+            <input class="rental-input" id="rate-day-input" type="number" min="0" value="100" oninput="updateRate()"/>
+          </div>
+        </div>
+        <div class="rental-field">
+          <label>Rate per Month (₱)</label>
+          <div class="rental-input-wrap">
+            <input class="rental-input" id="rate-month-input" type="number" min="0" value="2500" oninput="updateRate()"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rental-footer">
+      <p>Last updated: <strong>Apr 1, 2026</strong> · Changes apply immediately after saving</p>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <span class="save-toast" id="deck-saved">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Saved!
+        </span>
+        <button class="btn-primary" onclick="saveDeckConfig()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTION 2: TENANT ITEMS & APPLIANCES REGISTRY ══ -->
+  <div class="section-label">
+    <div class="section-icon" style="background:rgba(59,130,246,0.12)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="1.75" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+    </div>
+    <div>
+      <h2>Tenant Items &amp; Appliances Registry</h2>
+      <p>Track items brought by tenants for safety and insurance purposes</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="registry-stats">
+    <div class="reg-stat">
+      <div class="reg-stat-top">
+        <div class="reg-stat-icon" style="background:rgba(124,58,237,0.10)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.75" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+      </div>
+      <div class="reg-stat-label">Total Items Registered</div>
+      <div class="reg-stat-value purple" id="stat-total">128</div>
+      <div class="reg-stat-sub">Across all tenants</div>
+    </div>
+    <div class="reg-stat">
+      <div class="reg-stat-top">
+        <div class="reg-stat-icon" style="background:rgba(245,158,11,0.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+      </div>
+      <div class="reg-stat-label">High-Value Items</div>
+      <div class="reg-stat-value amber" id="stat-highval">45</div>
+      <div class="reg-stat-sub">Worth ₱10k or more</div>
+    </div>
+    <div class="reg-stat">
+      <div class="reg-stat-top">
+        <div class="reg-stat-icon" style="background:rgba(239,68,68,0.10)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+      </div>
+      <div class="reg-stat-label">Pending Approvals</div>
+      <div class="reg-stat-value warn" id="stat-pending">12</div>
+      <div class="reg-stat-sub">Awaiting admin action</div>
+    </div>
+  </div>
+
+  <!-- Table Card -->
+  <div class="settings-card">
+    <div class="card-head">
+      <div class="card-head-left">
+        <div>
+          <h3>Items Registry</h3>
+          <p>All registered tenant items and appliances</p>
+        </div>
+      </div>
+      <button class="btn-primary" onclick="openAddModal()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Add Item
+      </button>
+    </div>
+
+    <div style="padding:1rem 1.75rem; border-bottom:1px solid var(--card-border);">
+      <div class="registry-toolbar">
+        <div class="toolbar-left">
+          <input class="search-input" type="text" id="reg-search" placeholder="Search tenant, item, room…" oninput="filterRegistry()"/>
+          <select class="filter-select" id="reg-status" onchange="filterRegistry()">
+            <option value="all">All Statuses</option>
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+          <select class="filter-select" id="reg-type" onchange="filterRegistry()">
+            <option value="all">All Types</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Appliance">Appliance</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="border-radius:0;border:none;box-shadow:none;">
+      <table class="items-table">
+        <thead>
+          <tr>
+            <th>Tenant</th>
+            <th>Room</th>
+            <th>Item / Appliance</th>
+            <th>Brand / Model</th>
+            <th>Est. Value</th>
+            <th>Type</th>
+            <th>Date Registered</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="registry-tbody"></tbody>
+      </table>
+      <div id="registry-empty" class="empty-state" style="display:none;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <p>No items found</p>
+      </div>
+    </div>
+
+    <div style="padding:0.85rem 1.1rem; border-top:1px solid var(--card-border); background:rgba(124,58,237,0.02);">
+      <span id="reg-info" style="font-size:0.8rem;color:var(--text-muted);"></span>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══ MODAL: ADD / EDIT ITEM ══ -->
+<div class="modal-overlay" id="modal-item">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-icon purple" id="item-modal-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div>
+          <p class="modal-title" id="item-modal-title">Add New Item</p>
+          <p class="modal-subtitle" id="item-modal-sub">Register an item or appliance for a tenant</p>
+        </div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-item')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Tenant Name <span>*</span></label>
+          <input class="mf-input" id="f-tenant" placeholder="e.g. Juan dela Cruz"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Room Number <span>*</span></label>
+          <input class="mf-input" id="f-room" placeholder="e.g. 204-A"/>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Item / Appliance <span>*</span></label>
+          <input class="mf-input" id="f-item" placeholder="e.g. Laptop, Electric Fan"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Brand / Model</label>
+          <input class="mf-input" id="f-brand" placeholder="e.g. Dell Inspiron 15"/>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Estimated Value (₱)</label>
+          <input class="mf-input" id="f-value" type="number" min="0" placeholder="e.g. 35000"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Item Type</label>
+          <select class="mf-select" id="f-type">
+            <option value="Electronics">Electronics</option>
+            <option value="Appliance">Appliance</option>
+            <option value="Furniture">Furniture</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="mf-row">
+        <div class="mf-group">
+          <label class="mf-label">Serial / ID Number</label>
+          <input class="mf-input" id="f-serial" placeholder="Optional"/>
+        </div>
+        <div class="mf-group">
+          <label class="mf-label">Status</label>
+          <select class="mf-select" id="f-status">
+            <option value="Active">Active</option>
+            <option value="Pending">Pending</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="closeModal('modal-item')">Cancel</button>
+      <button class="btn-modal-submit" id="item-submit-btn" onclick="submitItem()">Add Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODAL: DELETE CONFIRM ══ -->
+<div class="modal-overlay" id="modal-confirm">
+  <div class="modal-box" style="max-width:420px">
+    <div class="modal-header">
+      <div class="mh-left">
+        <div class="mh-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div><p class="modal-title">Remove Item</p><p class="modal-subtitle">This action cannot be undone</p></div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-confirm')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="confirm-body">
+        <div class="confirm-icon red">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
+        </div>
+        <h3>Remove <span id="confirm-item-name"></span>?</h3>
+        <p>This will permanently delete this item record. Make sure the tenant has physically removed the item from the premises.</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-modal-cancel" onclick="closeModal('modal-confirm')">Cancel</button>
+      <button class="btn-danger-confirm" onclick="confirmDelete()">Yes, Remove</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="admin-toast" id="admin-toast"></div>
+
+</body>
+</html>

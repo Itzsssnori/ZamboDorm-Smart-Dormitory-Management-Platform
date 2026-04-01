@@ -8,6 +8,7 @@
   --green: #059669;
   --teal: #14b8a6;
   --red: #a855f7;
+   --bg-gradient: linear-gradient(135deg, #ede9fe 0%, #e0f2fe 60%, #f3e8ff 100%);
 }
 
 * {
@@ -18,7 +19,7 @@
 
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  background: #f5f3ff;
+  background: var(--bg-gradient);
   color: var(--dark);
   min-height: 100vh;
   overflow-x: hidden;
@@ -51,7 +52,7 @@ body {
 
 .sr-title-block p {
   font-size: 1rem;
-  color: var(--muted);
+  color: #6b7280;
 }
 
 /* Sidebar */

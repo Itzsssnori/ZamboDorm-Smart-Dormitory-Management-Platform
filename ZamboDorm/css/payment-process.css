@@ -4,14 +4,16 @@
   --dark:#1e1b4b; --mid:#4b5563; --muted:#9ca3af;
   --surface:#f4f3ff; --white:#fff; --border:#e9e6f5;
   --green:#059669; --amber:#d97706;
-  --font:'Plus Jakarta Sans',sans-serif; --r:14px;
+  --font:'Plus Jakarta Sans',sans-serif; 
+  --bg-gradient: linear-gradient(135deg, #ede9fe 0%, #e0f2fe 60%, #f3e8ff 100%);
+  --r:14px;
 }
 
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: var(--font);
-  background: var(--surface);
+  background: var(--bg-gradient);
   color: var(--dark);
   min-height: 100vh;
 }

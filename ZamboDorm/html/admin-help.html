@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZamboDorm Admin – Help & FAQ</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+  <link rel="stylesheet" href="../css/admin-help.css">
+  <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+  <style>
+
+  </style>
+</head>
+<body>
+
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
+<script src="../js/navbar-scroll.js"></script>
+<!-- Mobile Sidebar Hamburger (Reusable) -->
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/sidebar-hamburger.js"></script>
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="sidebar-nav">
+
+    <a href="admin-overview.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="7" height="7" rx="1"/>
+        <rect x="14" y="3" width="7" height="7" rx="1"/>
+        <rect x="3" y="14" width="7" height="7" rx="1"/>
+        <rect x="14" y="14" width="7" height="7" rx="1"/>
+      </svg>
+      <span>Overview</span>
+    </a>
+
+    <a href="admin-tenant_management.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Tenants</span>
+    </a>
+
+    <a href="admin-rooms.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      <span>Rooms</span>
+    </a>
+
+    <a href="admin-payments.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="5" width="20" height="14" rx="2"/>
+        <line x1="2" y1="10" x2="22" y2="10"/>
+        <line x1="6" y1="15" x2="10" y2="15"/>
+      </svg>
+      <span>Payments</span>
+    </a>
+
+    <a href="admin-service_request.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+        <path d="M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2"/>
+        <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2"/>
+        <line x1="9" y1="12" x2="15" y2="12"/>
+        <line x1="9" y1="16" x2="13" y2="16"/>
+      </svg>
+      <span>Service Requests</span>
+    </a>
+
+    <a href="admin-announcements.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        <circle cx="9" cy="10" r="1" fill="currentColor"/>
+        <circle cx="12" cy="10" r="1" fill="currentColor"/>
+        <circle cx="15" cy="10" r="1" fill="currentColor"/>
+      </svg>
+      <span>Announcements</span>
+    </a>
+
+    <a href="admin-visitor_security_log.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+      <span>Visitor Logs</span>
+    </a>
+
+    <a href="admin-room_gallery.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <span>Room Gallery</span>
+    </a>
+
+    <a href="admin-settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        <circle cx="12" cy="10" r="2.5"/>
+        <path d="M7.5 19a4.5 4.5 0 0 1 9 0"/>
+      </svg>
+      <span>Admin Settings</span>
+    </a>
+
+    <div class="sidebar-divider"></div>
+
+    <a href="admin-user_settings.html" class="sidebar-item">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+        <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+      </svg>
+      <span>Settings</span>
+    </a>
+
+    <a href="admin-help.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 16v-4M12 8h.01"/>
+      </svg>
+      <span>Help</span>
+    </a>
+
+  </nav>
+</aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main-content">
+    <div class="page-header">
+      <div class="page-header-top">
+        <div>
+          <h1>Admin Help &amp; Docs</h1>
+          <p>Guides, policies, and answers for managing ZamboDorm</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Search -->
+    <div class="help-hero">
+      <h2>What do you need help with?</h2>
+      <p>Search our admin knowledge base or browse by category below</p>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="e.g. approve visitor, late payment, room assignment…" oninput="searchFAQ(this.value)">
+        <button>Search</button>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="quick-links">
+      <a class="quick-link-card" onclick="jumpTo('tenants')">
+        <div class="ql-icon" style="background:rgba(124,58,237,0.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <span>Tenants</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('payments')">
+        <div class="ql-icon" style="background:rgba(59,130,246,0.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <span>Payments</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('operations')">
+        <div class="ql-icon" style="background:rgba(16,185,129,0.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+        </div>
+        <span>Operations</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('system')">
+        <div class="ql-icon" style="background:rgba(245,158,11,0.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </div>
+        <span>System</span>
+      </a>
+    </div>
+
+    <!-- Escalation Banner -->
+    <div class="escalation-banner">
+      <div class="esc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      </div>
+      <div class="esc-info">
+        <h3>Critical system issue or emergency?</h3>
+        <p>For urgent technical issues affecting all tenants, contact your system developer or Anthropic-level support immediately.</p>
+      </div>
+      <button class="btn-escalate" onclick="showToast('Escalation request sent to the development team.')">Escalate Issue</button>
+    </div>
+
+    <!-- Help Grid -->
+    <div class="help-grid">
+
+      <!-- Category Nav -->
+      <div class="category-nav">
+        <h3>Browse by Topic</h3>
+        <button class="cat-btn active" onclick="switchCat('tenants', this)">
+          <div class="cat-icon" style="background:rgba(124,58,237,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+          Tenant Management
+          <span class="cat-count">6</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('payments', this)">
+          <div class="cat-icon" style="background:rgba(59,130,246,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          Payments &amp; Billing
+          <span class="cat-count">5</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('operations', this)">
+          <div class="cat-icon" style="background:rgba(16,185,129,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+          Operations
+          <span class="cat-count">5</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('violations', this)">
+          <div class="cat-icon" style="background:rgba(239,68,68,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+          Violations &amp; Escalations
+          <span class="cat-count">4</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('system', this)">
+          <div class="cat-icon" style="background:rgba(245,158,11,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+          System &amp; Settings
+          <span class="cat-count">4</span>
+        </button>
+
+        <!-- Contact / Escalation -->
+        <div class="contact-card">
+          <h3>Need technical support?</h3>
+          <p>Reach out to your development team or system admin.</p>
+          <div class="contact-methods">
+            <a class="contact-method" href="mailto:dev@zambodorm.com">
+              <div class="cm-icon" style="background:rgba(124,58,237,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div class="cm-info"><strong>Developer Support</strong><span>dev@zambodorm.com</span></div>
+              <div class="cm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+            </a>
+            <a class="contact-method" href="#">
+              <div class="cm-icon" style="background:rgba(16,185,129,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <div class="cm-info"><strong>Admin User Manual</strong><span>Download PDF guide</span></div>
+              <div class="cm-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Panels -->
+      <div>
+
+        <!-- TENANT MANAGEMENT -->
+        <div class="faq-panel active" id="faq-tenants">
+          <div class="faq-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Tenant Management
+          </div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I onboard a new tenant?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → Add New Tenant</strong>. Fill in personal details (full name, contact, emergency contact, valid ID), assign a room from the available units list, set the lease start date and monthly rate, then click <em>Create Account</em>. The system will auto-generate login credentials and send them to the tenant's email.<div class="faq-callout info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Make sure the room is set to <strong>Available</strong> before assigning — occupied rooms cannot be double-assigned.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I transfer a tenant to a different room?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → [Tenant Profile] → Room Assignment → Transfer Room</strong>. Select the destination room (must be available) and set the transfer date. The old room's status will automatically update to <em>Vacant</em>. Billing adjustments, if any, must be made manually in the Payments section.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I process a tenant checkout / end of lease?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Navigate to <strong>Tenants → [Tenant Profile] → End Lease</strong>. The system will show outstanding balances before proceeding. Steps:<ul><li>Confirm all payments are settled</li><li>Log the room inspection result</li><li>Deduct or refund security deposit as needed</li><li>Click <em>Confirm Checkout</em> — this archives the tenant and marks the room Vacant</li></ul><div class="faq-callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Checkout cannot be undone. Archived tenants are read-only.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I edit a tenant's personal information?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → [Tenant Profile] → Edit Profile</strong>. You can update name, contact number, emergency contact, and valid ID on file. Email changes require the tenant to re-verify their address. Changes are logged in the tenant's audit trail.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I suspend or restrict a tenant's account?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → [Tenant Profile] → Account Status → Suspend Account</strong>. A suspended tenant cannot log in or submit requests. You must provide a suspension reason, which is recorded in the tenant's file. Suspension does not cancel rent obligations — billing continues unless the lease is formally ended.<div class="faq-callout danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Suspension is visible to the tenant when they attempt to log in. Use with caution and ensure proper documentation.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I approve or reject a visitor registration?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Visitor Logs → Pending Approvals</strong>. Each card shows the visitor's name, ID type, tenant being visited, purpose, and expected time. Click <em>Approve</em> to allow entry or <em>Reject</em> with an optional reason. Rejected registrations notify the tenant automatically. You can also filter by date, tenant, or status.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- PAYMENTS -->
+        <div class="faq-panel" id="faq-payments">
+          <div class="faq-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+            Payments &amp; Billing
+          </div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I manually record a cash payment?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Payments → Record Payment</strong>. Select the tenant, choose <em>Cash</em> as the payment method, enter the amount and reference (receipt number), then click <em>Post Payment</em>. The payment will immediately reflect in the tenant's account and reduce any outstanding balance. Issue a physical official receipt to the tenant.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I verify and approve an online payment?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Payments → Pending Verification</strong>. Online payments (GCash, Maya, bank transfer) appear here with the tenant's uploaded proof of payment. Cross-check the reference number and amount, then click <em>Verify &amp; Approve</em>. The tenant is notified once approved. If incorrect, click <em>Reject</em> and provide a reason.<div class="faq-callout info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Always verify against your e-wallet / bank dashboard before approving. Do not rely solely on the tenant's screenshot.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I apply or waive a late fee?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Late fees (₱200 per 5 days overdue) are applied automatically by the system. To <strong>waive</strong> a late fee, go to <strong>Payments → [Tenant] → Balance Details → Adjustments → Waive Fee</strong>. You must enter a reason (e.g. approved grace period). Waivers are logged and cannot be reversed once saved.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I generate a billing statement or payment report?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Payments → Reports</strong>. Select the date range and report type:<ul><li><strong>Monthly Collection Summary</strong> – total collected per payment method</li><li><strong>Outstanding Balances</strong> – all tenants with unpaid dues</li><li><strong>Individual Statement</strong> – per-tenant billing history (exportable to PDF)</li></ul>Click <em>Generate Report</em> and download as PDF or CSV.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I adjust the monthly rate for a specific tenant?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → [Tenant Profile] → Lease Details → Edit Rate</strong>. Enter the new monthly rate and the effective date. If mid-month, a pro-rated adjustment is generated automatically for that billing period. Changes are reflected in the tenant's next payment notification.<div class="faq-callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Rate changes should be communicated to the tenant in writing before taking effect.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- OPERATIONS -->
+        <div class="faq-panel" id="faq-operations">
+          <div class="faq-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+            Operations
+          </div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I manage and respond to service requests?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Service Requests</strong>. All pending requests (water delivery, laundry) appear in a queue sorted by date. Click a request to view details, then update the status:<ul><li><strong>Pending → In Progress</strong> – assign staff and begin fulfillment</li><li><strong>In Progress → Completed</strong> – mark as done; tenant is notified</li><li><strong>Reject</strong> – only use if the request cannot be fulfilled; add a reason</li></ul>You can filter by service type, date, or status.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I handle and resolve tenant complaints?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Complaints</strong>. Each complaint shows the category (maintenance, noise, etc.), description, optional photo, and submission date. Update the status to <em>Under Review</em> while investigating, then <em>Resolved</em> once addressed. You can add an internal admin note visible only to staff, and a resolution note visible to the tenant.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I manage room status (vacant, occupied, under maintenance)?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Rooms</strong>. The floor map or list view shows all rooms with color-coded status badges. To change a room's status manually, click the room → <em>Edit Status</em> → select from:<ul><li><strong>Occupied</strong> – assigned to an active tenant</li><li><strong>Vacant</strong> – available for assignment</li><li><strong>Under Maintenance</strong> – temporarily unavailable; include expected end date</li><li><strong>Reserved</strong> – held for an incoming tenant</li></ul><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I view and export the visitor logbook?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Visitor Logs → All Logs</strong>. The table shows every visitor entry with check-in time, check-out time, tenant visited, and ID type. You can filter by date range and tenant. Click <em>Export CSV</em> to download the log for record-keeping or security audits.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I send an announcement or notice to all tenants?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Dashboard → Announcements → New Announcement</strong>. Write the subject and body. You can target:<ul><li><strong>All Tenants</strong> – broadcast to everyone</li><li><strong>Specific Floor / Room</strong> – targeted message</li><li><strong>Tenants with Outstanding Balance</strong> – billing reminders</li></ul>Choose delivery method (in-app notification, email, or both) and click <em>Send</em>.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- VIOLATIONS -->
+        <div class="faq-panel" id="faq-violations">
+          <div class="faq-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Violations &amp; Escalations
+          </div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I log a rule violation against a tenant?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Tenants → [Tenant Profile] → Violation Log → Add Violation</strong>. Select the violation type (noise, curfew, unauthorized appliance, visitor policy, etc.), set the date and severity, add a description, and optionally attach evidence. The system automatically tracks offense count and flags if the 3rd offense threshold is reached.<div class="faq-callout info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Violations are visible to the tenant in their account history under "Notices."</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I issue a formal written warning?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">After logging the violation, go to <strong>Violation Log → [Violation] → Issue Written Warning</strong>. A pre-formatted warning letter template will load with the tenant's details and the violation description. Edit as needed, then click <em>Send &amp; Archive</em>. The letter is emailed to the tenant and stored in their file as a PDF.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">What is the escalation process for serious violations?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">For serious violations (unauthorized persons, threats, property damage), skip standard steps and go directly to <strong>Tenants → [Tenant Profile] → Escalate Case</strong>. This flags the account for urgent review and notifies the dorm management head. Escalated cases are reviewed within 24 hours and may result in immediate lease termination per dorm policy.<div class="faq-callout danger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>Lease termination requires documented evidence and must follow due process as stated in the tenant's contract.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I view all active violations across tenants?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Dashboard → Violation Overview</strong>. This shows a summary table of all tenants with open violations, offense count, and last logged date. You can filter by violation type or severity. Tenants at 2nd or 3rd offense are highlighted in amber or red respectively for quick identification.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- SYSTEM -->
+        <div class="faq-panel" id="faq-system">
+          <div class="faq-section-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            System &amp; Settings
+          </div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I add or remove an admin staff account?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Staff Accounts → Add Staff</strong>. Enter the staff member's name, email, and assign a role:<ul><li><strong>Super Admin</strong> – full access including settings and staff management</li><li><strong>Staff</strong> – access to operations, complaints, and visitor logs; cannot change settings or billing rates</li></ul>To remove an account, click the staff member → <em>Deactivate Account</em>. Deactivated accounts cannot log in but their action history is preserved.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I update dorm-wide settings (billing cycle, late fee, curfew)?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Dorm Configuration</strong>. From here you can update:<ul><li><strong>Billing due day</strong> – default is the 7th of every month</li><li><strong>Late fee amount and interval</strong> – default ₱200 per 5 days</li><li><strong>Curfew times</strong> – weekday and weekend independently</li><li><strong>Visiting hours</strong> – default 8AM–9PM</li><li><strong>Max concurrent visitors per tenant</strong></li></ul>All changes take effect at the next billing cycle or the following day for curfew/visitor settings.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I view the system audit log?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Audit Log</strong>. This lists all admin actions with timestamp, staff name, and action description (e.g. <code>payment.verified</code>, <code>tenant.suspended</code>, <code>room.status_changed</code>). You can filter by date range or staff member. The log is read-only and cannot be deleted.<div class="faq-callout info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>Audit logs are retained for 12 months and can be exported as CSV for compliance purposes.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I back up or export system data?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Data &amp; Backup</strong>. You can export the following as CSV or PDF:<ul><li>Full tenant list with room assignments</li><li>Payment history (all or date range)</li><li>Visitor log archive</li><li>Violation records</li></ul>Automated nightly backups run at 2:00 AM and are stored server-side for 30 days. Contact your developer to restore from a backup.<div class="faq-callout warn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Exported data contains personal information. Handle and store securely per your data privacy obligations.</div><div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- No results -->
+        <div id="no-results">
+          <div style="font-size:2.5rem;margin-bottom:.75rem;">🔍</div>
+          <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem;">No results found</h3>
+          <p style="color:var(--text-muted);font-size:.9rem;">Try different keywords or browse categories on the left.</p>
+        </div>
+
+      </div><!-- end faq panels wrapper -->
+    </div><!-- end help-grid -->
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ── ACCORDION ── */
+function toggleFAQ(el) {
+  const item = el.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all in same panel
+  item.closest('.faq-panel').querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ── CATEGORY SWITCH ── */
+function switchCat(id, btn) {
+  document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  const panel = document.getElementById('faq-' + id);
+  if (panel) panel.classList.add('active');
+  btn.classList.add('active');
+  // Clear search
+  document.getElementById('search-input').value = '';
+  document.getElementById('no-results').style.display = 'none';
+}
+
+/* ── QUICK LINK JUMP ── */
+function jumpTo(id) {
+  const btn = Array.from(document.querySelectorAll('.cat-btn')).find(b => b.getAttribute('onclick')?.includes(`'${id}'`));
+  if (btn) btn.click();
+  window.scrollTo({ top: document.querySelector('.help-grid').offsetTop - 100, behavior: 'smooth' });
+}
+
+/* ── SEARCH ── */
+function searchFAQ(query) {
+  query = query.trim().toLowerCase();
+  if (!query) {
+    // Show default panel
+    document.querySelectorAll('.faq-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('faq-tenants').classList.add('active');
+    document.getElementById('no-results').style.display = 'none';
+    document.querySelectorAll('.cat-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+    return;
+  }
+  let found = 0;
+  document.querySelectorAll('.faq-panel').forEach(panel => {
+    let panelHasMatch = false;
+    panel.querySelectorAll('.faq-item').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = text.includes(query);
+      item.style.display = match ? '' : 'none';
+      if (match) { panelHasMatch = true; found++; }
+    });
+    panel.classList.toggle('active', panelHasMatch);
+  });
+  document.getElementById('no-results').style.display = found === 0 ? 'block' : 'none';
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+}
+
+/* ── HELPFUL ── */
+function helpful(btn) {
+  const row = btn.closest('.faq-helpful');
+  row.innerHTML = '<span style="color:var(--success);font-weight:700;font-size:.82rem">✓ Thanks for the feedback!</span>';
+}
+function notHelpful(btn) {
+  const row = btn.closest('.faq-helpful');
+  row.innerHTML = '<span style="color:var(--text-muted);font-size:.82rem">We\'ll work on improving this. <a href="mailto:dev@zambodorm.com" style="color:var(--primary);font-weight:700;">Contact support →</a></span>';
+}
+
+/* ── TOAST ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
