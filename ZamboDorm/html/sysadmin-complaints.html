@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Applications – Sysadmin – ZamboDorm</title>
+  <title>Complaints – Sysadmin – ZamboDorm</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../css/style.css"/>
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
-  <link rel="stylesheet" href="../css/sysadmin-application.css"/>
+  <link rel="stylesheet" href="../css/sysadmin-complaints.css"/>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
@@ -48,8 +48,8 @@
           <span>Properties</span>
         </a>
 
-        <!-- Application (active) -->
-        <a href="sysadmin-application.html" class="sidebar-item active">
+        <!-- Application -->
+        <a href="sysadmin-application.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
             <rect x="9" y="3" width="6" height="4" rx="1"/>
@@ -59,8 +59,8 @@
           <span>Application</span>
         </a>
 
-        <!-- Complaints -->
-        <a href="sysadmin-complaints.html" class="sidebar-item">
+        <!-- Complaints (active) -->
+        <a href="sysadmin-complaints.html" class="sidebar-item active">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
             <line x1="12" y1="9" x2="12" y2="13"/>
@@ -88,8 +88,8 @@
 
       <!-- Page Header -->
       <div class="page-header">
-        <h1 class="page-title">Application Tracking</h1>
-        <p class="page-subtitle">Review and manage landlord applications</p>
+        <h1 class="page-title">Complaints &amp; Disputes</h1>
+        <p class="page-subtitle">Monitor and resolve tenant complaints</p>
       </div>
 
       <!-- Summary Cards Row -->
@@ -99,15 +99,14 @@
         <div class="stat-card">
           <div class="stat-icon-wrap purple">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
-              <rect x="9" y="3" width="6" height="4" rx="1"/>
-              <line x1="9" y1="12" x2="15" y2="12"/>
-              <line x1="9" y1="16" x2="13" y2="16"/>
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
             </svg>
           </div>
           <div class="stat-body">
             <div class="stat-number" id="countTotal"></div>
-            <div class="stat-label">Total Applications</div>
+            <div class="stat-label">Total Complaints</div>
           </div>
         </div>
 
@@ -121,11 +120,11 @@
           </div>
           <div class="stat-body">
             <div class="stat-number" id="countPending"></div>
-            <div class="stat-label">Pending Review</div>
+            <div class="stat-label">Pending</div>
           </div>
         </div>
 
-        <!-- Card 3: Approved -->
+        <!-- Card 3: Resolved -->
         <div class="stat-card">
           <div class="stat-icon-wrap green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -134,66 +133,66 @@
             </svg>
           </div>
           <div class="stat-body">
-            <div class="stat-number" id="countApproved"></div>
-            <div class="stat-label">Approved</div>
+            <div class="stat-number" id="countResolved"></div>
+            <div class="stat-label">Resolved</div>
           </div>
         </div>
 
       </div>
 
-      <!-- Applications List -->
-      <div class="app-section">
-        <h2 class="section-title">All Applications</h2>
-        <div class="app-list" id="appList"></div>
+      <!-- All Complaints Section -->
+      <div class="complaints-section">
+        <h2 class="section-title">All Complaints</h2>
+        <div class="complaints-list" id="complaintsList"></div>
       </div>
 
     </main>
   </div>
 
-  <!-- View Modal -->
+  <!-- View Details Modal -->
   <div class="modal-overlay" id="viewOverlay"></div>
   <div class="modal" id="viewModal">
     <div class="modal-header">
-      <h2 class="modal-title">Application Details</h2>
+      <h2 class="modal-title">Complaint Details</h2>
       <button class="modal-close" id="closeView">&times;</button>
     </div>
     <div class="modal-body">
       <div class="detail-section">
-        <h3 class="detail-section-title">Landlord Information</h3>
+        <h3 class="detail-section-title">Case Information</h3>
         <div class="detail-grid">
           <div class="detail-row">
-            <span class="detail-label">Full Name</span>
-            <span class="detail-value" id="vName"></span>
+            <span class="detail-label">Issue Title</span>
+            <span class="detail-value" id="vTitle"></span>
           </div>
           <div class="detail-row">
-            <span class="detail-label">Business</span>
-            <span class="detail-value" id="vBusiness"></span>
+            <span class="detail-label">Status</span>
+            <span class="detail-value" id="vStatus"></span>
           </div>
           <div class="detail-row">
-            <span class="detail-label">Email</span>
-            <span class="detail-value" id="vEmail"></span>
+            <span class="detail-label">Filed By</span>
+            <span class="detail-value" id="vFiledBy"></span>
           </div>
           <div class="detail-row">
-            <span class="detail-label">Phone</span>
-            <span class="detail-value" id="vPhone"></span>
+            <span class="detail-label">Role</span>
+            <span class="detail-value" id="vRole"></span>
           </div>
           <div class="detail-row">
-            <span class="detail-label">Applied On</span>
+            <span class="detail-label">Filed Against</span>
+            <span class="detail-value" id="vAgainst"></span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date Filed</span>
             <span class="detail-value" id="vDate"></span>
           </div>
         </div>
       </div>
       <div class="detail-section">
-        <h3 class="detail-section-title">Properties</h3>
-        <table class="prop-breakdown-table">
-          <thead>
-            <tr>
-              <th>Property Name</th>
-              <th>Total Capacity</th>
-            </tr>
-          </thead>
-          <tbody id="vProperties"></tbody>
-        </table>
+        <h3 class="detail-section-title">Full Description</h3>
+        <p class="complaint-full-desc" id="vDescription"></p>
+      </div>
+      <div class="detail-section">
+        <h3 class="detail-section-title">Case History</h3>
+        <div class="case-history" id="vHistory"></div>
       </div>
     </div>
     <div class="modal-footer">
@@ -205,18 +204,16 @@
   <div class="modal-overlay" id="statusOverlay"></div>
   <div class="modal modal--sm" id="statusModal">
     <div class="modal-header">
-      <h2 class="modal-title">Edit Application Status</h2>
+      <h2 class="modal-title">Edit Complaint Status</h2>
       <button class="modal-close" id="closeStatus">&times;</button>
     </div>
     <div class="modal-body">
-      <p class="status-applicant-name" id="statusApplicantName"></p>
+      <p class="status-applicant-name" id="statusComplaintTitle"></p>
       <div class="form-group">
         <label class="form-label">Status</label>
         <select class="form-input form-select" id="statusSelect">
           <option value="Pending">Pending</option>
-          <option value="Complete">Complete</option>
-          <option value="Incomplete">Incomplete</option>
-          <option value="Rejected">Rejected</option>
+          <option value="Resolved">Resolved</option>
         </select>
       </div>
     </div>
@@ -234,13 +231,13 @@
       <button class="modal-close" id="closeComment">&times;</button>
     </div>
     <div class="modal-body">
-      <p class="status-applicant-name">Application from:
-        <strong id="commentApplicantName"></strong>
+      <p class="status-applicant-name">Regarding:
+        <strong id="commentComplaintTitle"></strong>
       </p>
       <div class="form-group">
-        <label class="form-label">Comment</label>
+        <label class="form-label">Response / Notes</label>
         <textarea class="form-input form-textarea" id="commentText"
-          placeholder="Enter feedback or internal notes..."
+          placeholder="Enter your response or internal notes..."
           style="min-height: 120px;"></textarea>
       </div>
     </div>
@@ -251,6 +248,6 @@
   </div>
 
   <script src="../js/tenant-sidebar-hamburger.js"></script>
-  <script src="../js/sysadmin-application.js"></script>
+  <script src="../js/sysadmin-complaints.js"></script>
 </body>
 </html>

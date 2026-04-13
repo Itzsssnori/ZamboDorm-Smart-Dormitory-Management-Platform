@@ -7,7 +7,7 @@ const ICONS = {
 const DEMO_ACCOUNTS = [
   { email: 'tenant@example.com', password: 'tenant123', role: 'Tenant', type: 'tenant' },
   { email: 'landlord@example.com', password: 'landlord123', role: 'Landlord', type: 'landlord' },
-  { email: 'sysadmin@zambodorm.com', password: 'admin123', role: 'System Admin', type: 'admin' }
+  { email: 'sysadmin@zambodorm.com', password: 'admin123', role: 'System Admin', type: 'sysadmin' }
 ];
 
 // Render demo accounts
@@ -134,8 +134,14 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Redirect based on account type
     const account = DEMO_ACCOUNTS.find(a => a.email === email);
-    const isAdmin = account && (account.type === 'admin' || account.type === 'landlord');
-    
-    window.location.href = isAdmin ? './admin-overview.html' : './tenant-myroom.html';
+    if (!account) {
+      window.location.href = './tenant-myroom.html';
+    } else if (account.type === 'sysadmin') {
+      window.location.href = './sysadmin-overview.html';
+    } else if (account.type === 'landlord') {
+      window.location.href = './admin-overview.html';
+    } else {
+      window.location.href = './tenant-myroom.html';
+    }
   });
 });

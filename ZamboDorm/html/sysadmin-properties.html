@@ -1,300 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Property Management</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/sysadmin-properties.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Properties – Sysadmin – ZamboDorm</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
+  <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
+  <link rel="stylesheet" href="../css/sysadmin-properties.css"/>
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
 </head>
 <body>
 
-<!-- page -->
-<div class="page">
+  <zd-navbar authenticated></zd-navbar>
+  <script src="../js/navbar-scroll.js"></script>
 
-  <!-- page-header -->
-  <header class="page-header">
-    <div>
-      <h1 class="page-header__title">Property Management</h1>
-      <p class="page-header__subtitle">Manage dormitory properties</p>
-    </div>
-    <button class="btn btn--primary" id="open-btn">＋ Add New Property</button>
-  </header>
+  <div class="sidebar-overlay" id="overlay"></div>
 
-  <!-- card > table -->
-  <div class="card">
-    <div class="card__header">
-      <div style="display:flex;align-items:center;gap:10px;">
-        <span class="card__title">All Properties</span>
-        <span class="card__badge" id="prop-count"></span>
+  <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+
+        <!-- Overview -->
+        <a href="sysadmin-overview.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+
+        <!-- Properties (active) -->
+        <a href="sysadmin-properties.html" class="sidebar-item active">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+            <path d="M9 21V12h6v9"/>
+          </svg>
+          <span>Properties</span>
+        </a>
+
+        <!-- Application -->
+        <a href="sysadmin-application.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="1"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+            <line x1="9" y1="16" x2="13" y2="16"/>
+          </svg>
+          <span>Application</span>
+        </a>
+
+        <!-- Complaints -->
+        <a href="sysadmin-complaints.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+          </svg>
+          <span>Complaints</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Logout -->
+        <a href="signin-page.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Logout</span>
+        </a>
+
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+
+      <!-- Page Header Row -->
+      <div class="page-header prop-header">
+        <div>
+          <h1 class="page-title">Property Management</h1>
+          <p class="page-subtitle">Manage registered dormitory properties</p>
+        </div>
+        <button class="btn-add" id="openAddModal">＋ Add New Property</button>
       </div>
-    </div>
-    <table class="table">
-      <thead>
-        <tr class="table__head-row">
-          <th class="table__th">Property Name</th>
-          <th class="table__th">Owner</th>
-          <th class="table__th">Address</th>
-          <th class="table__th">Rooms</th>
-          <th class="table__th">Date Added</th>
-          <th class="table__th">Actions</th>
-        </tr>
-      </thead>
-      <tbody id="table-body"></tbody>
-    </table>
+
+      <!-- Properties Table Card -->
+      <div class="table-card">
+        <div class="table-card-header">
+          <span class="table-card-title">All Properties</span>
+          <span class="prop-count-badge" id="propCount"></span>
+        </div>
+        <div class="table-wrapper">
+          <table class="prop-table">
+            <thead>
+              <tr>
+                <th>Property Name</th>
+                <th>Owner</th>
+                <th>Address</th>
+                <th>Rooms</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="propTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </main>
   </div>
 
-</div>
-
-<!-- modal -->
-<div class="modal" id="modal" role="dialog" aria-modal="true">
-  <div class="modal__overlay" id="modal-overlay"></div>
-  <div class="modal__dialog">
-
-    <div class="modal__header">
-      <h2 class="modal__title" id="modal-title">Add New Property</h2>
-      <button class="modal__close" id="close-btn">&times;</button>
+  <!-- Add / Edit Modal -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal" id="propModal">
+    <div class="modal-header">
+      <h2 class="modal-title" id="modalTitle">Add New Property</h2>
+      <button class="modal-close" id="closeModal">&times;</button>
     </div>
-
-    <div class="modal__body">
-      <div class="field">
-        <label class="field__label field__label--required" for="f-name">Property Name</label>
-        <input class="field__input" id="f-name" type="text" placeholder="Enter property name" />
-        <span class="field__error" id="err-name" hidden>Required.</span>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label required">Property Name</label>
+        <input class="form-input" id="fieldName" type="text"
+               placeholder="Enter property name" />
+        <span class="form-error" id="errName"></span>
       </div>
-
-      <div class="field field--row">
-        <div class="field">
-          <label class="field__label field__label--required" for="f-first">First Name</label>
-          <input class="field__input" id="f-first" type="text" placeholder="First name" />
-          <span class="field__error" id="err-first" hidden>Required.</span>
+      <p class="form-section-label">Owner Name</p>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label required">First Name</label>
+          <input class="form-input" id="fieldFirst" type="text"
+                 placeholder="First name" />
+          <span class="form-error" id="errFirst"></span>
         </div>
-        <div class="field">
-          <label class="field__label field__label--required" for="f-last">Last Name</label>
-          <input class="field__input" id="f-last" type="text" placeholder="Last name" />
-          <span class="field__error" id="err-last" hidden>Required.</span>
-        </div>
-      </div>
-
-      <div class="field field--row">
-        <div class="field">
-          <label class="field__label" for="f-middle">Middle Name <small style="text-transform:none;font-weight:400">(Optional)</small></label>
-          <input class="field__input" id="f-middle" type="text" placeholder="Middle name" />
-        </div>
-        <div class="field">
-          <label class="field__label" for="f-suffix">Suffix <small style="text-transform:none;font-weight:400">(Optional)</small></label>
-          <input class="field__input" id="f-suffix" type="text" placeholder="Jr., Sr…" />
+        <div class="form-group">
+          <label class="form-label required">Middle Name</label>
+          <input class="form-input" id="fieldMiddle" type="text"
+                 placeholder="Middle name" />
+          <span class="form-error" id="errMiddle"></span>
         </div>
       </div>
-
-      <div class="field field--row">
-        <div class="field">
-          <label class="field__label field__label--required" for="f-rooms">Rooms</label>
-          <input class="field__input" id="f-rooms" type="number" min="1" placeholder="e.g. 20" />
-          <span class="field__error" id="err-rooms" hidden>Enter a valid number.</span>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label required">Last Name</label>
+          <input class="form-input" id="fieldLast" type="text"
+                 placeholder="Last name" />
+          <span class="form-error" id="errLast"></span>
         </div>
-        <div class="field">
-          <label class="field__label" for="f-date">Date Added</label>
-          <input class="field__input" id="f-date" type="date" />
-          <span class="field__hint">Auto-filled with today's date</span>
+        <div class="form-group">
+          <label class="form-label">Suffix</label>
+          <input class="form-input" id="fieldSuffix" type="text"
+                 placeholder="e.g. Jr., III (optional)" />
         </div>
       </div>
-
-      <div class="field">
-        <label class="field__label field__label--required" for="f-address">Address</label>
-        <input class="field__input" id="f-address" type="text" placeholder="Full property address" />
-        <span class="field__error" id="err-address" hidden>Required.</span>
+      <div class="form-group">
+        <label class="form-label required">Address</label>
+        <textarea class="form-input form-textarea" id="fieldAddress"
+                  placeholder="Full street address"></textarea>
+        <span class="form-error" id="errAddress"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label required">Number of Rooms</label>
+        <input class="form-input" id="fieldRooms" type="number"
+               min="1" placeholder="e.g. 20" />
+        <span class="form-error" id="errRooms"></span>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date Added</label>
+        <input class="form-input" id="fieldDate" type="text"
+               readonly disabled />
       </div>
     </div>
-
-    <div class="modal__footer">
-      <button class="btn btn--ghost" id="cancel-btn">Cancel</button>
-      <button class="btn btn--primary" id="submit-btn">Add Property</button>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="cancelModal">Cancel</button>
+      <button class="btn-save" id="saveModal">Save Property</button>
     </div>
-
   </div>
-</div>
 
-<!-- toast -->
-<div class="toast" id="toast" role="alert"></div>
+  <!-- Delete Confirmation Modal -->
+  <div class="modal-overlay" id="deleteOverlay"></div>
+  <div class="modal modal--sm" id="deleteModal">
+    <div class="modal-header">
+      <h2 class="modal-title">Delete Property</h2>
+      <button class="modal-close" id="closeDelete">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="delete-msg">Are you sure you want to delete
+        <strong id="deleteName"></strong>?
+        This action cannot be undone.</p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="cancelDelete">Cancel</button>
+      <button class="btn-danger" id="confirmDelete">Delete</button>
+    </div>
+  </div>
 
-
-<script>
-
-/* --- STORE: manages property data in localStorage --- */
-const Store = (() => {
-  const SEED = [
-    { id: 1, name: 'Sunshine Dormitory',     first: 'Juan',  last: 'dela Cruz', middle: '',   suffix: '', address: '123 Zamboanga St., Zamboanga City',     rooms: 20, date: '2025-01-15' },
-    { id: 2, name: 'Blue Haven Dorms',       first: 'Maria', last: 'Santos',    middle: '',   suffix: '', address: '456 Seaside Ave., Zamboanga City',      rooms: 15, date: '2025-02-10' },
-    { id: 3, name: 'Green Valley Residence', first: 'Pedro', last: 'Reyes',     middle: 'A.', suffix: '', address: '789 Mountain View Rd., Zamboanga City', rooms: 25, date: '2025-03-05' },
-  ];
-
-  let _data   = JSON.parse(localStorage.getItem('properties') || 'null') || SEED;
-  let _nextId = Math.max(..._data.map(p => p.id), 0) + 1;
-
-  const save = () => localStorage.setItem('properties', JSON.stringify(_data));
-
-  return {
-    getAll: ()     => [..._data],
-    find:   (id)   => _data.find(p => p.id === id) || null,
-    add(prop)      { const e = { id: _nextId++, ...prop }; _data.push(e); save(); return e; },
-    update(id, prop) { const i = _data.findIndex(p => p.id === id); if (i > -1) { _data[i] = { ..._data[i], ...prop }; save(); } },
-    remove(id)     { _data = _data.filter(p => p.id !== id); save(); },
-  };
-})();
-
-
-/* --- TOAST: shows a brief status message then fades out --- */
-const Toast = {
-  _t: null,
-  show(msg, type = 'success') {
-    clearTimeout(this._t);
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.className   = `toast toast--show toast--${type}`;
-    this._t = setTimeout(() => el.classList.remove('toast--show'), 2500);
-  },
-};
-
-
-/* --- MODAL: handles open/close and form submit for add and edit --- */
-const Modal = (() => {
-  let _editId = null; // null = add mode, number = edit mode
-
-  const today   = () => new Date().toISOString().split('T')[0];
-  const val     = id => document.getElementById(id).value.trim();
-
-  // show or hide a field's error message
-  const setErr  = (f, show) => {
-    document.getElementById(`err-${f}`).hidden = !show;
-    document.getElementById(`f-${f}`).classList.toggle('field__input--error', show);
-  };
-
-  const clearErrors = () =>
-    ['name','first','last','rooms','address'].forEach(f => setErr(f, false));
-
-  // fill form fields when editing an existing property
-  const populate = p => {
-    ['name','first','last','middle','suffix','address'].forEach(f => document.getElementById(`f-${f}`).value = p[f]);
-    document.getElementById('f-rooms').value = p.rooms;
-    document.getElementById('f-date').value  = p.date;
-  };
-
-  // clear all fields for a fresh add form
-  const reset = () => {
-    ['f-name','f-first','f-last','f-middle','f-suffix','f-rooms','f-address'].forEach(id => document.getElementById(id).value = '');
-    document.getElementById('f-date').value = today();
-    clearErrors();
-  };
-
-  return {
-    open(editId = null) {
-      _editId = editId;
-      editId !== null ? populate(Store.find(editId)) : reset();
-
-      // update modal title and button label based on mode
-      document.getElementById('modal-title').textContent = editId !== null ? 'Edit Property' : 'Add New Property';
-      document.getElementById('submit-btn').textContent  = editId !== null ? 'Save Changes'  : 'Add Property';
-
-      document.getElementById('modal').classList.add('modal--open');
-      setTimeout(() => document.getElementById('f-name').focus(), 100);
-    },
-
-    close() {
-      document.getElementById('modal').classList.remove('modal--open');
-      _editId = null;
-    },
-
-    validate() {
-      clearErrors();
-      let ok = true;
-      // each rule: [field, fails when true]
-      [['name', v => !v], ['first', v => !v], ['last', v => !v],
-       ['rooms', v => !v || +v < 1], ['address', v => !v]]
-        .forEach(([f, fails]) => { if (fails(val(`f-${f}`))) { setErr(f, true); ok = false; } });
-      return ok;
-    },
-
-    submit() {
-      if (!this.validate()) return;
-      const data = {
-        name: val('f-name'), first: val('f-first'), last: val('f-last'),
-        middle: val('f-middle'), suffix: val('f-suffix'),
-        rooms: +val('f-rooms'),
-        date: document.getElementById('f-date').value || today(),
-        address: val('f-address'),
-      };
-      _editId !== null ? Store.update(_editId, data) : Store.add(data);
-      Toast.show(_editId !== null ? 'Property updated!' : 'Property added!');
-      this.close();
-      Table.render();
-    },
-  };
-})();
-
-
-/* --- TABLE: renders the property list into the page --- */
-const Table = {
-  esc:       s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'),
-  initials:  p => (p.first[0] + p.last[0]).toUpperCase(),
-  fullName:  p => [p.first, p.middle, p.last, p.suffix].filter(Boolean).join(' '),
-
-  buildRow(p, i) {
-    return `
-      <tr class="table__row" style="animation-delay:${i * 40}ms">
-        <td class="table__td"><strong>${this.esc(p.name)}</strong></td>
-        <td class="table__td">
-          <div class="owner">
-            <div class="owner__avatar">${this.initials(p)}</div>
-            <span class="owner__name">${this.esc(this.fullName(p))}</span>
-          </div>
-        </td>
-        <td class="table__td table__td--muted">${this.esc(p.address)}</td>
-        <td class="table__td"><span class="badge">${p.rooms} Rooms</span></td>
-        <td class="table__td table__td--muted">${p.date}</td>
-        <td class="table__td table__td--right">
-          <button class="btn btn--ghost btn--sm" onclick="Modal.open(${p.id})">Edit</button>
-          <button class="btn btn--danger btn--sm" onclick="Table.remove(${p.id})">Delete</button>
-        </td>
-      </tr>`;
-  },
-
-  render() {
-    const data  = Store.getAll();
-    const tbody = document.getElementById('table-body');
-
-    tbody.innerHTML = data.length
-      ? data.map((p, i) => this.buildRow(p, i)).join('')
-      : `<tr><td colspan="6"><div class="empty-state"><span class="empty-state__icon"></span>No properties yet.</div></td></tr>`;
-
-    // update the count badge
-    document.getElementById('prop-count').textContent =
-      `${data.length} ${data.length === 1 ? 'property' : 'properties'} registered`;
-  },
-
-  remove(id) {
-    if (!confirm(`Delete "${Store.find(id)?.name}"? This cannot be undone.`)) return;
-    Store.remove(id);
-    Toast.show('Property deleted.', 'danger');
-    this.render();
-  },
-};
-
-
-/* --- EVENT LISTENERS --- */
-document.getElementById('open-btn').addEventListener('click',    () => Modal.open());
-document.getElementById('close-btn').addEventListener('click',   () => Modal.close());
-document.getElementById('cancel-btn').addEventListener('click',  () => Modal.close());
-document.getElementById('modal-overlay').addEventListener('click',() => Modal.close());
-document.getElementById('submit-btn').addEventListener('click',  () => Modal.submit());
-document.addEventListener('keydown', e => { if (e.key === 'Escape') Modal.close(); });
-
-
-/* --- INIT --- */
-Table.render();
-
-</script>
+  <script src="../js/tenant-sidebar-hamburger.js"></script>
+  <script src="../js/sysadmin-properties.js"></script>
 </body>
 </html>

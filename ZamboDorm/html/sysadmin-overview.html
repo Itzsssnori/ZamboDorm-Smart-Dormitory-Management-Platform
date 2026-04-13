@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sysadmin – ZamboDorm</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
+  <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
+</head>
+<body>
+
+  <zd-navbar authenticated></zd-navbar>
+  <script src="../js/navbar-scroll.js"></script>
+
+  <div class="sidebar-overlay" id="overlay"></div>
+
+  <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav class="sidebar-nav">
+
+        <!-- Overview (active) -->
+        <a href="sysadmin-overview.html" class="sidebar-item active">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+          <span>Overview</span>
+        </a>
+
+        <!-- Properties -->
+        <a href="sysadmin-properties.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+            <path d="M9 21V12h6v9"/>
+          </svg>
+          <span>Properties</span>
+        </a>
+
+        <!-- Application -->
+        <a href="sysadmin-application.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="1"/>
+            <line x1="9" y1="12" x2="15" y2="12"/>
+            <line x1="9" y1="16" x2="13" y2="16"/>
+          </svg>
+          <span>Application</span>
+        </a>
+
+        <!-- Complaints -->
+        <a href="sysadmin-complaints.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+          </svg>
+          <span>Complaints</span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+
+        <!-- Logout -->
+        <a href="signin-page.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Logout</span>
+        </a>
+
+      </nav>
+    </aside>
+
+    <main class="main-content" id="mainContent">
+
+      <!-- SECTION 1 — Page Header -->
+      <div class="page-header">
+        <div>
+          <h1 class="page-title">Sysadmin Dashboard</h1>
+          <p class="page-subtitle">Welcome back! Here's what's happening across the system.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 2 — Stats Row -->
+      <div class="stats-grid">
+
+        <!-- Card 1: Properties -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+              <path d="M9 21V12h6v9"/>
+            </svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-number">3</div>
+            <div class="stat-label">Total Properties</div>
+            <div class="stat-sub">Registered dormitories</div>
+          </div>
+        </div>
+
+        <!-- Card 2: Applications -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+              <rect x="9" y="3" width="6" height="4" rx="1"/>
+              <line x1="9" y1="12" x2="15" y2="12"/>
+              <line x1="9" y1="16" x2="13" y2="16"/>
+            </svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Total Applications</div>
+            <div class="stat-sub"><span class="badge badge--amber">3 Pending</span></div>
+          </div>
+        </div>
+
+        <!-- Card 3: Complaints -->
+        <div class="stat-card">
+          <div class="stat-icon-wrap red">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/>
+              <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="stat-body">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Total Complaints</div>
+            <div class="stat-sub"><span class="badge badge--amber">2 Pending</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SECTION 3 — Recent Activity -->
+      <div class="recent-grid">
+
+        <!-- Panel 1: Recent Properties -->
+        <div class="recent-panel">
+          <div class="recent-panel-header">
+            <span class="recent-panel-title">Recent Properties</span>
+            <a href="sysadmin-properties.html" class="recent-panel-link">View All</a>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Sunshine Dormitory</span>
+            <span class="badge badge--green">Active</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Blue Haven Dorms</span>
+            <span class="badge badge--green">Active</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Green Valley Residence</span>
+            <span class="badge badge--green">Active</span>
+          </div>
+        </div>
+
+        <!-- Panel 2: Recent Applications -->
+        <div class="recent-panel">
+          <div class="recent-panel-header">
+            <span class="recent-panel-title">Recent Applications</span>
+            <a href="sysadmin-application.html" class="recent-panel-link">View All</a>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Pedro Reyes</span>
+            <span class="badge badge--amber">Pending</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Maria Santos</span>
+            <span class="badge badge--amber">Pending</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Ana Lopez</span>
+            <span class="badge badge--amber">Pending</span>
+          </div>
+        </div>
+
+        <!-- Panel 3: Recent Complaints -->
+        <div class="recent-panel">
+          <div class="recent-panel-header">
+            <span class="recent-panel-title">Recent Complaints</span>
+            <a href="sysadmin-complaints.html" class="recent-panel-link">View All</a>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Noise Complaint</span>
+            <span class="badge badge--amber">Pending</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Maintenance Issue</span>
+            <span class="badge badge--green">Resolved</span>
+          </div>
+          <div class="recent-row">
+            <span class="recent-row-name">Billing Dispute</span>
+            <span class="badge badge--amber">Pending</span>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/tenant-sidebar-hamburger.js"></script>
+</body>
+</html>
