@@ -1,265 +1,459 @@
-/* BODY & HEADER */
-body {
-  font-family: Arial, sans-serif;
-  background: #f5f6fa;
-  margin: 0;
-  padding: 30px;
+/* sysadmin-application.css
+   Page-specific styles for the Application Tracking page.
+   Layout, sidebar, and stat-card styles come from:
+     style.css → sidebar-hamburger.css → sysadmin-overview.css
+   This file is self-contained — modal base, form, and button
+   styles are defined here (sysadmin-properties.css is NOT loaded
+   on this page).
+   Do NOT redefine :root or layout styles here.
+*/
+
+/* ═══════════════════════════════════════
+   STAT ICON WRAP — GREEN VARIANT
+   (purple and amber already in sysadmin-overview.css)
+   ═══════════════════════════════════════ */
+.stat-icon-wrap.green {
+  background: rgba(16, 185, 129, 0.12);
 }
 
-h1 {
-  margin-bottom: 5px;
+.stat-icon-wrap.green svg {
+  color: #059669;
+  stroke: #059669;
 }
 
-.sub {
-  color: #666;
-  margin-bottom: 20px;
+/* ═══════════════════════════════════════
+   SECTION TITLE
+   ═══════════════════════════════════════ */
+.app-section {
+  margin-top: 2rem;
 }
 
-/* CARDS */
-.cards {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 30px;
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
 }
 
-.card {
-  flex: 1;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.card h2 {
-  margin: 0;
-  font-size: 40px;
-}
-
-.card p {
-  color: #555;
-}
-
-/* APPLICATION LIST */
+/* ═══════════════════════════════════════
+   APPLICATION CARDS
+   ═══════════════════════════════════════ */
 .app-card {
-  background: white;
-  padding: 20px 25px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-  box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.06);
+  transition: box-shadow 0.2s;
 }
 
-/* Header row: name, badge, actions aligned horizontally */
-.app-card .header-row {
+.app-card:hover {
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+}
+
+.app-card-header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
 }
 
-/* Group left side: name + badge */
-.applicant-name {
-  font-weight: 700;
-  font-size: 18px;
-  margin-right: 10px;
-  white-space: nowrap;
-  flex-shrink: 0;
+.app-card-name {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+  flex: 1;
 }
 
-.badge.pending {
-  background-color: #f57c00; /* orange */
-  padding: 4px 10px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 600;
-  color: white;
-  white-space: nowrap;
-  flex-shrink: 0;
-  margin-right: auto; /* push actions to the right */
-}
-
-/* Actions aligned horizontally, top-right */
-.app-card .actions {
+.app-card-details {
   display: flex;
-  gap: 10px;
-  flex-shrink: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }
 
-/* Details below header-row */
-.app-card .details {
-  margin-top: 12px;
-  color: #333;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-/* BUTTONS */
-.btn {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  font-size: 14px;
+.app-card-details span {
   display: flex;
   align-items: center;
-  gap: 6px;
-  user-select: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  gap: 0.35rem;
 }
 
+.app-card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════
+   STATUS BADGES
+   ═══════════════════════════════════════ */
+.badge--purple {
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--primary);
+}
+
+.badge--green {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.badge--amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.badge--red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.badge--orange {
+  background: rgba(249, 115, 22, 0.12);
+  color: #ea580c;
+}
+
+/* ═══════════════════════════════════════
+   ACTION BUTTONS ON CARDS
+   ═══════════════════════════════════════ */
 .btn-view {
-  background-color: #f0f0f0;
-  color: #333;
-  border-color: #ccc;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(124, 58, 237, 0.1);
+  color: var(--primary);
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .btn-view:hover {
-  background-color: #e0e0e0;
+  background: rgba(124, 58, 237, 0.18);
 }
 
-.btn-edit {
-  background-color: white;
-  color: #333;
-  border-color: #999;
+.btn-edit-status {
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.btn-edit:hover {
-  background-color: #f0f0f0;
+.btn-edit-status:hover {
+  background: rgba(245, 158, 11, 0.18);
 }
 
 .btn-comment {
-  background: linear-gradient(45deg, #7b2ff7, #f107a3);
-  color: white;
-  border-color: transparent;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .btn-comment:hover {
-  opacity: 0.9;
+  background: rgba(16, 185, 129, 0.18);
 }
 
-.icon {
-  font-size: 16px;
+/* ═══════════════════════════════════════
+   VIEW MODAL DETAIL STYLES
+   ═══════════════════════════════════════ */
+.detail-section {
+  margin-bottom: 1.5rem;
 }
 
-/* MODALS */
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  width: 110px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.detail-value {
+  color: var(--text);
+  font-weight: 600;
+  flex: 1;
+}
+
+/* ═══════════════════════════════════════
+   PROPERTY BREAKDOWN TABLE
+   ═══════════════════════════════════════ */
+.prop-breakdown-table {
   width: 100%;
-  height: 100%;
-  display: none; /* hidden by default */
-  background: rgba(0,0,0,0.4);
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--card-border);
 }
 
-.modal-content {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  width: 400px;
-  position: relative;
-  max-height: 90%;
-  overflow-y: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+.prop-breakdown-table th {
+  padding: 0.6rem 1rem;
+  background: rgba(124, 58, 237, 0.06);
+  text-align: left;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
+.prop-breakdown-table td {
+  padding: 0.65rem 1rem;
+  color: var(--text);
+  border-top: 1px solid var(--card-border);
+}
+
+/* ═══════════════════════════════════════
+   STATUS SELECT
+   ═══════════════════════════════════════ */
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
   cursor: pointer;
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
 }
 
-/* TEXTAREAS (UPDATED TO MATCH DESIGN) */
-textarea {
+/* ═══════════════════════════════════════
+   STATUS APPLICANT NAME
+   ═══════════════════════════════════════ */
+.status-applicant-name {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════
+   MODAL BASE STYLES
+   (sysadmin-properties.css is not loaded on this page —
+    these styles must live here)
+   ═══════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 400;
+}
+
+.modal-overlay.open {
+  display: block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 500;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal--sm {
+  max-width: 400px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--card-border);
+}
+
+/* ═══════════════════════════════════════
+   FORM ELEMENTS
+   ═══════════════════════════════════════ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-input {
   width: 100%;
-  padding: 16px;
-  border-radius: 16px; /* more rounded like screenshot */
-  border: 2px solid #d6d6d6;
-  margin-top: 10px;
-  resize: vertical;
-  font-size: 14px;
-  background: #f9fafc; /* light grey fill */
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--card-border);
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.2s;
   outline: none;
-  transition: all 0.25s ease;
-  box-sizing: border-box;
-  min-height: 110px;
-}
-
-/* Placeholder styling */
-textarea::placeholder {
-  color: #8a94a6;
-}
-
-/* Purple focus effect (key visual fix) */
-textarea:focus {
-  border-color: #7b2ff7;
-  box-shadow: 0 0 0 4px rgba(123, 47, 247, 0.2);
   background: #ffffff;
 }
-/* MODAL FOOTER (fix alignment) */
-.modal-footer {
-  margin-top: 20px;
-  display: flex;
-  justify-content: flex-end; /* push everything to the right */
-  align-items: center;
-  gap: 12px; /* space between buttons */
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
 
-/* CANCEL BUTTON */
-.cancel {
-  background: #f1f1f1;
-  border: 1px solid #ddd;
-  padding: 10px 18px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #333;
-  min-width: 100px; /* keeps size consistent */
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
 }
 
-.cancel:hover {
-  background: #e4e4e4;
-}
-
-/* SUBMIT BUTTON */
-.submit {
-  background: linear-gradient(45deg, #7b2ff7, #c026d3);
-  color: white;
+/* ═══════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════ */
+.btn-cancel {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--primary);
   border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 14px;
-  min-width: 150px; /* matches screenshot proportion */
+  transition: all 0.2s;
 }
 
-.submit:hover {
-  opacity: 0.9;
+.btn-cancel:hover {
+  background: rgba(124, 58, 237, 0.15);
 }
-/* RESPONSIVE */
-@media (max-width: 500px) {
-  .cards {
-    flex-direction: column;
-  }
 
-  .modal-content {
-    width: 90%;
-  }
+.btn-save {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
 
-  .app-card .header-row {
+.btn-save:hover {
+  background: var(--primary-dark, #5b21b6);
+}
+
+/* ═══════════════════════════════════════
+   MOBILE (max-width: 768px)
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .app-card-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
   }
 
-  .app-card .actions {
+  .app-card-actions {
     width: 100%;
-    justify-content: flex-start;
+  }
+
+  .btn-view,
+  .btn-edit-status,
+  .btn-comment {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 95vh;
   }
 }

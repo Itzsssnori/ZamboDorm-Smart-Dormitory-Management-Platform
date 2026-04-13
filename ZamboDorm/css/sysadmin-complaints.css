@@ -1,0 +1,513 @@
+/* sysadmin-complaints.css
+   Page-specific styles for the Complaints & Disputes page.
+   Layout, sidebar, modal base, badge classes, stat-card, and
+   detail-section styles are already provided by:
+     style.css → sysadmin-overview.css → sidebar-hamburger.css
+   Do NOT redefine :root, layout, sidebar, or modal base here.
+*/
+
+/* ═══════════════════════════════════════
+   STAT ICON WRAP — GREEN VARIANT
+   (purple and amber already in sysadmin-overview.css)
+   ═══════════════════════════════════════ */
+.stat-icon-wrap.green {
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.stat-icon-wrap.green svg {
+  color: #059669;
+  stroke: #059669;
+}
+
+/* ═══════════════════════════════════════
+   STATUS BADGES
+   ═══════════════════════════════════════ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge--green  { background: rgba(16, 185, 129, 0.12); color: #059669; }
+.badge--amber  { background: rgba(245, 158, 11, 0.12);  color: #d97706; }
+.badge--purple { background: rgba(124, 58, 237, 0.12);  color: var(--primary); }
+
+/* ═══════════════════════════════════════
+   MODAL BASE STYLES
+   (needed because sysadmin-properties.css is not loaded on this page)
+   ═══════════════════════════════════════ */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 400;
+}
+
+.modal-overlay.open {
+  display: block;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 500;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal.open {
+  display: block;
+}
+
+.modal--sm {
+  max-width: 400px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-muted);
+  line-height: 1;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 1.5rem;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--card-border);
+}
+
+/* ═══════════════════════════════════════
+   FORM ELEMENTS
+   ═══════════════════════════════════════ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--card-border);
+  border-radius: 8px;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  color: var(--text);
+  transition: border-color 0.2s;
+  outline: none;
+  background: #ffffff;
+}
+
+.form-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px;
+  padding-right: 2.5rem;
+  cursor: pointer;
+}
+
+/* ═══════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════ */
+.btn-cancel {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--primary);
+  border: none;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover {
+  background: rgba(124, 58, 237, 0.15);
+}
+
+.btn-save {
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #ffffff;
+  border: none;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-save:hover {
+  background: var(--primary-dark, #5b21b6);
+}
+
+/* ═══════════════════════════════════════
+   DETAIL SECTION (view modal)
+   ═══════════════════════════════════════ */
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-section:last-child {
+  margin-bottom: 0;
+}
+
+.detail-section-title {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.detail-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-row {
+  display: flex;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-label {
+  width: 110px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.detail-value {
+  color: var(--text);
+  font-weight: 600;
+  flex: 1;
+}
+
+.status-applicant-name {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════
+   COMPLAINTS SECTION
+   ═══════════════════════════════════════ */
+.complaints-section {
+  margin-top: 2rem;
+}
+
+.section-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 1rem;
+}
+
+/* ═══════════════════════════════════════
+   COMPLAINT CARDS
+   ═══════════════════════════════════════ */
+.complaint-card {
+  background: #ffffff;
+  border-radius: var(--radius);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.06);
+  margin-bottom: 1rem;
+  /* overflow: hidden removed — was clipping the .dots-menu dropdown */
+  transition: box-shadow 0.2s;
+}
+
+.complaint-card:hover {
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+}
+
+.complaint-card-main {
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+
+.complaint-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.complaint-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+  flex: 1;
+}
+
+.complaint-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.complaint-meta strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.complaint-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin-bottom: 0.75rem;
+}
+
+.complaint-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-top: 1px solid var(--card-border);
+  background: rgba(124, 58, 237, 0.02);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.complaint-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.complaint-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ═══════════════════════════════════════
+   THREE-DOT MENU
+   ═══════════════════════════════════════ */
+.action-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-dots {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.btn-dots:hover {
+  background: rgba(124, 58, 237, 0.08);
+  color: var(--primary);
+}
+
+.dots-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: 100%;
+  top: auto;
+  margin-bottom: 4px;
+  background: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 150px;
+  z-index: 300;
+  overflow: hidden;
+}
+
+.dots-menu.open {
+  display: block;
+}
+
+.dots-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.88rem;
+  font-family: var(--font);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.dots-menu button:hover {
+  background: rgba(124, 58, 237, 0.06);
+  color: var(--primary);
+}
+
+/* ═══════════════════════════════════════
+   COMMENT BUTTON ON CARD
+   ═══════════════════════════════════════ */
+.btn-comment {
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  font-family: var(--font);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-comment:hover {
+  background: rgba(16, 185, 129, 0.18);
+}
+
+/* ═══════════════════════════════════════
+   FULL DESCRIPTION IN MODAL
+   ═══════════════════════════════════════ */
+.complaint-full-desc {
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.7;
+  background: rgba(124, 58, 237, 0.03);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid var(--card-border);
+}
+
+/* ═══════════════════════════════════════
+   CASE HISTORY
+   ═══════════════════════════════════════ */
+.case-history {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.history-entry {
+  background: #f9f9ff;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--primary);
+}
+
+.history-entry-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.history-entry-text {
+  font-size: 0.88rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════
+   MOBILE (max-width: 768px)
+   ═══════════════════════════════════════ */
+@media (max-width: 768px) {
+  .complaint-card-top {
+    flex-wrap: wrap;
+  }
+
+  .complaint-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .complaint-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .btn-comment {
+    flex: 1;
+  }
+
+  .modal {
+    width: 95%;
+    max-height: 95vh;
+  }
+}
