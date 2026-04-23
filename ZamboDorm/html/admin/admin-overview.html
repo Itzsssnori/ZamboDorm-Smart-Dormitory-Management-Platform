@@ -4,21 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="../../images/ZamboDorm.png" sizes="32x32">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../Codes/css/styles.css">
   <link rel="stylesheet" href="../../Codes/css/header.css">
   <link rel="stylesheet" href="../../Codes/css/section-bar.css">
-  <link rel="stylesheet" href="../../Codes/css/admin-room.css">
-  <link rel="stylesheet" href="../css/admin-dashboard-styles.css">
-  <title>Admin Dashboard - Room Occupancy</title>
+  <link rel="stylesheet" href="../../Codes/css/admin-dashboard-styles.css">
+  <title>Admin Dashboard - ZamboDorm</title>
 </head>
 
 <body>
-
   <!-- Navigation header -->
   <header class="navbar">
 
@@ -52,7 +47,7 @@
       </a>
 
       <div class="logout-container">
-        <a href="../../index.html#home" class="logout-btn">Logout</a>
+        <a href="index.html#home" class="logout-btn">Logout</a>
       </div>
     </nav>
 
@@ -71,7 +66,7 @@
       <!-- Scrollable nav items -->
       <div class="sidebar-nav-scrollable">
 
-        <a href="admin-overview.html" class="sidebar-item">
+        <a href="admin-overview.html" class="sidebar-item active">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="7" height="7" rx="1" />
@@ -93,7 +88,7 @@
           <span class="sidebar-label">Tenants</span>
         </a>
 
-        <a href="admin-room.html" class="sidebar-item active">
+        <a href="admin-room.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
@@ -134,7 +129,6 @@
           </svg>
           <span class="sidebar-label">Announcements</span>
         </a>
-
         <a href="admin-visitor_security_log.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
@@ -146,7 +140,6 @@
           </svg>
           <span class="sidebar-label">Visitor Logs</span>
         </a>
-
         <a href="admin-roomgallery.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
@@ -156,7 +149,6 @@
           </svg>
           <span class="sidebar-label">Room Gallery</span>
         </a>
-
         <a href="admin-settings.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
@@ -166,13 +158,12 @@
           </svg>
           <span class="sidebar-label">Admin Settings</span>
         </a>
-
       </div><!-- /sidebar-nav-scrollable -->
 
       <!-- Fixed bottom items -->
       <div class="sidebar-nav-fixed">
 
-        <a href="../settings_and_help/settings-A.html" class="sidebar-item">
+        <a href="settings-A.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="3" />
@@ -182,7 +173,7 @@
           <span class="sidebar-label">Settings</span>
         </a>
 
-        <a href="../settings_and_help/help-A.html" class="sidebar-item">
+        <a href="help-A.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
             stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10" />
@@ -197,162 +188,150 @@
     </nav>
   </aside>
 
+  <!-- Main content section -->
   <main class="admin-main-content">
     <!-- Header Section -->
     <div class="admin-content-header">
-      <h1 class="admin-page-title">Room Occupancy Tracker</h1>
+      <h1 class="admin-page-title">Admin Dashboard</h1>
+      <p class="admin-page-subtitle">Welcome back! Here's what's happening today in ZamboDorm.</p>
     </div>
 
-    <div class="tracker-container">
-      <section class="room-grid">
-        <!-- Room Cards -->
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">100</div>
-          <div class="room-status">Occupied (2/2)</div>
+    <!-- Metrics Cards Section -->
+    <div class="admin-metrics-grid">
+      <!-- Total Tenants Card -->
+      <div class="admin-metric-card">
+        <div class="admin-metric-header">
+          <div class="admin-metric-icon admin-metric-icon-tenants">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+              <circle cx="9" cy="7" r="4"></circle>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+            </svg>
+          </div>
+          <div class="admin-metric-change admin-metric-positive">+12%</div>
         </div>
+        <div class="admin-metric-label">Total Tenants</div>
+        <div class="admin-metric-value">124</div>
+      </div>
 
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">101</div>
-          <div class="room-status">Occupied (1/2)</div>
+      <!-- Available Rooms Card -->
+      <div class="admin-metric-card">
+        <div class="admin-metric-header">
+          <div class="admin-metric-icon admin-metric-icon-rooms">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+              <polyline points="17 21 17 13 7 13 7 21"></polyline>
+              <polyline points="7 5 7 13 17 13"></polyline>
+            </svg>
+          </div>
+          <div class="admin-metric-change admin-metric-negative">-2</div>
         </div>
+        <div class="admin-metric-label">Available Rooms</div>
+        <div class="admin-metric-value">18</div>
+      </div>
 
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">102</div>
-          <div class="room-status">Available (0/2)</div>
+      <!-- Pending Payments Card -->
+      <div class="admin-metric-card">
+        <div class="admin-metric-header">
+          <div class="admin-metric-icon admin-metric-icon-payments">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="6" width="22" height="13" rx="2" ry="2"></rect>
+              <path d="M1 9h22M6 15h4"></path>
+            </svg>
+          </div>
+          <div class="admin-metric-change admin-metric-negative">-5%</div>
         </div>
+        <div class="admin-metric-label">Pending Payments</div>
+        <div class="admin-metric-value">8</div>
+      </div>
 
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">103</div>
-          <div class="room-status">Occupied (2/2)</div>
+      <!-- Active Complaints Card -->
+      <div class="admin-metric-card">
+        <div class="admin-metric-header">
+          <div class="admin-metric-icon admin-metric-icon-complaints">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              <circle cx="9" cy="10" r="1"></circle>
+              <circle cx="12" cy="10" r="1"></circle>
+              <circle cx="15" cy="10" r="1"></circle>
+            </svg>
+          </div>
+          <div class="admin-metric-change admin-metric-neutral">0</div>
         </div>
+        <div class="admin-metric-label">Active Complaints</div>
+        <div class="admin-metric-value">4</div>
+      </div>
+    </div>
 
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">104</div>
-          <div class="room-status">Available (0/2)</div>
+    <!-- Charts Section -->
+    <div class="admin-charts-grid">
+      <!-- Revenue Analysis Chart -->
+      <div class="admin-chart-container">
+        <h2 class="admin-chart-title">Revenue Analysis</h2>
+        <div class="admin-bar-chart">
+          <div class="admin-chart-y-axis">
+            <span class="admin-chart-y-label">60000</span>
+            <span class="admin-chart-y-label">45000</span>
+            <span class="admin-chart-y-label">30000</span>
+            <span class="admin-chart-y-label">15000</span>
+            <span class="admin-chart-y-label">0</span>
+          </div>
+          <div class="admin-bars-container">
+            <div class="admin-bar-wrapper">
+              <div class="admin-bar" style="height: 73%;"></div>
+              <span class="admin-bar-value">₱44,300</span>
+            </div>
+            <div class="admin-bar-wrapper">
+              <div class="admin-bar" style="height: 80%;"></div>
+              <span class="admin-bar-value">₱46,000</span>
+            </div>
+            <div class="admin-bar-wrapper">
+              <div class="admin-bar" style="height: 60%;"></div>
+              <span class="admin-bar-value">₱36,000</span>
+            </div>
+            <div class="admin-bar-wrapper">
+              <div class="admin-bar" style="height: 87%;"></div>
+              <span class="admin-bar-value">₱54,200</span>
+            </div>
+            <div class="admin-bar-wrapper">
+              <div class="admin-bar" style="height: 75%;"></div>
+              <span class="admin-bar-value">₱45,000</span>
+            </div>
+          </div>
         </div>
+        <div class="admin-x-axis">
+          <span class="admin-x-label">Oct</span>
+          <span class="admin-x-label">Nov</span>
+          <span class="admin-x-label">Dec</span>
+          <span class="admin-x-label">Jan</span>
+          <span class="admin-x-label">Feb</span>
+        </div>
+      </div>
 
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">105</div>
-          <div class="room-status">Occupied (1/2)</div>
+      <!-- Occupancy Rate Circle Chart -->
+      <div class="admin-chart-container">
+        <h2 class="admin-chart-title">Occupancy Rate</h2>
+        <div class="admin-circle-chart">
+          <svg class="admin-circle-svg" viewBox="0 0 120 120">
+            <!-- Background circle (Unoccupied) -->
+            <circle class="admin-circle-unoccupied" cx="60" cy="60" r="50" fill="none" stroke="#e8e8e8"
+              stroke-width="12" />
+            <!-- Percentage circle (Occupied 75%) -->
+            <circle class="admin-circle-occupied" cx="60" cy="60" r="50" fill="none" stroke="#b80000" stroke-width="12"
+              stroke-dasharray="267.04" stroke-dashoffset="47.96" stroke-linecap="round"
+              transform="rotate(-90 60 60)" />
+          </svg>
+          <div class="admin-circle-tooltip admin-circle-occupied-tooltip">75% Occupied</div>
+          <div class="admin-circle-tooltip admin-circle-unoccupied-tooltip">25% Unoccupied</div>
+          <div class="admin-circle-content">
+            <div class="admin-circle-percentage">75%</div>
+            <div class="admin-circle-label">Occupied</div>
+          </div>
         </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">106</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">107</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">108</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">109</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">110</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">111</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">112</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">113</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">114</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">115</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">116</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">117</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">118</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">119</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">120</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-
-        <div class="room-card occupied-full">
-          <span class="dotoccupy"></span>
-          <div class="room-number">121</div>
-          <div class="room-status">Occupied (2/2)</div>
-        </div>
-
-        <div class="room-card available">
-          <span class="dot"></span>
-          <div class="room-number">122</div>
-          <div class="room-status">Available (0/2)</div>
-        </div>
-
-        <div class="room-card occupied-partial">
-          <span class="dot"></span>
-          <div class="room-number">123</div>
-          <div class="room-status">Occupied (1/2)</div>
-        </div>
-      </section>
+      </div>
     </div>
   </main>
-
 </body>
 
 </html>
