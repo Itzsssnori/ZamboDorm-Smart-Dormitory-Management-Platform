@@ -32,7 +32,9 @@ const DOM = {
     email: document.getElementById('email'),
     pin: document.getElementById('pin'),
     firstname: document.getElementById('firstname'),
+    middlename: document.getElementById('middlename'), // New optional input
     lastname: document.getElementById('lastname'),
+    birthday: document.getElementById('birthday'),     // New required input
     phone: document.getElementById('phone'),
     password: document.getElementById('password'),
     confirmpassword: document.getElementById('confirmpassword')
@@ -40,11 +42,14 @@ const DOM = {
 
   // Error boxes
   errors: {
-    box1: document.getElementById('errorBox1'),
+    // ... your other existing error boxes ...
+    boxFirstName: document.getElementById('errorBoxFirstName'),
+    boxLastName: document.getElementById('errorBoxLastName'),
+    boxBirthday: document.getElementById('errorBoxBirthday'),
+    boxEmail: document.getElementById('errorBoxEmail'),
+    boxPhone: document.getElementById('errorBoxPhone'),
     box2: document.getElementById('errorBox2'),
-    box3: document.getElementById('errorBox3'),
-    msg2: document.getElementById('verifyErrorMsg'),
-    msg3: document.getElementById('detailsErrorMsg')
+    box3: document.getElementById('errorBox3')
   },
 
   // Step containers
@@ -62,6 +67,7 @@ const DOM = {
     step1Next: document.getElementById('btnStep1Next'),
     step2Back: document.getElementById('btnStep2Back'),
     step2Next: document.getElementById('btnStep2Next'),
+    step3Back: document.getElementById('btnStep3Back'), // Added this
     changeEmail: document.getElementById('changeEmailBtn'),
     submit: document.getElementById('submitBtn')
   },
@@ -81,15 +87,21 @@ const DOM = {
 
 // ── UTILITY FUNCTIONS ──
 function clearError(errorBox) {
+  if (!errorBox) return;
   errorBox.classList.remove('show');
+  // Handle the inline style="display: none;" added to the HTML
+  errorBox.style.display = 'none'; 
 }
 
 function showError(errorBox, message = '') {
+  if (!errorBox) return;
   if (message) {
     const msgSpan = errorBox.querySelector('span');
     if (msgSpan) msgSpan.textContent = message;
   }
   errorBox.classList.add('show');
+  // Override the inline display:none to make it visible
+  errorBox.style.display = 'flex'; 
 }
 
 function showToast(msg) {
@@ -112,66 +124,86 @@ function scrollToCard() {
 
 // ── INPUT VALIDATION ──
 const Validation = {
-  email(email) {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
-  },
-
   step1() {
-    const email = DOM.inputs.email.value.trim();
-    if (!email || !this.email(email)) {
-      showError(DOM.errors.box1);
-      return false;
+    const { firstname, lastname, birthday, email, phone } = DOM.inputs;
+    let isValid = true;
+
+    if (!firstname.value.trim()) {
+      showError(DOM.errors.boxFirstName);
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxFirstName);
     }
-    clearError(DOM.errors.box1);
-    return true;
+
+    if (!lastname.value.trim()) {
+      showError(DOM.errors.boxLastName);
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxLastName);
+    }
+
+    if (!birthday.value.trim()) {
+      showError(DOM.errors.boxBirthday);
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxBirthday);
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.value.trim() || !emailRegex.test(email.value.trim())) {
+      showError(DOM.errors.boxEmail);
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxEmail);
+    }
+
+    const phoneValue = phone.value.trim();
+    const phoneRegex = /^[0-9+\s()-]+$/;
+    if (!phoneValue) {
+      showError(DOM.errors.boxPhone, 'Please input your phone number');
+      isValid = false;
+    } else if (!phoneRegex.test(phoneValue)) {
+      showError(DOM.errors.boxPhone, 'Please enter a valid phone number');
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxPhone);
+    }
+
+    return isValid;
   },
 
   step2() {
-    const pin = DOM.inputs.pin.value.trim();
-    if (!pin || pin.length !== 6 || isNaN(pin)) {
-      DOM.errors.msg2.textContent = 'Please enter a valid 6-digit code';
-      showError(DOM.errors.box2);
-      return false;
-    }
-    if (pin !== FormState.getPin()) {
-      DOM.errors.msg2.textContent = 'Invalid code. Try the PIN shown above';
-      showError(DOM.errors.box2);
-      return false;
-    }
     clearError(DOM.errors.box2);
+    const pinValue = DOM.inputs.pin.value.trim();
+
+    if (!pinValue) {
+      showError(DOM.errors.box2, 'Please enter the verification code');
+      return false;
+    }
+
+    if (pinValue !== FormState.getPin()) {
+      showError(DOM.errors.box2, 'Invalid verification code');
+      return false;
+    }
+
     return true;
   },
 
   step3() {
-    const { firstname, lastname, phone, password, confirmpassword } = DOM.inputs;
-    const values = {
-      firstname: firstname.value.trim(),
-      lastname: lastname.value.trim(),
-      phone: phone.value.trim(),
-      password: password.value.trim(),
-      confirmpassword: confirmpassword.value.trim()
-    };
-
-    if (!values.firstname || !values.lastname || !values.phone || !values.password || !values.confirmpassword) {
-      DOM.errors.msg3.textContent = 'Please fill in all fields';
-      showError(DOM.errors.box3);
-      return false;
-    }
-
-    if (values.password.length < 6) {
-      DOM.errors.msg3.textContent = 'Password must be at least 6 characters';
-      showError(DOM.errors.box3);
-      return false;
-    }
-
-    if (values.password !== values.confirmpassword) {
-      DOM.errors.msg3.textContent = 'Passwords do not match';
-      showError(DOM.errors.box3);
-      return false;
-    }
-
     clearError(DOM.errors.box3);
+    const password = DOM.inputs.password;
+    const confirmPassword = DOM.inputs.confirmpassword;
+
+    if (!password.value.trim() || password.value.length < 6) {
+      showError(DOM.errors.box3, 'Password must be at least 6 characters');
+      return false;
+    }
+
+    if (password.value !== confirmPassword.value) {
+      showError(DOM.errors.box3, 'Passwords do not match');
+      return false;
+    }
+
     return true;
   }
 };
@@ -303,13 +335,11 @@ function setupPinInput() {
 
 // ── AUTO-HIDE ERRORS ──
 function setupInputListeners() {
-  DOM.inputs.email.addEventListener('input', () => clearError(DOM.errors.box1));
-  DOM.inputs.pin.addEventListener('input', () => clearError(DOM.errors.box2));
-  DOM.inputs.firstname.addEventListener('input', () => clearError(DOM.errors.box3));
-  DOM.inputs.lastname.addEventListener('input', () => clearError(DOM.errors.box3));
-  DOM.inputs.phone.addEventListener('input', () => clearError(DOM.errors.box3));
-  DOM.inputs.password.addEventListener('input', () => clearError(DOM.errors.box3));
-  DOM.inputs.confirmpassword.addEventListener('input', () => clearError(DOM.errors.box3));
+  DOM.inputs.firstname.addEventListener('input', () => clearError(DOM.errors.boxFirstName));
+  DOM.inputs.lastname.addEventListener('input', () => clearError(DOM.errors.boxLastName));
+  DOM.inputs.birthday.addEventListener('input', () => clearError(DOM.errors.boxBirthday));
+  DOM.inputs.email.addEventListener('input', () => clearError(DOM.errors.boxEmail));
+  DOM.inputs.phone.addEventListener('input', () => clearError(DOM.errors.boxPhone));
 }
 
 // ── BUTTON HANDLERS ──
@@ -317,6 +347,7 @@ function setupButtonListeners() {
   DOM.buttons.step1Next.addEventListener('click', () => goToStep(2));
   DOM.buttons.step2Back.addEventListener('click', () => goToStep(1));
   DOM.buttons.step2Next.addEventListener('click', () => goToStep(3));
+  if (DOM.buttons.step3Back) DOM.buttons.step3Back.addEventListener('click', () => goToStep(2));
   DOM.buttons.changeEmail.addEventListener('click', () => goToStep(1));
 
   DOM.buttons.submit.addEventListener('click', async () => {
@@ -330,16 +361,22 @@ function setupButtonListeners() {
     // Simulate account creation
     await new Promise(r => setTimeout(r, 2000));
 
-    // Save user data to localStorage before redirecting
+    // Formatted name combining optional middle name
     const firstName = DOM.inputs.firstname.value.trim();
+    const middleName = DOM.inputs.middlename.value.trim();
     const lastName = DOM.inputs.lastname.value.trim();
-    const fullName = `${firstName} ${lastName}`;
+    const fullName = middleName ? `${firstName} ${middleName} ${lastName}` : `${firstName} ${lastName}`;
+    
+    // --> NEW: Grab the selected role from the radio buttons
+    const selectedRole = document.querySelector('input[name="account_role"]:checked').value;
     
     if (typeof UserManager !== 'undefined') {
       UserManager.setUser({
         name: fullName,
         email: DOM.inputs.email.value.trim(),
         phone: DOM.inputs.phone.value.trim(),
+        birthday: DOM.inputs.birthday.value,
+        role: selectedRole, // --> NEW: Added role payload
         authenticated: true
       });
     }
