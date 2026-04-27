@@ -611,7 +611,7 @@ body::before {
 
   .form__btn,
   .form__btn-secondary {
-    padding: 0.85rem 1rem;
+    padding: 50px 1rem;
     font-size: 0.9rem;
   }
 

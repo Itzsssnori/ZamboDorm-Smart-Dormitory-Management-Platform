@@ -344,64 +344,44 @@ function setupInputListeners() {
 
 // ── BUTTON HANDLERS ──
 function setupButtonListeners() {
-  // ── STEP 1: DETAILS -> STEP 2 ──
   DOM.buttons.step1Next.addEventListener('click', () => goToStep(2));
-
-  // ── STEP 2: VERIFY PIN LOGIC ──
-  // Goes back to initial details
   DOM.buttons.step2Back.addEventListener('click', () => goToStep(1));
-  
-  // Attempts to move to account details/password step
-  DOM.buttons.step2Next.addEventListener('click', () => {
-    // goToStep(3) will internally run Validation.step2() 
-    // to check if the PIN matches before proceeding.
-    goToStep(3); 
-  });
-
-  // Allows user to return to Step 1 to fix email typos
+  DOM.buttons.step2Next.addEventListener('click', () => goToStep(3));
+  if (DOM.buttons.step3Back) DOM.buttons.step3Back.addEventListener('click', () => goToStep(2));
   DOM.buttons.changeEmail.addEventListener('click', () => goToStep(1));
 
-  // ── STEP 3: ACCOUNT DETAILS LOGIC ──
-  // New Back button to return to the PIN verification step
-  if (DOM.buttons.step3Back) {
-    DOM.buttons.step3Back.addEventListener('click', () => goToStep(2));
-  }
-
-  // Final Registration Submission
   DOM.buttons.submit.addEventListener('click', async () => {
-    // 1. Validate passwords
     if (!Validation.step3()) return;
 
-    // 2. UI Loading State
+    // Show loading state
     DOM.steps.step3.classList.add('loading');
     DOM.buttons.submit.classList.add('loading');
     DOM.buttons.submit.disabled = true;
 
-    // 3. Simulate Network Latency
+    // Simulate account creation
     await new Promise(r => setTimeout(r, 2000));
 
-    // 4. Gather Data
+    // Formatted name combining optional middle name
     const firstName = DOM.inputs.firstname.value.trim();
     const middleName = DOM.inputs.middlename.value.trim();
     const lastName = DOM.inputs.lastname.value.trim();
     const fullName = middleName ? `${firstName} ${middleName} ${lastName}` : `${firstName} ${lastName}`;
     
-    // Grab the selected role from your new radio card design
+    // --> NEW: Grab the selected role from the radio buttons
     const selectedRole = document.querySelector('input[name="account_role"]:checked').value;
     
-    // 5. Save User via UserManager (if available)
     if (typeof UserManager !== 'undefined') {
       UserManager.setUser({
         name: fullName,
         email: DOM.inputs.email.value.trim(),
         phone: DOM.inputs.phone.value.trim(),
         birthday: DOM.inputs.birthday.value,
-        role: selectedRole,
+        role: selectedRole, // --> NEW: Added role payload
         authenticated: true
       });
     }
 
-    // 6. Final Redirect
+    // Redirect after loading completes
     window.location.href = './dorm-preferences.html?registered=true';
   });
 }
