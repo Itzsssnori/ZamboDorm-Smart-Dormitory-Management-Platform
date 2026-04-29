@@ -143,9 +143,26 @@ function getRooms() {
 
 function updateBillForRooms() {
   const count = document.querySelectorAll('.room-tag').length;
-  const total = RATE * selectedMonths * count;
-  document.getElementById('bill-display').textContent = fmtPHP(total);
-  document.getElementById('bd-total').textContent = fmtPHP(total) + '.00';
+  const isDiscounted = localStorage.getItem('isPWDorSenior') === 'true';
+  const baseTotal = RATE * selectedMonths * count;
+  let finalTotal = baseTotal;
+
+  const discountRow = document.getElementById('discount-row');
+  const discountAmtEl = document.getElementById('discount-amt');
+
+  if (isDiscounted) {
+    const discount = baseTotal * 0.20;
+    finalTotal = baseTotal - discount;
+    if (discountRow) {
+      discountRow.style.display = 'block';
+      discountAmtEl.textContent = '-' + fmtPHP(discount) + '.00';
+    }
+  } else {
+    if (discountRow) discountRow.style.display = 'none';
+  }
+
+  document.getElementById('bill-display').textContent = fmtPHP(finalTotal);
+  document.getElementById('bd-total').textContent = fmtPHP(finalTotal) + '.00';
   document.getElementById('bd-duration-label').textContent =
     'Total (' + selectedMonths + ' month' + (selectedMonths > 1 ? 's' : '') +
     ', ' + count + ' room' + (count > 1 ? 's' : '') + ')';
@@ -156,13 +173,7 @@ function selectDur(el, months) {
   document.querySelectorAll('.dur-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   selectedMonths = months;
-  const count = document.querySelectorAll('.room-tag').length;
-  const total = RATE * months * count;
-  document.getElementById('bill-display').textContent = fmtPHP(total);
-  document.getElementById('bd-total').textContent = fmtPHP(total) + '.00';
-  document.getElementById('bd-duration-label').textContent =
-    'Total (' + months + ' month' + (months > 1 ? 's' : '') +
-    (count > 1 ? ', ' + count + ' rooms' : '') + ')';
+  updateBillForRooms();
 }
 
 /* ── File upload ── */
@@ -181,7 +192,10 @@ function handleFileUpload(input) {
 /* ── Build Review ── */
 function buildReview() {
   const count = document.querySelectorAll('.room-tag').length;
-  const total = RATE * selectedMonths * count;
+  const isDiscounted = localStorage.getItem('isPWDorSenior') === 'true';
+  const baseTotal = RATE * selectedMonths * count;
+  const discount = isDiscounted ? baseTotal * 0.20 : 0;
+  const finalTotal = baseTotal - discount;
 
   document.getElementById('rv-method').textContent   = selectedMethod || '—';
   document.getElementById('rv-rooms').textContent    = getRooms();
@@ -201,9 +215,20 @@ function buildReview() {
     refValue = document.getElementById('wallet-ref').value || '—';
 
   document.getElementById('rv-ref').textContent   = refValue;
-  document.getElementById('rv-proof').textContent = uploadedFile || (selectedMethod === 'Cash Payment' ? 'N/A' : 'Not uploaded');
-  document.getElementById('rv-total').textContent = fmtPHP(total);
-  document.getElementById('confirm-amt').textContent = fmtPHP(total);
+  
+  // Show discount info in proof field if applicable
+  let proofLabel = uploadedFile || (selectedMethod === 'Cash Payment' ? 'N/A' : 'Not uploaded');
+  if (isDiscounted) proofLabel += ' (SC/PWD ID Verified)';
+  document.getElementById('rv-proof').textContent = proofLabel;
+
+  document.getElementById('rv-total').innerHTML = `
+    <div style="text-align: right;">
+      ${isDiscounted ? `<div style="font-size: 12px; color: var(--muted); text-decoration: line-through;">${fmtPHP(baseTotal)}</div>` : ''}
+      <div style="color: ${isDiscounted ? '#10b981' : 'inherit'};">${fmtPHP(finalTotal)}</div>
+      ${isDiscounted ? `<div style="font-size: 10px; font-weight: 400; color: #10b981;">(20% SC/PWD Discount Applied)</div>` : ''}
+    </div>
+  `;
+  document.getElementById('confirm-amt').textContent = fmtPHP(finalTotal);
 }
 
 /* ── Confirm dialog ── */

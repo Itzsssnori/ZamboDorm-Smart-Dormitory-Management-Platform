@@ -36,12 +36,8 @@ let selectedLocation = null;
 
     // Location display names mapping
     const locationNames = {
-      'campus': 'Near University Campus',
-      'market': 'Near City Market',
-      'hospital': 'Near Hospital',
-      'downtown': 'Downtown Area',
-      'residential': 'Quiet Residential',
-      'any': 'No Preference'
+      'campus': 'Near Campus',
+      'nearest': 'Find Nearest Dorm'
     };
 
     const roomTypeNames = {
@@ -227,12 +223,57 @@ let selectedLocation = null;
       updateSummary();
     });
 
+    // Step 1: Location Selection
+    const mapContainer = document.getElementById('map-container');
+    const mapFrame = document.getElementById('map-frame');
+    const findNearestBtn = document.getElementById('find-nearest-card');
+    const selectionCards = document.querySelectorAll('.selection-card');
+
+    selectionCards.forEach(card => {
+      card.addEventListener('click', () => {
+        selectionCards.forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedLocation = card.dataset.value;
+        
+        // Hide map when selecting campus
+        if (selectedLocation === 'campus') {
+          mapContainer.style.display = 'none';
+        }
+      });
+    });
+
+    // Logic to show map when "Find Nearest" is clicked
+    findNearestBtn.addEventListener('click', () => {
+      // Toggle Visibility
+      mapContainer.style.display = 'block';
+      
+      // Embed Google Map centered on Zamboanga City
+      mapFrame.innerHTML = `
+        <iframe 
+          width="100%" 
+          height="100%" 
+          frameborder="0" 
+          style="border:0" 
+          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAUgE8FqNTq5PVj3a-ZpV2sj_kf5IQyVrE&q=dormitory+in+Zamboanga+City&zoom=14" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>`;
+        
+      // Smooth scroll to map
+      mapContainer.scrollIntoView({ behavior: 'smooth' });
+      selectedLocation = 'nearest';
+    });
+
     // Step buttons
     document.getElementById('btn-step1-next').addEventListener('click', () => {
       if (!selectedLocation) {
-        alert('Please select a location');
+        alert('Please select a location preference');
         return;
       }
+      // If map was open, hide it before moving to step 2
+      mapContainer.style.display = 'none';
+      
       completedSteps = 1;
       updateSummary();
       document.getElementById('step1').style.display = 'none';
@@ -256,9 +297,17 @@ let selectedLocation = null;
       }
       completedSteps = 2;
       updateSummary();
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('step3').style.display = 'block';
-      updateProgressBar(3);
+      
+      if (selectedRoomType === 'single') {
+        selectedRoommate = 'no'; // Default for single room
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step4').style.display = 'block';
+        updateProgressBar(4);
+      } else {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        updateProgressBar(3);
+      }
       scrollToForm();
     });
 
@@ -271,8 +320,8 @@ let selectedLocation = null;
     });
 
     document.getElementById('btn-step3-next').addEventListener('click', () => {
-      if (!selectedBedType) {
-        alert('Please select a bed type');
+      if (!selectedRoommate) {
+        alert('Please select a roommate preference');
         return;
       }
       completedSteps = 3;
@@ -284,10 +333,17 @@ let selectedLocation = null;
     });
 
     document.getElementById('btn-step4-back').addEventListener('click', () => {
-      completedSteps = 2;
-      document.getElementById('step4').style.display = 'none';
-      document.getElementById('step3').style.display = 'block';
-      updateProgressBar(3);
+      if (selectedRoomType === 'single') {
+        completedSteps = 1;
+        document.getElementById('step4').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+        updateProgressBar(2);
+      } else {
+        completedSteps = 2;
+        document.getElementById('step4').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        updateProgressBar(3);
+      }
       scrollToForm();
     });
 
@@ -300,22 +356,6 @@ let selectedLocation = null;
       updateSummary();
       document.getElementById('step4').style.display = 'none';
       document.getElementById('step5').style.display = 'block';
-      
-      // Pre-select the auto-determined roommate if not already selected
-      const autoRoommate = roommateDefaults[selectedBedType];
-      if (autoRoommate && !selectedRoommate) {
-        selectedRoommate = autoRoommate;
-      }
-      
-      // Highlight the auto-selected option
-      document.querySelectorAll('[data-roommate]').forEach(card => {
-        if (selectedRoommate && card.dataset.roommate === selectedRoommate) {
-          card.classList.add('selected');
-        } else {
-          card.classList.remove('selected');
-        }
-      });
-      
       updateProgressBar(5);
       scrollToForm();
     });
@@ -329,8 +369,8 @@ let selectedLocation = null;
     });
 
     document.getElementById('btn-step5-next').addEventListener('click', () => {
-      if (!selectedRoommate) {
-        alert('Please select a roommate preference');
+      if (!selectedBedType) {
+        alert('Please select a bed type');
         return;
       }
       completedSteps = 5;

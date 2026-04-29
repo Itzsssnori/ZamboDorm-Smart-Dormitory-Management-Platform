@@ -1,29 +1,29 @@
-// sysadmin-properties.js
-// In-memory data — no localStorage, no frameworks.
-
 const properties = [
   {
     id: 1,
     name: 'Sunshine Dormitory',
-    first: 'Ramon', middle: 'Cruz', last: 'Dela Torre', suffix: '',
+    price: 3500,
     address: '123 Maharlika St., Baliwasan, Zamboanga City',
     rooms: 24,
+    desc: 'Affordable student living near campus.',
     dateAdded: '2024-01-15'
   },
   {
     id: 2,
     name: 'Blue Haven Dorms',
-    first: 'Lourdes', middle: 'Santos', last: 'Reyes', suffix: 'Jr.',
+    price: 4500,
     address: '45 Corcuera St., Tetuan, Zamboanga City',
     rooms: 18,
+    desc: 'Modern facilities with high-speed internet.',
     dateAdded: '2024-03-08'
   },
   {
     id: 3,
     name: 'Green Valley Residence',
-    first: 'Eduardo', middle: 'Bautista', last: 'Gomez', suffix: '',
+    price: 3000,
     address: '78 Veterans Ave., Sta. Maria, Zamboanga City',
     rooms: 30,
+    desc: 'Quiet neighborhood with spacious common areas.',
     dateAdded: '2024-06-20'
   }
 ];
@@ -34,10 +34,8 @@ let deletingId = null;
 
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
-function formatOwner(prop) {
-  const parts = [prop.first, prop.middle, prop.last];
-  if (prop.suffix) parts.push(prop.suffix);
-  return parts.join(' ').trim();
+function formatPrice(price) {
+  return `₱${Number(price).toLocaleString()}`;
 }
 
 function formatDate(dateStr) {
@@ -63,14 +61,14 @@ function renderTable() {
   const countBadge = document.getElementById('propCount');
   const tbody = document.getElementById('propTableBody');
 
-  countBadge.textContent = `${properties.length} ${properties.length === 1 ? 'property' : 'properties'}`;
+  countBadge.textContent = `${properties.length} ${properties.length === 1 ? 'dormitory' : 'dormitories'}`;
   tbody.innerHTML = '';
 
   properties.forEach(function (prop) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${escapeHtml(prop.name)}</td>
-      <td>${escapeHtml(formatOwner(prop))}</td>
+      <td class="td-price">${formatPrice(prop.price)}</td>
       <td class="td-address">${escapeHtml(prop.address)}</td>
       <td>${prop.rooms}</td>
       <td>${formatDate(prop.dateAdded)}</td>
@@ -140,7 +138,7 @@ document.addEventListener('click', function (e) {
 
 function openAddModal() {
   editingId = null;
-  document.getElementById('modalTitle').textContent = 'Add New Property';
+  document.getElementById('modalTitle').textContent = 'Add New Dormitory';
   clearForm();
   document.getElementById('fieldDate').value = todayISO();
   openModal('propModal', 'modalOverlay');
@@ -153,14 +151,12 @@ function openEditModal(id) {
   if (!prop) return;
 
   editingId = id;
-  document.getElementById('modalTitle').textContent = 'Edit Property';
+  document.getElementById('modalTitle').textContent = 'Edit Dormitory';
   document.getElementById('fieldName').value   = prop.name;
-  document.getElementById('fieldFirst').value  = prop.first;
-  document.getElementById('fieldMiddle').value = prop.middle;
-  document.getElementById('fieldLast').value   = prop.last;
-  document.getElementById('fieldSuffix').value = prop.suffix;
+  document.getElementById('fieldPrice').value  = prop.price;
   document.getElementById('fieldAddress').value = prop.address;
   document.getElementById('fieldRooms').value  = prop.rooms;
+  document.getElementById('fieldDesc').value   = prop.desc || '';
   document.getElementById('fieldDate').value   = prop.dateAdded;
   openModal('propModal', 'modalOverlay');
 }
@@ -169,22 +165,18 @@ function openEditModal(id) {
 
 function saveProperty() {
   const name    = document.getElementById('fieldName').value.trim();
-  const first   = document.getElementById('fieldFirst').value.trim();
-  const middle  = document.getElementById('fieldMiddle').value.trim();
-  const last    = document.getElementById('fieldLast').value.trim();
-  const suffix  = document.getElementById('fieldSuffix').value.trim();
+  const price   = document.getElementById('fieldPrice').value.trim();
   const address = document.getElementById('fieldAddress').value.trim();
   const rooms   = document.getElementById('fieldRooms').value.trim();
+  const desc    = document.getElementById('fieldDesc').value.trim();
   const date    = document.getElementById('fieldDate').value.trim();
 
   // Validate required fields
   const required = [
-    { value: name,    inputId: 'fieldName',    errId: 'errName',    msg: 'Property name is required.' },
-    { value: first,   inputId: 'fieldFirst',   errId: 'errFirst',   msg: 'First name is required.' },
-    { value: middle,  inputId: 'fieldMiddle',  errId: 'errMiddle',  msg: 'Middle name is required.' },
-    { value: last,    inputId: 'fieldLast',    errId: 'errLast',    msg: 'Last name is required.' },
+    { value: name,    inputId: 'fieldName',    errId: 'errName',    msg: 'Dormitory name is required.' },
+    { value: price,   inputId: 'fieldPrice',   errId: 'errPrice',   msg: 'Base price is required.' },
     { value: address, inputId: 'fieldAddress', errId: 'errAddress', msg: 'Address is required.' },
-    { value: rooms,   inputId: 'fieldRooms',   errId: 'errRooms',   msg: 'Number of rooms is required.' },
+    { value: rooms,   inputId: 'fieldRooms',   errId: 'errRooms',   msg: 'Capacity is required.' },
   ];
 
   let valid = true;
@@ -208,8 +200,9 @@ function saveProperty() {
     // Add new
     properties.push({
       id: nextId++,
-      name, first, middle, last, suffix, address,
+      name, price: Number(price), address,
       rooms: Number(rooms),
+      desc,
       dateAdded: date || todayISO()
     });
   } else {
@@ -218,8 +211,9 @@ function saveProperty() {
     if (idx !== -1) {
       properties[idx] = {
         id: editingId,
-        name, first, middle, last, suffix, address,
+        name, price: Number(price), address,
         rooms: Number(rooms),
+        desc,
         dateAdded: date
       };
     }
@@ -259,23 +253,24 @@ function closeModal(modalId, overlayId) {
 }
 
 function clearForm() {
-  ['fieldName', 'fieldFirst', 'fieldMiddle', 'fieldLast',
-   'fieldSuffix', 'fieldAddress', 'fieldRooms', 'fieldDate'].forEach(function (id) {
-    document.getElementById(id).value = '';
+  ['fieldName', 'fieldPrice', 'fieldAddress', 'fieldRooms', 'fieldDesc', 'fieldDate'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
   });
   resetFormErrors();
 }
 
 function resetFormErrors() {
-  ['fieldName', 'fieldFirst', 'fieldMiddle', 'fieldLast',
-   'fieldAddress', 'fieldRooms'].forEach(function (id) {
-    document.getElementById(id).classList.remove('error');
-  });
-  ['errName', 'errFirst', 'errMiddle', 'errLast',
-   'errAddress', 'errRooms'].forEach(function (id) {
+  ['fieldName', 'fieldPrice', 'fieldAddress', 'fieldRooms'].forEach(function (id) {
     const el = document.getElementById(id);
-    el.classList.remove('show');
-    el.textContent = '';
+    if (el) el.classList.remove('error');
+  });
+  ['errName', 'errPrice', 'errAddress', 'errRooms'].forEach(function (id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.classList.remove('show');
+      el.textContent = '';
+    }
   });
 }
 

@@ -305,6 +305,27 @@ function closeA() {
   document.body.style.overflow = '';
 }
 
+// SC/PWD Discount Toggle Logic
+document.addEventListener('change', e => {
+  if (e.target.id === 'sc-pwd-check') {
+    const uploadGroup = document.getElementById('sc-pwd-upload-group');
+    const idInput = document.getElementById('sc-pwd-id-file');
+    const zone = document.getElementById('app-upload-zone');
+
+    if (e.target.checked) {
+      uploadGroup.style.display = 'block';
+      idInput.setAttribute('required', 'required');
+    } else {
+      uploadGroup.style.display = 'none';
+      idInput.removeAttribute('required');
+      idInput.value = ''; 
+      if (zone) zone.classList.remove('has-file');
+      const nameDisp = document.getElementById('app-file-name');
+      if (nameDisp) nameDisp.textContent = 'No file chosen';
+    }
+  }
+});
+
 /**
  * Submit application
  */
@@ -317,10 +338,13 @@ function submitApp() {
 
   // Validate each required field
   inputs.forEach(input => {
+    // Skip hidden inputs (like the PWD upload when checkbox is off)
+    if (input.closest('[style*="display: none"]')) return;
+
     const value = input.value.trim();
     if (!value) {
       isValid = false;
-      const label = input.closest('.fg2')?.querySelector('.fl2')?.textContent || 'Unknown field';
+      const label = input.closest('.fg2')?.querySelector('.fl2')?.textContent.replace('*', '').trim() || 'Unknown field';
       errorFields.push(label);
       input.style.borderColor = '#ef4444';
       input.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
@@ -332,9 +356,13 @@ function submitApp() {
 
   // If validation fails, show alert
   if (!isValid) {
-    alert('Please fill in all required fields:\n\n• ' + errorFields.join('\n• ') + '\n\nAll fields except Message are required.');
+    alert('Please fill in all required fields:\n\n• ' + errorFields.join('\n• ') + '\n\nAll starred fields are required.');
     return;
   }
+
+  // Save Discount status for Payment Process
+  const isDiscounted = document.getElementById('sc-pwd-check').checked;
+  localStorage.setItem('isPWDorSenior', isDiscounted);
 
   // Form is valid - show success
   document.getElementById('rn').textContent = 'ZD-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
@@ -352,27 +380,97 @@ document.getElementById('aov').addEventListener('click', e => {
   if (e.target === document.getElementById('aov')) closeA();
 });
 
-// Navigation
-const nb = document.getElementById('navbar');
-const hbg = document.getElementById('hbg');
-const mob = document.getElementById('mob');
+/* ──────────────────────────────────────────────────────────────────────────── */
+/* NEW: AUTO-FILL & MODERN UPLOAD LOGIC                                         */
+/* ──────────────────────────────────────────────────────────────────────────── */
 
-window.addEventListener('scroll', () => nb.classList.toggle('scrolled', window.scrollY > 10), { passive: true });
+/**
+ * Auto-fill user data from UserManager or Mock
+ */
+function autoFillUserData() {
+  // Try to get user from UserManager
+  let user = (typeof UserManager !== 'undefined') ? UserManager.getUser() : null;
 
-if (hbg && mob) {
-  hbg.addEventListener('click', () => {
-    hbg.classList.toggle('open');
-    mob.classList.toggle('open');
+  // Mock user if none exists (for development/demo)
+  if (!user) {
+    user = {
+      name: "Juan dela Cruz",
+      email: "juan.delacruz@example.com",
+      phone: "09123456789"
+    };
+  }
+
+  // Populate fields
+  const fnameInput = document.getElementById('app-fname');
+  const lnameInput = document.getElementById('app-lname');
+  const emailInput = document.getElementById('app-email');
+  const phoneInput = document.getElementById('app-phone');
+
+  if (user.name) {
+    const parts = user.name.split(' ');
+    if (fnameInput) fnameInput.value = parts[0] || '';
+    if (lnameInput) lnameInput.value = parts.slice(1).join(' ') || '';
+  }
+
+  if (emailInput && user.email) emailInput.value = user.email;
+  if (phoneInput && user.phone) phoneInput.value = user.phone;
+}
+
+/**
+ * Setup modern upload zone interaction
+ */
+function setupUploadZone() {
+  const zone = document.getElementById('app-upload-zone');
+  const fileInput = document.getElementById('sc-pwd-id-file');
+  const fileNameDisplay = document.getElementById('app-file-name');
+
+  if (!zone || !fileInput) return;
+
+  zone.addEventListener('click', () => fileInput.click());
+
+  fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      fileNameDisplay.textContent = file.name;
+      zone.classList.add('has-file');
+    } else {
+      fileNameDisplay.textContent = 'No file chosen';
+      zone.classList.remove('has-file');
+    }
   });
 
-  document.addEventListener('click', e => {
-    if (!hbg.contains(e.target) && !mob.contains(e.target)) {
-      hbg.classList.remove('open');
-      mob.classList.remove('open');
+  // Drag and drop support
+  zone.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    zone.style.borderColor = 'var(--v)';
+    zone.style.background = 'var(--vsoft)';
+  });
+
+  zone.addEventListener('dragleave', () => {
+    zone.style.borderColor = '';
+    zone.style.background = '';
+  });
+
+  zone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    zone.style.borderColor = '';
+    zone.style.background = '';
+    
+    const files = e.dataTransfer.files;
+    if (files.length) {
+      fileInput.files = files;
+      const event = new Event('change');
+      fileInput.dispatchEvent(event);
     }
   });
 }
 
 // Initial render
 filter();
+
+// Run Phase 2 initializations
+document.addEventListener('DOMContentLoaded', () => {
+  autoFillUserData();
+  setupUploadZone();
+});
 
