@@ -36,6 +36,7 @@ const DOM = {
     lastname: document.getElementById('lastname'),
     birthday: document.getElementById('birthday'),     // New required input
     phone: document.getElementById('phone'),
+    address: document.getElementById('address'),
     password: document.getElementById('password'),
     confirmpassword: document.getElementById('confirmpassword')
   },
@@ -48,6 +49,7 @@ const DOM = {
     boxBirthday: document.getElementById('errorBoxBirthday'),
     boxEmail: document.getElementById('errorBoxEmail'),
     boxPhone: document.getElementById('errorBoxPhone'),
+    boxAddress: document.getElementById('errorBoxAddress'),
     box2: document.getElementById('errorBox2'),
     box3: document.getElementById('errorBox3')
   },
@@ -67,21 +69,21 @@ const DOM = {
     step1Next: document.getElementById('btnStep1Next'),
     step2Back: document.getElementById('btnStep2Back'),
     step2Next: document.getElementById('btnStep2Next'),
-    step3Back: document.getElementById('btnStep3Back'), // Added this
-    changeEmail: document.getElementById('changeEmailBtn'),
+    btnSendCode: document.getElementById('btnSendCode'),
+    step3Back: document.getElementById('btnStep3Back'),
     submit: document.getElementById('submitBtn')
   },
 
   // Display elements
   displays: {
-    emailDisplay: document.getElementById('emailDisplay'),
     pinDisplay: document.getElementById('pinDisplay')
   },
 
   // UI elements
   ui: {
     card: document.querySelector('.register-card'),
-    toast: document.getElementById('toast')
+    toast: document.getElementById('toast'),
+    pinSection: document.getElementById('pinVerificationSection')
   }
 };
 
@@ -125,7 +127,7 @@ function scrollToCard() {
 // ── INPUT VALIDATION ──
 const Validation = {
   step1() {
-    const { firstname, lastname, birthday, email, phone } = DOM.inputs;
+    const { firstname, lastname, birthday, email, phone, address } = DOM.inputs;
     let isValid = true;
 
     if (!firstname.value.trim()) {
@@ -169,6 +171,14 @@ const Validation = {
       clearError(DOM.errors.boxPhone);
     }
 
+    const addressValue = address.value.trim();
+    if (!addressValue) {
+      showError(DOM.errors.boxAddress, 'Please input your address');
+      isValid = false;
+    } else {
+      clearError(DOM.errors.boxAddress);
+    }
+
     return isValid;
   },
 
@@ -198,7 +208,6 @@ const Validation = {
       showError(DOM.errors.box3, 'Password must be at least 6 characters');
       return false;
     }
-
     if (password.value !== confirmPassword.value) {
       showError(DOM.errors.box3, 'Passwords do not match');
       return false;
@@ -237,20 +246,21 @@ function goToStep(stepNum) {
 
   // Step-specific logic
   if (stepNum === 2) {
-    DOM.displays.emailDisplay.textContent = DOM.inputs.email.value;
     DOM.inputs.pin.value = '';
     clearError(DOM.errors.box2);
-    setupPinRotation(); // Start PIN rotation on step 2
+    if (DOM.ui.pinSection) DOM.ui.pinSection.style.display = 'none';
+    if (DOM.buttons.btnSendCode) DOM.buttons.btnSendCode.style.display = 'block';
+    if (DOM.buttons.step2Next) DOM.buttons.step2Next.style.display = 'none';
   }
 
   if (stepNum === 1) {
-    stopPinRotation(); // Stop PIN rotation when leaving step 2
+    stopPinRotation();
     DOM.inputs.pin.value = '';
     clearError(DOM.errors.box2);
   }
 
   if (stepNum === 3) {
-    stopPinRotation(); // Stop PIN rotation when on step 3
+    stopPinRotation();
   }
 
   scrollToCard();
@@ -340,6 +350,7 @@ function setupInputListeners() {
   DOM.inputs.birthday.addEventListener('input', () => clearError(DOM.errors.boxBirthday));
   DOM.inputs.email.addEventListener('input', () => clearError(DOM.errors.boxEmail));
   DOM.inputs.phone.addEventListener('input', () => clearError(DOM.errors.boxPhone));
+  DOM.inputs.address.addEventListener('input', () => clearError(DOM.errors.boxAddress));
 }
 
 // ── BUTTON HANDLERS ──
@@ -347,8 +358,25 @@ function setupButtonListeners() {
   DOM.buttons.step1Next.addEventListener('click', () => goToStep(2));
   DOM.buttons.step2Back.addEventListener('click', () => goToStep(1));
   DOM.buttons.step2Next.addEventListener('click', () => goToStep(3));
-  if (DOM.buttons.step3Back) DOM.buttons.step3Back.addEventListener('click', () => goToStep(2));
-  DOM.buttons.changeEmail.addEventListener('click', () => goToStep(1));
+  if (DOM.buttons.step3Back) DOM.buttons.step3Back.addEventListener('click', () => goToStep(1));
+
+  // Verification Method logic
+  if (DOM.buttons.btnSendCode) {
+    DOM.buttons.btnSendCode.addEventListener('click', () => {
+      const method = document.querySelector('input[name="verify_method"]:checked').value;
+      const methodLabel = method === 'email' ? 'Email' : 'Phone';
+      
+      showToast(`Verification code sent to your ${methodLabel}!`);
+      
+      // Start PIN logic
+      setupPinRotation();
+      
+      // Show PIN input section
+      if (DOM.ui.pinSection) DOM.ui.pinSection.style.display = 'block';
+      if (DOM.buttons.btnSendCode) DOM.buttons.btnSendCode.style.display = 'none';
+      if (DOM.buttons.step2Next) DOM.buttons.step2Next.style.display = 'flex';
+    });
+  }
 
   DOM.buttons.submit.addEventListener('click', async () => {
     if (!Validation.step3()) return;
@@ -375,8 +403,9 @@ function setupButtonListeners() {
         name: fullName,
         email: DOM.inputs.email.value.trim(),
         phone: DOM.inputs.phone.value.trim(),
+        address: DOM.inputs.address.value.trim(),
         birthday: DOM.inputs.birthday.value,
-        role: selectedRole, // --> NEW: Added role payload
+        role: selectedRole,
         authenticated: true
       });
     }

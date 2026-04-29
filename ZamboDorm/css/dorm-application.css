@@ -1,16 +1,16 @@
 :root {
-  --v: #7c3aed;
-  --vl: #a855f7;
+  --v: var(--primary);
+  --vl: var(--primary-light);
   --vbg: #f5f0ff;
-  --vsoft: rgba(124, 58, 237, 0.09);
-  --vborder: rgba(124, 58, 237, 0.18);
-  --dark: #1e1240;
-  --mid: #4b5563;
-  --muted: #9ca3af;
-  --surface: #f8f7ff;
-  --white: #fff;
-  --border: rgba(0, 0, 0, 0.07);
-  --r: 16px;
+  --vsoft: rgba(var(--primary-rgba), 0.09);
+  --vborder: rgba(var(--primary-rgba), 0.18);
+  --dark: var(--text);
+  --mid: var(--text-muted);
+  --muted: var(--text-soft);
+  --surface: var(--surface);
+  --white: var(--white);
+  --border: var(--border-light);
+  --r: var(--radius-lg);
 }
 
 * {
@@ -145,10 +145,10 @@ nav.scrolled {
   background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
   border: none;
   padding: 10px 24px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.30);
-  transition: transform .15s, box-shadow .15s;
+  box-shadow: 0 2px 12px rgba(var(--primary-rgba), 0.30);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -1308,6 +1308,60 @@ nav.scrolled {
 
 .btn-demo:hover {
   background: rgba(124, 58, 237, 0.15);
+}
+
+/* --- NEW: APP UPLOAD ZONE --- */
+.app-upload-zone {
+  border: 2px dashed #e5e7eb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #fafafa;
+}
+
+.app-upload-zone:hover {
+  border-color: var(--v);
+  background: var(--vsoft);
+  transform: translateY(-2px);
+}
+
+.app-upload-zone.has-file {
+  border-style: solid;
+  border-color: var(--v);
+  background: #fff;
+}
+
+.app-upload-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-upload-content svg {
+  width: 28px;
+  height: 28px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.app-upload-zone:hover .app-upload-content svg {
+  color: var(--v);
+}
+
+.app-upload-content p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mid);
+  margin: 0;
+}
+
+.app-upload-content span {
+  font-size: 11px;
+  color: var(--v);
+  font-weight: 500;
 }
 
 @media(max-width:640px) {

@@ -37,49 +37,33 @@
         <p class="progress-step">Step 1 of 6</p>
       </div>
 
-      <!-- Step 1: Preferred Location -->
+      <!-- Step 1: Where do you want to live? -->
       <div id="step1" class="setup-step active">
-        <h2 class="step-title">Preferred Location</h2>
-        <p class="step-subtitle">Where would you like to stay?</p>
+        <h2 class="step-title">Where do you want to live?</h2>
+        <p class="step-subtitle">Choose a location near your school or workplace</p>
 
-        <div class="options-grid">
-          <div class="option-card" data-location="campus">
-            <div class="option-emoji">🏫</div>
-            <h3>Near University Campus</h3>
+        <div class="selection-grid">
+          <div class="selection-card" data-value="campus">
+            <div class="card-icon">🎓</div>
+            <div class="card-label">Near Campus</div>
           </div>
-
-          <div class="option-card" data-location="market">
-            <div class="option-emoji">🏬</div>
-            <h3>Near City Market</h3>
-          </div>
-
-          <div class="option-card" data-location="hospital">
-            <div class="option-emoji">🏥</div>
-            <h3>Near Hospital</h3>
-          </div>
-
-          <div class="option-card" data-location="downtown">
-            <div class="option-emoji">🏢</div>
-            <h3>Downtown Area</h3>
-          </div>
-
-          <div class="option-card" data-location="residential">
-            <div class="option-emoji">🏡</div>
-            <h3>Quiet Residential</h3>
-          </div>
-
-          <div class="option-card" data-location="any">
-            <div class="option-emoji">⏰</div>
-            <h3>No Preference</h3>
+          <div class="selection-card" id="find-nearest-card" data-value="nearest">
+            <div class="card-icon">📍</div>
+            <div class="card-label">Find Nearest Dorm</div>
           </div>
         </div>
 
-        <button type="button" class="btn-primary" id="btn-step1-next">
-          <span class="btn-label">Next</span>
-          <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <path d="M5 12h14M13 6l6 6-6 6"/>
-          </svg>
-        </button>
+        <div id="map-container" style="display: none; margin-top: 2rem;">
+          <h3 class="step-label">Nearby Dormitories in Zamboanga</h3>
+          <div id="map-frame" style="width: 100%; height: 400px; border-radius: 12px; overflow: hidden; border: 2px solid var(--primary-light);"></div>
+          <p class="terms-text" style="text-align: left; margin-top: 10px;">
+            *Showing dormitories relative to downtown Zamboanga City.
+          </p>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn-primary" id="btn-step1-next">Continue</button>
+        </div>
       </div>
 
       <!-- Step 2: Room Type -->
@@ -124,34 +108,34 @@
         </div>
       </div>
 
-      <!-- Step 3: Bed Preference -->
+      <!-- Step 3: Roommate Preference -->
       <div id="step3" class="setup-step" style="display: none;">
-        <h2 class="step-title">Bed Preference</h2>
-        <p class="step-subtitle">What bed type would you like?</p>
+        <h2 class="step-title">Roommate Preference</h2>
+        <p class="step-subtitle">How many roommates would you like?</p>
 
         <div class="options-grid">
-          <div class="option-card" data-bedtype="single">
-            <div class="option-emoji">🛏️</div>
-            <h3>Single Bed</h3>
-            <p class="option-desc">Standard single-size bed</p>
+          <div class="option-card" data-roommate="no">
+            <div class="option-emoji">🚪</div>
+            <h3>Alone</h3>
+            <p class="option-desc">No roommates</p>
           </div>
 
-          <div class="option-card" data-bedtype="double-decker">
-            <div class="option-emoji">🪜</div>
-            <h3>Double Decker</h3>
-            <p class="option-desc">Bunk bed style</p>
+          <div class="option-card" data-roommate="one">
+            <div class="option-emoji">🤝</div>
+            <h3>1 Roommate</h3>
+            <p class="option-desc">One person to share with</p>
           </div>
 
-          <div class="option-card" data-bedtype="queen">
-            <div class="option-emoji">👑</div>
-            <h3>Queen Bed</h3>
-            <p class="option-desc">Large comfortable bed</p>
+          <div class="option-card" data-roommate="two">
+            <div class="option-emoji">👥</div>
+            <h3>2 Roommates</h3>    
+            <p class="option-desc">Share with two people</p>
           </div>
 
-          <div class="option-card" data-bedtype="full">
-            <div class="option-emoji">🛌</div>
-            <h3>Full Bed</h3>
-            <p class="option-desc">Medium-sized standard bed</p>
+          <div class="option-card" data-roommate="flexible">
+            <div class="option-emoji">🎲</div>
+            <h3>Flexible</h3>
+            <p class="option-desc">No preference</p>
           </div>
         </div>
 
@@ -232,34 +216,34 @@
         </div>
       </div>
 
-      <!-- Step 5: Roommate Preference -->
+      <!-- Step 5: Bed Preference -->
       <div id="step5" class="setup-step" style="display: none;">
-        <h2 class="step-title">Roommate Preference</h2>
-        <p class="step-subtitle">How many roommates would you like?</p>
+        <h2 class="step-title">Bed Preference</h2>
+        <p class="step-subtitle">What bed type would you like?</p>
 
         <div class="options-grid">
-          <div class="option-card" data-roommate="no">
-            <div class="option-emoji">🚪</div>
-            <h3>Alone</h3>
-            <p class="option-desc">No roommates</p>
+          <div class="option-card" data-bedtype="single">
+            <div class="option-emoji">🛏️</div>
+            <h3>Single Bed</h3>
+            <p class="option-desc">Standard single-size bed</p>
           </div>
 
-          <div class="option-card" data-roommate="one">
-            <div class="option-emoji">🤝</div>
-            <h3>1 Roommate</h3>
-            <p class="option-desc">One person to share with</p>
+          <div class="option-card" data-bedtype="double-decker">
+            <div class="option-emoji">🪜</div>
+            <h3>Double Decker</h3>
+            <p class="option-desc">Bunk bed style</p>
           </div>
 
-          <div class="option-card" data-roommate="two">
-            <div class="option-emoji">👥</div>
-            <h3>2 Roommates</h3>    
-            <p class="option-desc">Share with two people</p>
+          <div class="option-card" data-bedtype="queen">
+            <div class="option-emoji">👑</div>
+            <h3>Queen Bed</h3>
+            <p class="option-desc">Large comfortable bed</p>
           </div>
 
-          <div class="option-card" data-roommate="flexible">
-            <div class="option-emoji">🎲</div>
-            <h3>Flexible</h3>
-            <p class="option-desc">No preference</p>
+          <div class="option-card" data-bedtype="full">
+            <div class="option-emoji">🛌</div>
+            <h3>Full Bed</h3>
+            <p class="option-desc">Medium-sized standard bed</p>
           </div>
         </div>
 

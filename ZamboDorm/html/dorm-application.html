@@ -41,7 +41,6 @@
   </div></div>
 
   <div class="mc"><div class="dg" id="dg"></div></div>
-</div>
 
 <!-- VIEW MODAL -->
 <div class="ov" id="vov">
@@ -72,9 +71,32 @@
       <div class="mh"><div><h2>Apply for a Room</h2><p>Fill in your details to submit your application.</p></div><button class="mcb" onclick="closeA()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
       <div class="mbd">
         <div class="fdi"><div class="fdic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><div class="fdn" id="fdn"></div><div class="fds" id="fds"></div></div></div>
-        <div class="fr"><div class="fg2"><label class="fl2">First Name</label><input type="text" class="fi2" placeholder="Juan" required/></div><div class="fg2"><label class="fl2">Last Name</label><input type="text" class="fi2" placeholder="dela Cruz" required/></div></div>
-        <div class="fg2"><label class="fl2">Email Address</label><input type="email" class="fi2" placeholder="juan@email.com" required/></div>
-        <div class="fg2"><label class="fl2">Phone Number</label><input type="tel" class="fi2" placeholder="09XX XXX XXXX" required/></div>
+        <div class="fr"><div class="fg2"><label class="fl2">First Name</label><input type="text" id="app-fname" class="fi2" placeholder="Juan" required/></div><div class="fg2"><label class="fl2">Last Name</label><input type="text" id="app-lname" class="fi2" placeholder="dela Cruz" required/></div></div>
+        <div class="fg2"><label class="fl2">Email Address</label><input type="email" id="app-email" class="fi2" placeholder="juan@email.com" required/></div>
+        <div class="fg2"><label class="fl2">Phone Number</label><input type="tel" id="app-phone" class="fi2" placeholder="09XX XXX XXXX" required/></div>
+        
+        <div class="fg2" style="margin-top: 1rem;">
+          <label class="fl2" style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-weight: 600;">
+            <input type="checkbox" id="sc-pwd-check" style="width: 18px; height: 18px; cursor: pointer;"/>
+            I am a registered Senior Citizen or PWD (20% Discount applies)
+          </label>
+        </div>
+
+        <div id="sc-pwd-upload-group" style="display: none; margin-top: 0.5rem; animation: slideDown 0.3s ease;">
+          <label class="fl2">Upload SC/PWD ID for Verification <span style="color:var(--v); font-weight: 800;">*</span></label>
+          <div class="app-upload-zone" id="app-upload-zone">
+            <input type="file" id="sc-pwd-id-file" accept="image/*,.pdf" style="display: none;"/>
+            <div class="app-upload-content">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+              </svg>
+              <p>Click or drag to upload ID Photo</p>
+              <span id="app-file-name">No file chosen</span>
+            </div>
+          </div>
+          <p style="font-size: 11px; color: #6b7280; margin-top: 8px;">PNG, JPG, or PDF. Max 5MB.</p>
+        </div>
+
         <div class="fr"><div class="fg2"><label class="fl2">Occupation</label><select class="fsel" required><option value="">Select...</option><option>Student</option><option>Employed</option><option>Self-employed</option><option>Others</option></select></div><div class="fg2"><label class="fl2">Move-in Date</label><input type="date" class="fi2" required/></div></div>
         <div class="fg2"><label class="fl2">Message <span style="color:#9ca3af;font-weight:400">(optional)</span></label><textarea class="fta" placeholder="Introduce yourself or ask questions..."></textarea></div>
       </div>

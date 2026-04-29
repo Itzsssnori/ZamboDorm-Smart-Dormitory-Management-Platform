@@ -89,26 +89,26 @@
       <!-- Page Header Row -->
       <div class="page-header prop-header">
         <div>
-          <h1 class="page-title">Property Management</h1>
+          <h1 class="page-title">Dormitory Management</h1>
           <p class="page-subtitle">Manage registered dormitory properties</p>
         </div>
-        <button class="btn-add" id="openAddModal">＋ Add New Property</button>
+        <button class="btn-add" id="openAddModal">＋ Add New Dormitory</button>
       </div>
 
       <!-- Properties Table Card -->
       <div class="table-card">
         <div class="table-card-header">
-          <span class="table-card-title">All Properties</span>
+          <span class="table-card-title">All Dormitories</span>
           <span class="prop-count-badge" id="propCount"></span>
         </div>
         <div class="table-wrapper">
           <table class="prop-table">
             <thead>
               <tr>
-                <th>Property Name</th>
-                <th>Owner</th>
+                <th>Dormitory Name</th>
+                <th>Price/mo</th>
                 <th>Address</th>
-                <th>Rooms</th>
+                <th>Capacity</th>
                 <th>Date Added</th>
                 <th>Actions</th>
               </tr>
@@ -125,56 +125,45 @@
   <div class="modal-overlay" id="modalOverlay"></div>
   <div class="modal" id="propModal">
     <div class="modal-header">
-      <h2 class="modal-title" id="modalTitle">Add New Property</h2>
+      <h2 class="modal-title" id="modalTitle">Add New Dormitory</h2>
       <button class="modal-close" id="closeModal">&times;</button>
     </div>
     <div class="modal-body">
       <div class="form-group">
-        <label class="form-label required">Property Name</label>
+        <label class="form-label required">Dormitory Name</label>
         <input class="form-input" id="fieldName" type="text"
-               placeholder="Enter property name" />
+               placeholder="Enter dormitory name" />
         <span class="form-error" id="errName"></span>
       </div>
-      <p class="form-section-label">Owner Name</p>
+
       <div class="form-row">
         <div class="form-group">
-          <label class="form-label required">First Name</label>
-          <input class="form-input" id="fieldFirst" type="text"
-                 placeholder="First name" />
-          <span class="form-error" id="errFirst"></span>
+          <label class="form-label required">Base Price (₱ / month)</label>
+          <input class="form-input" id="fieldPrice" type="number"
+                 placeholder="e.g. 3500" />
+          <span class="form-error" id="errPrice"></span>
         </div>
         <div class="form-group">
-          <label class="form-label required">Middle Name</label>
-          <input class="form-input" id="fieldMiddle" type="text"
-                 placeholder="Middle name" />
-          <span class="form-error" id="errMiddle"></span>
+          <label class="form-label required">Total Capacity (Rooms)</label>
+          <input class="form-input" id="fieldRooms" type="number"
+                 min="1" placeholder="e.g. 20" />
+          <span class="form-error" id="errRooms"></span>
         </div>
       </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label required">Last Name</label>
-          <input class="form-input" id="fieldLast" type="text"
-                 placeholder="Last name" />
-          <span class="form-error" id="errLast"></span>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Suffix</label>
-          <input class="form-input" id="fieldSuffix" type="text"
-                 placeholder="e.g. Jr., III (optional)" />
-        </div>
-      </div>
+
       <div class="form-group">
         <label class="form-label required">Address</label>
         <textarea class="form-input form-textarea" id="fieldAddress"
-                  placeholder="Full street address"></textarea>
+                  placeholder="Full street address" style="height: 80px;"></textarea>
         <span class="form-error" id="errAddress"></span>
       </div>
+
       <div class="form-group">
-        <label class="form-label required">Number of Rooms</label>
-        <input class="form-input" id="fieldRooms" type="number"
-               min="1" placeholder="e.g. 20" />
-        <span class="form-error" id="errRooms"></span>
+        <label class="form-label">Description</label>
+        <textarea class="form-input form-textarea" id="fieldDesc"
+                  placeholder="Brief description of the dormitory" style="height: 100px;"></textarea>
       </div>
+
       <div class="form-group">
         <label class="form-label">Date Added</label>
         <input class="form-input" id="fieldDate" type="text"
@@ -183,7 +172,7 @@
     </div>
     <div class="modal-footer">
       <button class="btn-cancel" id="cancelModal">Cancel</button>
-      <button class="btn-save" id="saveModal">Save Property</button>
+      <button class="btn-save" id="saveModal">Save Dormitory</button>
     </div>
   </div>
 

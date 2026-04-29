@@ -192,12 +192,23 @@
     <div class="card">
       <div class="card-body">
         <div class="card-title">Bill Breakdown</div>
-        <div class="breakdown-row"><span class="breakdown-label">Room Rent (Rm 067-A)</span><span class="breakdown-amt">₱2,800.00</span></div>
-        <div class="breakdown-row"><span class="breakdown-label">Water Supply</span><span class="breakdown-amt">₱280.00</span></div>
-        <div class="breakdown-row"><span class="breakdown-label">Electricity</span><span class="breakdown-amt">₱270.00</span></div>
-        <div class="breakdown-row"><span class="breakdown-label">Internet / WiFi</span><span class="breakdown-amt">₱100.00</span></div>
-        <div class="breakdown-row"><span class="breakdown-label">Maintenance Fee</span><span class="breakdown-amt">₱50.00</span></div>
-        <div class="breakdown-row total"><span class="breakdown-label" id="bd-duration-label">Total (1 month)</span><span class="breakdown-amt" id="bd-total">₱3,500.00</span></div>
+        <div id="breakdown-list">
+          <div class="breakdown-row"><span class="breakdown-label">Room Rent (Rm 067-A)</span><span class="breakdown-amt">₱2,800.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Water Supply</span><span class="breakdown-amt">₱280.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Electricity</span><span class="breakdown-amt">₱270.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Internet / WiFi</span><span class="breakdown-amt">₱100.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Maintenance Fee</span><span class="breakdown-amt">₱50.00</span></div>
+        </div>
+        <div id="discount-row" style="display: none; border-top: 1px dashed var(--border); margin-top: 8px; padding-top: 8px;">
+          <div class="breakdown-row" style="color: #10b981; font-weight: 600;">
+            <span class="breakdown-label">SC/PWD Discount (20%)</span>
+            <span class="breakdown-amt" id="discount-amt">-₱0.00</span>
+          </div>
+        </div>
+        <div class="breakdown-row total" style="margin-top: 12px; border-top: 2px solid var(--border); padding-top: 12px;">
+          <span class="breakdown-label" id="bd-duration-label">Total (1 month)</span>
+          <span class="breakdown-amt" id="bd-total">₱3,500.00</span>
+        </div>
       </div>
     </div>
 
