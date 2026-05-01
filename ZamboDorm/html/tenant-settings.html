@@ -118,7 +118,7 @@
         <div class="avatar-row">
           <div class="avatar-preview" id="avatarPreview">--</div>
           <div class="avatar-actions">
-            <button class="btn-upload" type="button" onclick="document.getElementById('avatarUpload').click()">
+            <button class="btn" type="button" onclick="document.getElementById('avatarUpload').click()">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               Upload Photo
             </button>
@@ -143,9 +143,9 @@
           </div>
         </div>
 
-        <div class="form-actions">
-          <button class="btn-cancel" type="button" onclick="discardChanges()">Discard</button>
-          <button class="btn-save" type="button" onclick="saveProfileChanges()">Save Changes</button>
+        <div class="flex justify-end gap-4 mt-md">
+          <button class="btn" type="button" onclick="discardChanges()">Discard</button>
+          <button class="btn btn-primary" type="button" onclick="saveProfileChanges()">Save Changes</button>
         </div>
       </div>
     </div>
@@ -173,9 +173,9 @@
           <div class="form-group"><label class="form-label">Confirm New Password</label><input class="form-input" type="password" placeholder="Repeat new password" required></div>
         </div>
 
-        <div class="form-actions">
-          <button class="btn-cancel" type="button" onclick="document.querySelectorAll('input[type=\'password\']').forEach(el => el.value = '');">Cancel</button>
-          <button class="btn-save" type="button" onclick="updatePassword()">Update Password</button>
+        <div class="flex justify-end gap-4 mt-md">
+          <button class="btn" type="button" onclick="document.querySelectorAll('input[type=\'password\']').forEach(el => el.value = '');">Cancel</button>
+          <button class="btn btn-primary" type="button" onclick="updatePassword()">Update Password</button>
         </div>
       </div>
 
@@ -204,7 +204,7 @@
               </div>
               <div><strong style="font-size:.9rem;color:var(--text);">Android Phone – Chrome</strong><br><span style="font-size:.78rem;color:var(--text-muted);">Last active 2 days ago</span></div>
             </div>
-            <button onclick="showToast('Session revoked.')" type="button" style="font-size:.78rem;font-weight:700;padding:.35rem .9rem;background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.25);border-radius:7px;cursor:pointer;font-family:var(--font);">Revoke</button>
+            <button onclick="showToast('Session revoked.')" type="button" class="btn" style="padding:.35rem .9rem;background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.25);">Revoke</button>
           </div>
         </div>
       </div>
@@ -224,7 +224,7 @@
         <div class="toggle-row"><div class="toggle-info"><strong>Service Request Updates</strong><span>Status changes on your requests</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
         <div class="toggle-row"><div class="toggle-info"><strong>Visitor Approvals</strong><span>When your visitor registration is approved or denied</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
         <div class="toggle-row"><div class="toggle-info"><strong>Complaint Updates</strong><span>Progress updates on reported issues</span></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-        <div class="form-actions"><button class="btn-save" type="button" onclick="showToast('Notification preferences saved!')">Save Preferences</button></div>
+        <div class="flex justify-end mt-md"><button class="btn btn-primary" type="button" onclick="showToast('Notification preferences saved!')">Save Preferences</button></div>
       </div>
 
       <div class="settings-section">
@@ -236,7 +236,7 @@
         </div>
         <div class="toggle-row"><div class="toggle-info"><strong>Push Notifications</strong><span>Allow browser push alerts</span></div><label class="toggle"><input type="checkbox" checked><span class="toggle-slider"></span></label></div>
         <div class="toggle-row"><div class="toggle-info"><strong>Sound Alerts</strong><span>Play sound for new notifications</span></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-        <div class="form-actions"><button class="btn-save" type="button" onclick="showToast('Notification preferences saved!')">Save Preferences</button></div>
+        <div class="flex justify-end mt-md"><button class="btn btn-primary" type="button" onclick="showToast('Notification preferences saved!')">Save Preferences</button></div>
       </div>
     </div>
 
@@ -270,7 +270,7 @@
           </div>
         </div>
         <div class="toggle-row" style="margin-top:.5rem"><div class="toggle-info"><strong>Compact Sidebar</strong><span>Show icons only in the sidebar</span></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
-        <div class="form-actions"><button class="btn-cancel" type="button">Reset to Default</button><button class="btn-save" type="button" onclick="showToast('Preferences saved!')">Save Preferences</button></div>
+        <div class="flex justify-end gap-4 mt-md"><button class="btn" type="button">Reset to Default</button><button class="btn btn-primary" type="button" onclick="showToast('Preferences saved!')">Save Preferences</button></div>
       </div>
     </div>
 

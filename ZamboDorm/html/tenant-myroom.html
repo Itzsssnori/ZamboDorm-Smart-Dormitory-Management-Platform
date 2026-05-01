@@ -141,7 +141,7 @@
           <span class="footer-label">Deposit:</span>
           <span class="footer-value">₱8,000</span>
         </div>
-        <button class="btn-pay" onclick="redirectToPayment()">Pay Now</button>
+        <button class="btn btn-primary" onclick="redirectToPayment()">Pay Now</button>
       </div>
     </div>
 
@@ -248,7 +248,7 @@
           <span class="detail-value status-active">Active</span>
         </div>
       </div>
-      <button class="roommate-message-btn" onclick="openMessageModal()">Send Message</button>
+      <button class="btn btn-primary w-full" onclick="openMessageModal()">Send Message</button>
     </div>
 
     <!-- Recent Payments Section -->
@@ -433,9 +433,9 @@
           <label for="itemDate" class="form-label">Date Brought</label>
           <input type="date" id="itemDate" class="form-input" required>
         </div>
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeAddItemModal()">Cancel</button>
-          <button type="submit" class="btn-submit">Add Item</button>
+        <div class="flex justify-end gap-4 mt-md">
+          <button type="button" class="btn" onclick="closeAddItemModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Add Item</button>
         </div>
       </form>
     </div>
@@ -484,9 +484,9 @@
           <label for="messageBody" class="form-label">Message</label>
           <textarea id="messageBody" class="form-textarea" placeholder="Type your message here..." required></textarea>
         </div>
-        <div class="form-actions">
-          <button type="button" class="btn-cancel" onclick="closeMessageModal()">Cancel</button>
-          <button type="submit" class="btn-submit">Send Message</button>
+        <div class="flex justify-end gap-4 mt-md">
+          <button type="button" class="btn" onclick="closeMessageModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary">Send Message</button>
         </div>
       </form>
     </div>

@@ -306,54 +306,7 @@ body::before {
 }
 
 /* ── BUTTON GROUP ── */
-.button-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Ensures equal 50/50 split */
-  gap: 1rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-/* Ensure both button types have the same height and alignment */
-.button-group .form__btn,
-.button-group .form__btn-secondary {
-  width: 100%;
-  height: 3rem; /* Fixed height for perfect matching */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 1rem;
-  font-weight: 700;
-  border-radius: 12px;
-  margin: 0; /* Remove any default margins */
-}
-
-/* Style the Back button to be distinct but same size */
-.form__btn-secondary {
-  background: #f3f4f6;
-  border: 2px solid #e5e7eb;
-  color: var(--text-muted);
-  transition: all var(--transition-std) ease;
-}
-
-.form__btn-secondary:hover {
-  background: #e5e7eb;
-  color: var(--text);
-  border-color: #d1d5db;
-}
-
-/* Mobile adjustments */
-@media (max-width: 480px) {
-  .button-group {
-    gap: 0.75rem;
-  }
-  
-  .button-group .form__btn,
-  .button-group .form__btn-secondary {
-    height: 2.8rem;
-    font-size: 0.85rem;
-  }
-}
+/* Legacy button group styles removed - now using global .btn classes */
 
 /* ── PASSWORD TOGGLE BUTTON ── */
 /* Password toggle styled in components.css as .form__password-toggle */

@@ -73,8 +73,8 @@
     <div class="cta-card">
       <h3>Ready to get started?</h3>
       <p>Review the requirements and complete the application form. The process takes about 10 minutes.</p>
-      <button class="btn-cta" onclick="goToScreen(2)">
-        View Requirements &amp; Apply
+      <button class="btn btn-primary" onclick="goToScreen(2)">
+        View Requirements & Apply
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
     </div>
@@ -136,9 +136,9 @@
       </div>
     </div>
 
-    <div class="req-action-row">
-      <button class="btn-back" onclick="goToScreen(1)">← Back</button>
-      <button class="btn-proceed" onclick="goToScreen(3)">
+    <div class="flex justify-end gap-4">
+      <button class="btn" onclick="goToScreen(1)">← Back</button>
+      <button class="btn btn-primary" onclick="goToScreen(3)">
         Yes, I'm Ready — Start Application
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
@@ -181,9 +181,9 @@
           <div class="form-group" id="fg-idnum"><label class="form-label">ID Number <span class="form-req">*</span></label><input class="form-input" id="f-idnum" placeholder="ID number"><span class="form-error">ID number is required.</span></div>
         </div>
       </div>
-      <div class="form-actions">
-        <button class="btn-form-back" onclick="confirmExit()">← Exit</button>
-        <button class="btn-form-next" onclick="nextFormStep(1)">Next: Dorm Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <div class="flex justify-end gap-4 mt-md">
+        <button class="btn" onclick="confirmExit()">← Exit</button>
+        <button class="btn btn-primary" onclick="nextFormStep(1)">Next: Dorm Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
@@ -209,9 +209,9 @@
           <div class="form-group" id="fg-dormdesc"><label class="form-label">Brief Description <span class="form-req">*</span></label><textarea class="form-textarea" id="f-dormdesc" placeholder="Describe your dormitory — location advantages, amenities, house rules summary…"></textarea><span class="form-error">Description is required.</span></div>
         </div>
       </div>
-      <div class="form-actions">
-        <button class="btn-form-back" onclick="prevFormStep(2)">← Back</button>
-        <button class="btn-form-next" onclick="nextFormStep(2)">Next: Documents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+      <div class="flex justify-end gap-4 mt-md">
+        <button class="btn" onclick="prevFormStep(2)">← Back</button>
+        <button class="btn btn-primary" onclick="nextFormStep(2)">Next: Documents <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
       </div>
     </div>
 
@@ -280,9 +280,9 @@
           </div>
         </div>  
       </div>
-      <div class="form-actions">
-        <button class="btn-form-back" onclick="prevFormStep(3)">← Back</button>
-        <button class="btn-submit-final" onclick="openReviewModal()">
+      <div class="flex justify-end gap-4 mt-md">
+        <button class="btn" onclick="prevFormStep(3)">← Back</button>
+        <button class="btn btn-primary" onclick="openReviewModal()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
           Review &amp; Submit Application
         </button>
@@ -305,7 +305,7 @@
         <div class="ss-item"><div class="ss-num">3</div><p>Once approved, your admin account will be activated and you can log in to your dashboard.</p></div>
         <div class="ss-item"><div class="ss-num">4</div><p>Start listing your rooms and accepting tenant applications!</p></div>
       </div>
-      <button class="btn-home" onclick="window.location.href='index.html'">
+      <button class="btn btn-primary" onclick="window.location.href='index.html'">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         Return to Home
       </button>
@@ -325,9 +325,9 @@
       <h3>Exit Application?</h3>
       <p>Are you sure you want to exit? Your progress will be lost and you will need to start over.</p>
     </div>
-    <div class="modal-btns">
-      <button class="modal-btn-cancel" onclick="closeModal('modal-exit')">Stay &amp; Continue</button>
-      <button class="modal-btn-confirm" onclick="exitApplication()">Yes, Exit</button>
+    <div class="flex justify-end gap-4">
+      <button class="btn" onclick="closeModal('modal-exit')">Stay &amp; Continue</button>
+      <button class="btn btn-primary" onclick="exitApplication()">Yes, Exit</button>
     </div>
   </div>
 </div>
@@ -341,9 +341,9 @@
       <p>Please confirm the information below is correct before submitting.</p>
     </div>
     <div class="review-list" id="review-list"></div>
-    <div class="modal-btns">
-      <button class="modal-btn-cancel" onclick="closeModal('modal-review')">← Edit Info</button>
-      <button class="modal-btn-confirm green" onclick="submitApplication()">Confirm &amp; Submit</button>
+    <div class="flex justify-end gap-4 mt-md">
+      <button class="btn" onclick="closeModal('modal-review')">← Edit Info</button>
+      <button class="btn btn-primary" onclick="submitApplication()">Confirm &amp; Submit</button>
     </div>
   </div>
 </div>
