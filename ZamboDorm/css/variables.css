@@ -65,4 +65,13 @@
   --shadow-toast: 0 8px 32px rgba(0,0,0,0.18);
 
   --shadow: 0 8px 40px rgba(124,58,237,0.10);
+
+  /* ── BUTTON TOKENS ── */
+  --btn-primary-bg: var(--primary);
+  --btn-primary-hover: #6d28d9;
+  --btn-secondary-color: var(--primary);
+  --btn-secondary-border: rgba(var(--primary-rgba), 0.3);
+  --btn-radius: 8px;
+  --btn-transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --btn-font-weight: 600;
 }

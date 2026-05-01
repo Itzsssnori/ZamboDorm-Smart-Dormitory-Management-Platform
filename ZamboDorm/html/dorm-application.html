@@ -60,7 +60,10 @@
       <div class="vmst">Amenities Included</div>
       <div class="vmam" id="vmam"></div>
     </div>
-    <div class="vmf"><button class="vmbc" onclick="closeV()">Close</button><button class="vmba" id="vmapply">Apply Now →</button></div>
+    <div class="flex justify-end gap-4 p-md border-t">
+      <button class="btn" onclick="closeV()">Close</button>
+      <button class="btn btn-primary" id="vmapply">Apply Now →</button>
+    </div>
   </div>
 </div>
 
@@ -100,16 +103,19 @@
         <div class="fr"><div class="fg2"><label class="fl2">Occupation</label><select class="fsel" required><option value="">Select...</option><option>Student</option><option>Employed</option><option>Self-employed</option><option>Others</option></select></div><div class="fg2"><label class="fl2">Move-in Date</label><input type="date" class="fi2" required/></div></div>
         <div class="fg2"><label class="fl2">Message <span style="color:#9ca3af;font-weight:400">(optional)</span></label><textarea class="fta" placeholder="Introduce yourself or ask questions..."></textarea></div>
       </div>
-      <div class="mft"><button class="bcan" onclick="closeA()">Cancel</button><button class="bsub" onclick="submitApp()">Submit Application →</button></div>
+      <div class="flex justify-end gap-4 p-md border-t">
+        <button class="btn" onclick="closeA()">Cancel</button>
+        <button class="btn btn-primary" onclick="submitApp()">Submit Application →</button>
+      </div>
     </div>
     <div class="ss" id="ss">
       <div class="si"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
       <h3>Application Submitted!</h3>
       <p>Your application has been received. The landlord will review it and get back to you shortly.</p>
       <div class="sref"><span>Reference Number</span><strong id="rn">ZD-2024-0001</strong></div>
-      <div class="sact">
-        <button class="btn-back-listing" onclick="closeA()">Back to Listings</button>
-        <a href="tenant-myroom.html" class="btn-demo">Preview Dashboard →</a>
+      <div class="flex justify-center gap-4 mt-md">
+        <button class="btn btn-primary" onclick="closeA()">Back to Listings</button>
+        <a href="tenant-myroom.html" class="btn">Preview Dashboard →</a>
       </div>
     </div>
   </div>

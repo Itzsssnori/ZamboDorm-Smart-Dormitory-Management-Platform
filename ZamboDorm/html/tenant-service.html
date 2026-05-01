@@ -234,9 +234,9 @@
       </div>
     </form>
 
-    <div class="sr-buttons">
-      <button class="sr-btn-back" onclick="goStep(1)">Back</button>
-      <button class="sr-btn-next" id="btn-next-2" onclick="validateStep2()">Next Step</button>
+    <div class="flex justify-end gap-4 mt-md">
+      <button class="btn" onclick="goStep(1)">Back</button>
+      <button class="btn btn-primary" id="btn-next-2" onclick="validateStep2()">Next Step</button>
     </div>
   </div>
 
@@ -296,9 +296,9 @@
       </div>
     </div>
 
-    <div class="sr-buttons">
-      <button class="sr-btn-back" onclick="goStep(2)">Back</button>
-      <button class="sr-btn-next" id="btn-next-3" onclick="validateStep3()">Review Request</button>
+    <div class="flex justify-end gap-4 mt-md">
+      <button class="btn" onclick="goStep(2)">Back</button>
+      <button class="btn btn-primary" id="btn-next-3" onclick="validateStep3()">Review Request</button>
     </div>
   </div>
 
@@ -340,9 +340,9 @@
       </div>
     </div>
 
-    <div class="sr-buttons">
-      <button class="sr-btn-back" onclick="goStep(3)">Back</button>
-      <button class="sr-btn-submit" onclick="submitRequest()">Submit Request</button>
+    <div class="flex justify-end gap-4 mt-md">
+      <button class="btn" onclick="goStep(3)">Back</button>
+      <button class="btn btn-primary" onclick="submitRequest()">Submit Request</button>
     </div>
   </div>
 </div>
@@ -353,7 +353,7 @@
     <div class="sr-dialog-icon">✓</div>
     <div class="sr-dialog-title">Request Submitted!</div>
     <div class="sr-dialog-msg">Your service request has been received and is now pending for approval. We'll notify you once it's been reviewed and confirmed.</div>
-    <button class="sr-btn-next" onclick="redirectToDashboard()">Back to Dashboard</button>
+    <button class="btn btn-primary" onclick="redirectToDashboard()">Back to Dashboard</button>
   </div>
 </div>
 

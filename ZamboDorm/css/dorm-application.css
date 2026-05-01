@@ -644,49 +644,6 @@ nav.scrolled {
   margin-top: 2px;
 }
 
-.br {
-  display: flex;
-  gap: 8px;
-}
-
-.bv {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13.5px;
-  font-weight: 600;
-  color: var(--v);
-  background: var(--vsoft);
-  border: 1px solid var(--vborder);
-  padding: 10px 16px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all .15s;
-  white-space: nowrap;
-}
-
-.bv:hover {
-  background: rgba(124, 58, 237, 0.16);
-}
-
-.ba {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 13.5px;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.28);
-  transition: transform .15s, box-shadow .15s;
-  white-space: nowrap;
-}
-
-.ba:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.38);
-}
-
 .ov {
   display: none;
   position: fixed;
@@ -957,49 +914,6 @@ nav.scrolled {
   background: #f59e0b;
 }
 
-.vmf {
-  display: flex;
-  gap: 10px;
-  padding: 0 1.5rem 1.5rem;
-}
-
-.vmba {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  border: none;
-  flex: 1;
-  padding: 14px;
-  border-radius: 12px;
-  cursor: pointer;
-  box-shadow: 0 2px 14px rgba(124, 58, 237, 0.30);
-  transition: transform .15s, box-shadow .15s;
-}
-
-.vmba:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.40);
-}
-
-.vmbc {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--v);
-  background: var(--vsoft);
-  border: 1px solid var(--vborder);
-  padding: 14px 20px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background .15s;
-}
-
-.vmbc:hover {
-  background: rgba(124, 58, 237, 0.15);
-}
-
 .am2 {
   background: #fff;
   border-radius: 20px;
@@ -1144,50 +1058,6 @@ nav.scrolled {
   gap: 12px;
 }
 
-.mft {
-  padding: 1rem 1.5rem 1.5rem;
-  display: flex;
-  gap: 10px;
-}
-
-.bcan {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  background: #f3f4f6;
-  color: var(--mid);
-  border: none;
-  transition: background .15s;
-}
-
-.bcan:hover {
-  background: #e5e7eb;
-}
-
-.bsub {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 14px;
-  font-weight: 700;
-  flex: 2;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  color: #fff;
-  border: none;
-  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.28);
-  transition: transform .15s, box-shadow .15s;
-}
-
-.bsub:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 18px rgba(124, 58, 237, 0.38);
-}
-
 .ss {
   display: none;
   padding: 3rem 2rem;
@@ -1262,52 +1132,6 @@ nav.scrolled {
   font-weight: 800;
   color: var(--v);
   letter-spacing: 1px;
-}
-
-.sact {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-/* Back to Listings Button */
-.btn-back-listing {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  border: none;
-  padding: 12px 28px;
-  border-radius: 10px;
-  cursor: pointer;
-  box-shadow: 0 2px 12px rgba(124, 58, 237, 0.28);
-  transition: transform .15s;
-}
-
-.btn-back-listing:hover {
-  transform: translateY(-1px);
-}
-
-/* Preview/Demo Button (Secondary Action) */
-.btn-demo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--v);
-  background: var(--vsoft);
-  border: 1px solid var(--vborder);
-  padding: 12px 28px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background .15s;
-  text-decoration: none;
-  display: inline-block;
-}
-
-.btn-demo:hover {
-  background: rgba(124, 58, 237, 0.15);
 }
 
 /* --- NEW: APP UPLOAD ZONE --- */

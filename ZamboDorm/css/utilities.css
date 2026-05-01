@@ -115,6 +115,18 @@
 .pointer-events-none { pointer-events: none; }
 .pointer-events-auto { pointer-events: auto; }
 
+/* ── FLEXBOX UTILITIES ── */
+.flex { display: flex; }
+.items-center { align-items: center; }
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-2 { gap: 0.5rem; }
+.gap-4 { gap: 1rem; }
+.gap-6 { gap: 1.5rem; }
+
 /* ── TRANSITION ── */
 .transition-fast { transition: all var(--transition-fast); }
 .transition-smooth { transition: all var(--transition-smooth); }

@@ -67,7 +67,6 @@ const DOM = {
   // Buttons
   buttons: {
     step1Next: document.getElementById('btnStep1Next'),
-    step2Back: document.getElementById('btnStep2Back'),
     step2Next: document.getElementById('btnStep2Next'),
     btnSendCode: document.getElementById('btnSendCode'),
     step3Back: document.getElementById('btnStep3Back'),
@@ -356,7 +355,6 @@ function setupInputListeners() {
 // ── BUTTON HANDLERS ──
 function setupButtonListeners() {
   DOM.buttons.step1Next.addEventListener('click', () => goToStep(2));
-  DOM.buttons.step2Back.addEventListener('click', () => goToStep(1));
   DOM.buttons.step2Next.addEventListener('click', () => goToStep(3));
   if (DOM.buttons.step3Back) DOM.buttons.step3Back.addEventListener('click', () => goToStep(1));
 
@@ -374,7 +372,8 @@ function setupButtonListeners() {
       // Show PIN input section
       if (DOM.ui.pinSection) DOM.ui.pinSection.style.display = 'block';
       if (DOM.buttons.btnSendCode) DOM.buttons.btnSendCode.style.display = 'none';
-      if (DOM.buttons.step2Next) DOM.buttons.step2Next.style.display = 'flex';
+      if (DOM.buttons.step2Next) DOM.buttons.step2Next.style.display = '';
+      if (DOM.buttons.step2Next) DOM.buttons.step2Next.classList.remove('hidden');
     });
   }
 
