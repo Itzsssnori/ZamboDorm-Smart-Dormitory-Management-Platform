@@ -4,22 +4,92 @@ const ICONS = {
   eyeClosed: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/><line x1="1" y1="1" x2="23" y2="23" stroke-linecap="round" stroke-linejoin="round"/></svg>`
 };
 
-const DEMO_ACCOUNTS = [
-  { email: 'tenant@example.com', password: 'tenant123', role: 'Tenant', type: 'tenant' },
-  { email: 'landlord@example.com', password: 'landlord123', role: 'Landlord', type: 'landlord' },
-  { email: 'sysadmin@zambodorm.com', password: 'admin123', role: 'System Admin', type: 'sysadmin' }
-];
+// Initialize demo accounts for QA testing
+function initializeDemoAccounts() {
+  const allUsers = (typeof UserManager !== 'undefined') ? UserManager.getAllUsers() : [];
+  
+  // Demo accounts template
+  const demoAccounts = [
+    {
+      id: 'USER-DEMO-TENANT-001',
+      name: 'Juan dela Cruz',
+      email: 'juan.tenant@demo.com',
+      password: 'demo123',
+      phone: '09123456789',
+      address: 'Block 1, Street 1, Zamboanga City',
+      birthday: '1990-05-15',
+      role: 'tenant',
+      authenticated: true,
+      registeredDate: new Date().toISOString(),
+      isDemoAccount: true
+    },
+    {
+      id: 'USER-DEMO-ADMIN-001',
+      name: 'Maria Santos',
+      email: 'maria.admin@demo.com',
+      password: 'demo123',
+      phone: '09234567890',
+      address: 'Admin Building, Zamboanga City',
+      birthday: '1985-03-22',
+      role: 'admin',
+      authenticated: true,
+      registeredDate: new Date().toISOString(),
+      isDemoAccount: true
+    },
+    {
+      id: 'USER-DEMO-SYSADMIN-001',
+      name: 'Carlos Rodriguez',
+      email: 'carlos.sysadmin@demo.com',
+      password: 'demo123',
+      phone: '09345678901',
+      address: 'System Admin Office, Zamboanga City',
+      birthday: '1988-07-10',
+      role: 'sysadmin',
+      authenticated: true,
+      registeredDate: new Date().toISOString(),
+      isDemoAccount: true
+    }
+  ];
+  
+  // Only add demo accounts if they don't exist
+  const demoAccountEmails = demoAccounts.map(acc => acc.email);
+  const hasAllDemoAccounts = demoAccountEmails.every(email => 
+    allUsers.some(u => u.email === email)
+  );
+  
+  if (!hasAllDemoAccounts) {
+    // Filter out duplicate demo accounts
+    const uniqueUsers = allUsers.filter(u => !demoAccountEmails.includes(u.email));
+    // Add new demo accounts
+    const updatedUsers = [...uniqueUsers, ...demoAccounts];
+    
+    if (typeof UserManager !== 'undefined') {
+      UserManager.saveAllUsers(updatedUsers);
+    } else {
+      localStorage.setItem('zambodorm_all_users', JSON.stringify(updatedUsers));
+    }
+  }
+}
 
-// Render demo accounts
-function renderDemoAccounts() {
+// Render registered users (for development reference only - hidden)
+function renderRegisteredUsers() {
   const container = document.querySelector('.signin-card__demo-accounts');
-  container.innerHTML = DEMO_ACCOUNTS.map(acc => `
-    <div class="signin-card__demo-item" onclick="fillDemo('${acc.email}','${acc.password}')">
+  if (!container) return;
+  
+  const users = (typeof UserManager !== 'undefined') ? UserManager.getAllUsers() : [];
+  
+  if (users.length === 0) {
+    container.innerHTML = '<p style="text-align:center;color:#999;padding:1rem;">No registered users yet. Create an account to get started.</p>';
+    return;
+  }
+  
+  container.innerHTML = users.map(user => `
+    <div class="signin-card__demo-item" onclick="fillDemo('${user.email}','${user.password}')">
       <div class="signin-card__demo-role">
-        <span class="signin-card__demo-dot signin-card__demo-dot--${acc.type}"></span>
-        <span class="signin-card__demo-role-label">${acc.role}</span>
+        <span class="signin-card__demo-dot signin-card__demo-dot--${user.role.toLowerCase()}"></span>
+        <span class="signin-card__demo-role-label">${user.role}</span>
       </div>
-      <span class="signin-card__demo-creds">${acc.email} / ${acc.password}</span>
+      <span class="signin-card__demo-creds">${user.email}</span>
       <span class="signin-card__demo-action">Use →</span>
     </div>
   `).join('');
@@ -28,12 +98,13 @@ function renderDemoAccounts() {
 // Utility: Show toast notification
 function showToast(msg) {
   const t = document.getElementById('toast');
+  if (!t) return;
   t.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2800);
 }
 
-// Utility: Fill form with demo credentials
+// Utility: Fill form with credentials
 function fillDemo(email, password) {
   document.getElementById('email').value = email;
   document.getElementById('password').value = password;
@@ -43,7 +114,11 @@ function fillDemo(email, password) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
-  renderDemoAccounts();
+  // Initialize demo accounts for QA testing
+  initializeDemoAccounts();
+  
+  // Render all registered users (including demo accounts)
+  renderRegisteredUsers();
   
   // Hamburger menu toggle (if exists)
   const hamburger = document.getElementById('hamburger');
@@ -126,19 +201,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // Simulate auth delay
     await new Promise(r => setTimeout(r, 1600));
     
+    // Verify credentials against registered users
+    const user = (typeof UserManager !== 'undefined') ? UserManager.loginUser(email, password) : null;
+    
+    if (!user) {
+      // Reset button
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      
+      // Show error
+      errorBox.innerHTML = '<svg class="signin-card__error-icon" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span>Invalid email or password. Please try again or create a new account.</span>';
+      errorBox.classList.add('show');
+      return;
+    }
+    
     // Reset button
     btn.classList.remove('loading');
     btn.disabled = false;
     
     showToast('✓ Signed in successfully!');
     
-    // Redirect based on account type
-    const account = DEMO_ACCOUNTS.find(a => a.email === email);
-    if (!account) {
-      window.location.href = './tenant-myroom.html';
-    } else if (account.type === 'sysadmin') {
+    // Redirect based on user role
+    const role = (user.role || 'tenant').toLowerCase();
+    if (role === 'sysadmin' || role === 'system admin') {
       window.location.href = './sysadmin-overview.html';
-    } else if (account.type === 'landlord') {
+    } else if (role === 'admin' || role === 'landlord') {
       window.location.href = './admin-overview.html';
     } else {
       window.location.href = './tenant-myroom.html';

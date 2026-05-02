@@ -19,9 +19,9 @@ function initializeUserData() {
 
 // Get current user from user-manager or localStorage
 function getCurrentUser() {
-  // Try to get from user-manager first (if available)
-  if (typeof getUserData === 'function') {
-    return getUserData();
+  // Try UserManager first
+  if (typeof UserManager !== 'undefined' && UserManager.getUser) {
+    return UserManager.getUser();
   }
   
   // Fallback to localStorage
@@ -31,25 +31,47 @@ function getCurrentUser() {
 
 // Populate profile badge with user data
 function populateProfileBadge(userData) {
-  const { firstName, lastName, email, room, tenantSince } = userData;
-  const name = `${firstName || ''} ${lastName || ''}`.trim();
-  const initials = getInitials(name);
+  const { name, email, phone, role, registeredDate } = userData;
+  const initials = getInitials(name || 'Guest');
   
   document.getElementById('profileAvatar').textContent = initials;
   document.getElementById('profileName').textContent = name || 'Guest';
-  document.getElementById('profileEmail').textContent = email ? `${email} · Tenant since ${tenantSince || 'N/A'}` : 'Not signed in';
-  document.getElementById('profileRoom').textContent = room || '--';
+  document.getElementById('profileEmail').textContent = email || 'Not signed in';
+  
+  // Update role display if element exists
+  if (document.getElementById('profileRole')) {
+    document.getElementById('profileRole').textContent = role ? role.charAt(0).toUpperCase() + role.slice(1) : 'User';
+  }
+  
+  // Update room display if element exists
+  if (document.getElementById('profileRoom')) {
+    document.getElementById('profileRoom').textContent = '--';
+  }
 }
 
 // Populate form fields with user data
 function populateFormFields(userData) {
-  const { firstName, lastName, email, phone, emergencyContact } = userData;
+  const { name, email, phone, address, birthday } = userData;
   
-  document.getElementById('firstName').value = firstName || '';
-  document.getElementById('lastName').value = lastName || '';
-  document.getElementById('emailAddress').value = email || '';
-  document.getElementById('phoneNumber').value = phone || '';
-  document.getElementById('emergencyContact').value = emergencyContact || '';
+  // Extract first and last name from full name
+  const nameParts = (name || '').split(' ');
+  const firstName = nameParts[0] || '';
+  const lastName = nameParts.slice(1).join(' ') || '';
+  
+  // Populate form fields
+  const firstNameEl = document.getElementById('firstName');
+  const lastNameEl = document.getElementById('lastName');
+  const emailEl = document.getElementById('emailAddress');
+  const phoneEl = document.getElementById('phoneNumber');
+  const addressEl = document.getElementById('address');
+  const birthdayEl = document.getElementById('birthday');
+  
+  if (firstNameEl) firstNameEl.value = firstName;
+  if (lastNameEl) lastNameEl.value = lastName;
+  if (emailEl) emailEl.value = email || '';
+  if (phoneEl) phoneEl.value = phone || '';
+  if (addressEl) addressEl.value = address || '';
+  if (birthdayEl) birthdayEl.value = birthday || '';
 }
 
 // Update avatar display
