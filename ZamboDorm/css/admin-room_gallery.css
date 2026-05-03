@@ -80,7 +80,7 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   display:flex;align-items:flex-start;justify-content:space-between;
   flex-wrap:wrap;gap:1rem;margin-bottom:1.75rem;
 }
-.page-hd h1{font-size: 2.3rem;font-weight:800;color:var(--dark);letter-spacing:-.03em; margin-top: 2.5rem;}
+.page-hd h1{font-size: 2.3rem;font-weight:800;color:var(--dark);letter-spacing:-.03em; margin-top: 0rem;}
 .page-hd p{font-size:.875rem;color:#6b7280;margin-top:3px;font-weight:500;}
 .hd-right{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap; margin-top: 2.5rem;}
  
