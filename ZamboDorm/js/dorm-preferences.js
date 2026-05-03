@@ -79,6 +79,8 @@ let selectedLocation = null;
       if (selectedAmenities.length > 0) {
         const amenityText = selectedAmenities.length + ' selected';
         amenitiesEl.textContent = amenityText;
+      } else {
+        amenitiesEl.textContent = '0 selected';
       }
 
       if (selectedRoommate) {
@@ -119,16 +121,6 @@ let selectedLocation = null;
         document.getElementById('successModal').classList.remove('show');
       });
     }
-
-    // Location Selection
-    document.querySelectorAll('.option-card').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedLocation = this.dataset.location;
-        updateSummary();
-      });
-    });
 
     // Role Selection removed - Step 2 is now Room Type
 

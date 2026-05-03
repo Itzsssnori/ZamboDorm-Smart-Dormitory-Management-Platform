@@ -417,8 +417,6 @@ function autoFillUserData() {
   if (emailInput && user.email) emailInput.value = user.email;
   if (phoneInput && user.phone) phoneInput.value = user.phone;
 }
-  if (phoneInput && user.phone) phoneInput.value = user.phone;
-}
 
 /**
  * Setup modern upload zone interaction
