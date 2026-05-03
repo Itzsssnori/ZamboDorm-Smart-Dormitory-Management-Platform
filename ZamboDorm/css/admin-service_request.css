@@ -126,7 +126,7 @@ padding-top: 0 !important;
 /* ── PAGE HEADER ─────────────────────────────────────── */
 .sr-header {
   display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; margin-top: 4.6rem;
+  gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; margin-top: 2rem;
 }
 .sr-header-left h1 {
   font-size: 2.5rem; font-weight: 800;
