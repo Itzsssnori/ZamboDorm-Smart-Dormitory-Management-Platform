@@ -312,4 +312,160 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('deleteOverlay').addEventListener('click', function () {
     closeModal('deleteModal', 'deleteOverlay');
   });
+  
+  // Load pending dorm applications
+  loadPendingDormApplications();
 });
+
+// ─── PENDING DORM APPLICATIONS HANDLER ──────────────────────────────────────
+let currentPendingApp = null;
+
+function loadPendingDormApplications() {
+  const pendingDorms = localStorage.getItem('zambodorm_pending_dorms');
+  const apps = pendingDorms ? JSON.parse(pendingDorms) : [];
+  
+  const container = document.getElementById('pendingAppsContainer');
+  const card = document.getElementById('pendingAppCard');
+  const badge = document.getElementById('pendingCount');
+  
+  if (apps.length === 0) {
+    card.style.display = 'none';
+    return;
+  }
+  
+  card.style.display = 'block';
+  badge.textContent = apps.length;
+  
+  container.innerHTML = apps.map((app, idx) => `
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: white; border: 1px solid #fbbf24; border-radius: 6px; margin-bottom: 10px;">
+      <div style="flex: 1;">
+        <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">${app.dormName}</div>
+        <div style="font-size: 0.9rem; color: #6b7280;">
+          📍 ${app.dormLocation} • 👤 ${app.adminName} • 📅 ${app.submittedDate} ${app.submittedTime}
+        </div>
+      </div>
+      <button onclick="openAppReviewModal(${idx})" style="padding: 8px 16px; background: #f59e0b; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">Review</button>
+    </div>
+  `).join('');
+}
+
+function openAppReviewModal(idx) {
+  const pendingDorms = localStorage.getItem('zambodorm_pending_dorms');
+  const apps = JSON.parse(pendingDorms);
+  currentPendingApp = { ...apps[idx], index: idx };
+  
+  document.getElementById('appAdminName').textContent = currentPendingApp.adminName || '-';
+  document.getElementById('appAdminEmail').textContent = currentPendingApp.adminEmail || '-';
+  document.getElementById('appAdminPhone').textContent = currentPendingApp.adminPhone || '-';
+  document.getElementById('appSubmittedDate').textContent = `${currentPendingApp.submittedDate} ${currentPendingApp.submittedTime}`;
+  
+  document.getElementById('appDormName').textContent = currentPendingApp.dormName || '-';
+  document.getElementById('appDormLocation').textContent = currentPendingApp.dormLocation || '-';
+  document.getElementById('appDormPhone').textContent = currentPendingApp.dormPhone || '-';
+  document.getElementById('appTotalRooms').textContent = currentPendingApp.totalRooms || '-';
+  document.getElementById('appCapacity').textContent = currentPendingApp.capacity || '-';
+  document.getElementById('appAmenities').textContent = (currentPendingApp.amenities && currentPendingApp.amenities.length > 0) 
+    ? currentPendingApp.amenities.join(', ') 
+    : 'None listed';
+  document.getElementById('appDescription').textContent = currentPendingApp.description || 'No description provided';
+  
+  const docsList = document.getElementById('appDocumentsList');
+  if (currentPendingApp.documents && currentPendingApp.documents.length > 0) {
+    docsList.innerHTML = currentPendingApp.documents.map(doc => `
+      <div style="padding: 10px; background: #f3e8ff; border-radius: 6px; text-align: center; font-size: 0.85rem; word-break: break-word;">
+        <div style="margin-bottom: 6px; color: #7c3aed;">📄</div>
+        <div style="color: #6b21a8; font-weight: 600;">${doc.name}</div>
+        <div style="color: #9333ea; font-size: 0.8rem;">${(doc.size / 1024).toFixed(1)}KB</div>
+      </div>
+    `).join('');
+  } else {
+    docsList.innerHTML = '<div style="grid-column: 1/-1; color: #9ca3af; text-align: center; padding: 20px;">No documents uploaded</div>';
+  }
+  
+  const photosList = document.getElementById('appPhotosList');
+  if (currentPendingApp.photos && currentPendingApp.photos.length > 0) {
+    photosList.innerHTML = currentPendingApp.photos.map((photo, idx) => `
+      <img src="${photo}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid #fed7aa;" alt="Dorm photo ${idx + 1}" />
+    `).join('');
+  } else {
+    photosList.innerHTML = '<div style="grid-column: 1/-1; color: #9ca3af; text-align: center; padding: 40px;">No photos uploaded</div>';
+  }
+  
+  document.getElementById('approvalNotes').value = '';
+  document.getElementById('appOverlay').style.display = 'block';
+  document.getElementById('appReviewModal').style.display = 'flex';
+}
+
+function closeAppReviewModal() {
+  document.getElementById('appOverlay').style.display = 'none';
+  document.getElementById('appReviewModal').style.display = 'none';
+  currentPendingApp = null;
+}
+
+function approveDormApplication() {
+  if (!currentPendingApp) return;
+  
+  const notes = document.getElementById('approvalNotes').value.trim();
+  const pendingDorms = JSON.parse(localStorage.getItem('zambodorm_pending_dorms'));
+  pendingDorms[currentPendingApp.index].status = 'Approved';
+  pendingDorms[currentPendingApp.index].approvalDate = new Date().toLocaleDateString('en-PH');
+  if (notes) pendingDorms[currentPendingApp.index].approvalNotes = notes;
+  
+  const approvedApp = pendingDorms.splice(currentPendingApp.index, 1)[0];
+  localStorage.setItem('zambodorm_pending_dorms', JSON.stringify(pendingDorms));
+  
+  const adminApps = JSON.parse(localStorage.getItem('zambodorm_dorm_applications') || '[]');
+  const adminAppIdx = adminApps.findIndex(a => a.id === approvedApp.id);
+  if (adminAppIdx !== -1) {
+    adminApps[adminAppIdx].status = 'Approved';
+    adminApps[adminAppIdx].approvalDate = approvedApp.approvalDate;
+    if (notes) adminApps[adminAppIdx].approvalNotes = notes;
+    localStorage.setItem('zambodorm_dorm_applications', JSON.stringify(adminApps));
+  }
+  
+  showToast(`✅ Dorm "${approvedApp.dormName}" approved successfully! Added to properties.`);
+  closeAppReviewModal();
+  loadPendingDormApplications();
+}
+
+function rejectDormApplication() {
+  if (!currentPendingApp) return;
+  
+  const notes = document.getElementById('approvalNotes').value.trim();
+  
+  if (!notes) {
+    showToast('⚠️ Please provide a reason for rejection in the notes field.');
+    return;
+  }
+  
+  const pendingDorms = JSON.parse(localStorage.getItem('zambodorm_pending_dorms'));
+  pendingDorms[currentPendingApp.index].status = 'Rejected';
+  pendingDorms[currentPendingApp.index].rejectionNotes = notes;
+  
+  const rejectedApp = pendingDorms.splice(currentPendingApp.index, 1)[0];
+  localStorage.setItem('zambodorm_pending_dorms', JSON.stringify(pendingDorms));
+  
+  const adminApps = JSON.parse(localStorage.getItem('zambodorm_dorm_applications') || '[]');
+  const adminAppIdx = adminApps.findIndex(a => a.id === rejectedApp.id);
+  if (adminAppIdx !== -1) {
+    adminApps[adminAppIdx].status = 'Rejected';
+    adminApps[adminAppIdx].rejectionNotes = notes;
+    localStorage.setItem('zambodorm_dorm_applications', JSON.stringify(adminApps));
+  }
+  
+  showToast(`❌ Dorm "${rejectedApp.dormName}" rejected. Admin will be notified.`);
+  closeAppReviewModal();
+  loadPendingDormApplications();
+}
+
+document.getElementById('closeAppReview').addEventListener('click', closeAppReviewModal);
+document.getElementById('approveAppBtn').addEventListener('click', approveDormApplication);
+document.getElementById('rejectAppBtn').addEventListener('click', rejectDormApplication);
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #1f2937; color: white; padding: 12px 20px; border-radius: 6px; font-size: 0.9rem; z-index: 10000; animation: slideIn 0.3s ease-out;';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}

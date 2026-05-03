@@ -149,3 +149,10 @@ function resetAll() {
 
   goToA();
 }
+
+/* ── Back from review goes to visitor form ── */
+function goToC_back() {
+  setPhase('b');
+  showScreen('b');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
