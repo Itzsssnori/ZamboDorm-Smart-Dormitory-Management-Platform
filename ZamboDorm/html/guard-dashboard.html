@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — ZamboDorm</title>
+  <link rel="stylesheet" href="guard-style.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div id="navbar">
+  <a class="logo" href="guard-dashboard.html">
+    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+    <span class="logo-text">Zambo<span>Dorm</span></span>
+  </a>
+  <div id="clock"></div>
+  <div class="guard-pill">
+    <div class="guard-avatar">GN</div>
+    <span class="guard-name">Guard Narvaez</span>
+  </div>
+  <button class="btn-logout" onclick="handleLogout()">Logout</button>
+</div>
+
+<div class="app-body">
+
+  <!-- SIDEBAR -->
+  <nav class="sidebar">
+    <a class="sidebar-item active" data-page="dashboard.html" href="guard-dashboard.html">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
+    </a>
+    <a class="sidebar-item" data-page="add-visitor.html" href="add-visitor.html">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Visitor
+    </a>
+    <a class="sidebar-item" data-page="current-visitors.html" href="current-visitors.html">
+      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Current Visitors
+    </a>
+    <a class="sidebar-item" data-page="visitor-logs.html" href="visitor-logs.html">
+      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Visitor Logs
+    </a>
+    <div class="sidebar-divider"></div>
+    <button class="sidebar-item danger" onclick="handleLogout()">
+      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout
+    </button>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Dashboard</h1>
+      <p>Welcome back, Guard Narvaez. Here's today's overview.</p>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stat-cards">
+      <div class="stat-card">
+        <div class="s-label">Currently Inside</div>
+        <div class="s-value" id="stat-inside">0</div>
+        <div class="s-sub">Active visitors</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">Total Today</div>
+        <div class="s-value" id="stat-today">0</div>
+        <div class="s-sub">Visitors logged</div>
+      </div>
+      <div class="stat-card alert-card">
+        <div class="s-label">Overstaying</div>
+        <div class="s-value" id="stat-over">0</div>
+        <div class="s-sub">3+ hours inside</div>
+      </div>
+    </div>
+
+    <!-- OVERSTAY ALERT -->
+    <div id="overstay-bar" class="overstay-bar">
+      <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span id="overstay-msg"></span>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="quick-actions">
+      <a class="btn-primary" href="add-visitor.html">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Visitor
+      </a>
+      <a class="btn-secondary" href="current-visitors.html">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>Time Out Visitor
+      </a>
+    </div>
+
+    <!-- LIVE TABLE -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        </div>
+        <div>
+          <div class="section-title">Live Visitor Table</div>
+          <div class="section-sub">Visitors currently inside the dorm</div>
+        </div>
+      </div>
+      <div id="live-table-wrap"></div>
+    </div>
+  </main>
+</div>
+
+<!-- TOAST -->
+<div id="toast">
+  <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toast-msg">Done!</span>
+</div>
+
+<script src="guard-data-main.js"></script>
+<script src="guard-dashboard-script.js"></script>
+</body>
+</html>
