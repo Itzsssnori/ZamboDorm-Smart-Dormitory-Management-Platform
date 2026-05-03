@@ -195,25 +195,28 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 
+
 .step {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.4rem;
   flex: 1;
   position: relative;
+  justify-content: center;
 }
 
 .step:not(:last-child)::after {
   content: '';
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: calc(100% - 130px);
+  top: 15px;
+  left: 55%;
+  width: 90%;
   height: 2px;
   background: rgba(124,58,237,0.10);
-  left: 130px;
+  z-index: 0;
 }
+
 
 .step.done:not(:last-child)::after {
   background: #7c3aed;

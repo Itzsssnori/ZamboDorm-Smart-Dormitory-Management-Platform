@@ -141,7 +141,7 @@
 }
 
 /* ── PHASE STEPPER ── */
-.phase-bar {
+/* .phase-bar {
   display: flex;
   align-items: center;
   background: #fff;
@@ -157,6 +157,44 @@
   align-items: center;
   gap: 0.6rem;
   flex: 1;
+} */
+.phase-bar {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 1rem 2rem;
+  box-shadow: var(--shadow);
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 0 0 auto;
+}
+
+.phase-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #9ca3af;
+  white-space: nowrap;
+  transition: color 0.3s;
+  text-align: center;
+}
+
+.phase-line {
+  flex: 1;
+  height: 3px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin: 0 0.75rem;
+  margin-bottom: 1.4rem;
+  transition: background 0.4s;
 }
 
 .phase-dot {
@@ -200,6 +238,7 @@
   background: #e5e7eb;
   border-radius: 2px;
   margin: 0 0.75rem;
+  margin-bottom: 1.85rem;
   transition: background 0.4s;
 }
 .phase-line.done { background: #22c55e; }
