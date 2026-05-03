@@ -18,12 +18,10 @@
 </head>
 <body>
 
-  <!-- Navbar Web Component -->
   <zd-navbar></zd-navbar>
   <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
 
-  <!-- ── MAIN ── -->
   <main class="page-wrapper">
     <div class="signin-card">
 
@@ -47,8 +45,9 @@
           </svg>
           <span>Please enter both email and password</span>
         </div>
+
         <div class="form-group">
-          <label class="form__label" for="email">Email Address</label>
+          <label class="form__label" for="email">Email / Username</label>
           <div class="form__input-wrap">
             <span class="form__input-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -56,7 +55,7 @@
                 <path d="M2 7l10 7 10-7"/>
               </svg>
             </span>
-            <input class="form__input" id="email" type="email" placeholder="your.email@example.com" autocomplete="email" required/>
+            <input class="form__input" id="email" type="text" placeholder="your.email@example.com or username" autocomplete="username" required/>
           </div>
         </div>
 
@@ -104,7 +103,52 @@
           <span class="signin-card__demo-badge">Demo</span>
           <span class="signin-card__demo-title">Quick Access Accounts</span>
         </div>
-        <div class="signin-card__demo-accounts"></div>
+        <div class="signin-card__demo-accounts">
+
+          <!-- Tenant -->
+          <div class="signin-card__demo-item" onclick="fillDemo('juan.tenant@demo.com','demo123')">
+            <div class="signin-card__demo-role">
+              <span class="signin-card__demo-dot signin-card__demo-dot--tenant"></span>
+              <span class="signin-card__demo-role-label">Tenant</span>
+            </div>
+            <span class="signin-card__demo-creds">juan.tenant@demo.com</span>
+            <span class="signin-card__demo-action">Use →</span>
+          </div>
+
+          <!-- Admin -->
+          <div class="signin-card__demo-item" onclick="fillDemo('maria.admin@demo.com','demo123')">
+            <div class="signin-card__demo-role">
+              <span class="signin-card__demo-dot signin-card__demo-dot--admin"></span>
+              <span class="signin-card__demo-role-label">Admin</span>
+            </div>
+            <span class="signin-card__demo-creds">maria.admin@demo.com</span>
+            <span class="signin-card__demo-action">Use →</span>
+          </div>
+
+          <!-- System Admin -->
+          <div class="signin-card__demo-item" onclick="fillDemo('carlos.sysadmin@demo.com','demo123')">
+            <div class="signin-card__demo-role">
+              <span class="signin-card__demo-dot signin-card__demo-dot--sysadmin"></span>
+              <span class="signin-card__demo-role-label">System Admin</span>
+            </div>
+            <span class="signin-card__demo-creds">carlos.sysadmin@demo.com</span>
+            <span class="signin-card__demo-action">Use →</span>
+          </div>
+
+          <!-- Security Guard -->
+          <div class="signin-card__demo-item" onclick="fillDemo('pedro.security@demo.com','demo123')">
+            <div class="signin-card__demo-role">
+              <span class="signin-card__demo-dot signin-card__demo-dot--security"></span>
+              <span class="signin-card__demo-role-label">Security Guard</span>
+            </div>
+            <span class="signin-card__demo-creds">pedro.security@demo.com</span>
+            <span class="signin-card__demo-action">Use →</span>
+          </div>
+
+          <!-- Dynamic accounts created via Admin Settings will appear below -->
+          <div id="dynamic-accounts"></div>
+
+        </div>
       </div>
 
       <!-- Secure note -->
