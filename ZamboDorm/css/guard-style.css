@@ -13,12 +13,20 @@ html { scroll-behavior: smooth; }
   --font: 'Plus Jakarta Sans', sans-serif;
   --success: #10b981; --warning: #f59e0b; --red: #ef4444; --blue: #3b82f6;
   --nav-h: 68px; --sidebar-w: 280px;
+  --primary2nd:        #7c3aed;
+  --primary-light:  #a855f7;
+  --text2nd:           #1a1a2e;
+  --text-muted:     #6b7280;
+  --card-border2nd:    rgba(124,58,237,0.12);
+  --red:            #ef4444;
+  --nav-h:          64px;
+  --font:           'Plus Jakarta Sans', sans-serif;
 }
 
 body { font-family: var(--font); background: var(--bg-gradient); color: var(--text); min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
 
 /* ── NAVBAR ── */
-#navbar {
+/* #navbar {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(16px);
@@ -42,7 +50,121 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .guard-name { font-weight: 700; font-size: 0.8rem; color: var(--text); }
 
 .btn-logout { padding: 0.35rem 0.85rem; background: rgba(239,68,68,0.1); color: var(--red); border: none; border-radius: 8px; font-family: var(--font); font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
-.btn-logout:hover { background: rgba(239,68,68,0.2); }
+.btn-logout:hover { background: rgba(239,68,68,0.2); } */
+
+/* commented the code incase of imergency */
+#navbar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.05);
+  height: var(--nav-h);
+  display: flex; align-items: center;
+  padding: 0 2rem; gap: 1rem;
+  font-family: var(--font);
+}
+
+/* Logo */
+.logo {
+  display: flex; align-items: center;
+  gap: 0.55rem; text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.30);
+}
+
+.logo-icon svg { width: 19px; height: 19px; }
+
+.logo-text {
+  font-size: 1.15rem; font-weight: 800;
+  color: var(--text); letter-spacing: -0.03em;
+}
+
+.logo-text span { color: var(--primary); }
+
+/* Nav Links */
+.navbar__links {
+  display: flex; align-items: center;
+  gap: 0.25rem; list-style: none;
+  margin: 0 auto; /* centers the links */
+  padding: 0;
+}
+
+.navbar__link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.9rem; font-weight: 500;
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  transition: all 0.18s ease;
+}
+
+.navbar__link:hover,
+.navbar__link.active {
+  color: var(--primary);
+  background: rgba(124,58,237,0.07);
+}
+
+/* Right side */
+.navbar__right {
+  display: flex; align-items: center;
+  gap: 0.75rem; flex-shrink: 0;
+}
+
+/* User pill */
+.guard-pill {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(168,85,247,0.08));
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 0.3rem 0.75rem 0.3rem 0.35rem;
+}
+
+.guard-avatar {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.65rem; color: white;
+  letter-spacing: 0.5px;
+}
+
+.guard-name {
+  font-weight: 700; font-size: 0.85rem;
+  color: var(--text);
+}
+
+/* Log Out button */
+.btn-logout {
+  display: flex; align-items: center; gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  background: linear-gradient(135deg, var(--primary), #6d28d9);
+  color: white;
+  border: none; border-radius: 9px;
+  font-family: var(--font);
+  font-size: 0.85rem; font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(109,40,217,0.35);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-logout svg { flex-shrink: 0; }
+
+.btn-logout:hover {
+  background: linear-gradient(135deg, #6d28d9, #5b21b6);
+  box-shadow: 0 6px 18px rgba(109,40,217,0.45);
+  transform: translateY(-1px);
+}
+
+.btn-logout:active { transform: translateY(0); }
 
 /* ── LAYOUT ── */
 .app-body { display: flex; flex: 1; }
