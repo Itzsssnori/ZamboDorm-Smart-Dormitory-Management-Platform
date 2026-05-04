@@ -17,7 +17,7 @@ html { scroll-behavior: smooth; }
 
 body { font-family: var(--font); background: var(--bg-gradient); color: var(--text); min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
 
-── NAVBAR ── */
+/* ── NAVBAR ── */
  #navbar {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.95);
