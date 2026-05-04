@@ -4,23 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Current Visitors — ZamboDorm</title>
-  <link rel="stylesheet" href="../css/guard-style.css" />
+  <link rel="stylesheet" href="guard-style.css" />
 </head>
 <body>
 
 <!-- NAVBAR -->
-<div id="navbar">
-  <a class="logo" href="guard-dashboard.html">
-    <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-    <span class="logo-text">Zambo<span>Dorm</span></span>
-  </a>
-  <div id="clock"></div>
-  <div class="guard-pill">
-    <div class="guard-avatar">GN</div>
-    <span class="guard-name">Guard Narvaez</span>
-  </div>
-  <button class="btn-logout" onclick="handleLogoutWithCheck()">Logout</button>
-</div>
+<div id="navbar"></div>
 
 <div class="app-body">
 
@@ -47,8 +36,10 @@
   <!-- MAIN -->
   <main class="main-content">
     <div class="page-header">
-      <h1>Current Visitors</h1>
-      <p>Manage visitors currently inside the dorm. Click <strong>Time Out</strong> when a visitor leaves, or <strong>Edit</strong> to correct name errors.</p>
+      <div>
+        <h1>Current Visitors</h1>
+        <p>Manage visitors currently inside the dorm. Click <strong>Time Out</strong> when a visitor leaves, or <strong>Edit</strong> to correct name errors.</p>
+      </div>
     </div>
 
     <!-- OVERSTAY ALERT -->

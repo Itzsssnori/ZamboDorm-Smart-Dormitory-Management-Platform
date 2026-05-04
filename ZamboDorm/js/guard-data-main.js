@@ -105,14 +105,15 @@ function visitorFullName(v) {
 function startClock() {
   function tick() {
     const el = document.getElementById('clock');
-    if (!el) return;
+    if (!el) return; // Guard against missing element
     const now = new Date();
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds(), ap = h >= 12 ? 'PM' : 'AM';
     h = h % 12 || 12;
     el.textContent = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} · ${pad(h)}:${pad(m)}:${pad(s)} ${ap}`;
   }
-  tick(); setInterval(tick, 1000);
+  tick();
+  setInterval(tick, 1000);
 }
 
 // ── Toast ──
@@ -183,6 +184,24 @@ function handleLogout() {
 
 // ── Init on load ──
 document.addEventListener('DOMContentLoaded', () => {
+  // Render navbar if not already in HTML
+  const navbar = document.getElementById('navbar');
+  if (navbar && navbar.innerHTML.trim() === '') {
+    navbar.innerHTML = renderNav();
+  }
+  // Render sidebar if not already in HTML
+  const sidebar = document.querySelector('.sidebar');
+  if (!sidebar) {
+    const navElement = document.querySelector('nav.sidebar');
+    if (!navElement) {
+      const appBody = document.querySelector('.app-body');
+      if (appBody) {
+        const newSidebar = document.createElement('nav');
+        newSidebar.innerHTML = renderSidebar();
+        appBody.insertBefore(newSidebar, appBody.firstChild);
+      }
+    }
+  }
   startClock();
   setActiveSidebar();
 });
