@@ -115,7 +115,24 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .sort-select:focus{border-color:var(--vl);}
  
 /* ── GALLERY GRID ── */
-.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+}
  
 /* ── GALLERY CARD ── */
 .g-card{

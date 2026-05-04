@@ -359,6 +359,15 @@
     padding: 2rem;
     min-height: 100vh;
     animation: slideIn 0.3s ease;
+    width: calc(100% - 260px);
+  }
+
+  .table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+    border-radius: 12px;
   }
 
   /* Welcome Header */

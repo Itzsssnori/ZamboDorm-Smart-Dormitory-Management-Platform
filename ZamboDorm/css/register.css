@@ -753,6 +753,19 @@ body::before {
   margin-top: 0.5rem;
 }
 
+@media (max-width: 480px) {
+  .role-options {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .role-content {
+    flex-direction: row !important;
+    padding: 0.85rem 1rem !important;
+    justify-content: flex-start !important;
+  }
+}
+
 .role-card {
   position: relative;
   cursor: pointer;

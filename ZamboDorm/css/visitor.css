@@ -117,6 +117,15 @@
   min-height: calc(100vh - 68px);
   overflow-x: hidden;
   animation: slideIn 0.3s ease;
+  width: calc(100% - 280px);
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 1rem;
+  border-radius: 12px;
 }
 
 /* ── PAGE HEADER ── */

@@ -245,7 +245,7 @@
 
 /* ── PRIMARY BUTTON ── */
 .form__btn {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+  background: var(--gradient-primary);
   color: #fff;
   box-shadow: var(--shadow-btn-primary);
   margin-bottom: 1rem;

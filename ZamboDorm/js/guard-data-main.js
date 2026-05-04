@@ -140,7 +140,7 @@ function setActiveSidebar() {
 function renderNav() {
   return `
   <div id="navbar">
-    <a class="logo" href="dashboard.html">
+    <a class="logo" href="../index.html">
       <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <span class="logo-text">Zambo<span>Dorm</span></span>
     </a>
@@ -156,7 +156,7 @@ function renderNav() {
 function renderSidebar() {
   return `
   <nav class="sidebar">
-    <a class="sidebar-item" data-page="dashboard.html" href="dashboard.html">
+    <a class="sidebar-item" data-page="guard-dashboard.html" href="guard-dashboard.html">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
     </a>
     <a class="sidebar-item" data-page="add-visitor.html" href="add-visitor.html">
@@ -178,7 +178,7 @@ function renderSidebar() {
 function handleLogout() {
   if (confirm('Log out from ZamboDorm?')) {
     showToast('Logged out successfully.');
-    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
+    setTimeout(() => { window.location.href = '../index.html'; }, 1200);
   }
 }
 
