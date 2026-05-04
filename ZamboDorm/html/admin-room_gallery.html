@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZamboDorm – Admin Dashboard</title>
+  <title>ZamboDorm â€“ Admin Dashboard</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../css/style.css"/>
@@ -14,7 +14,6 @@
 </head>
 <body>
 <zd-navbar authenticated></zd-navbar>
-<script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
 <!-- Mobile Sidebar Hamburger (Reusable) -->
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
@@ -191,7 +190,7 @@
   <div class="toolbar" id="toolbar-rooms">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="search-input" id="search" type="text" placeholder="Search room number, wing, or type…" oninput="renderGallery()"/>
+      <input class="search-input" id="search" type="text" placeholder="Search room number, wing, or typeâ€¦" oninput="renderGallery()"/>
     </div>
     <button class="filter-pill active" onclick="setFilter('all',this)">All</button>
     <button class="filter-pill" onclick="setFilter('full',this)">Occupied</button>
@@ -199,8 +198,8 @@
     <button class="filter-pill" onclick="setFilter('empty',this)">Available</button>
     <select class="sort-select" id="sort-select" onchange="renderGallery()">
       <option value="id">Room No.</option>
-      <option value="rate-asc">Rate: Low–High</option>
-      <option value="rate-desc">Rate: High–Low</option>
+      <option value="rate-asc">Rate: Lowâ€“High</option>
+      <option value="rate-desc">Rate: Highâ€“Low</option>
       <option value="photos">Most Photos</option>
     </select>
   </div>
@@ -209,14 +208,14 @@
   <div class="toolbar" id="toolbar-dorms" style="display:none;">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      <input class="search-input" id="search-dorms" type="text" placeholder="Search dorm name or location…" oninput="renderDorms()"/>
+      <input class="search-input" id="search-dorms" type="text" placeholder="Search dorm name or locationâ€¦" oninput="renderDorms()"/>
     </div>
     <button class="filter-pill active" onclick="setDormFilter('all',this)">All</button>
     <button class="filter-pill" onclick="setDormFilter('approved',this)">Approved</button>
     <button class="filter-pill" onclick="setDormFilter('pending',this)">Pending</button>
     <select class="sort-select" id="sort-select-dorms" onchange="renderDorms()">
       <option value="date">Newest First</option>
-      <option value="name">Name A–Z</option>
+      <option value="name">Name Aâ€“Z</option>
       <option value="capacity">Capacity</option>
     </select>
   </div>
@@ -227,7 +226,7 @@
 </div>
 </main>
 
-<!-- ══ MODAL: VIEW ROOM DETAILS ══ -->
+<!-- â•â• MODAL: VIEW ROOM DETAILS â•â• -->
 <div class="modal-overlay" id="modal-room-details" onclick="closeRoomDetails()">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-hd">
@@ -267,7 +266,7 @@
   </div>
 </div>
 
-<!-- ══ MODAL: ADD / EDIT ROOM ══ -->
+<!-- â•â• MODAL: ADD / EDIT ROOM â•â• -->
 <div class="modal-overlay" id="modal-room">
   <div class="modal">
     <div class="modal-hd">
@@ -285,11 +284,11 @@
         <div class="form-group"><label class="form-label">Wing / Block</label><input class="form-input" id="f-wing" placeholder="e.g. Block A"/></div>
       </div>
       <div class="form-grid-2">
-        <div class="form-group"><label class="form-label">Monthly Rate (₱) <span>*</span></label><input class="form-input" id="f-rate" type="number" min="0" placeholder="4500"/></div>
+        <div class="form-group"><label class="form-label">Monthly Rate (â‚±) <span>*</span></label><input class="form-input" id="f-rate" type="number" min="0" placeholder="4500"/></div>
         <div class="form-group"><label class="form-label">Capacity (beds) <span>*</span></label><select class="form-select" id="f-cap"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select></div>
       </div>
-      <div class="form-group"><label class="form-label">Amenities <span style="font-weight:400;color:var(--muted)">(comma-separated)</span></label><input class="form-input" id="f-amenities" placeholder="Aircon, Private Bath, Wifi, Study Desk…"/><p class="form-hint">Separate each amenity with a comma</p></div>
-      <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="f-desc" placeholder="Describe the room for prospective tenants…"></textarea></div>
+      <div class="form-group"><label class="form-label">Amenities <span style="font-weight:400;color:var(--muted)">(comma-separated)</span></label><input class="form-input" id="f-amenities" placeholder="Aircon, Private Bath, Wifi, Study Deskâ€¦"/><p class="form-hint">Separate each amenity with a comma</p></div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="f-desc" placeholder="Describe the room for prospective tenantsâ€¦"></textarea></div>
 
       <div class="msec">Room Photos</div>
       <p style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem;">Upload photos tenants will see when browsing available rooms. First photo is the cover image.</p>
@@ -303,7 +302,7 @@
   </div>
 </div>
 
-<!-- ══ MODAL: UPLOAD PHOTOS ══ -->
+<!-- â•â• MODAL: UPLOAD PHOTOS â•â• -->
 <div class="modal-overlay" id="modal-upload">
   <div class="modal" style="max-width:500px">
     <div class="modal-hd">
@@ -315,7 +314,7 @@
       <div class="upload-zone" id="upload-drop" onclick="document.getElementById('upload-file-input').click()" ondragover="handleDrag(event,true)" ondragleave="handleDrag(event,false)" ondrop="handleDrop(event)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
         <h3>Drop photos here or click to browse</h3>
-        <p>PNG, JPG, WEBP — up to 10MB each</p>
+        <p>PNG, JPG, WEBP â€” up to 10MB each</p>
       </div>
       <input type="file" id="upload-file-input" accept="image/*" multiple style="display:none" onchange="handleUploadFiles(this)"/>
       <div class="upload-preview" id="upload-preview" style="margin-top:.75rem;"></div>
@@ -327,7 +326,7 @@
   </div>
 </div>
 
-<!-- ══ LIGHTBOX ══ -->
+<!-- â•â• LIGHTBOX â•â• -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <div class="lb-img-wrap" onclick="event.stopPropagation()">
     <img class="lb-img" id="lb-img" src="" alt="Room photo"/>
@@ -338,7 +337,7 @@
   </div>
 </div>
 
-<!-- ══ MODAL: ADD DORM ══ -->
+<!-- â•â• MODAL: ADD DORM â•â• -->
 <div class="modal-overlay" id="modal-dorm">
   <div class="modal">
     <div class="modal-hd">
@@ -389,7 +388,7 @@
   </div>
 </div>
 
-<!-- ══ CONFIRM DIALOG ══ -->
+<!-- â•â• CONFIRM DIALOG â•â• -->
 <div class="confirm-overlay" id="confirm-overlay">
   <div class="confirm-box">
     <div class="confirm-icon red"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg></div>

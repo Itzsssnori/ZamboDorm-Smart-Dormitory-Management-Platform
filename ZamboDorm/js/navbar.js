@@ -73,16 +73,19 @@ class ZDNavBar extends HTMLElement {
                 <div class="navbar__user-avatar">${userInitials}</div>
                 <span class="navbar__user-name">${userName}</span>
               </a>
-              <a href="javascript:void(0)" class="btn btn--signin" id="logoutBtn">
+              <a href="javascript:void(0)" class="btn btn--logout" id="logoutBtn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
                 </svg>
                 Log Out
               </a>
             ` : `
+              <a href="${p}html/register-account.html" class="navbar__link">Register</a>
               <a href="${p}html/signin-page.html" class="btn btn--signin">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+                  <polyline points="10 17 15 12 10 7"/>
+                  <line x1="15" y1="12" x2="3" y2="12"/>
                 </svg>
                 Sign In
               </a>
@@ -112,6 +115,7 @@ class ZDNavBar extends HTMLElement {
               Log Out
             </a>
           ` : `
+            <a href="${p}html/register-account.html" class="mobile-menu__link">Register Account</a>
             <a href="${p}html/signin-page.html" class="btn btn--signin mobile-menu__link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>

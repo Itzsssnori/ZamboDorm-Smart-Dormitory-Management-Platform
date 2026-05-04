@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZamboDorm – Admin Payments</title>
+  <title>ZamboDorm â€“ Admin Payments</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1'/%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../css/style.css"/>
@@ -15,7 +15,6 @@
 <body>
 
 <zd-navbar authenticated></zd-navbar>
-<script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
 <!-- Mobile Sidebar Hamburger (Reusable) -->
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
@@ -168,7 +167,7 @@
         <span class="stat-trend down">+3 this week</span>
       </div>
       <div class="stat-label">Unpaid Dues</div>
-      <div class="stat-value red" id="stat-unpaid">₱24,500.00</div>
+      <div class="stat-value red" id="stat-unpaid">â‚±24,500.00</div>
       <div class="stat-sub">7 tenants overdue</div>
     </div>
     <div class="stat-card">
@@ -179,7 +178,7 @@
         <span class="stat-trend warn" id="pending-count">8 pending</span>
       </div>
       <div class="stat-label">Awaiting Verification</div>
-      <div class="stat-value amber" id="stat-pending">₱28,000.00</div>
+      <div class="stat-value amber" id="stat-pending">â‚±28,000.00</div>
       <div class="stat-sub">Submitted, not yet confirmed</div>
     </div>
     <div class="stat-card">
@@ -190,18 +189,18 @@
         <span class="stat-trend up">+12% vs last mo</span>
       </div>
       <div class="stat-label">Collected This Month</div>
-      <div class="stat-value green" id="stat-collected">₱85,000.00</div>
+      <div class="stat-value green" id="stat-collected">â‚±85,000.00</div>
       <div class="stat-sub">24 payments confirmed</div>
     </div>
     <div class="stat-card">
       <div class="stat-top">
         <div class="stat-icon" style="background:rgba(124,58,237,0.10)">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><text x="12" y="19" text-anchor="middle" font-size="23" font-family="Arial, sans-serif" fill="#7c3aed" font-weight="bold">₱</text></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><text x="12" y="19" text-anchor="middle" font-size="23" font-family="Arial, sans-serif" fill="#7c3aed" font-weight="bold">â‚±</text></svg>
         </div>
         <span class="stat-trend up">Full occupancy target</span>
       </div>
       <div class="stat-label">Expected Revenue</div>
-      <div class="stat-value purple" id="stat-expected">₱109,500.00</div>
+      <div class="stat-value purple" id="stat-expected">â‚±109,500.00</div>
       <div class="stat-sub">Based on active leases</div>
     </div>
   </div>
@@ -216,7 +215,7 @@
     <button class="tab-btn" id="tab-methods-btn" onclick="openTab('methods')">Payment Methods</button>
   </div>
 
-  <!-- ── TAB: PENDING VERIFICATION ── -->
+  <!-- â”€â”€ TAB: PENDING VERIFICATION â”€â”€ -->
   <div class="tab-panel active" id="panel-pending">
     <div class="panel-toolbar">
       <p class="panel-desc">Review and confirm tenant payment submissions. Approve verified payments or reject with a reason.</p>
@@ -224,11 +223,11 @@
     <div class="payments-list" id="pending-list"></div>
   </div>
 
-  <!-- ── TAB: ALL PAYMENTS ── -->
+  <!-- â”€â”€ TAB: ALL PAYMENTS â”€â”€ -->
   <div class="tab-panel" id="panel-all">
     <div class="panel-toolbar">
       <div class="toolbar-left">
-        <input class="search-input" type="text" id="all-search" placeholder="Search tenant, room, method…" oninput="filterAll()"/>
+        <input class="search-input" type="text" id="all-search" placeholder="Search tenant, room, methodâ€¦" oninput="filterAll()"/>
         <select class="filter-select" id="all-status" onchange="filterAll()">
           <option value="all">All Statuses</option>
           <option value="confirmed">Confirmed</option>
@@ -270,7 +269,7 @@
     </div>
   </div>
 
-  <!-- ── TAB: PAYMENT METHODS ── -->
+  <!-- â”€â”€ TAB: PAYMENT METHODS â”€â”€ -->
   <div class="tab-panel" id="panel-methods">
     <div class="panel-toolbar">
       <p class="panel-desc">Configure which payment channels are available to tenants. Toggle methods on or off.</p>
@@ -284,7 +283,7 @@
 
 </main>
 
-<!-- ── MODAL: REVIEW PAYMENT ── -->
+<!-- â”€â”€ MODAL: REVIEW PAYMENT â”€â”€ -->
 <div class="modal-overlay" id="modal-review">
   <div class="modal-box">
     <div class="modal-header">
@@ -328,7 +327,7 @@
       <!-- Rejection reason (shown when rejecting) -->
       <div id="reject-reason-wrap" style="display:none; margin-top:1rem;">
         <label class="mf-label">Reason for Rejection <span style="color:#ef4444">*</span></label>
-        <textarea class="mf-textarea" id="reject-reason" placeholder="e.g. Reference number not found, amount mismatch…"></textarea>
+        <textarea class="mf-textarea" id="reject-reason" placeholder="e.g. Reference number not found, amount mismatchâ€¦"></textarea>
       </div>
     </div>
     <div class="modal-footer">
@@ -344,7 +343,7 @@
   </div>
 </div>
 
-<!-- ── MODAL: ADD METHOD ── -->
+<!-- â”€â”€ MODAL: ADD METHOD â”€â”€ -->
 <div class="modal-overlay" id="modal-method">
   <div class="modal-box" style="max-width:440px">
     <div class="modal-header">
@@ -375,7 +374,7 @@
       </div>
       <div class="mf-group">
         <label class="mf-label">Instructions / Account Details</label>
-        <textarea class="mf-textarea" id="nm-instructions" placeholder="e.g. Send to 09XX XXX XXXX · Account name: ZamboDorm"></textarea>
+        <textarea class="mf-textarea" id="nm-instructions" placeholder="e.g. Send to 09XX XXX XXXX Â· Account name: ZamboDorm"></textarea>
       </div>
     </div>
     <div class="modal-footer">
