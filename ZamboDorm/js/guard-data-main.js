@@ -37,41 +37,13 @@ const PURPOSES = [
 ];
 
 // ── Storage helpers ──
-// function getVisitors() {
-//   try { return JSON.parse(localStorage.getItem('zd_visitors') || '[]'); }
-//   catch { return []; }
-// }
-
-// function saveVisitors(list) {
-//   localStorage.setItem('zd_visitors', JSON.stringify(list));
-// }
-
-// function addVisitor(v) {
-//   const list = getVisitors();
-//   list.push(v);
-//   saveVisitors(list);
-// }
-
-// function updateVisitor(id, changes) {
-//   const list = getVisitors();
-//   const idx = list.findIndex(v => v.id === id);
-//   if (idx !== -1) { Object.assign(list[idx], changes); saveVisitors(list); }
-// }
-
-// function timeOutVisitor(id) {
-//   updateVisitor(id, { timeOut: new Date().toISOString() });
-// }
-//commented the block of code incase of emergency
 function getVisitors() {
-  try {
-    return JSON.parse(sessionStorage.getItem('zd_visitors') || '[]');
-  } catch {
-    return [];
-  }
+  try { return JSON.parse(localStorage.getItem('zd_visitors') || '[]'); }
+  catch { return []; }
 }
 
 function saveVisitors(list) {
-  sessionStorage.setItem('zd_visitors', JSON.stringify(list));
+  localStorage.setItem('zd_visitors', JSON.stringify(list));
 }
 
 function addVisitor(v) {
@@ -83,19 +55,13 @@ function addVisitor(v) {
 function updateVisitor(id, changes) {
   const list = getVisitors();
   const idx = list.findIndex(v => v.id === id);
-
-  if (idx !== -1) {
-    Object.assign(list[idx], changes);
-    saveVisitors(list);
-  }
+  if (idx !== -1) { Object.assign(list[idx], changes); saveVisitors(list); }
 }
 
 function timeOutVisitor(id) {
-  updateVisitor(id, {
-    timeOut: new Date().toISOString()
-  });
+  updateVisitor(id, { timeOut: new Date().toISOString() });
 }
-//this the new one
+//commented the block of code incase of emergency
 
 // ── Utilities ──
 function pad(n) { return String(n).padStart(2, '0'); }
