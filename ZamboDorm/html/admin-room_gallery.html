@@ -143,13 +143,13 @@
   <!-- Page Header -->
   <div class="page-hd">
     <div>
-      <h1>Room &amp; Dorm Gallery</h1>
-      <p>Upload and manage room photos for tenants to browse and apply</p>
+      <h1>Dorm and Room Gallery</h1>
+      <p>Manage room and dorm photos</p>
     </div>
     <div class="hd-right">
-      <button class="btn-secondary" onclick="openAddModal()">
+      <button class="btn-secondary" id="add-btn" onclick="addCurrentItem()">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Add Room
+        <span id="add-btn-text">Add Room</span>
       </button>
       <button class="btn-upload" onclick="openUploadModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
@@ -158,16 +158,37 @@
     </div>
   </div>
 
-  <!-- Stats -->
-  <div class="stat-strip">
-    <div class="stat-chip"><div class="sic v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><div class="sc-val" id="s-total">0</div><div class="sc-lbl">Total Rooms</div></div></div>
-    <div class="stat-chip"><div class="sic b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="sc-val" id="s-photos">0</div><div class="sc-lbl">Total Photos</div></div></div>
-    <div class="stat-chip"><div class="sic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="sc-val" id="s-available">0</div><div class="sc-lbl">Available Slots</div></div></div>
-    <div class="stat-chip"><div class="sic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="sc-val" id="s-occupied">0</div><div class="sc-lbl">Occupied Rooms</div></div></div>
+  <!-- Category Tabs -->
+  <div class="category-tabs" style="display:flex;gap:0.5rem;margin-bottom:2rem;border-bottom:1px solid var(--card-border);padding-bottom:1rem;">
+    <button class="category-tab active" onclick="switchCategory('rooms',this)">
+      <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+      Rooms
+      <span style="margin-left:0.5rem;font-size:0.85rem;color:var(--text-muted);" id="rooms-count">(0)</span>
+    </button>
+    <button class="category-tab" onclick="switchCategory('dorms',this)">
+      <svg style="width:18px;height:18px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+        <polyline points="9 22 9 12 15 12 15 22"/>
+      </svg>
+      Dorms
+      <span style="margin-left:0.5rem;font-size:0.85rem;color:var(--text-muted);" id="dorms-count">(0)</span>
+    </button>
   </div>
 
-  <!-- Toolbar -->
-  <div class="toolbar">
+  <!-- Stats -->
+  <div class="stat-strip" id="stats-section">
+    <div class="stat-chip"><div class="sic v"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div><div><div class="sc-val" id="s-total">0</div><div class="sc-lbl" id="s-total-label">Total Rooms</div></div></div>
+    <div class="stat-chip"><div class="sic b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><div><div class="sc-val" id="s-photos">0</div><div class="sc-lbl" id="s-photos-label">Total Photos</div></div></div>
+    <div class="stat-chip"><div class="sic g"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="sc-val" id="s-available">0</div><div class="sc-lbl" id="s-available-label">Available Slots</div></div></div>
+    <div class="stat-chip"><div class="sic a"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg></div><div><div class="sc-val" id="s-occupied">0</div><div class="sc-lbl" id="s-occupied-label">Occupied Rooms</div></div></div>
+  </div>
+
+  <!-- Toolbar (Rooms) -->
+  <div class="toolbar" id="toolbar-rooms">
     <div class="search-wrap">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       <input class="search-input" id="search" type="text" placeholder="Search room number, wing, or type…" oninput="renderGallery()"/>
@@ -184,11 +205,67 @@
     </select>
   </div>
 
+  <!-- Toolbar (Dorms) -->
+  <div class="toolbar" id="toolbar-dorms" style="display:none;">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="search-dorms" type="text" placeholder="Search dorm name or location…" oninput="renderDorms()"/>
+    </div>
+    <button class="filter-pill active" onclick="setDormFilter('all',this)">All</button>
+    <button class="filter-pill" onclick="setDormFilter('approved',this)">Approved</button>
+    <button class="filter-pill" onclick="setDormFilter('pending',this)">Pending</button>
+    <select class="sort-select" id="sort-select-dorms" onchange="renderDorms()">
+      <option value="date">Newest First</option>
+      <option value="name">Name A–Z</option>
+      <option value="capacity">Capacity</option>
+    </select>
+  </div>
+
   <!-- Gallery -->
   <div class="gallery-grid" id="gallery-grid"></div>
 
 </div>
 </main>
+
+<!-- ══ MODAL: VIEW ROOM DETAILS ══ -->
+<div class="modal-overlay" id="modal-room-details" onclick="closeRoomDetails()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-hd">
+      <div><h3 id="detail-room-title">Room Details</h3><p id="detail-room-subtitle">View complete room information</p></div>
+      <button class="modal-close" onclick="closeRoomDetails()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body" style="max-height:70vh;overflow-y:auto;">
+      <div class="msec">Location & Type</div>
+      <div class="form-grid-2">
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Floor</strong><span id="detail-floor">--</span></div>
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Wing/Block</strong><span id="detail-wing">--</span></div>
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Type</strong><span id="detail-type">--</span></div>
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Capacity</strong><span id="detail-capacity">--</span></div>
+      </div>
+      
+      <div class="msec" style="margin-top:1.5rem;">Pricing & Occupancy</div>
+      <div class="form-grid-2">
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Monthly Rate</strong><span id="detail-rate" style="font-size:1.2rem;font-weight:600;color:var(--primary);">--</span></div>
+        <div><strong style="display:block;font-size:0.85rem;color:var(--muted);margin-bottom:0.3rem;">Occupancy</strong><span id="detail-occupancy">--</span></div>
+      </div>
+      
+      <div class="msec" style="margin-top:1.5rem;">Amenities</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;" id="detail-amenities">
+        <span class="g-amenity">Loading...</span>
+      </div>
+      
+      <div class="msec" style="margin-top:1.5rem;">Description</div>
+      <p id="detail-description" style="font-size:0.9rem;line-height:1.5;color:var(--text);">--</p>
+      
+      <div class="msec" style="margin-top:1.5rem;">Photos (<span id="detail-photo-count">0</span>)</div>
+      <div id="detail-photos-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:0.75rem;"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeRoomDetails()">Close</button>
+      <button class="btn-primary" onclick="openEditModal(currentViewingRoomId)">Edit Room</button>
+    </div>
+  </div>
+</div>
 
 <!-- ══ MODAL: ADD / EDIT ROOM ══ -->
 <div class="modal-overlay" id="modal-room">
@@ -261,6 +338,57 @@
   </div>
 </div>
 
+<!-- ══ MODAL: ADD DORM ══ -->
+<div class="modal-overlay" id="modal-dorm">
+  <div class="modal">
+    <div class="modal-hd">
+      <div><h3>Add New Dorm</h3><p>Submit dorm details for system admin approval</p></div>
+      <button class="modal-close" onclick="closeAddDormModal()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="modal-body">
+      <div class="msec">Your Information</div>
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:1rem;">This information is from your account and cannot be edited here. Update your profile in Settings if changes are needed.</p>
+      <div class="form-grid-2">
+        <div class="form-group"><label class="form-label">Full Name <span>*</span></label><input class="form-input" id="d-owner" placeholder="Full name" readonly/></div>
+        <div class="form-group"><label class="form-label">Email <span>*</span></label><input class="form-input" id="d-email" type="email" placeholder="contact@dorm.com" readonly/></div>
+      </div>
+      <div class="form-grid-2">
+        <div class="form-group"><label class="form-label">Phone Number <span>*</span></label><input class="form-input" id="d-phone" placeholder="+63 XXX XXXX XXX" readonly/></div>
+        <div class="form-group"><label class="form-label">Address <span>*</span></label><input class="form-input" id="d-address" placeholder="Your registered address" readonly/></div>
+      </div>
+      
+      <div class="msec">Dorm Information</div>
+      <div class="form-group"><label class="form-label">Dorm Name <span>*</span></label><input class="form-input" id="d-name" placeholder="e.g., Prime Student Housing, University Residences"/></div>
+      <div class="form-grid-2">
+        <div class="form-group"><label class="form-label">Dorm Location/Address <span>*</span></label><input class="form-input" id="d-location" placeholder="Complete dorm address"/></div>
+        <div class="form-group"><label class="form-label">Dorm Phone Number <span>*</span></label><input class="form-input" id="d-dorm-phone" placeholder="+63 XXX XXXX XXX"/></div>
+      </div>
+      
+      <div class="msec">Dorm Details</div>
+      <div class="form-grid-2">
+        <div class="form-group"><label class="form-label">Total Rooms <span>*</span></label><input class="form-input" id="d-total-rooms" type="number" min="1" placeholder="e.g., 50"/></div>
+        <div class="form-group"><label class="form-label">Total Capacity <span>*</span></label><input class="form-input" id="d-capacity" type="number" min="1" placeholder="e.g., 100"/></div>
+      </div>
+      <div class="form-group"><label class="form-label">Amenities <span style="font-weight:400;color:var(--muted)">(comma-separated)</span></label><input class="form-input" id="d-amenities" placeholder="Wifi, Gym, Laundry, Parking, Security"/><p class="form-hint">Separate each amenity with a comma</p></div>
+      <div class="form-group"><label class="form-label">Description</label><textarea class="form-textarea" id="d-description" placeholder="Describe your dorm, target tenants, facilities, and any other relevant information..."></textarea></div>
+      
+      <div class="msec">Dorm Photos</div>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem;">Upload photos of your dorm that administrators will see during review. First photo will be the cover image.</p>
+      <div class="upload-preview" id="dorm-photo-preview"></div>
+      <input type="file" id="dorm-photo-file-input" accept="image/*" multiple style="display:none" onchange="handleDormPhotoFiles(this)"/>
+      
+      <div class="msec" style="margin-top:2rem;">Required Documents</div>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:.75rem;">Upload necessary documents for verification. Accepted formats: PDF, DOC, DOCX, JPG, PNG</p>
+      <div class="documents-preview" id="dorm-documents-preview"></div>
+      <input type="file" id="dorm-documents-file-input" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" multiple style="display:none" onchange="handleDormDocumentFiles(this)"/>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-secondary" onclick="closeAddDormModal()">Cancel</button>
+      <button class="btn-primary" onclick="submitDormApplication()">Submit Application</button>
+    </div>
+  </div>
+</div>
+
 <!-- ══ CONFIRM DIALOG ══ -->
 <div class="confirm-overlay" id="confirm-overlay">
   <div class="confirm-box">
@@ -277,347 +405,6 @@
 <!-- TOAST -->
 <div class="toast" id="toast"><span id="toast-msg"></span></div>
 
-<script>
-// ── DATA (from admin-room.js, enriched with multiple photos) ──────────────────
-let GALLERY = [
-  {id:'100',type:'Double',capacity:2,rate:4500,floor:'1st Floor',wing:'Block A',amenities:['Aircon','Private Bath','Study Desk'],photos:['https://images.pexels.com/photos/5158461/pexels-photo-5158461.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158980/pexels-photo-5158980.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:2,desc:'Fully furnished double room with private bath and aircon on the ground floor.'},
-  {id:'101',type:'Double',capacity:2,rate:4500,floor:'1st Floor',wing:'Block A',amenities:['Fan','Shared Bath','Study Desk'],photos:['https://images.pexels.com/photos/5158980/pexels-photo-5158980.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:1,desc:'Comfortable double room with study desk. Shared bathroom on the floor.'},
-  {id:'102',type:'Double',capacity:2,rate:4200,floor:'1st Floor',wing:'Block A',amenities:['Fan','Shared Bath'],photos:['https://images.pexels.com/photos/5158946/pexels-photo-5158946.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:0,desc:'Budget-friendly double room, ideal for students looking for affordable accommodation.'},
-  {id:'103',type:'Double',capacity:2,rate:4500,floor:'1st Floor',wing:'Block B',amenities:['Aircon','Private Bath','Study Desk','Wifi'],photos:['https://images.pexels.com/photos/5158458/pexels-photo-5158458.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158461/pexels-photo-5158461.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158946/pexels-photo-5158946.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:2,desc:'Premium double room with all amenities including WiFi and private bathroom.'},
-  {id:'104',type:'Double',capacity:2,rate:4000,floor:'1st Floor',wing:'Block B',amenities:['Fan','Shared Bath'],photos:['https://images.pexels.com/photos/5158497/pexels-photo-5158497.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:0,desc:'Standard double room, clean and spacious with natural lighting.'},
-  {id:'105',type:'Double',capacity:2,rate:4500,floor:'1st Floor',wing:'Block B',amenities:['Aircon','Shared Bath','Study Desk'],photos:['https://images.pexels.com/photos/4907183/pexels-photo-4907183.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158497/pexels-photo-5158497.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:1,desc:'Modern double room with aircon and study desk. One slot remaining.'},
-  {id:'106',type:'Double',capacity:2,rate:4800,floor:'2nd Floor',wing:'Block A',amenities:['Aircon','Private Bath','Study Desk','Wifi','Ref'],photos:['https://images.pexels.com/photos/12870114/pexels-photo-12870114.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158463/pexels-photo-5158463.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:2,desc:'Premium deluxe room with refrigerator, WiFi, private bath, and aircon.'},
-  {id:'107',type:'Single',capacity:1,rate:3500,floor:'2nd Floor',wing:'Block A',amenities:['Fan','Private Bath'],photos:['https://images.pexels.com/photos/5158464/pexels-photo-5158464.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:0,desc:'Cozy single room with private bath, perfect for students who value privacy.'},
-  {id:'108',type:'Single',capacity:1,rate:3800,floor:'2nd Floor',wing:'Block A',amenities:['Aircon','Shared Bath','Study Desk'],photos:['https://images.pexels.com/photos/5158463/pexels-photo-5158463.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158464/pexels-photo-5158464.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:1,desc:'Single room with aircon and study area. Currently has 1 occupant.'},
-  {id:'109',type:'Double',capacity:2,rate:4500,floor:'2nd Floor',wing:'Block B',amenities:['Aircon','Private Bath','Study Desk','Wifi'],photos:['https://images.pexels.com/photos/5158468/pexels-photo-5158468.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158458/pexels-photo-5158458.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:2,desc:'Well-lit double room on the second floor with complete amenities.'},
-  {id:'110',type:'Double',capacity:2,rate:3800,floor:'2nd Floor',wing:'Block B',amenities:['Fan','Shared Bath'],photos:['https://images.pexels.com/photos/27199015/pexels-photo-27199015.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:0,desc:'Affordable double room. Spacious with good ventilation.'},
-  {id:'111',type:'Double',capacity:2,rate:4200,floor:'2nd Floor',wing:'Block B',amenities:['Fan','Shared Bath','Study Desk'],photos:['https://images.pexels.com/photos/5158945/pexels-photo-5158945.jpeg?auto=compress&cs=tinysrgb&w=800','https://images.pexels.com/photos/5158980/pexels-photo-5158980.jpeg?auto=compress&cs=tinysrgb&w=800'],tenants:1,desc:'Double room with study desk. One slot available.'},
-];
-
-let currentFilter='all', editingId=null, confirmCallback=null;
-let lbPhotos=[], lbIndex=0;
-let pendingPhotos=[]; // for add/edit modal
-let uploadPending=[]; // for upload modal
-
-// ── HELPERS ──────────────────────────────────────────────────────────────────
-function fmtPHP(n){return '₱'+Number(n).toLocaleString('en-PH');}
-function getStatus(r){if(r.tenants===0)return 'empty';if(r.tenants>=r.capacity)return 'full';return 'partial';}
-
-// ── STATS ────────────────────────────────────────────────────────────────────
-function renderStats(){
-  document.getElementById('s-total').textContent     = GALLERY.length;
-  document.getElementById('s-photos').textContent    = GALLERY.reduce((a,r)=>a+r.photos.length,0);
-  document.getElementById('s-available').textContent = GALLERY.reduce((a,r)=>a+(r.capacity-r.tenants),0);
-  document.getElementById('s-occupied').textContent  = GALLERY.filter(r=>r.tenants>0).length;
-}
-
-// ── GALLERY RENDER ────────────────────────────────────────────────────────────
-function renderGallery(){
-  const query  = document.getElementById('search').value.toLowerCase();
-  const sort   = document.getElementById('sort-select').value;
-  const grid   = document.getElementById('gallery-grid');
-
-  let list = GALLERY.filter(r=>{
-    const st = getStatus(r);
-    const mf = currentFilter==='all'||st===currentFilter;
-    const ms = !query||r.id.includes(query)||r.wing.toLowerCase().includes(query)||r.type.toLowerCase().includes(query)||r.floor.toLowerCase().includes(query);
-    return mf&&ms;
-  });
-
-  list.sort((a,b)=>{
-    if(sort==='rate-asc')  return a.rate-b.rate;
-    if(sort==='rate-desc') return b.rate-a.rate;
-    if(sort==='photos')    return b.photos.length-a.photos.length;
-    return a.id.localeCompare(b.id,undefined,{numeric:true});
-  });
-
-  if(!list.length){
-    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><h3>No rooms found</h3><p>Try changing your search or filter</p></div>`;
-    return;
-  }
-
-  grid.innerHTML = list.map(r=>buildCard(r)).join('');
-}
-
-function buildCard(r){
-  const st = getStatus(r);
-  const sbClass = st==='full'?'gsb-full':st==='partial'?'gsb-partial':'gsb-empty';
-  const sbLabel = st==='full'?`Occupied (${r.tenants}/${r.capacity})`:st==='partial'?`Partial (${r.tenants}/${r.capacity})`:`Available`;
-  const cover   = r.photos[0]||'';
-  const amenityHtml = r.amenities.slice(0,4).map(a=>`<span class="g-amenity">${a}</span>`).join('')+(r.amenities.length>4?`<span class="g-amenity">+${r.amenities.length-4}</span>`:'');
-
-  // thumbnail strip (up to 3 extras + "+N more")
-  const extras = r.photos.slice(1,4);
-  const moreCount = r.photos.length-4;
-  const thumbHtml = extras.map((p,i)=>`<div class="g-thumb" onclick="openLightbox('${r.id}',${i+1})"><img src="${p}" alt="Room ${r.id} photo ${i+2}" loading="lazy"/></div>`).join('')
-    +(moreCount>0?`<div class="g-thumb-more" onclick="openLightbox('${r.id}',4)">+${moreCount}</div>`:'');
-
-  const dormImages = [
-    'https://images.unsplash.com/photo-1514432324607-2e467f4af445?w=500&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1540932239986-a128078c3020?w=500&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&h=400&fit=crop',
-    'https://images.unsplash.com/photo-1493857671505-72967e2e2760?w=500&h=400&fit=crop'
-  ];
-  const defaultImg = dormImages[parseInt(r.id)|0 % dormImages.length];
-  return `
-    <div class="g-card" data-id="${r.id}">
-      <div class="g-photo" onclick="openLightbox('${r.id}',0)">
-        ${cover?`<img src="${cover}" alt="Room ${r.id}" loading="lazy"/>`:
-          `<img src="${defaultImg}" alt="Room ${r.id}" loading="lazy" class="g-photo-default"/>`}
-        <div class="g-photo-overlay">
-          <button class="g-ov-btn" title="View photos" onclick="event.stopPropagation();openLightbox('${r.id}',0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></button>
-          <button class="g-ov-btn" title="Upload photos" onclick="event.stopPropagation();openUploadFor('${r.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></button>
-          <button class="g-ov-btn" title="Edit room" onclick="event.stopPropagation();openEditModal('${r.id}')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></button>
-        </div>
-        <div class="g-room-badge">Room ${r.id}</div>
-        <div class="g-status-badge ${sbClass}"><span class="gsb-dot"></span>${sbLabel}</div>
-        ${r.photos.length>0?`<div class="g-count-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>${r.photos.length} photo${r.photos.length!==1?'s':''}</div>`:''}
-      </div>
-      <div class="g-body">
-        <div class="g-title-row">
-          <span class="g-title">${r.floor} · ${r.wing}</span>
-          <span class="g-type-tag">${r.type}</span>
-        </div>
-        <div class="g-meta">
-          <span>${fmtPHP(r.rate)}/mo</span><span class="g-meta-sep"></span>
-          <span>${r.capacity} bed${r.capacity>1?'s':''}</span><span class="g-meta-sep"></span>
-          <span>${r.amenities.length} amenities</span>
-        </div>
-        <div class="g-amenity-row">${amenityHtml}</div>
-      </div>
-      ${r.photos.length>1?`<div class="g-thumbs">${thumbHtml}</div>`:''}
-      <div class="g-footer">
-        <div class="g-rate">${fmtPHP(r.rate)} <span>/month</span></div>
-        <div class="g-actions">
-          <button class="g-btn ghost" onclick="openUploadFor('${r.id}')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-            Photos
-          </button>
-          <button class="g-btn ghost" onclick="openEditModal('${r.id}')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-            Edit
-          </button>
-          <button class="g-btn danger" onclick="deleteRoom('${r.id}')">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
-            Delete
-          </button>
-        </div>
-      </div>
-    </div>`;
-}
-
-function setFilter(f,el){
-  currentFilter=f;
-  document.querySelectorAll('.filter-pill').forEach(p=>p.classList.remove('active'));
-  el.classList.add('active');
-  renderGallery();
-}
-
-// ── ADD / EDIT MODAL ─────────────────────────────────────────────────────────
-function openAddModal(){
-  editingId=null; pendingPhotos=[];
-  document.getElementById('modal-room-title').textContent='Add New Room';
-  document.getElementById('modal-room-sub').textContent='Fill in room details and upload photos';
-  ['f-id','f-floor','f-wing','f-amenities','f-desc'].forEach(id=>document.getElementById(id).value='');
-  document.getElementById('f-rate').value='';
-  document.getElementById('f-type').value='Double';
-  document.getElementById('f-cap').value='2';
-  renderPhotoPreview();
-  document.getElementById('modal-room').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function openEditModal(id){
-  const r=GALLERY.find(x=>x.id===id);if(!r)return;
-  editingId=id; pendingPhotos=[...r.photos];
-  document.getElementById('modal-room-title').textContent=`Edit Room ${id}`;
-  document.getElementById('modal-room-sub').textContent='Update room details and photos';
-  document.getElementById('f-id').value=r.id;
-  document.getElementById('f-type').value=r.type;
-  document.getElementById('f-floor').value=r.floor;
-  document.getElementById('f-wing').value=r.wing;
-  document.getElementById('f-rate').value=r.rate;
-  document.getElementById('f-cap').value=String(r.capacity);
-  document.getElementById('f-amenities').value=r.amenities.join(', ');
-  document.getElementById('f-desc').value=r.desc||'';
-  renderPhotoPreview();
-  document.getElementById('modal-room').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeRoomModal(){
-  document.getElementById('modal-room').classList.remove('open');
-  document.body.style.overflow='';
-  editingId=null; pendingPhotos=[];
-}
-
-function renderPhotoPreview(){
-  const wrap=document.getElementById('photo-preview');
-  wrap.innerHTML=pendingPhotos.map((p,i)=>`
-    <div class="up-item">
-      <img src="${p}" alt="Photo ${i+1}" loading="lazy"/>
-      <button class="up-remove" onclick="removePhoto(${i})"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>`).join('')
-    +`<div class="up-add" onclick="document.getElementById('photo-file-input').click()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg><span>Add Photo</span></div>`;
-}
-
-function removePhoto(i){pendingPhotos.splice(i,1);renderPhotoPreview();}
-
-function handlePhotoFiles(input){
-  // In a real app, upload to server; here we create object URLs
-  [...input.files].forEach(f=>{
-    const url=URL.createObjectURL(f);
-    pendingPhotos.push(url);
-  });
-  renderPhotoPreview();
-  input.value='';
-}
-
-function saveRoom(){
-  const id    = document.getElementById('f-id').value.trim();
-  const type  = document.getElementById('f-type').value;
-  const floor = document.getElementById('f-floor').value.trim();
-  const wing  = document.getElementById('f-wing').value.trim();
-  const rate  = parseInt(document.getElementById('f-rate').value)||0;
-  const cap   = parseInt(document.getElementById('f-cap').value)||2;
-  const amen  = document.getElementById('f-amenities').value.split(',').map(s=>s.trim()).filter(Boolean);
-  const desc  = document.getElementById('f-desc').value.trim();
-
-  if(!id||!rate){showToast('⚠️ Room number and rate are required.');return;}
-
-  if(editingId){
-    const idx=GALLERY.findIndex(r=>r.id===editingId);
-    if(idx!==-1){GALLERY[idx]={...GALLERY[idx],id,type,floor,wing,rate,capacity:cap,amenities:amen,desc,photos:pendingPhotos};}
-    showToast(`✅ Room ${id} updated!`);
-  } else {
-    if(GALLERY.find(r=>r.id===id)){showToast(`⚠️ Room ${id} already exists.`);return;}
-    GALLERY.push({id,type,capacity:cap,rate,floor,wing,amenities:amen,photos:pendingPhotos,tenants:0,desc});
-    showToast(`✅ Room ${id} added!`);
-  }
-  closeRoomModal();
-  renderStats();renderGallery();populateUploadSelect();
-}
-
-// ── UPLOAD PHOTOS MODAL ───────────────────────────────────────────────────────
-function populateUploadSelect(){
-  const sel=document.getElementById('upload-room-select');
-  sel.innerHTML=GALLERY.map(r=>`<option value="${r.id}">Room ${r.id} – ${r.floor}, ${r.wing}</option>`).join('');
-}
-
-function openUploadModal(){
-  uploadPending=[];
-  populateUploadSelect();
-  document.getElementById('upload-preview').innerHTML='';
-  document.getElementById('modal-upload').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function openUploadFor(id){
-  uploadPending=[];
-  populateUploadSelect();
-  document.getElementById('upload-room-select').value=id;
-  document.getElementById('upload-preview').innerHTML='';
-  document.getElementById('modal-upload').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-
-function closeUploadModal(){
-  document.getElementById('modal-upload').classList.remove('open');
-  document.body.style.overflow=''; uploadPending=[];
-}
-
-function renderUploadPreview(){
-  const wrap=document.getElementById('upload-preview');
-  wrap.innerHTML=uploadPending.map((p,i)=>`
-    <div class="up-item">
-      <img src="${p}" alt="Upload ${i+1}"/>
-      <button class="up-remove" onclick="uploadPending.splice(${i},1);renderUploadPreview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>`).join('');
-}
-
-function handleUploadFiles(input){
-  [...input.files].forEach(f=>uploadPending.push(URL.createObjectURL(f)));
-  renderUploadPreview(); input.value='';
-}
-
-function handleDrag(e,entering){
-  e.preventDefault();
-  document.getElementById('upload-drop').classList.toggle('dragover',entering);
-}
-
-function handleDrop(e){
-  e.preventDefault();
-  document.getElementById('upload-drop').classList.remove('dragover');
-  [...e.dataTransfer.files].filter(f=>f.type.startsWith('image/')).forEach(f=>uploadPending.push(URL.createObjectURL(f)));
-  renderUploadPreview();
-}
-
-function saveUploadedPhotos(){
-  const id=document.getElementById('upload-room-select').value;
-  if(!uploadPending.length){showToast('⚠️ Please select at least one photo.');return;}
-  const r=GALLERY.find(x=>x.id===id);
-  if(r){r.photos=[...r.photos,...uploadPending];showToast(`✅ ${uploadPending.length} photo${uploadPending.length!==1?'s':''} added to Room ${id}!`);}
-  closeUploadModal();
-  renderStats();renderGallery();
-}
-
-// ── DELETE ─────────────────────────────────────────────────────────────────────
-function deleteRoom(id){
-  const r=GALLERY.find(x=>x.id===id);
-  openConfirm(`Delete Room ${id}?`,`This will permanently remove Room ${id} and all its ${r?r.photos.length:0} photos. This cannot be undone.`,()=>{
-    GALLERY=GALLERY.filter(x=>x.id!==id);
-    renderStats();renderGallery();populateUploadSelect();
-    showToast(`🗑️ Room ${id} deleted.`);
-  });
-}
-
-// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
-function openLightbox(roomId,index){
-  const r=GALLERY.find(x=>x.id===roomId);if(!r||!r.photos.length)return;
-  lbPhotos=r.photos; lbIndex=index;
-  updateLightbox();
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
-function updateLightbox(){
-  document.getElementById('lb-img').src=lbPhotos[lbIndex];
-  document.getElementById('lb-caption').textContent=`${lbIndex+1} / ${lbPhotos.length}`;
-}
-function lbNav(dir){lbIndex=(lbIndex+dir+lbPhotos.length)%lbPhotos.length;updateLightbox();}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow='';}
-
-// ── CONFIRM ──────────────────────────────────────────────────────────────────
-function openConfirm(title,msg,cb){
-  document.getElementById('confirm-title').textContent=title;
-  document.getElementById('confirm-msg').textContent=msg;
-  confirmCallback=cb;
-  document.getElementById('confirm-overlay').classList.add('open');
-}
-function closeConfirm(){document.getElementById('confirm-overlay').classList.remove('open');}
-function confirmOk(){closeConfirm();if(confirmCallback)confirmCallback();}
-
-// ── TOAST ────────────────────────────────────────────────────────────────────
-function showToast(msg,dur=3200){
-  const t=document.getElementById('toast');
-  document.getElementById('toast-msg').textContent=msg;
-  t.classList.add('show');clearTimeout(t._t);
-  t._t=setTimeout(()=>t.classList.remove('show'),dur);
-}
-
-// ── KEYBOARD ─────────────────────────────────────────────────────────────────
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){closeLightbox();closeConfirm();closeRoomModal();closeUploadModal();}
-  if(document.getElementById('lightbox').classList.contains('open')){
-    if(e.key==='ArrowLeft')lbNav(-1);
-    if(e.key==='ArrowRight')lbNav(1);
-  }
-});
-
-// ── INIT ─────────────────────────────────────────────────────────────────────
-renderStats();
-renderGallery();
-populateUploadSelect();
-</script>
+<script src="../js/admin-room-gallery.js"></script>
 </body>
 </html>

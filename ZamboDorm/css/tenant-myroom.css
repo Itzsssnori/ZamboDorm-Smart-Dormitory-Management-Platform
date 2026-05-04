@@ -369,7 +369,7 @@
     margin-bottom: 2.5rem;
     margin-left: 3rem;
     margin-right: 3rem;
-    margin-top: 3rem;
+    margin-top: 1rem;
   }
 
   .welcome-greeting {
@@ -1964,6 +1964,32 @@
     .item-date {
       font-size: 0.8rem;
     }
+  }
+
+  /* ═══════════════════════════════════════
+     TOAST NOTIFICATION ANIMATIONS
+     ═══════════════════════════════════════ */
+  @keyframes slideIn {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideOut {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+  }
   }
 
   @media (max-width: 768px) {

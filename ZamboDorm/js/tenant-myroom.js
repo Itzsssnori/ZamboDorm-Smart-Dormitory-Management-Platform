@@ -14,11 +14,8 @@ function initializePageFeatures() {
 
 // Update greeting with user's name
 function updateGreetingWithUserName() {
-  const greetingTitle = document.getElementById('greeting-title');
-  if (greetingTitle && UserManager) {
-    const userName = UserManager.getName();
-    const firstName = userName.split(' ')[0];
-    greetingTitle.textContent = `Buen Vida, ${firstName}!`;
+  if (typeof UserManager !== 'undefined') {
+    UserManager.updatePageGreetings();
   }
 }
 
@@ -111,14 +108,16 @@ function setupResponsiveness() {
 
 // Logout Function
 function logout() {
-  showNotification('Logging out...', 'info');
-  setTimeout(() => {
-    // Clear any stored session data
-    localStorage.clear();
-    sessionStorage.clear();
-    // Redirect to signin page
-    window.location.href = './signin-page.html';
-  }, 800);
+  if (typeof UserManager !== 'undefined') {
+    UserManager.logout();
+  } else {
+    showNotification('Logging out...', 'info');
+    setTimeout(() => {
+      localStorage.removeItem('active_user');
+      sessionStorage.clear();
+      window.location.href = './signin-page.html';
+    }, 800);
+  }
 }
 
 // Notification helper
@@ -146,37 +145,28 @@ document.addEventListener('DOMContentLoaded', function() {
    ANNOUNCEMENTS MODAL FUNCTIONALITY
    ═══════════════════════════════════════ */
 
-// Sample announcements data
-const announcements = [
-  {
-    id: 1,
-    title: 'General Dorm Cleaning – Feb 7, 8 AM to 12 PM',
-    description: 'There will be a mandatory general cleaning of all common areas including hallways, lobby, and recreational facilities. Please ensure your rooms are tidied up and dispose of any items blocking common areas.',
-    date: 'Posted Feb 3, 2026',
-    type: 'general'
-  },
-  {
-    id: 2,
-    title: 'Water interruption resolved – Unit 2 restored',
-    description: 'The water interruption in Unit 2 has been successfully resolved. All facilities are now fully operational. We apologize for any inconvenience caused during the maintenance period.',
-    date: 'Posted Jan 28, 2026',
-    type: 'maintenance'
-  },
-  {
-    id: 3,
-    title: 'Visitor curfew updated: guests must leave by 9 PM',
-    description: 'Effective immediately, all visitors must exit the dormitory by 9:00 PM. This policy is being implemented to ensure safety and maintain peaceful living conditions. Please inform your guests accordingly.',
-    date: 'Posted Jan 20, 2026',
-    type: 'policy'
-  },
-  {
-    id: 4,
-    title: 'New WiFi credentials distributed to all tenants',
-    description: 'Updated WiFi credentials have been distributed via email. If you haven\'t received them yet, please visit the admin office. The new password will be effective immediately, and all previous credentials will be invalidated.',
-    date: 'Posted Jan 15, 2026',
-    type: 'general'
+const ANNOUNCEMENTS_STORAGE_KEY = 'zd_announcements';
+
+// Load announcements from admin (via localStorage sync)
+function loadAnnouncementsFromAdmin() {
+  const stored = localStorage.getItem(ANNOUNCEMENTS_STORAGE_KEY);
+  if (!stored) return [];
+  
+  try {
+    const adminAnnouncements = JSON.parse(stored);
+    // Map admin format to tenant format
+    return adminAnnouncements.map(a => ({
+      id: a.id,
+      title: a.title,
+      description: a.body,
+      date: `Posted ${a.date}`,
+      type: a.category || 'general'
+    }));
+  } catch (e) {
+    console.error('Failed to parse announcements:', e);
+    return [];
   }
-];
+}
 
 // Open Announcements Modal
 function openNoticesModal() {
@@ -185,21 +175,100 @@ function openNoticesModal() {
   
   announcementList.innerHTML = '';
   
-  announcements.forEach(announcement => {
-    const announcementHTML = `
-      <div class="announcement-item">
-        <div class="announcement-item-header">
-          <h3 class="announcement-item-title">${announcement.title}</h3>
-          <span class="announcement-item-date">${announcement.date}</span>
+  // Load announcements from admin (real-time sync)
+  const announcements = loadAnnouncementsFromAdmin();
+  
+  if (announcements.length === 0) {
+    announcementList.innerHTML = '<div class="announcement-item"><p style="text-align: center; color: #999;">No announcements yet</p></div>';
+  } else {
+    announcements.forEach(announcement => {
+      const announcementHTML = `
+        <div class="announcement-item">
+          <div class="announcement-item-header">
+            <h3 class="announcement-item-title">${escapeHtml(announcement.title)}</h3>
+            <span class="announcement-item-date">${announcement.date}</span>
+          </div>
+          <p class="announcement-item-body">${escapeHtml(announcement.description)}</p>
         </div>
-        <p class="announcement-item-body">${announcement.description}</p>
-      </div>
-    `;
-    announcementList.innerHTML += announcementHTML;
-  });
+      `;
+      announcementList.innerHTML += announcementHTML;
+    });
+  }
   
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
+}
+
+// Escape HTML to prevent injection
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Listen for storage changes from admin page (real-time sync across tabs)
+window.addEventListener('storage', function(event) {
+  if (event.key === ANNOUNCEMENTS_STORAGE_KEY) {
+    console.log('Announcements updated from admin page');
+    // If the modal is open, refresh it
+    const modal = document.getElementById('noticesModal');
+    if (modal && modal.classList.contains('active')) {
+      // Update the modal content without closing it
+      const announcementList = document.getElementById('announcementList');
+      const announcements = loadAnnouncementsFromAdmin();
+      
+      announcementList.innerHTML = '';
+      if (announcements.length === 0) {
+        announcementList.innerHTML = '<div class="announcement-item"><p style="text-align: center; color: #999;">No announcements yet</p></div>';
+      } else {
+        announcements.forEach(announcement => {
+          const announcementHTML = `
+            <div class="announcement-item">
+              <div class="announcement-item-header">
+                <h3 class="announcement-item-title">${escapeHtml(announcement.title)}</h3>
+                <span class="announcement-item-date">${announcement.date}</span>
+              </div>
+              <p class="announcement-item-body">${escapeHtml(announcement.description)}</p>
+            </div>
+          `;
+          announcementList.innerHTML += announcementHTML;
+        });
+      }
+      showToastNotification('Announcements updated!', 'info');
+    }
+  }
+});
+
+// Toast notification helper
+function showToastNotification(message, type = 'info') {
+  // Create toast element if it doesn't exist
+  let toastContainer = document.getElementById('toastContainer');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toastContainer';
+    toastContainer.style.cssText = 'position: fixed; top: 20px; right: 20px; z-index: 9999;';
+    document.body.appendChild(toastContainer);
+  }
+  
+  // Create toast element
+  const toast = document.createElement('div');
+  toast.style.cssText = `
+    background: ${type === 'success' ? '#4caf50' : type === 'danger' ? '#f44336' : '#2196f3'};
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+  `;
+  toast.textContent = message;
+  toastContainer.appendChild(toast);
+  
+  // Remove after 3 seconds
+  setTimeout(() => {
+    toast.style.animation = 'slideOut 0.3s ease-out';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
 }
 
 // Close Announcements Modal

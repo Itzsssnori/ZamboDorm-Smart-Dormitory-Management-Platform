@@ -355,3 +355,21 @@ body {
   .toast { right: 10px; left: 10px; transform: translateY(-120%); }
   .toast.show { transform: translateY(0); }
 }
+
+/* Readonly Input Styling */
+.form-input[readonly],
+.form-select[readonly],
+.form-textarea[readonly] {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.form-input[readonly]:focus,
+.form-select[readonly]:focus,
+.form-textarea[readonly]:focus {
+  outline: none;
+  border-color: #e5e7eb;
+  box-shadow: none;
+}

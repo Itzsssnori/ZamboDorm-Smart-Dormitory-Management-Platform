@@ -79,6 +79,8 @@ let selectedLocation = null;
       if (selectedAmenities.length > 0) {
         const amenityText = selectedAmenities.length + ' selected';
         amenitiesEl.textContent = amenityText;
+      } else {
+        amenitiesEl.textContent = '0 selected';
       }
 
       if (selectedRoommate) {
@@ -119,16 +121,6 @@ let selectedLocation = null;
         document.getElementById('successModal').classList.remove('show');
       });
     }
-
-    // Location Selection
-    document.querySelectorAll('.option-card').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedLocation = this.dataset.location;
-        updateSummary();
-      });
-    });
 
     // Role Selection removed - Step 2 is now Room Type
 
@@ -392,11 +384,50 @@ let selectedLocation = null;
     document.getElementById('btn-step6-next').addEventListener('click', () => {
       completedSteps = 6;
       updateSummary();
-      // Save preferences and redirect
-      console.log('Location:', selectedLocation, 'Room Type:', selectedRoomType, 'Bed Type:', selectedBedType, 'Amenities:', selectedAmenities, 'Roommate:', selectedRoommate, 'Budget:', selectedBudgetMin + '-' + selectedBudgetMax);
-      // TODO: Save to backend, then redirect to dashboard
-      alert('Setup complete!');
-      window.location.href = './dorm-application.html'; // Redirect to dorm applications
+      
+      // Save preferences to user profile in localStorage
+      if (typeof UserManager !== 'undefined' && UserManager.isAuthenticated()) {
+        const currentUser = UserManager.getUser();
+        currentUser.preferences = {
+          location: selectedLocation,
+          roomType: selectedRoomType,
+          bedType: selectedBedType,
+          amenities: selectedAmenities,
+          roommate: selectedRoommate,
+          budgetMin: selectedBudgetMin,
+          budgetMax: selectedBudgetMax,
+          setupComplete: true
+        };
+        
+        // Update the user in the "all users" list too
+        const allUsers = UserManager.getAllUsers();
+        const userIndex = allUsers.findIndex(u => u.id === currentUser.id || u.email === currentUser.email);
+        if (userIndex !== -1) {
+          allUsers[userIndex] = currentUser;
+          UserManager.saveAllUsers(allUsers);
+        }
+        
+        // Save as current session user
+        UserManager.setUser(currentUser);
+        
+        console.log('Preferences saved for:', currentUser.name);
+      }
+      
+      alert('Setup complete! Your preferences have been saved.');
+      
+      // Redirect based on role if possible, otherwise default to tenant-myroom
+      if (typeof UserManager !== 'undefined') {
+        const role = UserManager.getRole();
+        if (role === 'admin' || role === 'landlord') {
+          window.location.href = './admin-overview.html';
+        } else if (role === 'sysadmin' || role === 'system admin') {
+          window.location.href = './sysadmin-overview.html';
+        } else {
+          window.location.href = './tenant-myroom.html';
+        }
+      } else {
+        window.location.href = './tenant-myroom.html';
+      }
     });
 
     function updateProgressBar(step) {

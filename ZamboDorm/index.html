@@ -12,73 +12,15 @@
   <link rel="stylesheet" href="css/components.css"/>
   <link rel="stylesheet" href="css/layout.css"/>
   <link rel="stylesheet" href="css/utilities.css"/>
+  <script src="js/user-manager.js"></script>
+  <script src="js/navbar.js"></script>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="navbar__inner">
-
-      <!-- Logo -->
-      <a href="#" class="logo">
-        <div class="logo__icon">
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z" fill="white" fill-opacity="0.95"/>
-            <rect x="9" y="14" width="6" height="7" rx="1" fill="rgba(124,58,237,0.65)"/>
-          </svg>
-        </div>
-        <span class="logo__text">Zambo<span class="logo__text--accent">Dorm</span></span>
-      </a>
-
-      <!-- Nav Links -->
-      <ul class="navbar__links">
-        <li><a href="#hero" class="navbar__link">Home</a></li>
-        <li><a href="#core-features" class="navbar__link">Features</a></li>
-        <li><a href="#about" class="navbar__link">About</a></li>
-        <li><a href="#contact" class="navbar__link">Contact</a></li>
-      </ul>
-
-      <!-- Sign In -->
-      <div class="navbar__right">
-        <a href="html/signin-page.html" class="btn btn--signin">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
-          </svg>
-          Sign In
-        </a>
-      </div>
-
-      <!-- Hamburger (mobile) -->
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-
-    </div>
-  </nav>
-
- <div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu__inner">
-    <a href="#hero" class="mobile-menu__link">
-      Home
-    </a>
-    <a href="#core-features" class="mobile-menu__link">
-      Features
-    </a>
-    <a href="#about" class="mobile-menu__link">
-      About
-    </a>
-    <a href="#contact" class="mobile-menu__link">
-      Contact
-    </a>
-    <div class="mobile-menu__divider"></div>
-    <a href="html/signin-page.html" class="btn btn--signin mobile-menu__link">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
-        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
-      </svg>
-      Sign In
-    </a>
-  </div>
-</div>
+  <!-- NAVBAR Web Component -->
+  <zd-navbar></zd-navbar>
+  <script src="js/hamburger.js"></script>
+  <script src="js/navbar-scroll.js"></script>
 
   <!-- HERO -->
   <div class="hero" id="hero">

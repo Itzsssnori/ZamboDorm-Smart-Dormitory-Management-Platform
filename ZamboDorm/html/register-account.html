@@ -279,18 +279,38 @@
             <label class="role-card">
               <input type="radio" name="account_role" value="student" checked />
               <div class="role-content">
+                <div class="role-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
                 <span class="role-name">Student / Tenant</span>
               </div>
             </label>
             <label class="role-card">
               <input type="radio" name="account_role" value="solo" />
               <div class="role-content">
+                <div class="role-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </div>
                 <span class="role-name">Solo</span>
               </div>
             </label>
             <label class="role-card">
               <input type="radio" name="account_role" value="parent" />
               <div class="role-content">
+                <div class="role-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  </svg>
+                </div>
                 <span class="role-name">Parent / Guardian</span>
               </div>
             </label>
@@ -325,8 +345,8 @@
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btnStep3Back">Back</button>
+        <div class="flex justify-center gap-4 mt-md">
+          <button type="button" class="btn btn--gray" id="btnStep3Back">Back</button>
           <button type="button" class="btn btn-primary" id="submitBtn">
             <span class="form__btn-label">Create Account</span>
             <svg class="form__btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">

@@ -1213,3 +1213,21 @@ nav.scrolled {
     grid-template-columns: 1fr;
   }
 }
+
+/* Readonly Input Styling */
+.fi2[readonly],
+.fsel[readonly],
+.fta[readonly] {
+  background-color: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.fi2[readonly]:focus,
+.fsel[readonly]:focus,
+.fta[readonly]:focus {
+  outline: none;
+  border-color: #e5e7eb;
+  box-shadow: none;
+}

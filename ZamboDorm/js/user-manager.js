@@ -1,53 +1,135 @@
 /**
- * USER MANAGER - Handle user data and authentication state
- * Centralized user management across all files (DRY principle)
+ * USER MANAGER - Centralized Auth Logic
+ * Handles persistence using 'zambodorm_users' and 'active_user'
  */
 
 const UserManager = {
-  // Get current user from localStorage
+  // Constants for localStorage keys
+  KEYS: {
+    USERS: 'zambodorm_users',
+    ACTIVE: 'active_user'
+  },
+
+  // Get all registered users
+  getAllUsers() {
+    try {
+      const users = localStorage.getItem(this.KEYS.USERS);
+      return users ? JSON.parse(users) : [];
+    } catch (e) {
+      console.error("Error reading users from localStorage", e);
+      return [];
+    }
+  },
+
+  // Save all users
+  saveAllUsers(users) {
+    localStorage.setItem(this.KEYS.USERS, JSON.stringify(users));
+  },
+
+  // Get current session user
   getUser() {
-    const user = localStorage.getItem('zambodorm_user');
-    return user ? JSON.parse(user) : null;
+    try {
+      const user = localStorage.getItem(this.KEYS.ACTIVE);
+      return user ? JSON.parse(user) : null;
+    } catch (e) {
+      console.error("Error reading active session", e);
+      return null;
+    }
   },
 
-  // Set user data (called on account creation/login)
+  // Set current session user
   setUser(userData) {
-    localStorage.setItem('zambodorm_user', JSON.stringify(userData));
+    if (userData) {
+      localStorage.setItem(this.KEYS.ACTIVE, JSON.stringify(userData));
+    }
   },
 
-  // Get user's display name
-  getName() {
-    const user = this.getUser();
-    return user?.name || 'User';
+  // Register a new user
+  registerUser(userData) {
+    const allUsers = this.getAllUsers();
+    
+    // Ensure ID and registration date
+    const newUser = {
+      ...userData,
+      id: userData.id || 'USER-' + Date.now(),
+      registeredDate: new Date().toISOString()
+    };
+    
+    allUsers.push(newUser);
+    this.saveAllUsers(allUsers);
+    
+    // Auto-login after registration
+    this.setUser(newUser);
+    return newUser;
   },
 
-  // Get user's initials for avatar
-  getInitials() {
-    const name = this.getName();
-    return name
-      .split(' ')
-      .map(n => n[0])
-      .join('')
-      .toUpperCase()
-      .slice(0, 2);
+  // Login verification
+  loginUser(emailOrUsername, password) {
+    const allUsers = this.getAllUsers();
+    // Check against email OR name (username)
+    const user = allUsers.find(u => 
+      (u.email === emailOrUsername || u.name === emailOrUsername) && 
+      u.password === password
+    );
+    
+    if (user) {
+      this.setUser(user);
+      return user;
+    }
+    return null;
   },
 
-  // Check if user is authenticated
+  // Auth checks
   isAuthenticated() {
     return !!this.getUser();
   },
 
-  // Logout with confirmation
-  logout() {
-    const confirmed = confirm('Are you sure you want to log out?');
-    if (confirmed) {
-      localStorage.removeItem('zambodorm_user');
-      window.location.href = './signin-page.html';
-    }
+  getName() {
+    return this.getUser()?.name || 'User';
   },
 
-  // Clear user data on logout
-  clearUser() {
-    localStorage.removeItem('zambodorm_user');
+  getRole() {
+    return this.getUser()?.role || 'tenant';
+  },
+
+  getInitials() {
+    const name = this.getName();
+    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+  },
+
+  logout() {
+    localStorage.removeItem(this.KEYS.ACTIVE);
+    window.location.href = (window.location.pathname.includes('/html/')) ? './signin-page.html' : 'html/signin-page.html';
+  },
+
+  // Helper to sync common greeting elements across different dashboards
+  updatePageGreetings() {
+    if (!this.isAuthenticated()) return;
+    
+    const name = this.getName();
+    const firstName = name.split(' ')[0];
+    
+    // Update elements by ID
+    const greetingTitle = document.getElementById('greeting-title');
+    const guardName = document.getElementById('guardName');
+    
+    if (greetingTitle) greetingTitle.textContent = `Buen Vida, ${firstName}!`;
+    if (guardName) guardName.textContent = name;
+    
+    // Update elements by selectors (common patterns)
+    const welcomeSub = document.querySelector('.greeting-subtitle');
+    if (welcomeSub && welcomeSub.textContent.includes('Welcome')) {
+      welcomeSub.textContent = `Welcome back, ${firstName}!`;
+    }
+    
+    const headerPara = document.querySelector('.page-header p');
+    if (headerPara && headerPara.textContent.includes('Welcome back')) {
+      headerPara.textContent = `Welcome back, ${name}! Here's what's happening today in ZamboDorm.`;
+    }
+
+    const sysSub = document.querySelector('.page-subtitle');
+    if (sysSub && sysSub.textContent.includes('Welcome back')) {
+      sysSub.textContent = `Welcome back, ${name}! Here's what's happening across the system.`;
+    }
   }
 };

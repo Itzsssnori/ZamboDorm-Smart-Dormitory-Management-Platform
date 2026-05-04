@@ -725,6 +725,22 @@ body::before {
   color: rgb(239, 68, 68);
 }
 
+/* ── BUTTONS ── */
+.btn--gray {
+  background-color: #808080;
+  color: white;
+  border: none;
+}
+
+.btn--gray:hover {
+  background-color: #6d6d6d;
+  transform: translateY(-1px);
+}
+
+.btn--gray:active {
+  transform: translateY(0);
+}
+
 /* ── ROLE SELECTION DESIGN ── */
 .role-selection-group {
   margin-bottom: 1.5rem;
@@ -732,8 +748,8 @@ body::before {
 
 .role-options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
   margin-top: 0.5rem;
 }
 
@@ -751,18 +767,41 @@ body::before {
 }
 
 .role-content {
-  padding: 1rem;
+  padding: 1.25rem 0.75rem;
   text-align: center;
   background: white;
   border: 2px solid #e5e7eb;
-  border-radius: 14px;
+  border-radius: 16px;
+  transition: all var(--transition-std) ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.role-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(var(--primary-rgba), 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
   transition: all var(--transition-std) ease;
 }
 
+.role-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
 .role-name {
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.75rem;
+  font-weight: 700;
   color: var(--text-muted);
+  line-height: 1.2;
 }
 
 /* Selected State */
@@ -770,11 +809,16 @@ body::before {
   border-color: var(--primary);
   background: rgba(var(--primary-rgba), 0.08);
   box-shadow: 0 4px 12px rgba(var(--primary-rgba), 0.12);
+  transform: translateY(-2px);
+}
+
+.role-card input[type="radio"]:checked + .role-content .role-icon {
+  background: var(--primary);
+  color: white;
 }
 
 .role-card input[type="radio"]:checked + .role-content .role-name {
   color: var(--primary);
-  font-weight: 700;
 }
 
 /* Hover State */
@@ -790,11 +834,19 @@ body::before {
   }
 
   .role-content {
-    padding: 0.9rem;
+    padding: 1rem;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  .role-icon {
+    width: 36px;
+    height: 36px;
   }
 
   .role-name {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+    text-align: left;
   }
 }
 

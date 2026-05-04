@@ -71,6 +71,24 @@
 
         <div class="sidebar-divider"></div>
 
+        <!-- Settings -->
+        <a href="sysadmin-settings.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          <span>Settings</span>
+        </a>
+        <a href="sysadmin-help.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+          </svg>
+          <span>Help</span>
+        </a>
+        <div class="sidebar-divider"></div>
+
         <!-- Logout -->
         <a href="signin-page.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -93,6 +111,17 @@
           <p class="page-subtitle">Manage registered dormitory properties</p>
         </div>
         <button class="btn-add" id="openAddModal">＋ Add New Dormitory</button>
+      </div>
+
+      <!-- Pending Dorm Applications Card -->
+      <div class="table-card" id="pendingAppCard" style="display: none; margin-bottom: 30px; border-left: 4px solid #f59e0b;">
+        <div class="table-card-header">
+          <span class="table-card-title">⏳ Pending Dorm Applications</span>
+          <span class="prop-count-badge" id="pendingCount">0</span>
+        </div>
+        <div id="pendingAppsContainer" style="padding: 20px;">
+          <!-- Pending applications will be rendered here -->
+        </div>
       </div>
 
       <!-- Properties Table Card -->
@@ -194,7 +223,105 @@
     </div>
   </div>
 
+  <!-- Review Dorm Application Modal -->
+  <div class="modal-overlay" id="appOverlay"></div>
+  <div class="modal" id="appReviewModal" style="max-width: 700px;">
+    <div class="modal-header">
+      <h2 class="modal-title">Review Dorm Application</h2>
+      <button class="modal-close" id="closeAppReview">&times;</button>
+    </div>
+    <div class="modal-body" style="max-height: 70vh; overflow-y: auto;">
+      <!-- Admin Information -->
+      <div style="background: #f3f4f6; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 12px 0; color: #374151; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Admin Information</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem;">
+          <div>
+            <div style="color: #6b7280; font-size: 0.85rem; margin-bottom: 4px;">Name</div>
+            <div style="font-weight: 600; color: #1f2937;" id="appAdminName">-</div>
+          </div>
+          <div>
+            <div style="color: #6b7280; font-size: 0.85rem; margin-bottom: 4px;">Email</div>
+            <div style="font-weight: 600; color: #1f2937;" id="appAdminEmail">-</div>
+          </div>
+          <div>
+            <div style="color: #6b7280; font-size: 0.85rem; margin-bottom: 4px;">Phone</div>
+            <div style="font-weight: 600; color: #1f2937;" id="appAdminPhone">-</div>
+          </div>
+          <div>
+            <div style="color: #6b7280; font-size: 0.85rem; margin-bottom: 4px;">Submitted</div>
+            <div style="font-weight: 600; color: #1f2937;" id="appSubmittedDate">-</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dorm Information -->
+      <div style="background: #f0f9ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 12px 0; color: #0c4a6e; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Dorm Information</h3>
+        <div style="display: grid; gap: 12px; font-size: 0.9rem;">
+          <div>
+            <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Dorm Name</div>
+            <div style="font-weight: 600; color: #0c4a6e;" id="appDormName">-</div>
+          </div>
+          <div>
+            <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Location</div>
+            <div style="font-weight: 600; color: #0c4a6e;" id="appDormLocation">-</div>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div>
+              <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Phone</div>
+              <div style="font-weight: 600; color: #0c4a6e;" id="appDormPhone">-</div>
+            </div>
+            <div>
+              <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Total Rooms</div>
+              <div style="font-weight: 600; color: #0c4a6e;" id="appTotalRooms">-</div>
+            </div>
+          </div>
+          <div>
+            <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Capacity (Beds)</div>
+            <div style="font-weight: 600; color: #0c4a6e;" id="appCapacity">-</div>
+          </div>
+          <div>
+            <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Amenities</div>
+            <div style="font-weight: 600; color: #0c4a6e;" id="appAmenities">-</div>
+          </div>
+          <div>
+            <div style="color: #0c4a6e; font-size: 0.85rem; margin-bottom: 4px;">Description</div>
+            <div style="font-weight: 600; color: #0c4a6e; line-height: 1.5;" id="appDescription">-</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Documents -->
+      <div style="background: #f5f3ff; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 12px 0; color: #6b21a8; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Uploaded Documents</h3>
+        <div id="appDocumentsList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px;">
+          <!-- Documents will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Photos -->
+      <div style="background: #fef2f2; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+        <h3 style="margin: 0 0 12px 0; color: #7c2d12; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px;">Dorm Photos</h3>
+        <div id="appPhotosList" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
+          <!-- Photos will be rendered here -->
+        </div>
+      </div>
+
+      <!-- Approval Notes -->
+      <div style="margin-bottom: 20px;">
+        <label style="display: block; font-weight: 600; margin-bottom: 8px; color: #374151;">Approval Decision Notes (Optional)</label>
+        <textarea id="approvalNotes" placeholder="Add any notes about your approval or rejection decision..." 
+                  style="width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-family: inherit; font-size: 0.9rem; resize: vertical; min-height: 80px;"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="rejectAppBtn" style="background: #ef4444; color: white; border: none;">❌ Reject Application</button>
+      <button class="btn-save" id="approveAppBtn" style="background: #10b981; color: white; border: none;">✅ Approve & Add Dorm</button>
+    </div>
+  </div>
+
   <script src="../js/tenant-sidebar-hamburger.js"></script>
   <script src="../js/sysadmin-properties.js"></script>
+
 </body>
 </html>

@@ -406,12 +406,14 @@ function autoFillUserData() {
   const emailInput = document.getElementById('app-email');
   const phoneInput = document.getElementById('app-phone');
 
+  // Auto-fill first and last name
   if (user.name) {
     const parts = user.name.split(' ');
     if (fnameInput) fnameInput.value = parts[0] || '';
     if (lnameInput) lnameInput.value = parts.slice(1).join(' ') || '';
   }
 
+  // Auto-fill readonly email and phone fields
   if (emailInput && user.email) emailInput.value = user.email;
   if (phoneInput && user.phone) phoneInput.value = user.phone;
 }

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZamboDorm – Help & FAQ (System Admin)</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/tenant-help.css">
+<link rel="stylesheet" href="../css/sidebar-hamburger.css">
+<script src="../js/user-manager.js"></script>
+<script src="../js/navbar.js"></script>
+<style></style>
+</head>
+<body>
+
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/navbar-scroll.js"></script>
+<div class="sidebar-overlay" id="overlay"></div>
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <a href="sysadmin-overview.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span>Overview</span>
+      </a>
+      <a href="sysadmin-properties.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+          <path d="M9 21V12h6v9"/>
+        </svg>
+        <span>Properties</span>
+      </a>
+      <a href="sysadmin-application.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
+          <rect x="9" y="3" width="6" height="4" rx="1"/>
+          <line x1="9" y1="12" x2="15" y2="12"/>
+          <line x1="9" y1="16" x2="13" y2="16"/>
+        </svg>
+        <span>Application</span>
+      </a>
+      <a href="sysadmin-complaints.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+        </svg>
+        <span>Complaints</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="sysadmin-settings.html" class="sidebar-item">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span>Settings</span>
+      </a>
+      <a href="sysadmin-help.html" class="sidebar-item active">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+        </svg>
+        <span>Help</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <a href="signin-page.html" class="sidebar-item" onclick="return confirm('Are you sure you want to logout?')">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span>Logout</span>
+      </a>
+    </nav>
+  </aside>
+
+  <main class="main-content">
+    <div class="page-header">
+      <h1>Help &amp; Support</h1>
+      <p>System administration resources and documentation</p>
+    </div>
+
+    <div class="help-hero">
+      <h2>How can we help you?</h2>
+      <p>Search our knowledge base or browse categories below</p>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search for answers…" oninput="searchFAQ(this.value)">
+        <button>Search</button>
+      </div>
+    </div>
+
+    <div class="quick-links">
+      <a class="quick-link-card" onclick="jumpTo('properties')">
+        <div class="ql-icon" style="background:rgba(124,58,237,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg></div>
+        <span>Properties</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('applications')">
+        <div class="ql-icon" style="background:rgba(59,130,246,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+        <span>Applications</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('issues')">
+        <div class="ql-icon" style="background:rgba(16,185,129,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></div>
+        <span>Issues</span>
+      </a>
+      <a class="quick-link-card" onclick="jumpTo('account')">
+        <div class="ql-icon" style="background:rgba(245,158,11,0.12)"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <span>Account</span>
+      </a>
+    </div>
+
+    <div class="submit-ticket-banner">
+      <div class="stb-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+      <div class="stb-info">
+        <h3>Need additional support?</h3>
+        <p>Contact the development team or check system status for more information.</p>
+      </div>
+      <button class="btn-ticket" onclick="showToast('Support request submitted.')">Submit Request</button>
+    </div>
+
+    <div class="help-grid">
+      <div class="category-nav">
+        <h3>Browse by Topic</h3>
+        <button class="cat-btn active" onclick="switchCat('properties', this)">
+          <div class="cat-icon" style="background:rgba(124,58,237,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg></div>
+          Properties Management
+          <span class="cat-count">5</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('applications', this)">
+          <div class="cat-icon" style="background:rgba(59,130,246,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg></div>
+          Applications
+          <span class="cat-count">4</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('issues', this)">
+          <div class="cat-icon" style="background:rgba(16,185,129,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg></div>
+          Complaints & Issues
+          <span class="cat-count">4</span>
+        </button>
+        <button class="cat-btn" onclick="switchCat('account', this)">
+          <div class="cat-icon" style="background:rgba(245,158,11,0.1)"><svg viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+          Account & Settings
+          <span class="cat-count">3</span>
+        </button>
+      </div>
+
+      <div>
+        <!-- PROPERTIES -->
+        <div class="faq-panel active" id="faq-properties">
+          <div class="faq-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3L21 9.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/></svg>Properties Management</div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I add a new property to the system?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Properties → Add New Property</strong>. Fill in details including property name, address, number of floors, total rooms, and amenities. Assign administrators and set room pricing. Click <em>Save</em> to create the property in the system.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I manage room availability?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Properties → Select Property → Rooms</strong>. You can view all rooms, their status (occupied, available, maintenance), and details. To mark a room as unavailable, click the room and select <em>Set to Maintenance</em> or <em>Unavailable</em>. This prevents new tenants from booking it.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I update property amenities or details?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Properties → Select Property → Edit Details</strong>. You can update amenities, pricing, photos, descriptions, and contact information. Changes take effect immediately and are visible to tenants and administrators.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I assign admins to a property?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Properties → Select Property → Administrators</strong>. Click <em>Add Admin</em> and select from the list of available administrators. Admins can manage tenants, rooms, and complaints for this property. Remove admins by clicking <em>Remove</em> next to their name.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I view property statistics and reports?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Overview</strong> to see system-wide statistics. For property-specific data, go to <strong>Properties → Select Property → Analytics</strong>. You can view occupancy rates, revenue, tenant satisfaction, and complaint trends. Export reports as PDF or CSV.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- APPLICATIONS -->
+        <div class="faq-panel" id="faq-applications">
+          <div class="faq-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/></svg>Applications</div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I review dorm applications?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Application</strong> to view all pending dorm applications from admins. Click on an application to view full details including dorm info, photos, and submission date. You can <em>Approve</em>, <em>Request Changes</em>, or <em>Reject</em> the application.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">What criteria should I use to approve/reject a dorm application?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Check for:<ul><li>Compliance with safety and health standards</li><li>Proper documentation and photos</li><li>Valid contact information</li><li>Adequate capacity and amenities listed</li><li>Clear description and pricing</li></ul>Reject applications that lack critical information or violate standards. Use <em>Request Changes</em> for minor issues that can be corrected.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">Can I request changes to an application?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Yes. Click <em>Request Changes</em> and provide detailed feedback on what needs to be corrected. The admin will be notified and can resubmit the application. This back-and-forth continues until the application meets requirements or is rejected.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How long do I have to review an application?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Applications should be reviewed within <strong>5 business days</strong> of submission. The system sends reminders for pending applications. Use the <em>Priority</em> flag to mark urgent applications for faster review.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- ISSUES -->
+        <div class="faq-panel" id="faq-issues">
+          <div class="faq-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>Complaints & Issues</div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I view and manage complaints?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Complaints</strong> to view all system-wide complaints. Filter by property, status, or priority. Click a complaint to view details, tenant info, and attachments. You can assign it to an admin, add notes, and change status.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">What is the complaint resolution process?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Complaints follow this workflow:<ul><li><strong>New:</strong> Recently submitted</li><li><strong>In Review:</strong> Being investigated</li><li><strong>Assigned to Admin:</strong> Delegated for resolution</li><li><strong>Resolved:</strong> Completed and closed</li><li><strong>Escalated:</strong> Requires higher authority</li></ul>Update status as the complaint progresses through these stages.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I escalate a complaint?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">If a complaint is complex or serious, click <em>Escalate</em> and select the escalation reason. Add detailed notes explaining why escalation is necessary. The complaint will be flagged for senior review and priority handling.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I generate a complaint report?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Complaints → Reports</strong>. Select date range, property filter, and complaint category. Click <em>Generate Report</em> to create a comprehensive analysis including trends, common issues, and resolution times. Export as PDF.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <!-- ACCOUNT -->
+        <div class="faq-panel" id="faq-account">
+          <div class="faq-section-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Account & Settings</div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I change my account password?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Security tab → Change Password</strong>. Enter your current password, then create a new one. Make sure your new password is at least 8 characters and includes letters, numbers, and symbols for security.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">How do I update my account details?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">Go to <strong>Settings → Profile tab</strong>. You can update your name, email, and contact information. Changes are saved immediately. Remember to click <em>Save Changes</em> if prompted.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+
+          <div class="faq-item"><div class="faq-q" onclick="toggleFAQ(this)"><span class="faq-q-text">What is my user role and what permissions do I have?</span><svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="faq-a"><div class="faq-a-inner">As a System Administrator, you have full access to:<ul><li>All properties and properties management</li><li>Dorm application reviews</li><li>System-wide complaints and escalations</li><li>User and admin management</li><li>System reports and analytics</li></ul>Your role cannot be changed through Settings — contact your organization administrator for role changes.<div class="faq-helpful"><span>Was this helpful?</span><button class="btn-yes" onclick="helpful(this)">👍 Yes</button><button class="btn-no" onclick="notHelpful(this)">👎 No</button></div></div></div></div>
+        </div>
+
+        <div id="no-results" style="display:none;text-align:center;padding:3rem 1rem;background:white;border:1px solid var(--card-border);border-radius:var(--radius);">
+          <div style="font-size:2.5rem;margin-bottom:.75rem;">🔍</div>
+          <h3 style="font-size:1.1rem;font-weight:800;margin-bottom:.5rem;">No results found</h3>
+          <p style="color:var(--text-muted);font-size:.9rem;">Try different keywords or browse categories on the left.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../js/tenant-help.js"></script>
+</body>
+</html>

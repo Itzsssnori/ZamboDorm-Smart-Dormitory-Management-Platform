@@ -10,11 +10,18 @@
 class ZDNavBar extends HTMLElement {
   constructor() {
     super();
+    // Determine the base path prefix based on the current location
+    const path = window.location.pathname;
+    this.prefix = (path.includes('/html/') || path.includes('\\html\\')) ? '../' : '';
   }
 
   connectedCallback() {
     this.render();
     this.attachEventListeners();
+    // Sync any greetings on the page once the navbar (and UserManager) are ready
+    if (typeof UserManager !== 'undefined') {
+      UserManager.updatePageGreetings();
+    }
   }
 
   isAuthenticated() {
@@ -33,6 +40,7 @@ class ZDNavBar extends HTMLElement {
     const isAuth = this.isAuthenticated();
     const userName = this.getUserName();
     const userInitials = this.getUserInitials();
+    const p = this.prefix;
 
     this.innerHTML = `
       <!-- NAVBAR -->
@@ -40,7 +48,7 @@ class ZDNavBar extends HTMLElement {
         <div class="navbar__inner">
 
           <!-- Logo -->
-          <a href="../index.html" class="logo">
+          <a href="${p}index.html" class="logo">
             <div class="logo__icon">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z" fill="white" fill-opacity="0.95"/>
@@ -52,10 +60,10 @@ class ZDNavBar extends HTMLElement {
 
           <!-- Nav Links -->
           <ul class="navbar__links">
-            <li><a href="../index.html#hero" class="navbar__link">Home</a></li>
-            <li><a href="../index.html#core-features" class="navbar__link">Features</a></li>
-            <li><a href="../index.html#about" class="navbar__link">About</a></li>
-            <li><a href="../index.html#contact" class="navbar__link">Contact</a></li>
+            <li><a href="${p}index.html#hero" class="navbar__link">Home</a></li>
+            <li><a href="${p}index.html#core-features" class="navbar__link">Features</a></li>
+            <li><a href="${p}index.html#about" class="navbar__link">About</a></li>
+            <li><a href="${p}index.html#contact" class="navbar__link">Contact</a></li>
           </ul>
 
           <!-- Sign In / User Profile -->
@@ -72,7 +80,7 @@ class ZDNavBar extends HTMLElement {
                 Log Out
               </a>
             ` : `
-              <a href="signin-page.html" class="btn btn--signin">
+              <a href="${p}html/signin-page.html" class="btn btn--signin">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
                 </svg>
@@ -91,10 +99,10 @@ class ZDNavBar extends HTMLElement {
 
       <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu__inner">
-          <a href="../index.html#hero" class="mobile-menu__link">Home</a>
-          <a href="../index.html#core-features" class="mobile-menu__link">Features</a>
-          <a href="../index.html#about" class="mobile-menu__link">About</a>
-          <a href="../index.html#contact" class="mobile-menu__link">Contact</a>
+          <a href="${p}index.html#hero" class="mobile-menu__link">Home</a>
+          <a href="${p}index.html#core-features" class="mobile-menu__link">Features</a>
+          <a href="${p}index.html#about" class="mobile-menu__link">About</a>
+          <a href="${p}index.html#contact" class="mobile-menu__link">Contact</a>
           <div class="mobile-menu__divider"></div>
           ${isAuth ? `
             <a href="javascript:void(0)" class="btn btn--signin mobile-menu__link" id="logoutBtnMobile">
@@ -104,7 +112,7 @@ class ZDNavBar extends HTMLElement {
               Log Out
             </a>
           ` : `
-            <a href="signin-page.html" class="btn btn--signin mobile-menu__link">
+            <a href="${p}html/signin-page.html" class="btn btn--signin mobile-menu__link">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
               </svg>

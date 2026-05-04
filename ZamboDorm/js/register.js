@@ -393,14 +393,28 @@ function setupButtonListeners() {
     const middleName = DOM.inputs.middlename.value.trim();
     const lastName = DOM.inputs.lastname.value.trim();
     const fullName = middleName ? `${firstName} ${middleName} ${lastName}` : `${firstName} ${lastName}`;
+    const email = DOM.inputs.email.value.trim();
+    const password = DOM.inputs.password.value.trim();
     
     // --> NEW: Grab the selected role from the radio buttons
     const selectedRole = document.querySelector('input[name="account_role"]:checked').value;
     
+    // Check if email already exists
+    const allUsers = (typeof UserManager !== 'undefined') ? UserManager.getAllUsers() : [];
+    if (allUsers.some(u => u.email === email)) {
+      showError(DOM.errors.box3, 'This email is already registered. Please use a different email or sign in.');
+      DOM.steps.step3.classList.remove('loading');
+      DOM.buttons.submit.classList.remove('loading');
+      DOM.buttons.submit.disabled = false;
+      return;
+    }
+    
     if (typeof UserManager !== 'undefined') {
-      UserManager.setUser({
+      // Register new user with the centralized manager
+      UserManager.registerUser({
         name: fullName,
-        email: DOM.inputs.email.value.trim(),
+        email: email,
+        password: password,
         phone: DOM.inputs.phone.value.trim(),
         address: DOM.inputs.address.value.trim(),
         birthday: DOM.inputs.birthday.value,
