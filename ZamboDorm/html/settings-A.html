@@ -10,47 +10,17 @@
     <link rel="stylesheet" href="../css/section-bar.css">
     <link rel="stylesheet" href="../css/settings.css">
     <title>ZamboDorm - Settings</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
 </head>
 <body>
         <!-- Navigation header -->
-<header class="navbar">
+<zd-navbar authenticated></zd-navbar>
+<script src="../js/navbar-scroll.js"></script>
 
-  <div class="nav-logo">
-    <img src="../images/ZamboDorm.pn"g" alt="ZamboDorm Logo">
-    <span class="brand">
-      <span class="brand-zambo">Zambo</span><span class="brand-dorm">Dorm</span>
-    </span>
-  </div>
-
-  <label class="sidebar-toggle" for="sidebarToggle">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-         stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-      <line x1="3" y1="6"  x2="21" y2="6"></line>
-      <line x1="3" y1="12" x2="21" y2="12"></line>
-      <line x1="3" y1="18" x2="21" y2="18"></line>
-    </svg>
-  </label>
-
-  <nav class="nav-links">
-    <a href="../index.html">Home</a>
-    <a href="../index.html#features">Features</a>
-
-    <a href="#" class="user-profile-link">
-      <svg class="profile-avatar" viewBox="0 0 40 40" width="40" height="40">
-        <circle cx="20" cy="20" r="20" fill="#8b0000"/>
-        <text x="20" y="27" text-anchor="middle"
-              font-size="15" font-weight="700" fill="white"
-              font-family="Poppins, sans-serif">AD</text>
-      </svg>
-      <span class="profile-name">Admin User</span>
-    </a>
-
-    <div class="logout-container">
-      <a href="../index.html#home" class="logout-btn">Logout</a>
-    </div>
-  </nav>
-
-</header>
  <!-- Sidebar toggle checkbox -->
 <input type="checkbox" id="sidebarToggle" class="sidebar-toggle-input">
 

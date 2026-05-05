@@ -1,5 +1,45 @@
 # Netlify Configuration for ZamboDorm
+# Project Type: Multi-Page Application (MPA)
+
 [build]
-  # No build command needed - static site
-  command = ""
+  # No compilation required for this vanilla JS/HTML project.
+  # Using a simple echo to confirm build start in logs.
+  command = "echo 'ZamboDorm build process started...'"
+  
+  # The ZamboDorm folder contains the actual site assets (index.html, html/, css/, etc.)
   publish = "ZamboDorm"
+
+[build.processing]
+  # Enable automatic optimization of assets
+  skip_processing = false
+
+[build.processing.html]
+  # Enable pretty URLs (e.g., /html/signin-page instead of /html/signin-page.html)
+  pretty_urls = true
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+# REDIRECTS & REWRITES
+# Since this is an MPA, we don't want a global /* to index.html rewrite (that's for SPAs).
+# Instead, we handle 404s gracefully.
+
+[[redirects]]
+  # Redirect any broken links or 404 errors back to the landing page
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# SECURITY HEADERS
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

@@ -108,8 +108,8 @@
 
 .main-content {
   margin-left: 260px;
-  padding: 2rem 2.5rem 5rem;
-  padding-top: 1rem;
+  padding: 1.5rem 2.5rem 5rem;
+  padding-top: 2rem; /* Consistent offset for dashboard headers */
   min-height: calc(100vh - 68px);
   flex: 1;
   animation: slideUpFadeIn 0.5s ease forwards;

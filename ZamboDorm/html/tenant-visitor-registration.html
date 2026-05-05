@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZamboDorm â€“ Visitor Management</title>
+  <title>ZamboDorm – Visitor Registration</title>
   <link rel="stylesheet" href="../css/variables.css">
   <link rel="stylesheet" href="../css/navbar.css">
   <link rel="stylesheet" href="../css/style.css">
+
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
   
@@ -59,7 +60,7 @@
       </svg>
       <span>Complaints</span>
     </a>
-    <a href="tenant-visitors.html" class="sidebar-item active">
+    <a href="tenant-visitors.html" class="sidebar-item">
       <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
         <circle cx="9" cy="7" r="4"/>
@@ -67,6 +68,15 @@
         <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
       </svg>
       <span>Visitors</span>
+    </a>
+    <a href="tenant-visitor-registration.html" class="sidebar-item active">
+      <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+        <circle cx="8.5" cy="7" r="4"/>
+        <line x1="20" y1="8" x2="20" y2="14"/>
+        <line x1="17" y1="11" x2="23" y2="11"/>
+      </svg>
+      <span>Register Visitor</span>
     </a>
     <div class="sidebar-divider"></div>
     <a href="tenant-settings.html" class="sidebar-item">
@@ -93,8 +103,8 @@
 
   <!-- Page Header -->
   <div class="page-header">
-    <h1>Visitor Management</h1>
-    <p>Register and manage your visitors</p>
+    <h1>Visitor Registration</h1>
+    <p>Register a new visitor for your room</p>
   </div>
 
   <!-- Phase Bar -->
@@ -129,7 +139,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN A: Guidelines â•â• -->
+  <!-- ══ SCREEN A: Guidelines ══ -->
   <div class="screen active" id="screen-a">
     <div class="card">
       <div class="card-body">
@@ -163,7 +173,7 @@
             </div>
             <div>
               <h4>Visiting Hours</h4>
-              <p>8:00 AM â€“ 9:00 PM only. Visitors must leave before closing time.</p>
+              <p>8:00 AM – 9:00 PM only. Visitors must leave before closing time.</p>
             </div>
           </div>
 
@@ -231,7 +241,7 @@
 
         <div class="action-row end">
           <button class="btn-primary" id="btn-to-b" onclick="goToB()" disabled>
-            Continue to Visitor Registration
+            Continue to Visitor Information
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </button>
         </div>
@@ -240,7 +250,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN B: Visitor Info â•â• -->
+  <!-- ══ SCREEN B: Visitor Info ══ -->
   <div class="screen" id="screen-b">
     <div class="card">
       <div class="card-body">
@@ -259,7 +269,7 @@
 
         <div class="form-section">
           <label class="form-label" for="v-id">Government ID Number <span>*</span></label>
-          <input type="text" class="form-control" id="v-id" placeholder="National ID, Driver's License, Passportâ€¦"/>
+          <input type="text" class="form-control" id="v-id" placeholder="National ID, Driver's License, Passport…"/>
           <div class="form-hint">Visitor must present this ID at the reception desk</div>
         </div>
 
@@ -281,9 +291,9 @@
             <select class="form-control" id="v-duration">
               <option value="">Select duration</option>
               <option>Less than 1 hour</option>
-              <option>1â€“2 hours</option>
-              <option>2â€“4 hours</option>
-              <option>4â€“6 hours</option>
+              <option>1–2 hours</option>
+              <option>2–4 hours</option>
+              <option>4–6 hours</option>
               <option>More than 6 hours</option>
             </select>
           </div>
@@ -315,7 +325,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN C: Review â•â• -->
+  <!-- ══ SCREEN C: Review ══ -->
   <div class="screen" id="screen-c">
     <div class="card">
       <div class="card-body">
@@ -323,12 +333,12 @@
         <div class="section-subhead">Review Visitor Registration</div>
 
         <table class="review-table">
-          <tr><td>Visitor Name</td>        <td id="rv-name">â€”</td></tr>
-          <tr><td>Phone Number</td>        <td id="rv-phone">â€”</td></tr>
-          <tr><td>ID Number</td>           <td id="rv-id">â€”</td></tr>
-          <tr><td>Purpose</td>             <td id="rv-purpose">â€”</td></tr>
-          <tr><td>Expected Duration</td>   <td id="rv-duration">â€”</td></tr>
-          <tr><td>Check-in Date &amp; Time</td><td id="rv-datetime">â€”</td></tr>
+          <tr><td>Visitor Name</td>        <td id="rv-name">—</td></tr>
+          <tr><td>Phone Number</td>        <td id="rv-phone">—</td></tr>
+          <tr><td>ID Number</td>           <td id="rv-id">—</td></tr>
+          <tr><td>Purpose</td>             <td id="rv-purpose">—</td></tr>
+          <tr><td>Expected Duration</td>   <td id="rv-duration">—</td></tr>
+          <tr><td>Check-in Date &amp; Time</td><td id="rv-datetime">—</td></tr>
         </table>
 
         <div class="accept-row">
@@ -353,7 +363,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN D: Success â•â• -->
+  <!-- ══ SCREEN D: Success ══ -->
   <div class="screen" id="screen-d">
     <div class="card">
       <div class="success-wrap">
@@ -369,8 +379,8 @@
         </div>
         <div class="success-actions">
           <button class="btn-secondary" onclick="resetAll()">Register Another</button>
-          <a href="tenant-myroom.html" class="btn-primary">
-            Go to My Room
+          <a href="tenant-visitors.html" class="btn-primary">
+            View My Visitors
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>

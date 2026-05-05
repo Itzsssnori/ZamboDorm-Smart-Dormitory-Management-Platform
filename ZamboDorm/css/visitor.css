@@ -113,7 +113,8 @@
 /* ── MAIN LAYOUT ── */
 .layout {
   margin-left: 280px;
-  padding: 2rem 3rem;
+  padding: 1.5rem 3rem 5rem;
+  padding-top: 2rem; /* Consistent content offset */
   min-height: calc(100vh - 68px);
   overflow-x: hidden;
   animation: slideIn 0.3s ease;
@@ -131,7 +132,7 @@
 /* ── PAGE HEADER ── */
 .page-header {
   margin-bottom: 2rem;
-  margin-top: 1rem;
+  margin-top: 0rem; /* Reset top margin as padding handles the offset */
 }
 
 .page-header h1 {
