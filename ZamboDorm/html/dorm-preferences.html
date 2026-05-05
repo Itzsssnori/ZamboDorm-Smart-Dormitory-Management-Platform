@@ -45,8 +45,19 @@
         <div class="selection-grid">
           <div class="selection-card" data-value="campus">
             <div class="card-icon">🎓</div>
-            <div class="card-label">Near Campus</div>
+            <div class="card-label">Near School Campus</div>
           </div>
+          
+          <div class="selection-card" data-value="hospital">
+            <div class="card-icon">🏥</div>
+            <div class="card-label">Near Hospital</div>
+          </div>
+          
+          <div class="selection-card" data-value="organization">
+            <div class="card-icon">🏢</div>
+            <div class="card-label">Near Organization</div>
+          </div>
+          
           <div class="selection-card" id="find-nearest-card" data-value="nearest">
             <div class="card-icon">📍</div>
             <div class="card-label">Find Nearest Dorm</div>
@@ -67,7 +78,7 @@
       </div>
 
       <!-- Step 2: Room Type -->
-      <div id="step2" class="setup-step" style="display: none;">
+      <div id="step2" class="setup-step hidden">
         <h2 class="step-title">Room Type</h2>
         <p class="step-subtitle">What type of room do you prefer?</p>
 
@@ -97,8 +108,8 @@
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btn-step2-back">Back</button>
+        <div class="step-buttons mt-md">
+          <button type="button" class="btn btn-secondary" id="btn-step2-back">Back</button>
           <button type="button" class="btn btn-primary" id="btn-step2-next">
             <span class="btn-label">Continue</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -109,7 +120,7 @@
       </div>
 
       <!-- Step 3: Roommate Preference -->
-      <div id="step3" class="setup-step" style="display: none;">
+      <div id="step3" class="setup-step hidden">
         <h2 class="step-title">Roommate Preference</h2>
         <p class="step-subtitle">How many roommates would you like?</p>
 
@@ -139,8 +150,8 @@
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btn-step3-back">Back</button>
+        <div class="step-buttons mt-md">
+          <button type="button" class="btn btn-secondary" id="btn-step3-back">Back</button>
           <button type="button" class="btn btn-primary" id="btn-step3-next">
             <span class="btn-label">Continue</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -151,62 +162,56 @@
       </div>
 
       <!-- Step 4: Required Amenities -->
-      <div id="step4" class="setup-step" style="display: none;">
+      <div id="step4" class="setup-step hidden">
         <h2 class="step-title">Required Amenities</h2>
         <p class="step-subtitle">Select amenities you need (multiple selection)</p>
 
         <div class="amenities-grid">
           <div class="amenity-card" data-amenity="ac">
-            <input type="checkbox" id="amenity-ac" class="amenity-checkbox" data-amenity="ac"/>
-            <label for="amenity-ac" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">❄️</span>
               <span class="amenity-name">Air Conditioning</span>
-            </label>
+            </div>
           </div>
 
           <div class="amenity-card" data-amenity="wifi">
-            <input type="checkbox" id="amenity-wifi" class="amenity-checkbox" data-amenity="wifi"/>
-            <label for="amenity-wifi" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">📊</span>
               <span class="amenity-name">High-Speed WiFi</span>
-            </label>
+            </div>
           </div>
 
           <div class="amenity-card" data-amenity="desk">
-            <input type="checkbox" id="amenity-desk" class="amenity-checkbox" data-amenity="desk"/>
-            <label for="amenity-desk" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">📚</span>
               <span class="amenity-name">Study Desk</span>
-            </label>
+            </div>
           </div>
 
           <div class="amenity-card" data-amenity="storage">
-            <input type="checkbox" id="amenity-storage" class="amenity-checkbox" data-amenity="storage"/>
-            <label for="amenity-storage" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">🗄️</span>
               <span class="amenity-name">Storage Cabinet</span>
-            </label>
+            </div>
           </div>
 
           <div class="amenity-card" data-amenity="light">
-            <input type="checkbox" id="amenity-light" class="amenity-checkbox" data-amenity="light"/>
-            <label for="amenity-light" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">🪟</span>
               <span class="amenity-name">Natural Light</span>
-            </label>
+            </div>
           </div>
 
           <div class="amenity-card" data-amenity="bathroom">
-            <input type="checkbox" id="amenity-bathroom" class="amenity-checkbox" data-amenity="bathroom"/>
-            <label for="amenity-bathroom" class="amenity-label">
+            <div class="amenity-content">
               <span class="amenity-emoji">🚿</span>
               <span class="amenity-name">Private Bathroom</span>
-            </label>
+            </div>
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btn-step4-back">Back</button>
+        <div class="step-buttons mt-md">
+          <button type="button" class="btn btn-secondary" id="btn-step4-back">Back</button>
           <button type="button" class="btn btn-primary" id="btn-step4-next">
             <span class="btn-label">Continue</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -217,7 +222,7 @@
       </div>
 
       <!-- Step 5: Bed Preference -->
-      <div id="step5" class="setup-step" style="display: none;">
+      <div id="step5" class="setup-step hidden">
         <h2 class="step-title">Bed Preference</h2>
         <p class="step-subtitle">What bed type would you like?</p>
 
@@ -247,8 +252,8 @@
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btn-step5-back">Back</button>
+        <div class="step-buttons mt-md">
+          <button type="button" class="btn btn-secondary" id="btn-step5-back">Back</button>
           <button type="button" class="btn btn-primary" id="btn-step5-next">
             <span class="btn-label">Continue</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -259,30 +264,41 @@
       </div>
 
       <!-- Step 6: Budget Range -->
-      <div id="step6" class="setup-step" style="display: none;">
+      <div id="step6" class="setup-step hidden">
         <h2 class="step-title">Budget Range</h2>
         <p class="step-subtitle">What's your monthly budget?</p>
 
-        <div class="budget-section">
-          <div class="budget-input">
-            <label>Minimum Budget: <span id="min-budget-display">₱2,000</span></label>
-            <input type="range" id="min-budget-slider" class="slider" min="1000" max="10000" step="500" value="2000"/>
+        <div class="budget-card">
+          <div class="budget-sliders">
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Minimum</span>
+                <span class="slider-value" id="min-budget-display">₱2,000</span>
+              </div>
+              <input type="range" id="min-budget-slider" class="range-slider" min="1000" max="10000" step="500" value="2000"/>
+            </div>
+
+            <div class="slider-group">
+              <div class="slider-header">
+                <span class="slider-label">Maximum</span>
+                <span class="slider-value" id="max-budget-display">₱5,000</span>
+              </div>
+              <input type="range" id="max-budget-slider" class="range-slider" min="1000" max="10000" step="500" value="5000"/>
+            </div>
           </div>
 
-          <div class="budget-input">
-            <label>Maximum Budget: <span id="max-budget-display">₱5,000</span></label>
-            <input type="range" id="max-budget-slider" class="slider" min="1000" max="10000" step="500" value="5000"/>
-          </div>
-
-          <div class="budget-display">
-            <p class="budget-label">Your Budget Range</p>
-            <p class="budget-range"><span id="budget-range-text">₱2,000 - ₱5,000</span></p>
-            <p class="budget-subtitle">per month</p>
+          <div class="budget-summary-box">
+            <div class="summary-icon">💰</div>
+            <div class="summary-details">
+              <span class="summary-label">Target Range</span>
+              <span class="summary-price" id="budget-range-text">₱2,000 - ₱5,000</span>
+              <span class="summary-period">per month</span>
+            </div>
           </div>
         </div>
 
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" id="btn-step6-back">Back</button>
+        <div class="step-buttons mt-lg">
+          <button type="button" class="btn btn-secondary" id="btn-step6-back">Back</button>
           <button type="button" class="btn btn-primary" id="btn-step6-next">
             <span class="btn-label">Find My Perfect Dorm</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -329,23 +345,26 @@
     <p class="alt-text">Not looking for a dormitory? <a href="./admin-application.html" class="alt-link">Apply to be a dorm administrator</a></p>
   </div>
 
-  <!-- Success Modal -->
-  <div id="successModal" class="success-modal">
-    <div class="success-content">
-      <div class="success-checkmark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <!-- Success Alert (Modern Designed Alert) -->
+  <div id="successAlert" class="success-alert hidden">
+    <div class="alert-content">
+      <div class="alert-icon-wrapper">
+        <div class="alert-icon-ring"></div>
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
           <polyline points="20 6 9 17 4 12"></polyline>
         </svg>
       </div>
-      <h2 class="success-title">Account Created Successfully!</h2>
-      <p class="success-message">Welcome to ZamboDorm. Let's set up your preferences.</p>
-      <button type="button" class="btn btn-primary w-full" id="btn-success-close">
-        <span class="btn-label">Get Started</span>
-        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M5 12h14M13 6l6 6-6 6"/>
+      <div class="alert-body">
+        <h4 class="alert-title">Account Created!</h4>
+        <p class="alert-message">Welcome to ZamboDorm. Let's find your perfect room.</p>
+      </div>
+      <button type="button" class="alert-close" id="btn-alert-close" aria-label="Close alert">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M18 6L6 18M6 6l12 12"/>
         </svg>
       </button>
     </div>
+    <div class="alert-progress"></div>
   </div>
 
   <script src="../js/dorm-preferences.js"></script>
