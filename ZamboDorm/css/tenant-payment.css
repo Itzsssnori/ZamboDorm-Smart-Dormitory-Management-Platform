@@ -378,6 +378,9 @@ body {
 }
 
 .alert-warning {
+  background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(251,191,36,0.15));
+  border: 1px solid rgba(245,158,11,0.3);
+  flex-wrap: nowrap;
   /* Use primary purple theme instead of orange */
   background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(168,85,247,0.04));
   border: 1px solid rgba(124,58,237,0.12);
@@ -451,7 +454,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  margin-top: 1rem;
+  margin-top: 0rem;
   justify-content: flex-end;
 }
 

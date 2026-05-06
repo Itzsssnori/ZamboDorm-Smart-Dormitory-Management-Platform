@@ -10,9 +10,15 @@
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
   <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
+<<<<<<< HEAD
   <script src="../js/user-approval-store.js"></script>
+=======
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+>>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
+  <link rel="stylesheet" href="../css/chatbot.css">
+  <script src="../js/chatbot.js" defer></script>
 </head>
 <body>
 
@@ -100,14 +106,21 @@
         </a>
         <div class="sidebar-divider"></div>
 
-        <!-- Logout -->
-        <a href="signin-page.html" class="sidebar-item">
+        <!-- Settings -->
+        <a href="sysadmin-settings.html" class="sidebar-item">
           <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-            <polyline points="16 17 21 12 16 7"/>
-            <line x1="21" y1="12" x2="9" y2="12"/>
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
           </svg>
-          <span>Logout</span>
+          <span>Settings</span>
+        </a>
+        <a href="sysadmin-help.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
+          </svg>
+          <span>Help</span>
         </a>
 
       </nav>
@@ -325,6 +338,16 @@
 
       </div>
 
+      <!-- SECTION 2.5 — Chart Analytics -->
+      <div class="chart-container" style="background: #ffffff; border-radius: var(--radius); padding: 2rem; border: 1px solid var(--card-border); box-shadow: var(--shadow); margin-bottom: 2rem;">
+        <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <h3 class="chart-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text);">System Analytics</h3>
+        </div>
+        <div style="height: 300px; position: relative;">
+          <canvas id="overviewChart"></canvas>
+        </div>
+      </div>
+
       <!-- SECTION 3 — Recent Activity -->
       <div class="recent-grid">
 
@@ -393,6 +416,7 @@
     </main>
   </div>
 
+<<<<<<< HEAD
   
   <script src="../js/tenant-sidebar-hamburger.js"></script>
 
@@ -406,5 +430,10 @@
     }
   });
 </script>
+=======
+  <script src="../js/user-approval-store.js"></script>
+  <script src="../js/tenant-sidebar-hamburger.js"></script>
+  <script src="../js/sysadmin-overview.js"></script>
+>>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4
 </body>
 </html>
