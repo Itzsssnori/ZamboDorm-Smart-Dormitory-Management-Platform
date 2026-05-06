@@ -1,24 +1,40 @@
 const RATE = 3500;
 let currentStep = 1;
 let selectedMethod = '';
-let selectedMonths = 1;
 let uploadedFile = '';
+
+// Room state: array of objects
+let rooms = [
+  { id: Date.now(), number: '067-A', months: 1, deposit: false, subtotal: 3500 }
+];
 
 /* ── Toast ── */
 function showToast(msg, dur = 3000) {
   const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
+  const msgEl = document.getElementById('toast-msg');
+  if (msgEl) msgEl.textContent = msg;
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), dur);
 }
 
 function fmtPHP(n) { return '₱' + n.toLocaleString('en-PH'); }
 
-/* ── Stepper ── */
+/* ── Stepper (5 Steps) ── */
 function updateStepper(step) {
-  [1, 2, 3].forEach(i => {
+  const steps = [
+    { id: 1, label: 'Rooms' },
+    { id: 2, label: 'Method' },
+    { id: 3, label: 'Details' },
+    { id: 4, label: 'Proof' },
+    { id: 5, label: 'Review' }
+  ];
+
+  steps.forEach(s => {
+    const i = s.id;
     const c = document.getElementById('sc' + i);
     const l = document.getElementById('sl' + i);
+    if (!c || !l) return;
+
     if (i < step) {
       c.className = 'step-circle done'; c.innerHTML = '✓';
       l.className = 'step-label done';
@@ -29,7 +45,8 @@ function updateStepper(step) {
       c.className = 'step-circle'; c.textContent = i;
       l.className = 'step-label';
     }
-    if (i < 3) {
+
+    if (i < 5) {
       const line = document.getElementById('line' + i);
       if (line) line.className = 'step-line' + (i < step ? ' done' : '');
     }
@@ -37,21 +54,57 @@ function updateStepper(step) {
 }
 
 function goStep(step) {
-  /* Validate before advancing */
   if (step > currentStep) {
     if (!validateStep(currentStep)) return;
   }
-  document.getElementById('step-' + currentStep).style.display = 'none';
+  
+  const currentEl = document.getElementById('step-' + currentStep);
+  const nextEl = document.getElementById('step-' + step);
+  
+  if (currentEl) currentEl.style.display = 'none';
+  if (nextEl) nextEl.style.display = '';
+  
   currentStep = step;
-  document.getElementById('step-' + currentStep).style.display = '';
   updateStepper(currentStep);
-  if (step === 3) buildReview();
+  
+  if (step === 5) renderBreakdown();
+
+  if (step === 3) {
+    ['bank-form', 'card-form', 'cash-form', 'wallet-form'].forEach(id => {
+      document.getElementById(id).style.display = 'none';
+    });
+    if (selectedMethod === 'Bank Transfer') document.getElementById('bank-form').style.display = 'block';
+    else if (selectedMethod === 'Debit/Credit Card') document.getElementById('card-form').style.display = 'block';
+    else if (selectedMethod === 'Cash Payment') document.getElementById('cash-form').style.display = 'block';
+    else document.getElementById('wallet-form').style.display = 'block';
+  }
+
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ── Validation ── */
 function validateStep(step) {
+  // Step 1: Rooms
   if (step === 1) {
+    if (rooms.length === 0) {
+      showToast('⚠️ Please add at least one room.');
+      return false;
+    }
+    for (const r of rooms) {
+      if (!r.number.trim()) {
+        showToast('⚠️ Please enter a room number for all entries.');
+        return false;
+      }
+      if (r.months < 1) {
+        showToast('⚠️ Minimum stay is 1 month.');
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // Step 2: Method
+  if (step === 2) {
     if (!selectedMethod) {
       showToast('⚠️ Please select a payment method.');
       return false;
@@ -59,124 +112,169 @@ function validateStep(step) {
     return true;
   }
 
-  if (step === 2) {
+  // Step 3: Payment details (bank/card/wallet/cash)
+  if (step === 3) {
     if (selectedMethod === 'Bank Transfer') {
       const bank = document.getElementById('bank-name').value;
       const acct = document.getElementById('bank-account').value.trim();
       const ref  = document.getElementById('bank-ref').value.trim();
-      if (!bank)  { showToast('⚠️ Please select your bank.'); document.getElementById('bank-name').focus(); return false; }
-      if (!acct)  { showToast('⚠️ Please enter your account number.'); document.getElementById('bank-account').focus(); return false; }
-      if (!ref)   { showToast('⚠️ Please enter the reference number.'); document.getElementById('bank-ref').focus(); return false; }
-      if (!uploadedFile) { showToast('⚠️ Please upload proof of payment.'); return false; }
+      if (!bank)  { showToast('⚠️ Please select your bank.'); return false; }
+      if (!acct)  { showToast('⚠️ Please enter your account number.'); return false; }
+      if (!ref)   { showToast('⚠️ Please enter the reference number.'); return false; }
     }
-
     if (selectedMethod === 'Debit/Credit Card') {
       const num    = document.getElementById('card-number').value.trim();
-      const holder = document.getElementById('card-holder').value.trim();
       const expiry = document.getElementById('card-expiry').value.trim();
       const cvv    = document.getElementById('card-cvv').value.trim();
-      if (!num)    { showToast('⚠️ Please enter your card number.'); document.getElementById('card-number').focus(); return false; }
-      if (!holder) { showToast('⚠️ Please enter the cardholder name.'); document.getElementById('card-holder').focus(); return false; }
-      if (!expiry) { showToast('⚠️ Please enter the expiry date.'); document.getElementById('card-expiry').focus(); return false; }
-      if (!cvv)    { showToast('⚠️ Please enter the CVV.'); document.getElementById('card-cvv').focus(); return false; }
-      if (!uploadedFile) { showToast('⚠️ Please upload proof of payment.'); return false; }
+      if (!num || !expiry || !cvv) { showToast('⚠️ Please fill in all card details.'); return false; }
     }
-
-    if (selectedMethod === 'GCash' || selectedMethod === 'Maya' || selectedMethod === 'Metrobank') {
+    if (['GCash', 'Maya', 'Metrobank'].includes(selectedMethod) || selectedMethod === 'GCash' || selectedMethod === 'Maya') {
       const ref = document.getElementById('wallet-ref').value.trim();
-      if (!ref) { showToast('⚠️ Please enter the reference number.'); document.getElementById('wallet-ref').focus(); return false; }
-      if (!uploadedFile) { showToast('⚠️ Please upload proof of payment.'); return false; }
+      if (!ref) { showToast('⚠️ Please enter the reference number.'); return false; }
     }
+    return true;
+  }
 
-    /* Cash payment needs no extra fields */
+  // Step 4: Proof upload
+  if (step === 4) {
+    if (selectedMethod !== 'Cash Payment' && !uploadedFile) {
+      showToast('⚠️ Please upload proof of payment.');
+      return false;
+    }
     return true;
   }
 
   return true;
 }
 
-/* ── Method selection ── */
+/* ── Room Management (Step 1) ── */
+function addRoomEntry() {
+  rooms.push({ id: Date.now(), number: '', months: 1, deposit: false, subtotal: RATE });
+  renderRooms();
+}
+
+function removeRoomEntry(id) {
+  if (rooms.length <= 1) {
+    showToast('⚠️ At least one room is required.');
+    return;
+  }
+  rooms = rooms.filter(r => r.id !== id);
+  renderRooms();
+  updateGlobalBillDisplay();
+}
+
+function updateRoomData(id, field, value) {
+  const room = rooms.find(r => r.id === id);
+  if (!room) return;
+
+  if (field === 'number') room.number = value;
+  if (field === 'months') room.months = parseInt(value) || 0;
+  if (field === 'deposit') room.deposit = value;
+
+  // Calculate subtotal
+  room.subtotal = (RATE * room.months) + (room.deposit ? RATE : 0);
+  
+  // Update subtotal in UI without full re-render
+  const subEl = document.getElementById(`subtotal-${id}`);
+  if (subEl) subEl.textContent = fmtPHP(room.subtotal);
+  
+  updateGlobalBillDisplay();
+}
+
+function renderRooms() {
+  const container = document.getElementById('rooms-container');
+  if (!container) return;
+
+  container.innerHTML = rooms.map(r => `
+    <div class="room-entry-row" id="room-row-${r.id}">
+      <div class="room-input-group">
+        <label class="form-label">Room Number</label>
+        <input type="text" class="form-input" value="${r.number}" 
+          oninput="updateRoomData(${r.id}, 'number', this.value)" placeholder="e.g. 067-A">
+      </div>
+      <div class="room-input-group small">
+        <label class="form-label">Months</label>
+        <input type="number" class="form-input" value="${r.months}" min="1"
+          oninput="updateRoomData(${r.id}, 'months', this.value)">
+      </div>
+      <div class="room-input-group check">
+        <label class="form-label">Deposit?</label>
+        <div class="check-wrapper">
+          <input type="checkbox" ${r.deposit ? 'checked' : ''} 
+            onchange="updateRoomData(${r.id}, 'deposit', this.checked)">
+          <span class="check-hint">Add 1mo Deposit</span>
+        </div>
+      </div>
+      <div class="room-subtotal">
+        <span class="sub-label">Subtotal</span>
+        <span class="sub-val" id="subtotal-${r.id}">${fmtPHP(r.subtotal)}</span>
+      </div>
+      <button class="room-remove-btn" onclick="removeRoomEntry(${r.id})" title="Remove">✕</button>
+    </div>
+  `).join('');
+  
+  updateGlobalBillDisplay();
+}
+
+function updateGlobalBillDisplay() {
+  const total = rooms.reduce((sum, r) => sum + r.subtotal, 0);
+  const billEl = document.getElementById('bill-display');
+  if (billEl) billEl.textContent = fmtPHP(total);
+  
+  const roomCountEl = document.getElementById('bill-rooms-val');
+  if (roomCountEl) roomCountEl.textContent = rooms.length;
+}
+
+/* ── Method selection (Step 2) ── */
 function selectMethod(el, name) {
   document.querySelectorAll('.method-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
   selectedMethod = name;
-  document.getElementById('btn-next-1').disabled = false;
+  
+  // Auto-next to Step 3 for better UX?
+  // goStep(3); 
+}
 
-  ['bank-form', 'card-form', 'cash-form', 'wallet-form'].forEach(id => {
-    document.getElementById(id).style.display = 'none';
-  });
-  document.getElementById('proof-form').style.display = 'block';
+/* ── Breakdown Rendering (Step 3 & 6) ── */
+function renderBreakdown() {
+  const total = rooms.reduce((sum, r) => sum + r.subtotal, 0);
+  
+  // Step 3 breakdown
+  const bdList = document.getElementById('breakdown-list');
+  if (bdList) {
+    bdList.innerHTML = rooms.map(r => `
+      <div class="breakdown-row">
+        <div class="breakdown-label">
+          <strong>Room ${r.number || '(Not set)'}</strong>
+          <span>${r.months} month${r.months > 1 ? 's' : ''}${r.deposit ? ' + Deposit' : ''}</span>
+        </div>
+        <span class="breakdown-amt">${fmtPHP(r.subtotal)}</span>
+      </div>
+    `).join('');
+    
+    const bdTotal = document.getElementById('bd-total');
+    if (bdTotal) bdTotal.textContent = fmtPHP(total);
+  }
 
-  if (name === 'Bank Transfer')         document.getElementById('bank-form').style.display   = 'block';
-  else if (name === 'Debit/Credit Card') document.getElementById('card-form').style.display   = 'block';
-  else if (name === 'Cash Payment') {
-    document.getElementById('cash-form').style.display  = 'block';
-    document.getElementById('proof-form').style.display = 'none';
-  } else {
-    document.getElementById('wallet-form').style.display = 'block';
+  // Step 6 review
+  const rvRooms = document.getElementById('rv-rooms');
+  if (rvRooms) {
+    rvRooms.innerHTML = rooms.map(r => `<div>Room ${r.number}: ${r.months}mo${r.deposit ? '+Dep' : ''} (${fmtPHP(r.subtotal)})</div>`).join('');
+    document.getElementById('rv-method').textContent = selectedMethod;
+    document.getElementById('rv-total').textContent = fmtPHP(total);
+    document.getElementById('confirm-amt').textContent = fmtPHP(total);
+    
+    let ref = 'N/A';
+    if (selectedMethod === 'Bank Transfer') ref = document.getElementById('bank-ref').value;
+    else if (selectedMethod === 'Debit/Credit Card') ref = 'Card ending in ' + document.getElementById('card-number').value.slice(-4);
+    else if (['GCash', 'Maya', 'Metrobank'].includes(selectedMethod)) ref = document.getElementById('wallet-ref').value;
+    
+    document.getElementById('rv-ref').textContent = ref;
+    document.getElementById('rv-proof').textContent = uploadedFile || (selectedMethod === 'Cash Payment' ? 'Cash walk-in' : 'None');
   }
 }
 
-/* ── Room tags ── */
-function addRoom() {
-  const room = prompt('Enter room number:');
-  if (!room || !room.trim()) return;
-  const tags = document.getElementById('room-tags');
-  const tag = document.createElement('div');
-  tag.className = 'room-tag';
-  tag.innerHTML = room.trim() + ' <span class="room-tag-remove" onclick="removeRoom(this)">✕</span>';
-  tags.appendChild(tag);
-  updateBillForRooms();
-}
-
-function removeRoom(el) {
-  const tags = document.getElementById('room-tags');
-  if (tags.children.length <= 1) { showToast('⚠️ At least one room is required.'); return; }
-  el.parentElement.remove();
-  updateBillForRooms();
-}
-
-function getRooms() {
-  return [...document.querySelectorAll('.room-tag')]
-    .map(t => t.textContent.replace('✕', '').trim()).join(', ');
-}
-
-function updateBillForRooms() {
-  const count = document.querySelectorAll('.room-tag').length;
-  const isDiscounted = localStorage.getItem('isPWDorSenior') === 'true';
-  const baseTotal = RATE * selectedMonths * count;
-  let finalTotal = baseTotal;
-
-  const discountRow = document.getElementById('discount-row');
-  const discountAmtEl = document.getElementById('discount-amt');
-
-  if (isDiscounted) {
-    const discount = baseTotal * 0.20;
-    finalTotal = baseTotal - discount;
-    if (discountRow) {
-      discountRow.style.display = 'block';
-      discountAmtEl.textContent = '-' + fmtPHP(discount) + '.00';
-    }
-  } else {
-    if (discountRow) discountRow.style.display = 'none';
-  }
-
-  document.getElementById('bill-display').textContent = fmtPHP(finalTotal);
-  document.getElementById('bd-total').textContent = fmtPHP(finalTotal) + '.00';
-  document.getElementById('bd-duration-label').textContent =
-    'Total (' + selectedMonths + ' month' + (selectedMonths > 1 ? 's' : '') +
-    ', ' + count + ' room' + (count > 1 ? 's' : '') + ')';
-}
-
-/* ── Duration ── */
-function selectDur(el, months) {
-  document.querySelectorAll('.dur-card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedMonths = months;
-  updateBillForRooms();
-}
-
-/* ── File upload ── */
+/* ── File upload (Step 5) ── */
 function handleFileUpload(input) {
   const file = input.files[0];
   if (!file) return;
@@ -189,129 +287,35 @@ function handleFileUpload(input) {
   document.getElementById('upload-filename').textContent = file.name;
 }
 
-/* ── Build Review ── */
-function buildReview() {
-  const count = document.querySelectorAll('.room-tag').length;
-  const isDiscounted = localStorage.getItem('isPWDorSenior') === 'true';
-  const baseTotal = RATE * selectedMonths * count;
-  const discount = isDiscounted ? baseTotal * 0.20 : 0;
-  const finalTotal = baseTotal - discount;
-
-  document.getElementById('rv-method').textContent   = selectedMethod || '—';
-  document.getElementById('rv-rooms').textContent    = getRooms();
-  document.getElementById('rv-duration').textContent =
-    selectedMonths + ' month' + (selectedMonths > 1 ? 's' : '') +
-    (count > 1 ? ', ' + count + ' rooms' : '');
-
-  let refValue = '—';
-  if (selectedMethod === 'Bank Transfer')
-    refValue = document.getElementById('bank-ref').value || '—';
-  else if (selectedMethod === 'Debit/Credit Card') {
-    const num = document.getElementById('card-number').value;
-    refValue = num ? '···· ' + num.replace(/\s/g, '').slice(-4) : '—';
-  } else if (selectedMethod === 'Cash Payment')
-    refValue = 'N/A (Cash)';
-  else
-    refValue = document.getElementById('wallet-ref').value || '—';
-
-  document.getElementById('rv-ref').textContent   = refValue;
-  
-  // Show discount info in proof field if applicable
-  let proofLabel = uploadedFile || (selectedMethod === 'Cash Payment' ? 'N/A' : 'Not uploaded');
-  if (isDiscounted) proofLabel += ' (SC/PWD ID Verified)';
-  document.getElementById('rv-proof').textContent = proofLabel;
-
-  document.getElementById('rv-total').innerHTML = `
-    <div style="text-align: right;">
-      ${isDiscounted ? `<div style="font-size: 12px; color: var(--muted); text-decoration: line-through;">${fmtPHP(baseTotal)}</div>` : ''}
-      <div style="color: ${isDiscounted ? '#10b981' : 'inherit'};">${fmtPHP(finalTotal)}</div>
-      ${isDiscounted ? `<div style="font-size: 10px; font-weight: 400; color: #10b981;">(20% SC/PWD Discount Applied)</div>` : ''}
-    </div>
-  `;
-  document.getElementById('confirm-amt').textContent = fmtPHP(finalTotal);
-}
-
-/* ── Confirm dialog ── */
+/* ── Submit & Reset ── */
 function openConfirm()  { document.getElementById('confirm-overlay').classList.add('open'); }
 function closeConfirm() { document.getElementById('confirm-overlay').classList.remove('open'); }
 
 function submitPayment() {
   closeConfirm();
-  /* Hide all flow elements */
-  ['step-1', 'step-2', 'step-3', 'bill-card', 'stepper'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.style.display = 'none';
-  });
+  document.getElementById('stepper').style.display = 'none';
+  document.getElementById('bill-card').style.display = 'none';
+  document.getElementById('step-5').style.display = 'none';
   document.getElementById('success-screen').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-/* ── Reset — fix: hides success screen AND clears all state before rebuilding ── */
 function resetFlow() {
-  /* Hide success, show flow */
-  document.getElementById('success-screen').style.display = 'none';
-  ['bill-card', 'stepper'].forEach(id => {
-    document.getElementById(id).style.display = '';
-  });
-
-  /* Reset state */
-  currentStep    = 1;
-  selectedMethod = '';
-  selectedMonths = 1;
-  uploadedFile   = '';
-
-  /* Reset UI */
-  document.querySelectorAll('.method-card').forEach(c => c.classList.remove('selected'));
-  document.querySelectorAll('.dur-card').forEach(c => c.classList.remove('selected'));
-  document.querySelector('.dur-card[data-months="1"]').classList.add('selected');
-
-  /* Clear all form inputs */
-  ['bank-name', 'bank-account', 'bank-ref',
-   'card-number', 'card-holder', 'card-expiry', 'card-cvv',
-   'wallet-ref'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-
-  /* Reset upload */
-  document.getElementById('upload-box').classList.remove('has-file');
-  document.getElementById('upload-label').textContent = 'Click to upload screenshot or receipt';
-  document.getElementById('upload-sub').style.display = '';
-  document.getElementById('upload-filename').style.display = 'none';
-  document.getElementById('upload-filename').textContent = '';
-  const fileInput = document.getElementById('file-input');
-  if (fileInput) fileInput.value = '';
-
-  /* Reset bill display */
-  document.getElementById('bill-display').textContent = fmtPHP(RATE);
-  document.getElementById('btn-next-1').disabled = true;
-
-  /* Hide payment-specific forms */
-  ['bank-form', 'card-form', 'cash-form', 'wallet-form', 'proof-form'].forEach(id => {
-    document.getElementById(id).style.display = 'none';
-  });
-
-  /* Show step 1 */
-  document.getElementById('step-1').style.display = '';
-  document.getElementById('step-2').style.display = 'none';
-  document.getElementById('step-3').style.display = 'none';
-  currentStep = 1;
-  updateStepper(1);
+  location.reload(); // Simplest way to reset the complex state
 }
 
-/* ── Back button ── */
+/* ── UI Helpers ── */
 function handleBack() {
   if (currentStep > 1) goStep(currentStep - 1);
-  else openExit();
+  else window.location.href = 'tenant-payment.html';
 }
 
-/* ── History panel ── */
 function toggleHistory() {
   const panel = document.getElementById('history-panel');
   panel.style.display = panel.style.display === 'none' ? '' : 'none';
 }
 
-/* ── Exit dialog ── */
-function openExit()  { document.getElementById('exit-overlay').style.display = 'flex'; }
-function closeExit() { document.getElementById('exit-overlay').style.display = 'none'; }
-function confirmExit() { window.location.href = 'tenant-payment.html'; }
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  renderRooms();
+  updateStepper(1);
+});
