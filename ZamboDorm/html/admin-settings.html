@@ -338,12 +338,12 @@
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
         <p>No items found</p>
       </div>
-    </div>
+      </div>
 
-    <div style="padding:0.85rem 1.1rem; border-top:1px solid var(--card-border); background:rgba(124,58,237,0.02);">
+     <div style="padding:0.85rem 1.1rem; border-top:1px solid var(--card-border); background:rgba(124,58,237,0.02);">
       <span id="reg-info" style="font-size:0.8rem;color:var(--text-muted);"></span>
+      </div>
     </div>
-  </div>
 
   <!-- ══ SECTION 3: USER MANAGEMENT ══ -->
   <div class="section-label">
@@ -379,10 +379,8 @@
           <circle cx="9" cy="7" r="4"/>
           <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
           <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-        </svg>
-        Manage Users
-      </button>
-    </div>
+          </svg> Manage Users</button>
+     </div>
 
     <!-- ADD USER TAB -->
     <div class="um-panel" id="panel-add-user">
@@ -402,26 +400,26 @@
         </div>
 
         <div class="add-user-form">
-                <div class="mf-row">
-      <div class="mf-group">
-        <label class="mf-label">First Name <span>*</span></label>
-        <input class="mf-input" id="nu-firstname" placeholder="e.g. Juan"/>
+          <div class="mf-row">
+        <div class="mf-group">
+       <label class="mf-label">First Name <span>*</span></label>
+      <input class="mf-input" id="nu-firstname" placeholder="e.g. Juan"/>
+        </div>
+        <div class="mf-group">
+      <label class="mf-label">Middle Name <span style="color:var(--text-muted);font-weight:500">(optional)</span></label>
+      <input class="mf-input" id="nu-middlename" placeholder="e.g. Santos"/>
+       </div>
       </div>
-    <div class="mf-group">
-        <label class="mf-label">Middle Name <span style="color:var(--text-muted);font-weight:500">(optional)</span></label>
-        <input class="mf-input" id="nu-middlename" placeholder="e.g. Santos"/>
-    </div>
-    </div>
-    <div class="mf-row">
-    <div class="mf-group">
+      <div class="mf-row">
+      <div class="mf-group">
       <label class="mf-label">Last Name <span>*</span></label>
       <input class="mf-input" id="nu-lastname" placeholder="e.g. dela Cruz"/>
-  </div>
-  <div class="mf-group">
+    </div>
+    <div class="mf-group">
       <label class="mf-label">Username <span>*</span></label>
       <input class="mf-input" id="nu-username" placeholder="e.g. juandc" autocomplete="off"/>
-  </div>
-</div>
+    </div>
+    </div>
           <div class="mf-row">
             <div class="mf-group">
               <label class="mf-label">Password <span>*</span></label>
@@ -446,6 +444,51 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
             <span id="role-info-text">Security accounts can log in and will be redirected to the Visitor Log page.</span>
           </div>
+
+          <div class="id-upload-section">
+                  <label class="mf-label">Government / School ID<span style="color:var(--text-muted);font-weight:500"> (optional)</span></label>
+                  <p class="id-upload-hint">Upload a photo or scan of any valid ID (JPG, PNG, PDF · max 5 MB)</p>
+          <div class="id-dropzone" id="id-dropzone" onclick="document.getElementById('nu-id-upload').click()">
+             <input type="file" id="nu-id-upload" accept="image/jpeg,image/png,image/webp,image/gif,application/pdf" style="display:none" onchange="handleIdUpload(this)"/>
+            <!-- Default state -->
+          <div class="id-dropzone-default">
+            <div class="id-dropzone-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+              </svg>
+          </div>
+                <p class="id-dropzone-label">Click to upload or drag &amp; drop</p>
+      <p class="id-dropzone-sub">JPG, PNG, WEBP, GIF or PDF · max 5 MB</p>
+      </div>
+      </div>
+ 
+      <!-- Preview (shown after file selected) -->
+      <div class="id-preview" id="id-preview" style="display:none">
+       <img id="id-preview-img" src="" alt="ID Preview" style="display:none"/>
+      <!-- PDF icon fallback -->
+      <div id="id-preview-icon" class="id-preview-pdf-icon" style="display:none">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="9" y1="13" x2="15" y2="13"/>
+        <line x1="9" y1="17" x2="13" y2="17"/>
+      </svg>
+      <span>PDF Document</span>
+    </div>
+    <div class="id-preview-info">
+      <span class="id-preview-name" id="id-preview-name"></span>
+      <span class="id-preview-size" id="id-preview-size"></span>
+    </div>
+     <button class="id-preview-remove" type="button" onclick="resetIdUpload();event.stopPropagation()" title="Remove file">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
 
           <div class="add-user-footer">
             <button class="btn btn-primary" onclick="createUser()">
@@ -684,6 +727,28 @@
           </select>
         </div>
       </div>
+
+      <div class="mf-row single">
+      <div class="mf-group">
+       <label class="mf-label">Replace ID Document <span style="color:var(--text-muted);font-weight:500">(optional — leave empty to keep current)</span></label>
+        <p id="eu-id-current" style="font-size:0.78rem;color:var(--text-muted);margin-bottom:0.5rem">No ID on file.</p>
+         <div class="id-dropzone id-dropzone-sm" id="id-dropzone-edit" onclick="document.getElementById('eu-id-upload').click()">
+          <input type="file" id="eu-id-upload" accept="image/jpeg,image/png,image/webp,image/gif,application/pdf" style="display:none"onchange="handleEditIdUpload(this)"/>
+        <div class="id-dropzone-default">
+         <div class="id-dropzone-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <p class="id-dropzone-label">Click to upload new ID</p>
+        <p id="eu-id-preview-name" class="id-dropzone-sub">JPG, PNG, WEBP, GIF or PDF · max 5 MB</p>
+      </div>
+    </div>
+  </div>
+</div>
+
       <div class="mf-row single">
         <div class="mf-group">
           <label class="mf-label">Status</label>
