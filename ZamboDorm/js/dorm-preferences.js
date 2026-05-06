@@ -266,12 +266,17 @@
 
     function showMap() {
         elements.map.container.style.display = 'block';
+        // OpenStreetMap embed — keyless, no external JS dependency.
+        // Bounding box covers downtown Zamboanga City; marker pins the centroid.
         elements.map.frame.innerHTML = `
-            <iframe 
-                width="100%" height="100%" frameborder="0" style="border:0" 
-                src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAUgE8FqNTq5PVj3a-ZpV2sj_kf5IQyVrE&q=dormitory+in+Zamboanga+City&zoom=14" 
-                allowfullscreen="" loading="lazy">
-            </iframe>`;
+            <iframe
+                width="100%" height="100%"
+                frameborder="0" style="border:0; display:block;"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=122.0500%2C6.9000%2C122.1100%2C6.9450&layer=mapnik&marker=6.9214%2C122.0790"
+                loading="lazy"
+                title="Demo map of Zamboanga City"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <span class="demo-map-badge">Demo Map</span>`;
         setTimeout(() => elements.map.container.scrollIntoView({ behavior: 'smooth' }), 100);
     }
 

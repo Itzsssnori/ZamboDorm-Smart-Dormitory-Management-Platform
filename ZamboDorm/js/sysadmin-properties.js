@@ -556,7 +556,7 @@ document.getElementById('rejectAppBtn').addEventListener('click', rejectDormAppl
 function showToast(message) {
   const toast = document.createElement('div');
   toast.textContent = message;
-  toast.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #1f2937; color: white; padding: 12px 20px; border-radius: 6px; font-size: 0.9rem; z-index: 10000; animation: slideIn 0.3s ease-out;';
+  toast.style.cssText = 'position: fixed; bottom: 90px; right: 20px; background: #1f2937; color: white; padding: 12px 20px; border-radius: 6px; font-size: 0.9rem; z-index: 9000; animation: slideIn 0.3s ease-out;';
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
 }
