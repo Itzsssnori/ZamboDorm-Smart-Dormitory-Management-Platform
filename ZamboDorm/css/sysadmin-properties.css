@@ -430,4 +430,42 @@
     width: 95%;
     max-height: 95vh;
   }
+
+  /* Responsive Table Stacking */
+  .prop-table thead {
+    display: none;
+  }
+
+  .prop-table tr {
+    display: block;
+    border-bottom: 2px solid var(--card-border);
+    padding: 1rem 0;
+  }
+
+  .prop-table td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none;
+    padding: 0.5rem 1.25rem;
+    text-align: right;
+  }
+
+  .prop-table td::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-align: left;
+    margin-right: 1rem;
+  }
+
+  .td-address {
+    max-width: none;
+  }
+
+  .btn-user-counts {
+    max-width: 200px;
+  }
 }

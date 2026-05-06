@@ -87,17 +87,6 @@
           </svg>
           <span>Help</span>
         </a>
-        <div class="sidebar-divider"></div>
-
-        <!-- Logout -->
-        <a href="signin-page.html" class="sidebar-item">
-          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-            <polyline points="16 17 21 12 16 7"/>
-            <line x1="21" y1="12" x2="9" y2="12"/>
-          </svg>
-          <span>Logout</span>
-        </a>
 
       </nav>
     </aside>
@@ -138,6 +127,7 @@
                 <th>Price/mo</th>
                 <th>Address</th>
                 <th>Capacity</th>
+                <th>Users/Staff</th>
                 <th>Date Added</th>
                 <th>Actions</th>
               </tr>
@@ -317,6 +307,23 @@
     <div class="modal-footer">
       <button class="btn-cancel" id="rejectAppBtn" style="background: #ef4444; color: white; border: none;">❌ Reject Application</button>
       <button class="btn-save" id="approveAppBtn" style="background: #10b981; color: white; border: none;">✅ Approve & Add Dorm</button>
+    </div>
+  </div>
+
+  <!-- User List Modal -->
+  <div class="modal-overlay" id="userListOverlay"></div>
+  <div class="modal" id="userListModal" style="max-width: 600px;">
+    <div class="modal-header">
+      <h2 class="modal-title" id="userListModalTitle">Dormitory Users</h2>
+      <button class="modal-close" id="closeUserList">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div id="userListContent" style="max-height: 400px; overflow-y: auto;">
+        <!-- Users will be grouped and listed here -->
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="closeUserListBtn">Close</button>
     </div>
   </div>
 

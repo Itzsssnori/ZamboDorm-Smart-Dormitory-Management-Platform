@@ -32,6 +32,31 @@ let nextId = 4;
 let editingId = null;
 let deletingId = null;
 
+// ─── Demo Data ──────────────────────────────────────────────────────────────
+
+const demoUsers = [
+  // Sunshine Dormitory (id: 1)
+  { name: 'Juan Dela Cruz', email: 'juan@example.com', role: 'landlord', propertyId: 1 },
+  { name: 'Maria Clara', email: 'maria@example.com', role: 'tenant', assignedDormId: 1 },
+  { name: 'Jose Rizal', email: 'jose@example.com', role: 'tenant', assignedDormId: 1 },
+  { name: 'Antonio Luna', email: 'antonio@example.com', role: 'guard', assignedDormId: 1 },
+  // Blue Haven Dorms (id: 2)
+  { name: 'Andres Bonifacio', email: 'andres@example.com', role: 'landlord', propertyId: 2 },
+  { name: 'Emilio Aguinaldo', email: 'emilio@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Apolinario Mabini', email: 'mabini@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Melchora Aquino', email: 'melchora@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Gabriela Silang', email: 'gabriela@example.com', role: 'guard', assignedDormId: 2 },
+  { name: 'Lapu-Lapu', email: 'lapu@example.com', role: 'guard', assignedDormId: 2 },
+  // Green Valley Residence (id: 3)
+  { name: 'Tandang Sora', email: 'sora@example.com', role: 'landlord', propertyId: 3 },
+  { name: 'Diego Silang', email: 'diego@example.com', role: 'tenant', assignedDormId: 3 },
+];
+
+function getCombinedUsers() {
+  const localUsers = JSON.parse(localStorage.getItem('zambodorm_all_users') || '[]');
+  return [...demoUsers, ...localUsers];
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 function formatPrice(price) {
@@ -60,19 +85,36 @@ function todayISO() {
 function renderTable() {
   const countBadge = document.getElementById('propCount');
   const tbody = document.getElementById('propTableBody');
+  const allUsers = JSON.parse(localStorage.getItem('zambodorm_all_users') || '[]');
 
   countBadge.textContent = `${properties.length} ${properties.length === 1 ? 'dormitory' : 'dormitories'}`;
   tbody.innerHTML = '';
 
   properties.forEach(function (prop) {
+    // Filter users assigned to this property
+    const propUsers = allUsers.filter(u => u.propertyId === prop.id || u.assignedDormId === prop.id);
+    const tenants = propUsers.filter(u => u.role === 'tenant').length;
+    const admins = propUsers.filter(u => u.role === 'admin' || u.role === 'landlord').length;
+    const securities = propUsers.filter(u => u.role === 'security' || u.role === 'guard').length;
+
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${escapeHtml(prop.name)}</td>
-      <td class="td-price">${formatPrice(prop.price)}</td>
-      <td class="td-address">${escapeHtml(prop.address)}</td>
-      <td>${prop.rooms}</td>
-      <td>${formatDate(prop.dateAdded)}</td>
-      <td>
+      <td data-label="Dormitory Name">${escapeHtml(prop.name)}</td>
+      <td data-label="Price/mo" class="td-price">${formatPrice(prop.price)}</td>
+      <td data-label="Address" class="td-address">${escapeHtml(prop.address)}</td>
+      <td data-label="Capacity">${prop.rooms}</td>
+      <td data-label="Users/Staff">
+        <button class="btn-user-counts" onclick="openUserListModal(${prop.id})" style="background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 6px; padding: 4px 8px; cursor: pointer; text-align: left; font-family: inherit; transition: all 0.2s; width: 100%;">
+          <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 700; margin-bottom: 2px; white-space: nowrap;">👥 Assigned Users</div>
+          <div style="font-size: 0.8rem; color: #1e1b4b; display: flex; gap: 6px;">
+            <span>T: <strong>${tenants}</strong></span>
+            <span>A: <strong>${admins}</strong></span>
+            <span>S: <strong>${securities}</strong></span>
+          </div>
+        </button>
+      </td>
+      <td data-label="Date Added">${formatDate(prop.dateAdded)}</td>
+      <td data-label="Actions">
         <div class="action-wrap">
           <button class="btn-dots" data-id="${prop.id}" aria-label="Actions">&#8942;</button>
           <div class="dots-menu" id="menu-${prop.id}">
@@ -469,3 +511,59 @@ function showToast(message) {
   document.body.appendChild(toast);
   setTimeout(() => toast.remove(), 3000);
 }
+
+// ─── USER LIST MODAL HANDLER ───────────────────────────────────────────────
+function openUserListModal(propId) {
+  const prop = properties.find(p => p.id === propId);
+  if (!prop) return;
+
+  const allUsers = getCombinedUsers();
+  const propUsers = allUsers.filter(u => u.propertyId === propId || u.assignedDormId === propId);
+
+  document.getElementById('userListModalTitle').textContent = `Users for ${prop.name}`;
+  const content = document.getElementById('userListContent');
+  content.innerHTML = '';
+
+  if (propUsers.length === 0) {
+    content.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No users assigned to this property.</div>';
+  } else {
+    const groups = {
+      'Admin/Landlord': propUsers.filter(u => u.role === 'admin' || u.role === 'landlord'),
+      'Security': propUsers.filter(u => u.role === 'security' || u.role === 'guard'),
+      'Tenant': propUsers.filter(u => u.role === 'tenant')
+    };
+
+    for (const [role, users] of Object.entries(groups)) {
+      if (users.length > 0) {
+        const section = document.createElement('div');
+        section.style.marginBottom = '20px';
+        section.innerHTML = `
+          <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; border-bottom: 1px solid rgba(124, 58, 237, 0.1); padding-bottom: 4px;">${role}s (${users.length})</h4>
+          <div style="display: grid; gap: 8px;">
+            ${users.map(u => `
+              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #f8f7ff; border-radius: 6px; border: 1px solid rgba(124, 58, 237, 0.1);">
+                <div>
+                  <div style="font-weight: 600; color: #1e1b4b; font-size: 0.9rem;">${u.name}</div>
+                  <div style="font-size: 0.8rem; color: #6b7280;">${u.email}</div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        content.appendChild(section);
+      }
+    }
+  }
+
+  openModal('userListModal', 'userListOverlay');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const closeUserList = document.getElementById('closeUserList');
+  const closeUserListBtn = document.getElementById('closeUserListBtn');
+  const userListOverlay = document.getElementById('userListOverlay');
+
+  if(closeUserList) closeUserList.onclick = () => closeModal('userListModal', 'userListOverlay');
+  if(closeUserListBtn) closeUserListBtn.onclick = () => closeModal('userListModal', 'userListOverlay');
+  if(userListOverlay) userListOverlay.onclick = () => closeModal('userListModal', 'userListOverlay');
+});

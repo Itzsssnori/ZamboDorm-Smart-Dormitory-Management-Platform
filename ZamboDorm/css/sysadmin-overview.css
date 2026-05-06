@@ -327,16 +327,36 @@
 /* ═══════════════════════════════════════
    MOBILE — content sections (max-width: 768px)
    ═══════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+
   .stats-grid {
     grid-template-columns: 1fr;
   }
 
   .recent-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .page-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .page-title {
     font-size: 1.6rem;
   }
 }

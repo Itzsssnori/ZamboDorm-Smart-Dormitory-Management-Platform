@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
   <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
@@ -69,16 +70,6 @@
           <span>Complaints</span>
         </a>
 
-        <a href="sysadmin-user-approvals.html" class="sidebar-item">
-         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-            <circle cx="9" cy="7" r="4"/>
-             <polyline points="16 11 18 13 22 9"/>
-        </svg>
-        <span>User Approvals</span>
-        <span class="sidebar-badge" id="sidebar-pending-count">0</span>
-      </a>
-
         <div class="sidebar-divider"></div>
 
         <!-- Settings -->
@@ -96,17 +87,6 @@
             <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
           </svg>
           <span>Help</span>
-        </a>
-        <div class="sidebar-divider"></div>
-
-        <!-- Logout -->
-        <a href="signin-page.html" class="sidebar-item">
-          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
-            <polyline points="16 17 21 12 16 7"/>
-            <line x1="21" y1="12" x2="9" y2="12"/>
-          </svg>
-          <span>Logout</span>
         </a>
 
       </nav>
@@ -173,6 +153,16 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- SECTION 2.5 — Chart Analytics -->
+      <div class="chart-container" style="background: #ffffff; border-radius: var(--radius); padding: 2rem; border: 1px solid var(--card-border); box-shadow: var(--shadow); margin-bottom: 2rem;">
+        <div class="chart-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+          <h3 class="chart-title" style="font-size: 1.1rem; font-weight: 700; color: var(--text);">System Analytics</h3>
+        </div>
+        <div style="height: 300px; position: relative;">
+          <canvas id="overviewChart"></canvas>
+        </div>
       </div>
 
       <!-- SECTION 3 — Recent Activity -->
@@ -245,5 +235,6 @@
 
   <script src="../js/user-approval-store.js"></script>
   <script src="../js/tenant-sidebar-hamburger.js"></script>
+  <script src="../js/sysadmin-overview.js"></script>
 </body>
 </html>
