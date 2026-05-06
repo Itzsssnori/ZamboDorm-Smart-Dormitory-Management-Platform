@@ -120,7 +120,7 @@ body {
 .sidebar-overlay.active { display: block; }
 
 /* ── KEYFRAME ANIMATIONS ── */
-}
+
 /* ── LAYOUT ── */
 .layout { min-height: calc(100vh - var(--nav-h)); }
 
@@ -373,3 +373,8 @@ body {
   border-color: #e5e7eb;
   box-shadow: none;
 }
+
+@keyframes slideUpFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
