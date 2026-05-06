@@ -1,12 +1,4 @@
-/* sysadmin-overview.css
-   Layout shell for all sysadmin pages.
-   Inherits design tokens from css/style.css (loaded first).
-   Hamburger button styles come from css/sidebar-hamburger.css.
-*/
 
-/* ═══════════════════════════════════════
-   SIDEBAR
-   ═══════════════════════════════════════ */
 .sidebar {
   position: fixed;
   left: 0;
@@ -340,3 +332,4 @@
     font-size: 1.6rem;
   }
 }
+
