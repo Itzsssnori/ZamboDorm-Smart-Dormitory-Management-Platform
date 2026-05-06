@@ -158,43 +158,23 @@
   gap: 0.6rem;
   flex: 1;
 } */
+/* ── PHASE STEPPER ── */
 .phase-bar {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background: #fff;
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  padding: 1rem 2rem;
+  padding: 1.25rem 1.25rem;  /* reduce side padding */
   box-shadow: var(--shadow);
   margin-bottom: 2rem;
-  justify-content: space-between;
 }
-
 .phase {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex: 0 0 auto;
-}
-
-.phase-label {
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: #9ca3af;
-  white-space: nowrap;
-  transition: color 0.3s;
-  text-align: center;
-}
-
-.phase-line {
-  flex: 1;
-  height: 3px;
-  background: #e5e7eb;
-  border-radius: 2px;
-  margin: 0 0.75rem;
-  margin-bottom: 1.4rem;
-  transition: background 0.4s;
 }
 
 .phase-dot {
@@ -204,10 +184,12 @@
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
   transition: all 0.35s;
+  position: relative;
+  z-index: 1;  /* dot sits on top of the line */
 }
 
 .phase-dot svg {
-  width: 15px; height: 15px;
+  width: 15px; height: 10px;
   stroke: #9ca3af;
   stroke-width: 2;
   fill: none;
@@ -218,8 +200,7 @@
   box-shadow: 0 0 0 4px rgba(124,58,237,0.15);
 }
 .phase.active .phase-dot svg { stroke: #fff; }
-
-.phase.done .phase-dot { background: #22c55e; }
+.phase.done .phase-dot { background: #7c3aed; }
 .phase.done .phase-dot svg { stroke: #fff; }
 
 .phase-label {
@@ -228,20 +209,24 @@
   color: #9ca3af;
   white-space: nowrap;
   transition: color 0.3s;
+  text-align: center;
 }
 .phase.active .phase-label { color: var(--primary); }
-.phase.done .phase-label   { color: #16a34a; }
+.phase.done .phase-label   { color: #7c3aed; }
 
+/* ── LINE: flush against dots, no gap ── */
 .phase-line {
   flex: 1;
   height: 3px;
   background: #e5e7eb;
-  border-radius: 2px;
-  margin: 0 0.75rem;
-  margin-bottom: 1.85rem;
+  border-radius: 0;
+  align-self: flex-start;
+  margin-top: 16px;
+  margin-left: -18px;
+  margin-right: -18px;
   transition: background 0.4s;
 }
-.phase-line.done { background: #22c55e; }
+.phase-line.done { background: #7c3aed; }
 
 /* ── SCREENS ── */
 .screen { display: none; }
@@ -386,7 +371,7 @@
   margin-bottom: 0.5rem;
 }
 
-.form-label span { color: #ef4444; }
+.form-label span { color: #7c3aed; }
 
 .form-control {
   width: 100%;
@@ -452,7 +437,7 @@
 
 .accept-row input[type="checkbox"] {
   width: 18px; height: 18px;
-  accent-color: #dc2626;
+  accent-color: #7c3aed;
   margin-top: 2px;
   flex-shrink: 0;
   cursor: pointer;
@@ -460,7 +445,7 @@
 
 .accept-row label {
   font-size: 0.87rem;
-  color: #991b1b;
+  color: #7c3aed;
   line-height: 1.6;
   cursor: pointer;
 }
@@ -589,7 +574,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 1.75rem;
-  background: linear-gradient(135deg, #dc2626, #ef4444);
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
   color: #fff;
   border: none;
   border-radius: 10px;
