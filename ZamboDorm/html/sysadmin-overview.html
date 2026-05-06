@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="../css/style.css"/>
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
+  <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
@@ -67,6 +68,16 @@
           </svg>
           <span>Complaints</span>
         </a>
+
+        <a href="sysadmin-user-approvals.html" class="sidebar-item">
+         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+           <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+             <polyline points="16 11 18 13 22 9"/>
+        </svg>
+        <span>User Approvals</span>
+        <span class="sidebar-badge" id="sidebar-pending-count">0</span>
+      </a>
 
         <div class="sidebar-divider"></div>
 
@@ -232,6 +243,7 @@
     </main>
   </div>
 
+  <script src="../js/user-approval-store.js"></script>
   <script src="../js/tenant-sidebar-hamburger.js"></script>
 </body>
 </html>
