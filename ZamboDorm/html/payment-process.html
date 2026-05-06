@@ -3,13 +3,10 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>ZamboDorm â€“ Payment</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+<title>ZamboDorm – Payment</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-
+<link rel="stylesheet" href="../css/style.css"/>
 <link rel="stylesheet" href="../css/payment-process.css"/>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
@@ -18,6 +15,7 @@
 
 <!-- Navbar Web Component -->
 <zd-navbar authenticated></zd-navbar>
+  <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
 
 <div class="page-wrapper">
@@ -42,12 +40,12 @@
   <div class="card" id="history-panel" style="display:none;margin-bottom:1.5rem;">
     <div style="padding:1.1rem 1.5rem;border-bottom:1.5px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
       <span style="font-size:14px;font-weight:800;color:var(--dark);">Payment History</span>
-      <button onclick="toggleHistory()" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--muted);">âœ•</button>
+      <button onclick="toggleHistory()" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--muted);">✕</button>
     </div>
-    <div class="hist-row"><div class="hist-ico due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><div class="hist-label">March 2026</div><div class="hist-date">Due Apr 5, 2026</div></div><span class="badge due">Due Soon</span><div class="hist-amt due" style="margin-left:12px">â‚±3,500</div></div>
-    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">February 2026</div><div class="hist-date">Paid Feb 5, 2026 Â· GCash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">â‚±3,500</div></div>
-    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">January 2026</div><div class="hist-date">Paid Jan 4, 2026 Â· GCash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">â‚±3,500</div></div>
-    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">December 2025</div><div class="hist-date">Paid Dec 3, 2025 Â· Cash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">â‚±3,500</div></div>
+    <div class="hist-row"><div class="hist-ico due"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div><div><div class="hist-label">March 2026</div><div class="hist-date">Due Apr 5, 2026</div></div><span class="badge due">Due Soon</span><div class="hist-amt due" style="margin-left:12px">₱3,500</div></div>
+    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">February 2026</div><div class="hist-date">Paid Feb 5, 2026 · GCash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">₱3,500</div></div>
+    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">January 2026</div><div class="hist-date">Paid Jan 4, 2026 · GCash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">₱3,500</div></div>
+    <div class="hist-row"><div class="hist-ico paid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div><div><div class="hist-label">December 2025</div><div class="hist-date">Paid Dec 3, 2025 · Cash</div></div><span class="badge paid">Paid</span><div class="hist-amt paid" style="margin-left:12px">₱3,500</div></div>
   </div>
 
   <!-- STEPPER -->
@@ -71,11 +69,11 @@
   <!-- CURRENT BILL CARD -->
   <div class="bill-card" id="bill-card">
     <div class="bill-month">Current Bill: March 2026</div>
-    <div class="bill-amount" id="bill-display">â‚±3,500</div>
+    <div class="bill-amount" id="bill-display">₱3,500</div>
     <div class="bill-due">Due: April 5, 2026</div>
   </div>
 
-  <!-- â•â• STEP 1: PAYMENT METHOD â•â• -->
+  <!-- ══ STEP 1: PAYMENT METHOD ══ -->
   <div id="step-1" class="step-content">
 
     <!-- Payment Method Selection -->
@@ -146,7 +144,7 @@
       <div class="card-body">
         <div class="card-title">Rooms to Pay For</div>
         <div class="room-tags" id="room-tags">
-          <div class="room-tag">067-A <span class="room-tag-remove" onclick="removeRoom(this)">âœ•</span></div>
+          <div class="room-tag">067-A <span class="room-tag-remove" onclick="removeRoom(this)">✕</span></div>
         </div>
         <button class="btn-add-room" onclick="addRoom()">+ Add Room</button>
       </div>
@@ -161,33 +159,33 @@
           <div class="dur-card selected" onclick="selectDur(this,1)" data-months="1">
             <div class="dur-months">1</div>
             <div class="dur-label">month</div>
-            <div class="dur-total">â‚±3,500</div>
+            <div class="dur-total">₱3,500</div>
           </div>
           <div class="dur-card" onclick="selectDur(this,2)" data-months="2">
             <div class="dur-months">2</div>
             <div class="dur-label">months</div>
-            <div class="dur-total">â‚±7,000</div>
+            <div class="dur-total">₱7,000</div>
           </div>
           <div class="dur-card" onclick="selectDur(this,3)" data-months="3">
             <div class="dur-months">3</div>
             <div class="dur-label">months</div>
-            <div class="dur-total">â‚±10,500</div>
+            <div class="dur-total">₱10,500</div>
           </div>
           <div class="dur-card" onclick="selectDur(this,6)" data-months="6">
             <div class="dur-months">6</div>
             <div class="dur-label">months</div>
-            <div class="dur-total">â‚±21,000</div>
+            <div class="dur-total">₱21,000</div>
           </div>
         </div>
       </div>
     </div>
 
     <div class="action-row">
-      <button class="btn-next" id="btn-next-1" onclick="goStep(2)" disabled>Next â†’</button>
+      <button class="btn-next" id="btn-next-1" onclick="goStep(2)" disabled>Next →</button>
     </div>
   </div>
 
-  <!-- â•â• STEP 2: PAYMENT DETAILS â•â• -->
+  <!-- ══ STEP 2: PAYMENT DETAILS ══ -->
   <div id="step-2" class="step-content" style="display:none;">
 
     <!-- Bill Breakdown -->
@@ -195,21 +193,21 @@
       <div class="card-body">
         <div class="card-title">Bill Breakdown</div>
         <div id="breakdown-list">
-          <div class="breakdown-row"><span class="breakdown-label">Room Rent (Rm 067-A)</span><span class="breakdown-amt">â‚±2,800.00</span></div>
-          <div class="breakdown-row"><span class="breakdown-label">Water Supply</span><span class="breakdown-amt">â‚±280.00</span></div>
-          <div class="breakdown-row"><span class="breakdown-label">Electricity</span><span class="breakdown-amt">â‚±270.00</span></div>
-          <div class="breakdown-row"><span class="breakdown-label">Internet / WiFi</span><span class="breakdown-amt">â‚±100.00</span></div>
-          <div class="breakdown-row"><span class="breakdown-label">Maintenance Fee</span><span class="breakdown-amt">â‚±50.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Room Rent (Rm 067-A)</span><span class="breakdown-amt">₱2,800.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Water Supply</span><span class="breakdown-amt">₱280.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Electricity</span><span class="breakdown-amt">₱270.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Internet / WiFi</span><span class="breakdown-amt">₱100.00</span></div>
+          <div class="breakdown-row"><span class="breakdown-label">Maintenance Fee</span><span class="breakdown-amt">₱50.00</span></div>
         </div>
         <div id="discount-row" style="display: none; border-top: 1px dashed var(--border); margin-top: 8px; padding-top: 8px;">
           <div class="breakdown-row" style="color: #10b981; font-weight: 600;">
             <span class="breakdown-label">SC/PWD Discount (20%)</span>
-            <span class="breakdown-amt" id="discount-amt">-â‚±0.00</span>
+            <span class="breakdown-amt" id="discount-amt">-₱0.00</span>
           </div>
         </div>
         <div class="breakdown-row total" style="margin-top: 12px; border-top: 2px solid var(--border); padding-top: 12px;">
           <span class="breakdown-label" id="bd-duration-label">Total (1 month)</span>
-          <span class="breakdown-amt" id="bd-total">â‚±3,500.00</span>
+          <span class="breakdown-amt" id="bd-total">₱3,500.00</span>
         </div>
       </div>
     </div>
@@ -217,7 +215,7 @@
     <!-- BANK TRANSFER FORM -->
     <div class="card" id="bank-form" style="display:none;">
       <div class="card-body">
-        <div class="card-title">ðŸ¦ Bank Transfer Details</div>
+        <div class="card-title">🏦 Bank Transfer Details</div>
         <div class="form-group">
           <label class="form-label">Bank Name</label>
           <select class="form-select" id="bank-name" required>
@@ -244,7 +242,7 @@
     <!-- CARD PAYMENT FORM -->
     <div class="card" id="card-form" style="display:none;">
       <div class="card-body">
-        <div class="card-title">ðŸ’³ Card Payment Details</div>
+        <div class="card-title">💳 Card Payment Details</div>
         <div class="form-group">
           <label class="form-label">Card Number</label>
           <input type="text" class="form-input" id="card-number" placeholder="1234 5678 9012 3456" required/>
@@ -269,7 +267,7 @@
     <!-- CASH PAYMENT INSTRUCTIONS -->
     <div class="card" id="cash-form" style="display:none;">
       <div class="card-body">
-        <div class="card-title">ðŸ’µ Cash Payment Instructions</div>
+        <div class="card-title">💵 Cash Payment Instructions</div>
         <div style="background:#e0f2fe;border:1.5px solid #0284c7;border-radius:12px;padding:1.5rem;font-size:13.5px;color:#0c4a6e;line-height:1.8;">
           <div style="font-weight:700;margin-bottom:1rem;">Cash Payment Instructions:</div>
           <ol style="margin-left:1.5rem;margin-bottom:1rem;">
@@ -289,7 +287,7 @@
     <!-- DIGITAL WALLET FORM (GCash/Maya) -->
     <div class="card" id="wallet-form" style="display:none;">
       <div class="card-body">
-        <div class="card-title">ðŸ“± Digital Wallet Payment</div>
+        <div class="card-title">📱 Digital Wallet Payment</div>
         <div class="form-group">
           <label class="form-label">Reference / Transaction Number</label>
           <input type="text" class="form-input" id="wallet-ref" placeholder="e.g. GCash ref 123456789" required/>
@@ -306,9 +304,9 @@
           <label class="form-label">Upload Screenshot or Receipt</label>
           <div class="upload-box" id="upload-box" onclick="document.getElementById('file-input').click()">
             <input type="file" id="file-input" accept="image/*,.pdf" style="display:none;" onchange="handleFileUpload(this)"/>
-            <div class="upload-icon">ðŸ“Ž</div>
+            <div class="upload-icon">📎</div>
             <div class="upload-label" id="upload-label">Click to upload screenshot or receipt</div>
-            <div class="upload-sub" id="upload-sub">PNG, JPG, PDF â€” up to 5MB</div>
+            <div class="upload-sub" id="upload-sub">PNG, JPG, PDF — up to 5MB</div>
             <div class="upload-filename" id="upload-filename" style="display:none;"></div>
           </div>
         </div>
@@ -316,37 +314,37 @@
     </div>
 
     <div class="action-row">
-      <button class="btn-back" onclick="goStep(1)">â† Back</button>
-      <button class="btn-next" onclick="goStep(3)">Next â†’</button>
+      <button class="btn-back" onclick="goStep(1)">← Back</button>
+      <button class="btn-next" onclick="goStep(3)">Next →</button>
     </div>
   </div>
 
-  <!-- â•â• STEP 3: REVIEW & CONFIRM â•â• -->
+  <!-- ══ STEP 3: REVIEW & CONFIRM ══ -->
   <div id="step-3" class="step-content" style="display:none;">
     <div class="card">
       <div class="card-body">
         <div class="card-title">Review & Confirm</div>
         <div class="review-block">
-          <div class="review-row"><span class="review-label">Payment Method</span><span class="review-val" id="rv-method">â€”</span></div>
+          <div class="review-row"><span class="review-label">Payment Method</span><span class="review-val" id="rv-method">—</span></div>
           <div class="review-row"><span class="review-label">Room(s)</span><span class="review-val" id="rv-rooms">067-A</span></div>
           <div class="review-row"><span class="review-label">Duration</span><span class="review-val" id="rv-duration">1 month</span></div>
-          <div class="review-row"><span class="review-label">Reference No.</span><span class="review-val" id="rv-ref">â€”</span></div>
-          <div class="review-row"><span class="review-label">Proof of Payment</span><span class="review-val" id="rv-proof">â€”</span></div>
+          <div class="review-row"><span class="review-label">Reference No.</span><span class="review-val" id="rv-ref">—</span></div>
+          <div class="review-row"><span class="review-label">Proof of Payment</span><span class="review-val" id="rv-proof">—</span></div>
           <div class="review-row" style="margin-top:4px;border-top:2px solid var(--vborder);padding-top:12px;">
             <span style="font-size:14.5px;font-weight:800;color:var(--dark);">Total Amount</span>
-            <span style="font-size:14.5px;font-weight:800;color:var(--v);" id="rv-total">â‚±3,500</span>
+            <span style="font-size:14.5px;font-weight:800;color:var(--v);" id="rv-total">₱3,500</span>
           </div>
         </div>
         <p style="font-size:12.5px;color:var(--muted);line-height:1.6;">By submitting, you confirm that the payment details above are accurate. The dorm admin will verify your payment and update your account within 24 hours.</p>
       </div>
     </div>
     <div class="action-row">
-      <button class="btn-back" onclick="goStep(2)">â† Back</button>
+      <button class="btn-back" onclick="goStep(2)">← Back</button>
       <button class="btn-next" onclick="openConfirm()">Submit Payment</button>
     </div>
   </div>
 
- <!-- â•â• SUCCESS SCREEN â•â• -->
+ <!-- ══ SUCCESS SCREEN ══ -->
 <div id="success-screen" class="success-screen">
   <div class="success-circle">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -360,7 +358,7 @@
   </div>
   <div class="success-actions">
     <button class="btn-back" onclick="resetFlow()">Make Another Payment</button>
-    <a href="tenant-myroom.html" class="btn-next">Go to Dashboard â†’</a>
+    <a href="tenant-myroom.html" class="btn-next">Go to Dashboard →</a>
   </div>
 </div>
 
@@ -369,9 +367,9 @@
 <!-- CONFIRM DIALOG -->
 <div class="confirm-overlay" id="confirm-overlay">
   <div class="confirm-box">
-    <div class="confirm-icon">ðŸ’³</div>
+    <div class="confirm-icon">💳</div>
     <div class="confirm-title">Confirm Payment</div>
-    <div class="confirm-msg" id="confirm-msg-text">Submit this payment for <strong id="confirm-amt">â‚±3,500</strong>?<br>This action cannot be undone.</div>
+    <div class="confirm-msg" id="confirm-msg-text">Submit this payment for <strong id="confirm-amt">₱3,500</strong>?<br>This action cannot be undone.</div>
     <div class="confirm-btns">
       <button class="btn-back" onclick="closeConfirm()">Cancel</button>
       <button class="btn-next" onclick="submitPayment()">Yes, Submit</button>
@@ -382,7 +380,7 @@
 <!-- EXIT PAYMENT DIALOG -->
 <div class="confirm-overlay" id="exit-overlay">
   <div class="confirm-box">
-    <div class="confirm-icon">âš ï¸</div>
+    <div class="confirm-icon">⚠️</div>
     <div class="confirm-title">Exit Payment Process?</div>
     <div class="confirm-msg">Are you sure you want to exit? Any unsaved payment details will be lost.</div>
     <div class="confirm-btns">

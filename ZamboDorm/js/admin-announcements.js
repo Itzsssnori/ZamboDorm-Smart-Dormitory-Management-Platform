@@ -53,12 +53,21 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     }
 
-    const announcements = loadData();
+    let announcements = loadData();
     let deleteTargetId = null;
 
-    // Use shared utility functions
-    const escHtml = ZDUtils.escapeHtml;
-    const formatDate = ZDUtils.formatDate;
+    // ── Render ───────────────────────────────────────────────────────────────
+    const CATEGORY_LABELS = {
+      general:  { label: 'General',  cls: 'tag--general'  },
+      urgent:   { label: 'Urgent',   cls: 'tag--urgent'   },
+      info:     { label: 'Info',     cls: 'tag--info'      },
+      resolved: { label: 'Resolved', cls: 'tag--resolved' }
+    };
+
+    function formatDate(dateStr) {
+      const d = new Date(dateStr + 'T00:00:00');
+      return d.toLocaleDateString('en-PH', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
 
     function renderList(list) {
       const container = document.getElementById('announcementsList');
@@ -218,12 +227,12 @@
         const idx = announcements.findIndex(a => a.id === parseInt(editId));
         if (idx !== -1) {
           announcements[idx] = { ...announcements[idx], title, body, category, pinned, date };
-          ZDUtils.showToast('Announcement updated!');
+          showToast('Announcement updated!', 'success');
         }
       } else {
         const newId = announcements.length ? Math.max(...announcements.map(a => a.id)) + 1 : 1;
         announcements.unshift({ id: newId, title, body, category, pinned, date, postedBy: 'Admin' });
-        ZDUtils.showToast('Announcement posted!');
+        showToast('Announcement posted!', 'success');
       }
 
       saveData(announcements);
@@ -239,7 +248,7 @@
       updateStats();
       filterAnnouncements();
       closeDeleteModal();
-      ZDUtils.showToast('Announcement deleted.');
+      showToast('Announcement deleted.', 'danger');
     }
 
     function togglePin(id) {
@@ -249,10 +258,14 @@
       saveData(announcements);
       updateStats();
       filterAnnouncements();
-      ZDUtils.showToast(a.pinned ? 'Announcement pinned.' : 'Announcement unpinned.');
+      showToast(a.pinned ? 'Announcement pinned.' : 'Announcement unpinned.', 'success');
     }
 
     // ── Helpers ──────────────────────────────────────────────────────────────
+    function escHtml(str) {
+      return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
     function updateCharCount(el, countId, max) {
       const len = el.value.length;
       const span = document.getElementById(countId);
@@ -266,6 +279,20 @@
       el.style.animation = 'none';
       el.focus();
       setTimeout(() => { el.style.borderColor = ''; }, 1500);
+    }
+
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast--${type}`;
+      toast.innerHTML = type === 'success'
+        ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>${message}`
+        : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>${message}`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.animation = 'fadeOut 0.3s ease forwards';
+        setTimeout(() => toast.remove(), 300);
+      }, 2800);
     }
 
     // ── Init ─────────────────────────────────────────────────────────────────

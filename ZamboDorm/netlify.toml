@@ -1,0 +1,5 @@
+# Netlify Configuration for ZamboDorm
+[build]
+  # No build command needed - static site
+  command = ""
+  publish = "."

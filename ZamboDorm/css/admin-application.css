@@ -317,6 +317,7 @@ body {
   .req-grid { grid-template-columns: 1fr; }
   .benefits-list { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
   .page-wrap { padding: 2rem 1rem 4rem; }
   .hero-title { font-size: 1.7rem; }
 }

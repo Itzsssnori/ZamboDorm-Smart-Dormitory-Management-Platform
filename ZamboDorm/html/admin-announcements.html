@@ -5,12 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<title>ZamboDorm â€“ Room Occupancy Tracker</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+<title>ZamboDorm – Room Occupancy Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
- 
+ <link rel="stylesheet" href="../css/style.css"/>
 <link rel="stylesheet" href="../css/admin-common.css"/>
 <link rel="stylesheet" href="../css/admin-announcements.css"/>
 
@@ -22,12 +19,14 @@
 <body>
 
 <zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
 <!-- Mobile Sidebar Hamburger (Reusable) -->
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
   <span></span><span></span><span></span>
 </button>
 <script src="../js/sidebar-hamburger.js"></script>
+  
 
 <div class="sidebar-overlay" id="overlay"></div>
 
@@ -143,9 +142,10 @@
   </nav>
 </aside>
 
+
 </head>
 <body>
-  <!-- â”€â”€ MAIN CONTENT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <!-- ── MAIN CONTENT ───────────────────────── -->
   <main class="main-content">
 
     <!-- Page Header -->
@@ -216,7 +216,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
           <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
         </svg>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search announcementsâ€¦" oninput="filterAnnouncements()">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search announcements…" oninput="filterAnnouncements()">
       </div>
       <select class="filter-select" id="filterCategory" onchange="filterAnnouncements()">
         <option value="all">All Categories</option>
@@ -237,7 +237,7 @@
 
   </main>
 
-  <!-- â”€â”€ POST / EDIT MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <!-- ── POST / EDIT MODAL ──────────────────── -->
   <div class="modal-overlay" id="postModal" onclick="handleOverlayClick(event, 'postModal')">
     <div class="modal" onclick="event.stopPropagation()">
       <div class="modal__header">
@@ -259,7 +259,7 @@
 
         <div class="form-group">
           <label class="form-label" for="inputBody">Message <span>*</span></label>
-          <textarea class="form-textarea" id="inputBody" placeholder="Write the full announcement hereâ€¦" maxlength="600" oninput="updateCharCount(this, 'bodyCount', 600)"></textarea>
+          <textarea class="form-textarea" id="inputBody" placeholder="Write the full announcement here…" maxlength="600" oninput="updateCharCount(this, 'bodyCount', 600)"></textarea>
           <span class="char-count" id="bodyCount">0 / 600</span>
         </div>
 
@@ -282,7 +282,7 @@
         <div class="form-group" style="margin-top:1.25rem">
           <label class="form-checkbox-group">
             <input type="checkbox" id="inputPinned">
-            <label for="inputPinned">ðŸ“Œ Pin this announcement (shows at the top for tenants)</label>
+            <label for="inputPinned">📌 Pin this announcement (shows at the top for tenants)</label>
           </label>
         </div>
       </div>
@@ -298,7 +298,7 @@
     </div>
   </div>
 
-  <!-- â”€â”€ DELETE CONFIRM MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+  <!-- ── DELETE CONFIRM MODAL ───────────────── -->
   <div class="modal-overlay" id="deleteModal" onclick="handleOverlayClick(event, 'deleteModal')">
     <div class="modal confirm-modal" onclick="event.stopPropagation()">
       <div class="modal__header">
@@ -328,8 +328,7 @@
   <!-- Toast container -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- â”€â”€ JAVASCRIPT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
-  <script src="../js/shared-utils.js"></script>
+  <!-- ── JAVASCRIPT ─────────────────────────── -->
   <script src="../js/admin-announcements.js"></script>
-  </body>
-  </html>
+</body>
+</html>

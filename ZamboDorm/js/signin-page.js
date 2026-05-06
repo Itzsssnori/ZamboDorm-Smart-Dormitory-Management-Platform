@@ -168,14 +168,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Primary auth via UserManager
     let user = (typeof UserManager !== 'undefined') ? UserManager.loginUser(email, password) : null;
 
-    // Fallback: zd_security_users (for accounts created in Admin Settings)
+    // Fallback: zd_security_users by username (accounts created in Admin Settings)
     if (!user) {
       const zdUsers = JSON.parse(localStorage.getItem('zd_security_users') || '[]');
       const match   = zdUsers.find(u => u.username === email && u.password === password && u.status === 'active');
-      if (match) {
-        user = { name: match.name, role: match.role || 'security', email: match.username };
-        if (typeof UserManager !== 'undefined') UserManager.setUser(user);
-      }
+      if (match) user = { name: match.name, role: match.role || 'security' };
     }
 
     btn.classList.remove('loading');
@@ -188,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     showToast('✓ Signed in successfully!');
-    // Store in active_user is handled inside UserManager.loginUser or above
     setTimeout(() => redirectByRole(user.role), 400);
   });
 });

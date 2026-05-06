@@ -285,6 +285,8 @@ body {
 /* Mobile (≤ 768px) */
 @media (max-width: 768px) {
   /* Navbar */
+  .nav-links { display: none; }
+  .nav-right  { display: none; }
   .hamburger  { display: flex; }
 
   /* Sidebar — slides in from left as overlay */

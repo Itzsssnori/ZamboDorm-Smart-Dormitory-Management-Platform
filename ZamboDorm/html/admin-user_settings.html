@@ -3,13 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZamboDorm â€“ Settings</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <title>ZamboDorm – Settings</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/sidebar-hamburger.css">
   <link rel="stylesheet" href="../css/admin-user-settings.css">
   <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
@@ -22,6 +19,7 @@
 <body>
 
  <zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
   <span></span><span></span><span></span>
@@ -80,6 +78,7 @@
   </nav>
 </aside>
 
+
   <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
   <!-- MAIN CONTENT -->
   <main class="main-content">
@@ -110,7 +109,7 @@
       <button class="tab-btn" onclick="switchTab('account', this)">Account</button>
     </div>
 
-    <!-- â”€â”€ TAB: PROFILE â”€â”€ -->
+    <!-- ── TAB: PROFILE ── -->
     <div class="tab-panel active" id="tab-profile">
       <div class="settings-section">
         <div class="section-heading">
@@ -128,7 +127,7 @@
               Upload Photo
             </button>
             <input type="file" id="avatarUpload" accept="image/*" style="display:none;">
-            <p>JPG, PNG or GIF Â· Max 2MB</p>
+            <p>JPG, PNG or GIF · Max 2MB</p>
           </div>
         </div>
 
@@ -137,7 +136,7 @@
           <div class="form-group"><label class="form-label">Last Name</label><input class="form-input" type="text" id="lastName" placeholder="Last name" required></div>
         </div>
         <div style="background:#f3f4f6;padding:0.75rem 1rem;border-radius:8px;margin-bottom:0.75rem;border-left:3px solid #7c3aed;">
-          <p style="font-size:0.85rem;color:#6b7280;margin:0;"><strong>Account Information</strong> â€“ These fields are linked to your registered account and cannot be edited here.</p>
+          <p style="font-size:0.85rem;color:#6b7280;margin:0;"><strong>Account Information</strong> – These fields are linked to your registered account and cannot be edited here.</p>
         </div>
         <div class="form-row">
           <div class="form-group"><label class="form-label">Email Address</label><input class="form-input" type="email" id="emailAddress" placeholder="Email" readonly></div>
@@ -158,7 +157,7 @@
       </div>
     </div>
 
-    <!-- â”€â”€ TAB: SECURITY â”€â”€ -->
+    <!-- ── TAB: SECURITY ── -->
     <div class="tab-panel" id="tab-security">
       <div class="settings-section">
         <div class="section-heading">
@@ -201,7 +200,7 @@
               <div style="width:38px;height:38px;border-radius:9px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
               </div>
-              <div><strong style="font-size:.9rem;color:var(--text);">Windows PC â€“ Chrome</strong><br><span style="font-size:.78rem;color:var(--text-muted);">Zamboanga City Â· Active now</span></div>
+              <div><strong style="font-size:.9rem;color:var(--text);">Windows PC – Chrome</strong><br><span style="font-size:.78rem;color:var(--text-muted);">Zamboanga City · Active now</span></div>
             </div>
             <span style="font-size:.75rem;font-weight:700;padding:.3rem .75rem;background:rgba(16,185,129,0.12);color:#047857;border-radius:6px;">Current</span>
           </div>
@@ -210,7 +209,7 @@
               <div style="width:38px;height:38px;border-radius:9px;background:rgba(124,58,237,0.1);display:flex;align-items:center;justify-content:center;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
               </div>
-              <div><strong style="font-size:.9rem;color:var(--text);">Android Phone â€“ Chrome</strong><br><span style="font-size:.78rem;color:var(--text-muted);">Last active 2 days ago</span></div>
+              <div><strong style="font-size:.9rem;color:var(--text);">Android Phone – Chrome</strong><br><span style="font-size:.78rem;color:var(--text-muted);">Last active 2 days ago</span></div>
             </div>
             <button onclick="showToast('Session revoked.')" type="button" style="font-size:.78rem;font-weight:700;padding:.35rem .9rem;background:rgba(239,68,68,0.1);color:var(--red);border:1px solid rgba(239,68,68,0.25);border-radius:7px;cursor:pointer;font-family:var(--font);">Revoke</button>
           </div>
@@ -218,7 +217,7 @@
       </div>
     </div>
 
-    <!-- â”€â”€ TAB: NOTIFICATIONS â”€â”€ -->
+    <!-- ── TAB: NOTIFICATIONS ── -->
     <div class="tab-panel" id="tab-notifications">
       <div class="settings-section">
         <div class="section-heading">
@@ -248,7 +247,7 @@
       </div>
     </div>
 
-    <!-- â”€â”€ TAB: PREFERENCES â”€â”€ -->
+    <!-- ── TAB: PREFERENCES ── -->
     <div class="tab-panel" id="tab-preferences">
       <div class="settings-section">
         <div class="section-heading">
@@ -274,7 +273,7 @@
           </div>
           <div class="form-group">
             <label class="form-label">Currency Display</label>
-            <div class="select-wrap"><select class="form-select"><option>â‚± Philippine Peso</option><option>PHP</option></select></div>
+            <div class="select-wrap"><select class="form-select"><option>₱ Philippine Peso</option><option>PHP</option></select></div>
           </div>
         </div>
         <div class="toggle-row" style="margin-top:.5rem"><div class="toggle-info"><strong>Compact Sidebar</strong><span>Show icons only in the sidebar</span></div><label class="toggle"><input type="checkbox"><span class="toggle-slider"></span></label></div>
@@ -282,18 +281,18 @@
       </div>
     </div>
 
-    <!-- â”€â”€ TAB: ACCOUNT â”€â”€ -->
+    <!-- ── TAB: ACCOUNT ── -->
     <div class="tab-panel" id="tab-account">
       <div class="settings-section">
         <div class="section-heading">
           <div class="section-heading-icon icon-red">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
           </div>
-          <div class="section-heading-text"><h3>Danger Zone</h3><p>Irreversible account actions â€“ proceed with caution</p></div>
+          <div class="section-heading-text"><h3>Danger Zone</h3><p>Irreversible account actions – proceed with caution</p></div>
         </div>
 
         <button class="danger-btn" type="button" onclick="showToast('Please contact admin to deactivate.')">
-          <div class="danger-btn-info"><strong>Deactivate Account</strong><span>Temporarily disable your account â€” you can reactivate later</span></div>
+          <div class="danger-btn-info"><strong>Deactivate Account</strong><span>Temporarily disable your account — you can reactivate later</span></div>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
         </button>
         <button class="danger-btn" type="button" onclick="showToast('Please contact admin to delete your account.')">

@@ -1,76 +1,64 @@
 /**
- * USER MANAGER - Centralized Auth Logic
- * Handles persistence using 'zambodorm_users' and 'active_user'
+ * USER MANAGER - Handle user data and authentication state
+ * Centralized user management across all files (DRY principle)
  */
 
 const UserManager = {
-  // Constants for localStorage keys
-  KEYS: {
-    USERS: 'zambodorm_users',
-    ACTIVE: 'active_user'
+  // Generate unique user ID
+  generateUserId() {
+    return 'USER-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
   },
 
-  // Get all registered users
+  // Get all registered users from localStorage
   getAllUsers() {
-    try {
-      const users = localStorage.getItem(this.KEYS.USERS);
-      return users ? JSON.parse(users) : [];
-    } catch (e) {
-      console.error("Error reading users from localStorage", e);
-      return [];
-    }
+    const users = localStorage.getItem('zambodorm_all_users');
+    return users ? JSON.parse(users) : [];
   },
 
-  // Save all users
+  // Save all users to localStorage
   saveAllUsers(users) {
-    localStorage.setItem(this.KEYS.USERS, JSON.stringify(users));
+    localStorage.setItem('zambodorm_all_users', JSON.stringify(users));
   },
 
-  // Get current session user
+  // Get current user from localStorage
   getUser() {
-    try {
-      const user = localStorage.getItem(this.KEYS.ACTIVE);
-      return user ? JSON.parse(user) : null;
-    } catch (e) {
-      console.error("Error reading active session", e);
-      return null;
-    }
+    const user = localStorage.getItem('zambodorm_user');
+    return user ? JSON.parse(user) : null;
   },
 
-  // Set current session user
+  // Set user data (called on account creation/login)
   setUser(userData) {
-    if (userData) {
-      localStorage.setItem(this.KEYS.ACTIVE, JSON.stringify(userData));
+    // Ensure user has an ID
+    if (!userData.id) {
+      userData.id = this.generateUserId();
     }
+    localStorage.setItem('zambodorm_user', JSON.stringify(userData));
   },
 
-  // Register a new user
+  // Register new user (add to all users list)
   registerUser(userData) {
-    const allUsers = this.getAllUsers();
-    
-    // Ensure ID and registration date
-    const newUser = {
+    const userId = this.generateUserId();
+    const userWithId = {
       ...userData,
-      id: userData.id || 'USER-' + Date.now(),
+      id: userId,
       registeredDate: new Date().toISOString()
     };
     
-    allUsers.push(newUser);
+    // Add to all users list
+    const allUsers = this.getAllUsers();
+    allUsers.push(userWithId);
     this.saveAllUsers(allUsers);
     
-    // Auto-login after registration
-    this.setUser(newUser);
-    return newUser;
+    // Set as current user
+    this.setUser(userWithId);
+    
+    return userWithId;
   },
 
-  // Login verification
-  loginUser(emailOrUsername, password) {
+  // Login user (verify credentials)
+  loginUser(email, password) {
     const allUsers = this.getAllUsers();
-    // Check against email OR name (username)
-    const user = allUsers.find(u => 
-      (u.email === emailOrUsername || u.name === emailOrUsername) && 
-      u.password === password
-    );
+    const user = allUsers.find(u => u.email === email && u.password === password);
     
     if (user) {
       this.setUser(user);
@@ -79,57 +67,57 @@ const UserManager = {
     return null;
   },
 
-  // Auth checks
+  // Check if email already exists
+  emailExists(email) {
+    const allUsers = this.getAllUsers();
+    return allUsers.some(u => u.email === email);
+  },
+
+  // Get user's display name
+  getName() {
+    const user = this.getUser();
+    return user?.name || 'User';
+  },
+
+  // Get user's ID
+  getId() {
+    const user = this.getUser();
+    return user?.id || null;
+  },
+
+  // Get user's role
+  getRole() {
+    const user = this.getUser();
+    return user?.role || 'tenant';
+  },
+
+  // Get user's initials for avatar
+  getInitials() {
+    const name = this.getName();
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  },
+
+  // Check if user is authenticated
   isAuthenticated() {
     return !!this.getUser();
   },
 
-  getName() {
-    return this.getUser()?.name || 'User';
-  },
-
-  getRole() {
-    return this.getUser()?.role || 'tenant';
-  },
-
-  getInitials() {
-    const name = this.getName();
-    return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-  },
-
+  // Logout with confirmation
   logout() {
-    localStorage.removeItem(this.KEYS.ACTIVE);
-    window.location.href = (window.location.pathname.includes('/html/')) ? './signin-page.html' : 'html/signin-page.html';
+    const confirmed = confirm('Are you sure you want to log out?');
+    if (confirmed) {
+      localStorage.removeItem('zambodorm_user');
+      window.location.href = './signin-page.html';
+    }
   },
 
-  // Helper to sync common greeting elements across different dashboards
-  updatePageGreetings() {
-    if (!this.isAuthenticated()) return;
-    
-    const name = this.getName();
-    const firstName = name.split(' ')[0];
-    
-    // Update elements by ID
-    const greetingTitle = document.getElementById('greeting-title');
-    const guardName = document.getElementById('guardName');
-    
-    if (greetingTitle) greetingTitle.textContent = `Buen Vida, ${firstName}!`;
-    if (guardName) guardName.textContent = name;
-    
-    // Update elements by selectors (common patterns)
-    const welcomeSub = document.querySelector('.greeting-subtitle');
-    if (welcomeSub && welcomeSub.textContent.includes('Welcome')) {
-      welcomeSub.textContent = `Welcome back, ${firstName}!`;
-    }
-    
-    const headerPara = document.querySelector('.page-header p');
-    if (headerPara && headerPara.textContent.includes('Welcome back')) {
-      headerPara.textContent = `Welcome back, ${name}! Here's what's happening today in ZamboDorm.`;
-    }
-
-    const sysSub = document.querySelector('.page-subtitle');
-    if (sysSub && sysSub.textContent.includes('Welcome back')) {
-      sysSub.textContent = `Welcome back, ${name}! Here's what's happening across the system.`;
-    }
+  // Clear user data on logout
+  clearUser() {
+    localStorage.removeItem('zambodorm_user');
   }
 };

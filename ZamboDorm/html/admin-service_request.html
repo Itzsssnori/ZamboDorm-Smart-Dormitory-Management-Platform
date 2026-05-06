@@ -5,12 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<title>ZamboDorm â€“ Room Occupancy Tracker</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+<title>ZamboDorm – Room Occupancy Tracker</title>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-  
+ <link rel="stylesheet" href="../css/style.css"/> 
 <link rel="stylesheet" href="../css/sidebar-hamburger.css">
 <link rel="stylesheet" href="../css/admin-service_request.css"/>
 
@@ -21,12 +18,14 @@
 <body>
 
 <zd-navbar authenticated></zd-navbar>
+<script src="../js/hamburger.js"></script>
 <script src="../js/navbar-scroll.js"></script>
 <!-- Mobile Sidebar Hamburger (Reusable) -->
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
   <span></span><span></span><span></span>
 </button>
 <script src="../js/sidebar-hamburger.js"></script>
+  
 
 <div class="sidebar-overlay" id="overlay"></div>
 
@@ -142,7 +141,7 @@
   </nav>
 </aside>
 
-<!-- â”€â”€ MAIN â”€â”€ -->
+<!-- ── MAIN ── -->
 <main class="main-content">
   <div class="sr-page">
 
@@ -152,7 +151,7 @@
         <p>Manage and track all service requests submitted by tenants</p>
       </div>
       <div class="sr-header-right">
-        <button class="btn-export" onclick="showToast('Export started â€” check your downloads')">
+        <button class="btn-export" onclick="showToast('Export started — check your downloads')">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Export CSV
         </button>
@@ -163,19 +162,19 @@
     <div class="sr-stats">
       <div class="sr-stat-card">
         <div class="sr-stat-icon" style="background:var(--primary-muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.75" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M8 12h8M12 8v8"/></svg></div>
-        <div><div class="sr-stat-value" id="stat-total">â€”</div><div class="sr-stat-label">Total Requests</div></div>
+        <div><div class="sr-stat-value" id="stat-total">—</div><div class="sr-stat-label">Total Requests</div></div>
       </div>
       <div class="sr-stat-card">
         <div class="sr-stat-icon" style="background:var(--warning-muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="1.75" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-        <div><div class="sr-stat-value" id="stat-pending">â€”</div><div class="sr-stat-label">Pending</div></div>
+        <div><div class="sr-stat-value" id="stat-pending">—</div><div class="sr-stat-label">Pending</div></div>
       </div>
       <div class="sr-stat-card">
         <div class="sr-stat-icon" style="background:var(--info-muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--info)" stroke-width="1.75" stroke-linecap="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
-        <div><div class="sr-stat-value" id="stat-progress">â€”</div><div class="sr-stat-label">In Progress</div></div>
+        <div><div class="sr-stat-value" id="stat-progress">—</div><div class="sr-stat-label">In Progress</div></div>
       </div>
       <div class="sr-stat-card">
         <div class="sr-stat-icon" style="background:var(--success-muted)"><svg viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.75" stroke-linecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div><div class="sr-stat-value" id="stat-completed">â€”</div><div class="sr-stat-label">Completed</div></div>
+        <div><div class="sr-stat-value" id="stat-completed">—</div><div class="sr-stat-label">Completed</div></div>
       </div>
     </div>
 
@@ -183,7 +182,7 @@
     <div class="sr-filter-bar">
       <div class="sr-search-wrap">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input id="sr-search" class="sr-search" type="text" placeholder="Search by tenant, room, ID, or titleâ€¦"/>
+        <input id="sr-search" class="sr-search" type="text" placeholder="Search by tenant, room, ID, or title…"/>
       </div>
       <select id="sr-filter-type" class="sr-select">
         <option value="all">All Types</option>
@@ -223,7 +222,7 @@
   </div>
 </main>
 
-<!-- â”€â”€ MODAL â”€â”€ -->
+<!-- ── MODAL ── -->
 <div class="sr-modal-backdrop" id="sr-modal">
   <div class="sr-modal">
     <div class="sr-modal-header">
@@ -233,12 +232,12 @@
     <div class="sr-modal-body">
       <p class="modal-section-title">Request Details</p>
       <div class="modal-info-grid">
-        <div class="modal-info-item"><div class="modal-info-label">Request ID</div><div class="modal-info-value" id="modal-id">â€”</div></div>
-        <div class="modal-info-item"><div class="modal-info-label">Type</div><div class="modal-info-value" id="modal-type">â€”</div></div>
-        <div class="modal-info-item"><div class="modal-info-label">Tenant</div><div class="modal-info-value" id="modal-tenant">â€”</div></div>
-        <div class="modal-info-item"><div class="modal-info-label">Room</div><div class="modal-info-value" id="modal-room">â€”</div></div>
-        <div class="modal-info-item" style="grid-column:1/-1"><div class="modal-info-label">Submitted</div><div class="modal-info-value" id="modal-submitted">â€”</div></div>
-        <div class="modal-info-item" style="grid-column:1/-1"><div class="modal-info-label">Description</div><div class="modal-info-value" id="modal-desc" style="font-weight:500;font-size:.85rem;color:var(--text-secondary);line-height:1.5">â€”</div></div>
+        <div class="modal-info-item"><div class="modal-info-label">Request ID</div><div class="modal-info-value" id="modal-id">—</div></div>
+        <div class="modal-info-item"><div class="modal-info-label">Type</div><div class="modal-info-value" id="modal-type">—</div></div>
+        <div class="modal-info-item"><div class="modal-info-label">Tenant</div><div class="modal-info-value" id="modal-tenant">—</div></div>
+        <div class="modal-info-item"><div class="modal-info-label">Room</div><div class="modal-info-value" id="modal-room">—</div></div>
+        <div class="modal-info-item" style="grid-column:1/-1"><div class="modal-info-label">Submitted</div><div class="modal-info-value" id="modal-submitted">—</div></div>
+        <div class="modal-info-item" style="grid-column:1/-1"><div class="modal-info-label">Description</div><div class="modal-info-value" id="modal-desc" style="font-weight:500;font-size:.85rem;color:var(--text-secondary);line-height:1.5">—</div></div>
       </div>
       <p class="modal-section-title">Update Request</p>
       <div class="modal-form-group">
@@ -261,7 +260,7 @@
       <div class="modal-form-group">
         <label class="modal-label" for="modal-assignee">Assign To (optional)</label>
         <select class="modal-select" id="modal-assignee">
-          <option value="">â€” Unassigned â€”</option>
+          <option value="">— Unassigned —</option>
           <option value="Staff: Jun Reyes">Jun Reyes</option>
           <option value="Staff: Maria Cruz">Maria Cruz</option>
           <option value="Staff: Pedro Santos">Pedro Santos</option>
@@ -271,7 +270,7 @@
       </div>
       <div class="modal-form-group">
         <label class="modal-label" for="modal-notes">Admin Notes (optional)</label>
-        <textarea class="modal-textarea" id="modal-notes" placeholder="Add internal notes about this requestâ€¦"></textarea>
+        <textarea class="modal-textarea" id="modal-notes" placeholder="Add internal notes about this request…"></textarea>
       </div>
     </div>
     <div class="sr-modal-footer">
@@ -281,7 +280,7 @@
   </div>
 </div>
 
-<!-- â”€â”€ TOAST â”€â”€ -->
+<!-- ── TOAST ── -->
 <div class="sr-toast" id="sr-toast">
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
   <span>Done</span>

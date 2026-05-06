@@ -61,6 +61,7 @@ function updateVisitor(id, changes) {
 function timeOutVisitor(id) {
   updateVisitor(id, { timeOut: new Date().toISOString() });
 }
+//commented the block of code incase of emergency
 
 // ── Utilities ──
 function pad(n) { return String(n).padStart(2, '0'); }
@@ -105,15 +106,14 @@ function visitorFullName(v) {
 function startClock() {
   function tick() {
     const el = document.getElementById('clock');
-    if (!el) return; // Guard against missing element
+    if (!el) return;
     const now = new Date();
     const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds(), ap = h >= 12 ? 'PM' : 'AM';
     h = h % 12 || 12;
     el.textContent = `${months[now.getMonth()]} ${now.getDate()}, ${now.getFullYear()} · ${pad(h)}:${pad(m)}:${pad(s)} ${ap}`;
   }
-  tick();
-  setInterval(tick, 1000);
+  tick(); setInterval(tick, 1000);
 }
 
 // ── Toast ──
@@ -140,7 +140,7 @@ function setActiveSidebar() {
 function renderNav() {
   return `
   <div id="navbar">
-    <a class="logo" href="../index.html">
+    <a class="logo" href="dashboard.html">
       <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
       <span class="logo-text">Zambo<span>Dorm</span></span>
     </a>
@@ -156,7 +156,7 @@ function renderNav() {
 function renderSidebar() {
   return `
   <nav class="sidebar">
-    <a class="sidebar-item" data-page="guard-dashboard.html" href="guard-dashboard.html">
+    <a class="sidebar-item" data-page="dashboard.html" href="dashboard.html">
       <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
     </a>
     <a class="sidebar-item" data-page="add-visitor.html" href="add-visitor.html">
@@ -178,30 +178,12 @@ function renderSidebar() {
 function handleLogout() {
   if (confirm('Log out from ZamboDorm?')) {
     showToast('Logged out successfully.');
-    setTimeout(() => { window.location.href = '../index.html'; }, 1200);
+    setTimeout(() => { window.location.href = 'dashboard.html'; }, 1200);
   }
 }
 
 // ── Init on load ──
 document.addEventListener('DOMContentLoaded', () => {
-  // Render navbar if not already in HTML
-  const navbar = document.getElementById('navbar');
-  if (navbar && navbar.innerHTML.trim() === '') {
-    navbar.innerHTML = renderNav();
-  }
-  // Render sidebar if not already in HTML
-  const sidebar = document.querySelector('.sidebar');
-  if (!sidebar) {
-    const navElement = document.querySelector('nav.sidebar');
-    if (!navElement) {
-      const appBody = document.querySelector('.app-body');
-      if (appBody) {
-        const newSidebar = document.createElement('nav');
-        newSidebar.innerHTML = renderSidebar();
-        appBody.insertBefore(newSidebar, appBody.firstChild);
-      }
-    }
-  }
   startClock();
   setActiveSidebar();
 });

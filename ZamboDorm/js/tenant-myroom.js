@@ -14,8 +14,11 @@ function initializePageFeatures() {
 
 // Update greeting with user's name
 function updateGreetingWithUserName() {
-  if (typeof UserManager !== 'undefined') {
-    UserManager.updatePageGreetings();
+  const greetingTitle = document.getElementById('greeting-title');
+  if (greetingTitle && UserManager) {
+    const userName = UserManager.getName();
+    const firstName = userName.split(' ')[0];
+    greetingTitle.textContent = `Buen Vida, ${firstName}!`;
   }
 }
 
@@ -108,16 +111,14 @@ function setupResponsiveness() {
 
 // Logout Function
 function logout() {
-  if (typeof UserManager !== 'undefined') {
-    UserManager.logout();
-  } else {
-    showNotification('Logging out...', 'info');
-    setTimeout(() => {
-      localStorage.removeItem('active_user');
-      sessionStorage.clear();
-      window.location.href = './signin-page.html';
-    }, 800);
-  }
+  showNotification('Logging out...', 'info');
+  setTimeout(() => {
+    // Clear any stored session data
+    localStorage.clear();
+    sessionStorage.clear();
+    // Redirect to signin page
+    window.location.href = './signin-page.html';
+  }, 800);
 }
 
 // Notification helper

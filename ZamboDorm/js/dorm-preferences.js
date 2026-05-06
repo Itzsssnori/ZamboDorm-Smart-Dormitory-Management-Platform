@@ -1,437 +1,316 @@
-let selectedLocation = null;
-    let selectedRoomType = null;
-    let selectedBedType = null;
-    let selectedRoommate = null;
-    let selectedAmenities = [];
-    let selectedBudgetMin = 2000;
-    let selectedBudgetMax = 5000;
+(function() {
+    'use strict';
 
-    // Track completed steps (for sequential summary display)
-    let completedSteps = 0;
-
-    // Auto-populate roommate based on bed type
-    const roommateDefaults = {
-      'single': 'no',        // Single bed = alone
-      'double-decker': 'one', // Bunk bed = 1 roommate
-      'queen': 'no',         // Queen bed = alone
-      'full': 'no'           // Full bed = alone
-    };
-
-    // Mapping constants
-    const roommateNames = {
-      'no': 'Alone',
-      'one': '1 Roommate',
-      'two': '2 Roommates',
-      'flexible': 'Flexible'
-    };
-
-    const amenityNames = {
-      'ac': 'Air Conditioning',
-      'wifi': 'High-Speed WiFi',
-      'desk': 'Study Desk',
-      'storage': 'Storage Cabinet',
-      'light': 'Natural Light',
-      'bathroom': 'Private Bathroom'
-    };
-
-    // Location display names mapping
-    const locationNames = {
-      'campus': 'Near Campus',
-      'nearest': 'Find Nearest Dorm'
-    };
-
-    const roomTypeNames = {
-      'single': 'Single Room',
-      'double': 'Double Room',
-      'deluxe': 'Deluxe Room',
-      'studio': 'Studio Room'
-    };
-
-    const bedTypeNames = {
-      'single': 'Single Bed',
-      'double-decker': 'Double Decker',
-      'queen': 'Queen Bed',
-      'full': 'Full Bed'
-    };
-
-    // Update summary display in real-time (show all selected items)
-    function updateSummary() {
-      const locationEl = document.getElementById('summary-location');
-      const roomEl = document.getElementById('summary-room');
-      const bedEl = document.getElementById('summary-bed');
-      const amenitiesEl = document.getElementById('summary-amenities');
-      const roommateEl = document.getElementById('summary-roommate');
-      const budgetEl = document.getElementById('summary-budget');
-      
-      // Update in real-time as soon as selection is made
-      if (selectedLocation) {
-        locationEl.textContent = locationNames[selectedLocation];
-      }
-      
-      if (selectedRoomType) {
-        roomEl.textContent = roomTypeNames[selectedRoomType];
-      }
-
-      if (selectedBedType) {
-        bedEl.textContent = bedTypeNames[selectedBedType];
-      }
-
-      if (selectedAmenities.length > 0) {
-        const amenityText = selectedAmenities.length + ' selected';
-        amenitiesEl.textContent = amenityText;
-      } else {
-        amenitiesEl.textContent = '0 selected';
-      }
-
-      if (selectedRoommate) {
-        const roommateText = roommateNames[selectedRoommate];
-        roommateEl.textContent = roommateText;
-      }
-
-      // Always show budget range if values are set
-      if (selectedBudgetMin !== null && selectedBudgetMax !== null) {
-        const budgetText = '₱' + selectedBudgetMin.toLocaleString() + ' - ₱' + selectedBudgetMax.toLocaleString();
-        budgetEl.textContent = budgetText;
-      }
-    }
-
-    // Show success modal on load if coming from registration
-    // Scroll to form on page load
-    window.addEventListener('load', () => {
-      const setupCard = document.querySelector('.setup-card');
-      if (setupCard) {
-        setupCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
-
-    // Helper function to scroll to form
-    function scrollToForm() {
-      const setupCard = document.querySelector('.setup-card');
-      if (setupCard) {
-        setTimeout(() => {
-          setupCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 100);
-      }
-    }
-
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('registered') === 'true') {
-      document.getElementById('successModal').classList.add('show');
-      document.getElementById('btn-success-close').addEventListener('click', () => {
-        document.getElementById('successModal').classList.remove('show');
-      });
-    }
-
-    // Role Selection removed - Step 2 is now Room Type
-
-    // Room Type Selection
-    document.querySelectorAll('[data-roomtype]').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('[data-roomtype]').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedRoomType = this.dataset.roomtype;
-        updateSummary();
-      });
-    });
-
-    // Bed Type Selection (with auto roommate population)
-    document.querySelectorAll('[data-bedtype]').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('[data-bedtype]').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedBedType = this.dataset.bedtype;
-        
-        // Auto-populate roommate based on bed type
-        const autoRoommate = roommateDefaults[selectedBedType];
-        if (autoRoommate) {
-          selectedRoommate = autoRoommate;
-          // Pre-select the auto-roommate option in step 5
-          document.querySelectorAll('[data-roommate]').forEach(card => {
-            if (card.dataset.roommate === autoRoommate) {
-              card.classList.add('selected');
-            } else {
-              card.classList.remove('selected');
+    // ── STATE ──
+    const state = {
+        currentStep: 1,
+        totalSteps: 6,
+        preferences: {
+            location: null,
+            roomType: null,
+            roommate: null,
+            amenities: [],
+            bedType: null,
+            budget: {
+                min: 2000,
+                max: 5000
             }
-          });
         }
-        
-        updateSummary();
-      });
-    });
+    };
 
-    // Amenities Selection (multiple)
-    document.querySelectorAll('.amenity-checkbox').forEach(checkbox => {
-      checkbox.addEventListener('change', function() {
-        const amenityId = this.dataset.amenity;
-        if (this.checked) {
-          if (!selectedAmenities.includes(amenityId)) {
-            selectedAmenities.push(amenityId);
-          }
-          this.closest('.amenity-card').classList.add('selected');
-        } else {
-          selectedAmenities = selectedAmenities.filter(a => a !== amenityId);
-          this.closest('.amenity-card').classList.remove('selected');
+    // ── MAPPINGS ──
+    const MAPPINGS = {
+        location: {
+            campus: 'Near Campus',
+            hospital: 'Near Hospital',
+            organization: 'Near Organization',
+            nearest: 'Nearest Dorm'
+        },
+        roomType: {
+            single: 'Single Room',
+            double: 'Double Room',
+            deluxe: 'Deluxe Room',
+            studio: 'Studio Room'
+        },
+        roommate: {
+            no: 'Alone',
+            one: '1 Roommate',
+            two: '2 Roommates',
+            flexible: 'Flexible'
+        },
+        bedType: {
+            single: 'Single Bed',
+            'double-decker': 'Double Decker',
+            queen: 'Queen Bed',
+            full: 'Full Bed'
+        },
+        amenities: {
+            ac: 'Air Conditioning',
+            wifi: 'High-Speed WiFi',
+            desk: 'Study Desk',
+            storage: 'Storage Cabinet',
+            light: 'Natural Light',
+            bathroom: 'Private Bathroom'
         }
-        updateSummary();
-      });
-    });
+    };
 
-    // Roommate Selection
-    document.querySelectorAll('[data-roommate]').forEach(card => {
-      card.addEventListener('click', function() {
-        document.querySelectorAll('[data-roommate]').forEach(c => c.classList.remove('selected'));
-        this.classList.add('selected');
-        selectedRoommate = this.dataset.roommate;
-        updateSummary();
-      });
-    });
-
-    // Budget Range Sliders
-    const minBudgetSlider = document.getElementById('min-budget-slider');
-    const maxBudgetSlider = document.getElementById('max-budget-slider');
-    const minBudgetDisplay = document.getElementById('min-budget-display');
-    const maxBudgetDisplay = document.getElementById('max-budget-display');
-    const budgetRangeText = document.getElementById('budget-range-text');
-
-    minBudgetSlider.addEventListener('input', function() {
-      selectedBudgetMin = parseInt(this.value);
-      if (selectedBudgetMin > selectedBudgetMax) {
-        selectedBudgetMin = selectedBudgetMax;
-        this.value = selectedBudgetMax;
-      }
-      minBudgetDisplay.textContent = '₱' + selectedBudgetMin.toLocaleString();
-      budgetRangeText.textContent = '₱' + selectedBudgetMin.toLocaleString() + ' - ₱' + selectedBudgetMax.toLocaleString();
-      updateSummary();
-    });
-
-    maxBudgetSlider.addEventListener('input', function() {
-      selectedBudgetMax = parseInt(this.value);
-      if (selectedBudgetMax < selectedBudgetMin) {
-        selectedBudgetMax = selectedBudgetMin;
-        this.value = selectedBudgetMin;
-      }
-      maxBudgetDisplay.textContent = '₱' + selectedBudgetMax.toLocaleString();
-      budgetRangeText.textContent = '₱' + selectedBudgetMin.toLocaleString() + ' - ₱' + selectedBudgetMax.toLocaleString();
-      updateSummary();
-    });
-
-    // Step 1: Location Selection
-    const mapContainer = document.getElementById('map-container');
-    const mapFrame = document.getElementById('map-frame');
-    const findNearestBtn = document.getElementById('find-nearest-card');
-    const selectionCards = document.querySelectorAll('.selection-card');
-
-    selectionCards.forEach(card => {
-      card.addEventListener('click', () => {
-        selectionCards.forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-        selectedLocation = card.dataset.value;
-        
-        // Hide map when selecting campus
-        if (selectedLocation === 'campus') {
-          mapContainer.style.display = 'none';
+    // ── DOM ELEMENTS ──
+    const elements = {
+        steps: document.querySelectorAll('.setup-step'),
+        progressFill: document.querySelector('.progress-fill'),
+        progressStep: document.querySelector('.progress-step'),
+        summary: {
+            location: document.getElementById('summary-location'),
+            room: document.getElementById('summary-room'),
+            bed: document.getElementById('summary-bed'),
+            amenities: document.getElementById('summary-amenities'),
+            roommate: document.getElementById('summary-roommate'),
+            budget: document.getElementById('summary-budget')
+        },
+        budget: {
+            minSlider: document.getElementById('min-budget-slider'),
+            maxSlider: document.getElementById('max-budget-slider'),
+            minDisplay: document.getElementById('min-budget-display'),
+            maxDisplay: document.getElementById('max-budget-display'),
+            rangeText: document.getElementById('budget-range-text')
+        },
+        map: {
+            container: document.getElementById('map-container'),
+            frame: document.getElementById('map-frame')
         }
-      });
-    });
+    };
 
-    // Logic to show map when "Find Nearest" is clicked
-    findNearestBtn.addEventListener('click', () => {
-      // Toggle Visibility
-      mapContainer.style.display = 'block';
-      
-      // Embed Google Map centered on Zamboanga City
-      mapFrame.innerHTML = `
-        <iframe 
-          width="100%" 
-          height="100%" 
-          frameborder="0" 
-          style="border:0" 
-          src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAUgE8FqNTq5PVj3a-ZpV2sj_kf5IQyVrE&q=dormitory+in+Zamboanga+City&zoom=14" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>`;
-        
-      // Smooth scroll to map
-      mapContainer.scrollIntoView({ behavior: 'smooth' });
-      selectedLocation = 'nearest';
-    });
+    // ── CORE FUNCTIONS ──
 
-    // Step buttons
-    document.getElementById('btn-step1-next').addEventListener('click', () => {
-      if (!selectedLocation) {
-        alert('Please select a location preference');
-        return;
-      }
-      // If map was open, hide it before moving to step 2
-      mapContainer.style.display = 'none';
-      
-      completedSteps = 1;
-      updateSummary();
-      document.getElementById('step1').style.display = 'none';
-      document.getElementById('step2').style.display = 'block';
-      updateProgressBar(2);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step2-back').addEventListener('click', () => {
-      completedSteps = 0;
-      document.getElementById('step2').style.display = 'none';
-      document.getElementById('step1').style.display = 'block';
-      updateProgressBar(1);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step2-next').addEventListener('click', () => {
-      if (!selectedRoomType) {
-        alert('Please select a room type');
-        return;
-      }
-      completedSteps = 2;
-      updateSummary();
-      
-      if (selectedRoomType === 'single') {
-        selectedRoommate = 'no'; // Default for single room
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('step4').style.display = 'block';
-        updateProgressBar(4);
-      } else {
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('step3').style.display = 'block';
-        updateProgressBar(3);
-      }
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step3-back').addEventListener('click', () => {
-      completedSteps = 1;
-      document.getElementById('step3').style.display = 'none';
-      document.getElementById('step2').style.display = 'block';
-      updateProgressBar(2);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step3-next').addEventListener('click', () => {
-      if (!selectedRoommate) {
-        alert('Please select a roommate preference');
-        return;
-      }
-      completedSteps = 3;
-      updateSummary();
-      document.getElementById('step3').style.display = 'none';
-      document.getElementById('step4').style.display = 'block';
-      updateProgressBar(4);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step4-back').addEventListener('click', () => {
-      if (selectedRoomType === 'single') {
-        completedSteps = 1;
-        document.getElementById('step4').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-        updateProgressBar(2);
-      } else {
-        completedSteps = 2;
-        document.getElementById('step4').style.display = 'none';
-        document.getElementById('step3').style.display = 'block';
-        updateProgressBar(3);
-      }
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step4-next').addEventListener('click', () => {
-      if (selectedAmenities.length === 0) {
-        alert('Please select at least one amenity');
-        return;
-      }
-      completedSteps = 4;
-      updateSummary();
-      document.getElementById('step4').style.display = 'none';
-      document.getElementById('step5').style.display = 'block';
-      updateProgressBar(5);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step5-back').addEventListener('click', () => {
-      completedSteps = 3;
-      document.getElementById('step5').style.display = 'none';
-      document.getElementById('step4').style.display = 'block';
-      updateProgressBar(4);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step5-next').addEventListener('click', () => {
-      if (!selectedBedType) {
-        alert('Please select a bed type');
-        return;
-      }
-      completedSteps = 5;
-      updateSummary();
-      document.getElementById('step5').style.display = 'none';
-      document.getElementById('step6').style.display = 'block';
-      updateProgressBar(6);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step6-back').addEventListener('click', () => {
-      completedSteps = 4;
-      document.getElementById('step6').style.display = 'none';
-      document.getElementById('step5').style.display = 'block';
-      updateProgressBar(5);
-      scrollToForm();
-    });
-
-    document.getElementById('btn-step6-next').addEventListener('click', () => {
-      completedSteps = 6;
-      updateSummary();
-      
-      // Save preferences to user profile in localStorage
-      if (typeof UserManager !== 'undefined' && UserManager.isAuthenticated()) {
-        const currentUser = UserManager.getUser();
-        currentUser.preferences = {
-          location: selectedLocation,
-          roomType: selectedRoomType,
-          bedType: selectedBedType,
-          amenities: selectedAmenities,
-          roommate: selectedRoommate,
-          budgetMin: selectedBudgetMin,
-          budgetMax: selectedBudgetMax,
-          setupComplete: true
-        };
-        
-        // Update the user in the "all users" list too
-        const allUsers = UserManager.getAllUsers();
-        const userIndex = allUsers.findIndex(u => u.id === currentUser.id || u.email === currentUser.email);
-        if (userIndex !== -1) {
-          allUsers[userIndex] = currentUser;
-          UserManager.saveAllUsers(allUsers);
-        }
-        
-        // Save as current session user
-        UserManager.setUser(currentUser);
-        
-        console.log('Preferences saved for:', currentUser.name);
-      }
-      
-      alert('Setup complete! Your preferences have been saved.');
-      
-      // Redirect based on role if possible, otherwise default to tenant-myroom
-      if (typeof UserManager !== 'undefined') {
-        const role = UserManager.getRole();
-        if (role === 'admin' || role === 'landlord') {
-          window.location.href = './admin-overview.html';
-        } else if (role === 'sysadmin' || role === 'system admin') {
-          window.location.href = './sysadmin-overview.html';
-        } else {
-          window.location.href = './tenant-myroom.html';
-        }
-      } else {
-        window.location.href = './tenant-myroom.html';
-      }
-    });
-
-    function updateProgressBar(step) {
-      const percentage = (step / 6) * 100;
-      document.querySelector('.progress-fill').style.width = percentage + '%';
-      document.querySelector('.progress-step').textContent = 'Step ' + step + ' of 6';
+    function init() {
+        bindEvents();
+        updateProgressBar();
+        checkRegistrationStatus();
     }
+
+    function bindEvents() {
+        // Step 1: Location
+        document.querySelectorAll('.selection-card').forEach(card => {
+            card.addEventListener('click', () => selectPreference('location', card.dataset.value, card));
+        });
+
+        // Step 2: Room Type
+        document.querySelectorAll('[data-roomtype]').forEach(card => {
+            card.addEventListener('click', () => selectPreference('roomType', card.dataset.roomtype, card));
+        });
+
+        // Step 3: Roommate
+        document.querySelectorAll('[data-roommate]').forEach(card => {
+            card.addEventListener('click', () => selectPreference('roommate', card.dataset.roommate, card));
+        });
+
+        // Step 4: Amenities
+        document.querySelectorAll('.amenity-card').forEach(card => {
+            card.addEventListener('click', () => toggleAmenity(card));
+        });
+
+        // Step 5: Bed Type
+        document.querySelectorAll('[data-bedtype]').forEach(card => {
+            card.addEventListener('click', () => selectPreference('bedType', card.dataset.bedtype, card));
+        });
+
+        // Step 6: Budget
+        elements.budget.minSlider.addEventListener('input', handleBudgetChange);
+        elements.budget.maxSlider.addEventListener('input', handleBudgetChange);
+
+        // Navigation Buttons
+        document.getElementById('btn-step1-next').addEventListener('click', () => navigate(1));
+        document.getElementById('btn-step2-back').addEventListener('click', () => navigate(-1));
+        document.getElementById('btn-step2-next').addEventListener('click', () => navigate(1));
+        document.getElementById('btn-step3-back').addEventListener('click', () => navigate(-1));
+        document.getElementById('btn-step3-next').addEventListener('click', () => navigate(1));
+        document.getElementById('btn-step4-back').addEventListener('click', () => navigate(-1));
+        document.getElementById('btn-step4-next').addEventListener('click', () => navigate(1));
+        document.getElementById('btn-step5-back').addEventListener('click', () => navigate(-1));
+        document.getElementById('btn-step5-next').addEventListener('click', () => navigate(1));
+        document.getElementById('btn-step6-back').addEventListener('click', () => navigate(-1));
+        document.getElementById('btn-step6-next').addEventListener('click', completeSetup);
+
+        // Map Trigger
+        document.getElementById('find-nearest-card').addEventListener('click', showMap);
+    }
+
+    function selectPreference(key, value, card) {
+        state.preferences[key] = value;
+        
+        // Update UI
+        const siblings = card.parentElement.querySelectorAll('.' + card.classList[0]);
+        siblings.forEach(s => s.classList.remove('selected'));
+        card.classList.add('selected');
+
+        // Logic-specific overrides
+        if (key === 'location' && value !== 'nearest') {
+            elements.map.container.style.display = 'none';
+        }
+
+        if (key === 'roomType' && value === 'single') {
+            state.preferences.roommate = 'no';
+        }
+
+        updateSummary();
+    }
+
+    function toggleAmenity(card) {
+        const value = card.dataset.amenity;
+        
+        if (!state.preferences.amenities.includes(value)) {
+            state.preferences.amenities.push(value);
+            card.classList.add('selected');
+        } else {
+            state.preferences.amenities = state.preferences.amenities.filter(a => a !== value);
+            card.classList.remove('selected');
+        }
+        updateSummary();
+    }
+
+    function handleBudgetChange() {
+        let min = parseInt(elements.budget.minSlider.value);
+        let max = parseInt(elements.budget.maxSlider.value);
+
+        if (min > max) {
+            if (this === elements.budget.minSlider) {
+                max = min;
+                elements.budget.maxSlider.value = max;
+            } else {
+                min = max;
+                elements.budget.minSlider.value = min;
+            }
+        }
+
+        state.preferences.budget.min = min;
+        state.preferences.budget.max = max;
+
+        elements.budget.minDisplay.textContent = `₱${min.toLocaleString()}`;
+        elements.budget.maxDisplay.textContent = `₱${max.toLocaleString()}`;
+        elements.budget.rangeText.textContent = `₱${min.toLocaleString()} - ₱${max.toLocaleString()}`;
+        
+        updateSummary();
+    }
+
+    function navigate(direction) {
+        const nextStep = state.currentStep + direction;
+
+        // Validation
+        if (direction > 0 && !validateStep(state.currentStep)) {
+            return;
+        }
+
+        // Logic for skipping Step 3 if Single Room
+        if (state.currentStep === 2 && direction > 0 && state.preferences.roomType === 'single') {
+            goToStep(4);
+            return;
+        }
+        if (state.currentStep === 4 && direction < 0 && state.preferences.roomType === 'single') {
+            goToStep(2);
+            return;
+        }
+
+        if (nextStep >= 1 && nextStep <= state.totalSteps) {
+            goToStep(nextStep);
+        }
+    }
+
+    function goToStep(step) {
+        elements.steps.forEach(s => s.classList.add('hidden'));
+        const targetStep = document.getElementById(`step${step}`);
+        if (targetStep) {
+            targetStep.classList.remove('hidden');
+            state.currentStep = step;
+            updateProgressBar();
+            scrollToTop();
+        }
+    }
+
+    function validateStep(step) {
+        switch(step) {
+            case 1:
+                if (!state.preferences.location) return alert('Please select a location preference');
+                break;
+            case 2:
+                if (!state.preferences.roomType) return alert('Please select a room type');
+                break;
+            case 3:
+                if (!state.preferences.roommate) return alert('Please select roommate preference');
+                break;
+            case 4:
+                if (state.preferences.amenities.length === 0) return alert('Please select at least one amenity');
+                break;
+            case 5:
+                if (!state.preferences.bedType) return alert('Please select a bed type');
+                break;
+        }
+        return true;
+    }
+
+    function updateProgressBar() {
+        const percentage = (state.currentStep / state.totalSteps) * 100;
+        elements.progressFill.style.width = `${percentage}%`;
+        elements.progressStep.textContent = `Step ${state.currentStep} of ${state.totalSteps}`;
+    }
+
+    function updateSummary() {
+        const p = state.preferences;
+        
+        elements.summary.location.textContent = MAPPINGS.location[p.location] || '-';
+        elements.summary.room.textContent = MAPPINGS.roomType[p.roomType] || '-';
+        elements.summary.bed.textContent = MAPPINGS.bedType[p.bedType] || '-';
+        elements.summary.roommate.textContent = MAPPINGS.roommate[p.roommate] || '-';
+        elements.summary.amenities.textContent = p.amenities.length > 0 ? `${p.amenities.length} selected` : '0 selected';
+        elements.summary.budget.textContent = `₱${p.budget.min.toLocaleString()} - ₱${p.budget.max.toLocaleString()}`;
+    }
+
+    function showMap() {
+        elements.map.container.style.display = 'block';
+        elements.map.frame.innerHTML = `
+            <iframe 
+                width="100%" height="100%" frameborder="0" style="border:0" 
+                src="https://www.google.com/maps/embed/v1/search?key=AIzaSyAUgE8FqNTq5PVj3a-ZpV2sj_kf5IQyVrE&q=dormitory+in+Zamboanga+City&zoom=14" 
+                allowfullscreen="" loading="lazy">
+            </iframe>`;
+        setTimeout(() => elements.map.container.scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+
+    function scrollToTop() {
+        const card = document.querySelector('.setup-card');
+        if (card) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function checkRegistrationStatus() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('registered') === 'true') {
+            const alert = document.getElementById('successAlert');
+            const closeBtn = document.getElementById('btn-alert-close');
+            
+            if (alert) {
+                alert.classList.remove('hidden');
+                
+                // Auto-hide after 5 seconds
+                const timer = setTimeout(() => {
+                    alert.classList.add('hidden');
+                }, 5000);
+
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', () => {
+                        alert.classList.add('hidden');
+                        clearTimeout(timer);
+                    });
+                }
+            }
+        }
+    }
+
+    function completeSetup() {
+        console.log('Final Preferences:', state.preferences);
+        alert('Setup complete! Finding your perfect dorm...');
+        window.location.href = './dorm-application.html';
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', init);
+
+})();

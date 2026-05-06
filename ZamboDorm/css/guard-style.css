@@ -18,7 +18,7 @@ html { scroll-behavior: smooth; }
 body { font-family: var(--font); background: var(--bg-gradient); color: var(--text); min-height: 100vh; overflow-x: hidden; display: flex; flex-direction: column; }
 
 /* ── NAVBAR ── */
-#navbar {
+ #navbar {
   position: sticky; top: 0; z-index: 100;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(16px);
@@ -44,6 +44,8 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .btn-logout { padding: 0.35rem 0.85rem; background: rgba(239,68,68,0.1); color: var(--red); border: none; border-radius: 8px; font-family: var(--font); font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
 .btn-logout:hover { background: rgba(239,68,68,0.2); }
 
+/* commented the code incase of imergency */
+
 /* ── LAYOUT ── */
 .app-body { display: flex; flex: 1; }
 
@@ -52,13 +54,18 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   width: var(--sidebar-w);
   background: white;
   border-right: 1px solid var(--card-border);
-  padding: 1.25rem 0.875rem;
-  display: flex; flex-direction: column; gap: 0.35rem;
   position: sticky; top: var(--nav-h);
   height: calc(100vh - var(--nav-h));
   overflow-y: auto;
   z-index: 99;
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem 0.875rem;
 }
 
 .sidebar-item {
@@ -76,6 +83,16 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .sidebar-item:hover { background: rgba(124,58,237,0.07); color: var(--primary); }
 .sidebar-item.active { background: rgba(124,58,237,0.12); color: var(--primary); }
 .sidebar-item.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--primary); border-radius: 0 4px 4px 0; }
+
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke-width: 1.75;
+  color: inherit;
+  fill: none;
+}
+
 .sidebar-item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; flex-shrink: 0; color: inherit; }
 .sidebar-item.danger { color: var(--red); }
 .sidebar-item.danger:hover { background: rgba(239,68,68,0.07); }
@@ -93,9 +110,8 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 
 /* ── PAGE HEADER ── */
 .page-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.75rem; gap: 1rem; flex-wrap: wrap; }
-.page-header > div { display: flex; flex-direction: column; }
-.page-header h1 { font-size: 2.3rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; margin: 0; }
-.page-header p  { color: var(--text-muted); font-size: 0.9rem; margin: 3px 0 0 0; font-weight: 500; }
+.page-header h1 { font-size: 2.3rem; font-weight: 800; color: var(--text); letter-spacing: -0.03em; }
+.page-header p  { color: var(--text-muted); font-size: 0.9rem; margin-top: 3px; font-weight: 500; }
 .header-actions { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
 
 /* ── STAT CARDS ── */
@@ -263,3 +279,4 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   .page-header h1 { font-size: 1.35rem; }
   .stat-card .s-value { font-size: 1.2rem; }
 }
+

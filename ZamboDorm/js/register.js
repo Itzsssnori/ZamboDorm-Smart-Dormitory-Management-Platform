@@ -269,28 +269,22 @@ function goToStep(stepNum) {
 function setupPasswordToggle(toggleBtn, inputField) {
   if (!toggleBtn) return;
 
-  // Set initial icon
-  toggleBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-            <line x1="1" y1="1" x2="23" y2="23"/>
-          </svg>`;
-
   toggleBtn.addEventListener('click', () => {
     const isText = inputField.type === 'text';
     inputField.type = isText ? 'password' : 'text';
     toggleBtn.innerHTML = isText
       ? `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
-            <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
-            <line x1="1" y1="1" x2="23" y2="23"/>
-          </svg>`
+           <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"/>
+           <circle cx="12" cy="12" r="3"/>
+         </svg>`
       : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z"/>
-            <circle cx="12" cy="12" r="3"/>
-          </svg>`;
+           <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+           <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+           <line x1="1" y1="1" x2="23" y2="23"/>
+         </svg>`;
   });
 }
+
 // ── GENERATE RANDOM PIN ──
 function generateRandomPin() {
   return Math.floor(100000 + Math.random() * 900000).toString();
@@ -406,8 +400,7 @@ function setupButtonListeners() {
     const selectedRole = document.querySelector('input[name="account_role"]:checked').value;
     
     // Check if email already exists
-    const allUsers = (typeof UserManager !== 'undefined') ? UserManager.getAllUsers() : [];
-    if (allUsers.some(u => u.email === email)) {
+    if (typeof UserManager !== 'undefined' && UserManager.emailExists(email)) {
       showError(DOM.errors.box3, 'This email is already registered. Please use a different email or sign in.');
       DOM.steps.step3.classList.remove('loading');
       DOM.buttons.submit.classList.remove('loading');
@@ -416,7 +409,7 @@ function setupButtonListeners() {
     }
     
     if (typeof UserManager !== 'undefined') {
-      // Register new user with the centralized manager
+      // Register new user with unique ID
       UserManager.registerUser({
         name: fullName,
         email: email,

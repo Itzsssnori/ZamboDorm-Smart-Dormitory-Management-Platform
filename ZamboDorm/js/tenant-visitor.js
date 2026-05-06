@@ -110,56 +110,16 @@ function checkAccept() {
 }
 
 function submitVisitor() {
-  // 1. Generate reference number
   const ref = '#VIS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
   document.getElementById('done-ref').textContent = ref;
 
-  // 2. Capture all data from fields
-  const visitorData = {
-    id: ref,
-    visitorName: document.getElementById('v-name').value.trim(),
-    phone: document.getElementById('v-phone').value.trim(),
-    govId: document.getElementById('v-id').value.trim(),
-    purpose: document.getElementById('v-purpose').value,
-    duration: document.getElementById('v-duration').value,
-    date: document.getElementById('v-date').value,
-    time: document.getElementById('v-time').value,
-    status: 'Pending Approval',
-    createdAt: new Date().toISOString()
-  };
-
-  // 3. Link to current tenant
-  if (typeof UserManager !== 'undefined') {
-    const activeUser = UserManager.getUser();
-    if (activeUser) {
-      visitorData.tenantId = activeUser.id;
-      visitorData.tenantName = activeUser.name;
-      // Also include room if available in user object
-      if (activeUser.room) visitorData.roomNumber = activeUser.room;
-    }
-  }
-
-  // 4. Save to localStorage
-  try {
-    const allVisitors = JSON.parse(localStorage.getItem('zambodorm_visitors') || '[]');
-    allVisitors.push(visitorData);
-    localStorage.setItem('zambodorm_visitors', JSON.stringify(allVisitors));
-  } catch (e) {
-    console.error("Error saving visitor data", e);
-  }
-
-  // 5. Update UI to success screen
   ['a', 'b', 'c'].forEach(p => {
     const ph = document.getElementById('ph-' + p);
-    if (ph) {
-      ph.classList.remove('active');
-      ph.classList.add('done');
-    }
+    ph.classList.remove('active');
+    ph.classList.add('done');
   });
-  const lineAB = document.getElementById('line-ab');
-  const lineBC = document.getElementById('line-bc');
-  if (lineAB) lineAB.classList.add('done');
-  if (lineBC) lineBC.classList.add('done');
+  document.getElementById('line-ab').classList.add('done');
+  document.getElementById('line-bc').classList.add('done');
 
   showScreen('d');
 }

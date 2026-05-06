@@ -4,126 +4,188 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Add Visitor — ZamboDorm</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="../css/guard-style.css" />
+   <link rel="stylesheet" href="../css/add-visitor-style.css" />
+   <link rel="stylesheet" href="../css/sidebar-hamburger.css" />
+
+  <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
 </head>
 <body>
 
-<!-- NAVBAR -->
-<zd-navbar authenticated></zd-navbar>
-<script src="../js/navbar-scroll.js"></script>
+  <!-- Navbar Web Component -->
+  <zd-navbar authenticated></zd-navbar>
+  <script src="../js/navbar-scroll.js"></script>
+<div class="sidebar-overlay" id="overlay"></div>
+
+<!-- Mobile Sidebar Hamburger (Reusable) -->
+<button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
+  <span></span><span></span><span></span>
+</button>
+<script src="../js/tenant-sidebar-hamburger.js"></script>
 
 <div class="app-body">
 
   <!-- SIDEBAR -->
-  <nav class="sidebar">
-    <a class="sidebar-item" data-page="dashboard.html" href="guard-dashboard.html">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
-    </a>
-    <a class="sidebar-item active" data-page="add-visitor.html" href="add-visitor.html">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>Add Visitor
-    </a>
-    <a class="sidebar-item" data-page="current-visitors.html" href="current-visitors.html">
-      <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Current Visitors
-    </a>
-    <a class="sidebar-item" data-page="visitor-logs.html" href="visitor-logs.html">
-      <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Visitor Logs
-    </a>
-    <div class="sidebar-divider"></div>
-    <button class="sidebar-item danger" onclick="handleLogout()">
-      <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout
-    </button>
-  </nav>
+  <aside class="sidebar" id="sidebar">
+    <nav class="sidebar-nav">
+      <a class="sidebar-item" data-page="dashboard.html" href="../html/guard-dashboard.html">
+        <svg class="sidebar-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        <span>Dashboard</span>
+      </a>
+      <a class="sidebar-item active" data-page="add-visitor.html" href="../html/add-visitor.html">
+        <svg class="sidebar-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        <span>Add Visitor</span>
+      </a>
+      <a class="sidebar-item" data-page="current-visitors.html" href="../html/current-visitors.html">
+        <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Current Visitors</span>
+      </a>
+      <a class="sidebar-item" data-page="visitor-logs.html" href="../html/visitor-logs.html">
+        <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <span>Visitor Logs</span>
+      </a>
+      <!-- QR Scanner Link -->
+      <a class="sidebar-item" href="#" onclick="showToast('QR Scanner module arriving soon!', false)">
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="7" y="7" width="10" height="10" opacity="0.3"/>
+          <path d="M7 17l10-10" stroke-opacity="0.5"/>
+        </svg>
+        <span>QR Scanner</span>
+      </a>
+      <div class="sidebar-divider"></div>
+      <button class="sidebar-item danger" onclick="handleLogout()">
+        <svg class="sidebar-icon" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        <span>Logout</span>
+      </button>
+    </nav>
+  </aside>
 
   <!-- MAIN -->
   <main class="main-content">
     <div class="page-header">
-      <div>
-        <h1>Add Visitor</h1>
+      <h1>Add Visitor
         <p>Fill in the details below to log a new visitor's time in.</p>
+      </h1>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div style="max-width: 1200px; margin: 0 auto 1.75rem; background:#fff; border:1px solid #e8e8f0; border-radius:14px; padding: 1.25rem 2.25rem; box-shadow: 0 2px 12px rgba(120,110,220,0.06);">
+      <div class="progress-bar" id="progressBar" style="margin-bottom:0;">
+        <div class="step-dot active" data-s="1">
+          <div class="dot-circle">1</div>
+          <div class="dot-label">Visitor info</div>
+        </div>
+        <div class="step-dot" data-s="2">
+          <div class="dot-circle">2</div>
+          <div class="dot-label">Visit details</div>
+        </div>
+        <div class="step-dot" data-s="3">
+          <div class="dot-circle">3</div>
+          <div class="dot-label">Review</div>
+        </div>
       </div>
     </div>
 
-    <div class="form-card">
+    <!-- WIZARD CARD -->
+    <div class="wizard-card">
 
-      <!-- NAME ROW: Last | First | MI -->
-      <div class="form-row triple">
-        <div class="form-group">
-          <label class="form-label">Last Name *</label>
-          <input class="form-input" id="f-last" type="text" placeholder="e.g. Dela Cruz" />
+      <!-- STEP 1: Visitor Info -->
+      <div class="step-panel active" id="step1">
+        <p class="step-heading">Visitor information</p>
+        <p class="step-sub">Enter the visitor's name and identification details.</p>
+
+        <div class="field-grid col-3">
+          <div class="field">
+            <label>Last Name *</label>
+            <input id="f-last" type="text" placeholder="e.g. Dela Cruz" />
+          </div>
+          <div class="field">
+            <label>First Name *</label>
+            <input id="f-first" type="text" placeholder="e.g. Juan" />
+          </div>
+          <div class="field">
+            <label>M.I. <span class="opt">(opt.)</span></label>
+            <input id="f-mi" type="text" placeholder="R" maxlength="3" style="text-transform:uppercase;" />
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">First Name *</label>
-          <input class="form-input" id="f-first" type="text" placeholder="e.g. Juan" />
-        </div>
-        <div class="form-group">
-          <label class="form-label">M.I. <span class="optional">(optional)</span></label>
-          <input class="form-input" id="f-mi" type="text" placeholder="e.g. R" maxlength="3" style="text-transform:uppercase;" />
+
+        <div class="field-grid col-2">
+          <div class="field">
+            <label>Contact Number <span class="opt">(optional)</span></label>
+            <input id="f-contact" type="text" placeholder="09XX XXX XXXX" />
+          </div>
+          <div class="field">
+            <label>ID Presented</label>
+            <select id="f-id"></select>
+          </div>
         </div>
       </div>
 
-      <!-- CONTACT -->
-      <div class="form-row single">
-        <div class="form-group">
-          <label class="form-label">Contact Number <span class="optional">(optional)</span></label>
-          <input class="form-input" id="f-contact" type="text" placeholder="09XX XXX XXXX" />
-        </div>
-      </div>
+      <!-- STEP 2: Visit Details -->
+      <div class="step-panel" id="step2">
+        <p class="step-heading">Visit details</p>
+        <p class="step-sub">Select the resident being visited and the reason for the visit.</p>
 
-      <!-- PERSON TO VISIT + ROOM -->
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Person to Visit *</label>
-          <div class="select-wrap">
-            <select class="form-select" id="f-person" onchange="autoFillRoom()">
+        <div class="field-grid col-2">
+          <div class="field">
+            <label>Person to Visit *</label>
+            <select id="f-person" onchange="autoFillRoom()">
               <option value="">— Select resident —</option>
             </select>
           </div>
+          <div class="field">
+            <label>Room Number</label>
+            <input id="f-room" type="text" placeholder="Auto-fills on selection" readonly />
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Room Number</label>
-          <input class="form-input" id="f-room" type="text" placeholder="Auto-fills on selection" readonly />
-        </div>
-      </div>
 
-      <!-- PURPOSE -->
-      <div class="form-row single">
-        <div class="form-group">
-          <label class="form-label">Purpose of Visit *</label>
-          <div class="select-wrap">
-            <select class="form-select" id="f-purpose">
+        <div class="field-grid col-1">
+          <div class="field">
+            <label>Purpose of Visit *</label>
+            <select id="f-purpose">
               <option value="">— Select purpose —</option>
             </select>
           </div>
         </div>
-      </div>
 
-      <!-- ID TYPE -->
-      <div class="form-row single">
-        <div class="form-group">
-          <label class="form-label">ID Presented <span class="optional">(optional)</span></label>
-          <div class="select-wrap">
-            <select class="form-select" id="f-id">
-              <option value="">— Select ID type —</option>
-            </select>
+        <div class="field-grid col-1">
+          <div class="field">
+            <label>Time In</label>
+            <div class="timein-display" id="f-timein">--:--:-- --</div>
           </div>
         </div>
       </div>
 
-      <!-- TIME IN (auto) -->
-      <div class="form-row single">
-        <div class="form-group">
-          <label class="form-label">Time In</label>
-          <input class="form-input" id="f-timein" type="text" readonly />
+      <!-- STEP 3: Review -->
+      <div class="step-panel" id="step3">
+        <p class="step-heading">Review &amp; confirm</p>
+        <p class="step-sub">Double-check the details before logging the visitor in.</p>
+        <div id="review-content"></div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="step-panel" id="step4">
+        <div class="success-box">
+          <div class="check-circle">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <p class="success-name" id="success-name">Visitor logged in</p>
+          <p class="success-sub" id="success-sub">Time in recorded successfully.</p>
+          <button class="btn-wiz primary" onclick="resetWizard()">+ Add another visitor</button>
         </div>
       </div>
 
-      <button class="btn-timein" onclick="submitVisitor()">⏱ TIME IN</button>
-    </div>
+      <!-- FOOTER -->
+      <div class="wiz-footer" id="wizFooter">
+        <button class="btn-wiz ghost" id="btnBack" onclick="prevStep()" style="display:none;">Back</button>
+        <span class="step-counter" id="stepCounter">Step 1 of 3</span>
+        <button class="btn-wiz primary" id="btnNext" onclick="nextStep()">Next →</button>
+      </div>
+
+    </div><!-- /.wizard-card -->
   </main>
 </div>
 
@@ -135,5 +197,182 @@
 
 <script src="../js/guard-data-main.js"></script>
 <script src="../js/add-visitor-script.js"></script>
+<script>
+  /* ── Sync Guard Info & Navbar Customization ── */
+  (function() {
+    const guardName = localStorage.getItem('guardName') || localStorage.getItem('currentGuard') || 'Guard Narvaez';
+    if (typeof UserManager !== 'undefined') {
+      const currentUser = UserManager.getUser();
+      if (!currentUser || currentUser.name !== guardName) {
+        UserManager.setUser({ name: guardName, role: 'guard' });
+      }
+    }
+
+    function injectClock() {
+      const navbarInner = document.querySelector('zd-navbar .navbar__inner');
+      if (navbarInner && !document.getElementById('clock')) {
+        const clock = document.createElement('div');
+        clock.id = 'clock';
+        const logo = navbarInner.querySelector('.logo');
+        if (logo) logo.after(clock);
+        else navbarInner.prepend(clock);
+        tickClock();
+        setInterval(tickClock, 1000);
+      }
+    }
+
+    function tickClock() {
+      const el = document.getElementById('clock');
+      if (!el) return;
+      el.textContent = new Date().toLocaleString('en-PH', {
+        weekday: 'short', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', injectClock);
+    } else {
+      setTimeout(injectClock, 0);
+    }
+  })();
+
+  /* ── Wizard State ── */
+  let currentStep = 1;
+  const totalSteps = 3;
+
+  /* ── Live Clock ── */
+  function updateClock() {
+    const el = document.getElementById('f-timein');
+    if (!el) return;
+    const now = new Date();
+    let h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+    const ampm = h >= 12 ? 'PM' : 'AM';
+    h = h % 12 || 12;
+    el.textContent =
+      String(h).padStart(2,'0') + ':' +
+      String(m).padStart(2,'0') + ':' +
+      String(s).padStart(2,'0') + ' ' + ampm;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  /* ── Set Step ── */
+  function setStep(n) {
+    currentStep = n;
+    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('step' + n).classList.add('active');
+
+    document.querySelectorAll('.step-dot').forEach(d => {
+      const s = parseInt(d.dataset.s);
+      d.classList.remove('active','done');
+      if (s === n) d.classList.add('active');
+      else if (s < n) d.classList.add('done');
+    });
+
+    const footer = document.getElementById('wizFooter');
+    const btnBack = document.getElementById('btnBack');
+    const btnNext = document.getElementById('btnNext');
+    const counter = document.getElementById('stepCounter');
+
+    if (n === 4) {
+      footer.style.display = 'none';
+      return;
+    }
+    footer.style.display = 'flex';
+    btnBack.style.display = n > 1 ? 'inline-block' : 'none';
+    counter.textContent = 'Step ' + n + ' of ' + totalSteps;
+    btnNext.textContent = n === totalSteps ? '⏱ Time In' : 'Next →';
+  }
+
+  /* ── Validation ── */
+  function validate(step) {
+    if (step === 1) {
+      if (!document.getElementById('f-last').value.trim()) {
+        alert('Please enter the visitor\'s last name.'); return false;
+      }
+      if (!document.getElementById('f-first').value.trim()) {
+        alert('Please enter the visitor\'s first name.'); return false;
+      }
+    }
+    if (step === 2) {
+      if (!document.getElementById('f-person').value) {
+        alert('Please select a resident to visit.'); return false;
+      }
+      if (!document.getElementById('f-purpose').value) {
+        alert('Please select a purpose of visit.'); return false;
+      }
+    }
+    return true;
+  }
+
+  /* ── Build Review ── */
+  function buildReview() {
+    const last    = document.getElementById('f-last').value;
+    const first   = document.getElementById('f-first').value;
+    const mi      = document.getElementById('f-mi').value;
+    const contact = document.getElementById('f-contact').value || '—';
+    const personSel = document.getElementById('f-person');
+    const person  = personSel.options[personSel.selectedIndex].text;
+    const room    = document.getElementById('f-room').value || '—';
+    const purposeSel = document.getElementById('f-purpose');
+    const purpose = purposeSel.options[purposeSel.selectedIndex].text;
+    const idSel   = document.getElementById('f-id');
+    const idType  = idSel.options[idSel.selectedIndex].text || '—';
+    const timein  = document.getElementById('f-timein').textContent;
+
+    const rows = [
+      ['Visitor name', `${last}, ${first}${mi ? ' ' + mi + '.' : ''}`],
+      ['Contact number', contact],
+      ['ID presented', idType],
+      ['Visiting', person],
+      ['Room', room],
+      ['Purpose', purpose],
+      ['Time in', timein],
+    ];
+
+    document.getElementById('review-content').innerHTML = rows.map(([l, v]) =>
+      `<div class="review-row"><span class="rl">${l}</span><span class="rv">${v}</span></div>`
+    ).join('');
+  }
+
+  /* ── Next ── */
+  function nextStep() {
+    if (!validate(currentStep)) return;
+    if (currentStep === 2) buildReview();
+    if (currentStep < totalSteps) {
+      setStep(currentStep + 1);
+      return;
+    }
+    /* Submit */
+    const last  = document.getElementById('f-last').value;
+    const first = document.getElementById('f-first').value;
+    const time  = document.getElementById('f-timein').textContent;
+    document.getElementById('success-name').textContent = `${first} ${last} is logged in`;
+    document.getElementById('success-sub').textContent  = `Time in recorded at ${time}`;
+
+    /* Call the original submitVisitor if it exists */
+    if (typeof submitVisitor === 'function') submitVisitor();
+
+    setStep(4);
+  }
+
+  /* ── Back ── */
+  function prevStep() {
+    if (currentStep > 1) setStep(currentStep - 1);
+  }
+
+  /* ── Reset ── */
+  function resetWizard() {
+    ['f-last','f-first','f-mi','f-contact','f-room'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+    ['f-person','f-purpose','f-id'].forEach(id => {
+      document.getElementById(id).selectedIndex = 0;
+    });
+    document.getElementById('wizFooter').style.display = 'flex';
+    setStep(1);
+  }
+</script>
 </body>
 </html>

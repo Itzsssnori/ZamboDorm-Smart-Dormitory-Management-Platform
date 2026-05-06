@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ZamboDorm â€“ Report an Issue</title>
-  <link rel="stylesheet" href="../css/variables.css">
-  <link rel="stylesheet" href="../css/navbar.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <title>ZamboDorm – Report an Issue</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/variables.css"/>
   <link rel="stylesheet" href="../css/base.css"/>
   <link rel="stylesheet" href="../css/components.css"/>
   <link rel="stylesheet" href="../css/layout.css"/>
@@ -25,6 +23,7 @@
 
 <!-- Navbar Web Component -->
 <zd-navbar authenticated></zd-navbar>
+  <script src="../js/hamburger.js"></script>
   <script src="../js/navbar-scroll.js"></script>
 <div class="sidebar-overlay" id="overlay" onclick="toggleSidebar()"></div>
 
@@ -32,9 +31,9 @@
 <button class="sidebar-hamburger" id="sidebarHamburger" aria-label="Open sidebar">
   <span></span><span></span><span></span>
 </button>
-<script src="../js/sidebar-hamburger.js"></script>
+<script src="../js/tenant-sidebar-hamburger.js"></script>
 
-<!-- â”€â”€ SIDEBAR â”€â”€ -->
+<!-- ── SIDEBAR ── -->
 <aside class="sidebar" id="sidebar">
   <nav class="sidebar-nav">
     <a href="tenant-myroom.html" class="sidebar-item">
@@ -95,7 +94,7 @@
   </nav>
 </aside>
 
-<!-- â”€â”€ MAIN LAYOUT â”€â”€ -->
+<!-- ── MAIN LAYOUT ── -->
 <main class="layout">
 
   <!-- Page header -->
@@ -120,7 +119,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN 1: Category â•â• -->
+  <!-- ══ SCREEN 1: Category ══ -->
   <div id="screen-category">
     <div class="card">
       <div class="card-header">
@@ -139,55 +138,55 @@
         <div class="category-grid">
 
           <div class="cat-card cat-electrical" data-cat="Electrical Issues" onclick="selectCategory(this)">
-            <span class="cat-emoji">âš¡</span>
+            <span class="cat-emoji">⚡</span>
             <div class="cat-title">Electrical Issues</div>
             <div class="cat-desc">Power outage, faulty outlets, lighting problems</div>
           </div>
 
           <div class="cat-card cat-plumbing" data-cat="Plumbing Issues" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ’§</span>
+            <span class="cat-emoji">💧</span>
             <div class="cat-title">Plumbing Issues</div>
             <div class="cat-desc">Leaks, clogged drains, water pressure</div>
           </div>
 
           <div class="cat-card cat-ac" data-cat="Air Conditioning" onclick="selectCategory(this)">
-            <span class="cat-emoji">â„ï¸</span>
+            <span class="cat-emoji">❄️</span>
             <div class="cat-title">Air Conditioning</div>
             <div class="cat-desc">Not cooling, strange noises, leaking</div>
           </div>
 
           <div class="cat-card cat-furniture" data-cat="Furniture & Fixtures" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸª‘</span>
+            <span class="cat-emoji">🪑</span>
             <div class="cat-title">Furniture & Fixtures</div>
             <div class="cat-desc">Broken furniture, damaged fixtures</div>
           </div>
 
           <div class="cat-card cat-internet" data-cat="Internet / WiFi" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ“¶</span>
+            <span class="cat-emoji">📶</span>
             <div class="cat-title">Internet / WiFi</div>
             <div class="cat-desc">Slow connection, no signal, connectivity issues</div>
           </div>
 
           <div class="cat-card cat-cleanliness" data-cat="Cleanliness" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ§¹</span>
+            <span class="cat-emoji">🧹</span>
             <div class="cat-title">Cleanliness</div>
             <div class="cat-desc">Common areas, pest control, garbage</div>
           </div>
 
           <div class="cat-card cat-noise" data-cat="Noise Complaint" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ”Š</span>
+            <span class="cat-emoji">🔊</span>
             <div class="cat-title">Noise Complaint</div>
             <div class="cat-desc">Loud neighbors, disturbances</div>
           </div>
 
           <div class="cat-card cat-security" data-cat="Safety & Security" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ”’</span>
+            <span class="cat-emoji">🔒</span>
             <div class="cat-title">Safety & Security</div>
             <div class="cat-desc">Door locks, security concerns</div>
           </div>
 
           <div class="cat-card cat-other" data-cat="Other Issues" onclick="selectCategory(this)">
-            <span class="cat-emoji">ðŸ’¬</span>
+            <span class="cat-emoji">💬</span>
             <div class="cat-title">Other Issues</div>
             <div class="cat-desc">Any other concerns or feedback</div>
           </div>
@@ -195,7 +194,7 @@
         </div>
 
         <div class="tip-box">
-          <span>ðŸ’¡</span>
+          <span>💡</span>
           <div><strong>Tip:</strong> Our system will help you describe your issue by asking specific questions. This ensures your request is clear and can be resolved quickly.</div>
         </div>
 
@@ -211,7 +210,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN 2: Detail Form â•â• -->
+  <!-- ══ SCREEN 2: Detail Form ══ -->
   <div id="screen-detail">
     <div class="card">
       <div class="card-header">
@@ -252,9 +251,9 @@
         <div class="form-section">
           <label class="form-label">Urgency Level <span>*</span></label>
           <div class="urgency-grid">
-            <button class="urgency-btn" id="urg-low"    onclick="setUrgency('low')"   >ðŸŸ¢ Low</button>
-            <button class="urgency-btn" id="urg-medium" onclick="setUrgency('medium')">ðŸŸ¡ Medium</button>
-            <button class="urgency-btn" id="urg-high"   onclick="setUrgency('high')"  >ðŸ”´ High / Urgent</button>
+            <button class="urgency-btn" id="urg-low"    onclick="setUrgency('low')"   >🟢 Low</button>
+            <button class="urgency-btn" id="urg-medium" onclick="setUrgency('medium')">🟡 Medium</button>
+            <button class="urgency-btn" id="urg-high"   onclick="setUrgency('high')"  >🔴 High / Urgent</button>
           </div>
         </div>
 
@@ -264,9 +263,9 @@
             <input type="date" class="form-control" id="field-date" />
             <select class="form-control" id="field-time">
               <option value="">Select time slot</option>
-              <option>Morning (8:00 AM â€“ 12:00 PM)</option>
-              <option>Afternoon (12:00 PM â€“ 5:00 PM)</option>
-              <option>Evening (5:00 PM â€“ 8:00 PM)</option>
+              <option>Morning (8:00 AM – 12:00 PM)</option>
+              <option>Afternoon (12:00 PM – 5:00 PM)</option>
+              <option>Evening (5:00 PM – 8:00 PM)</option>
             </select>
           </div>
         </div>
@@ -304,7 +303,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN 3: Review â•â• -->
+  <!-- ══ SCREEN 3: Review ══ -->
   <div id="screen-review">
     <div class="card">
       <div class="card-header">
@@ -325,7 +324,7 @@
           <div class="review-block-title">Issue Details</div>
           <div class="review-row">
             <span class="review-key">Category</span>
-            <span class="review-val" id="rv-category">â€”</span>
+            <span class="review-val" id="rv-category">—</span>
           </div>
           <div class="review-row">
             <span class="review-key">Room</span>
@@ -333,15 +332,15 @@
           </div>
           <div class="review-row">
             <span class="review-key">Title</span>
-            <span class="review-val" id="rv-title">â€”</span>
+            <span class="review-val" id="rv-title">—</span>
           </div>
           <div class="review-row">
             <span class="review-key">Description</span>
-            <span class="review-val" id="rv-desc" style="white-space:pre-wrap;">â€”</span>
+            <span class="review-val" id="rv-desc" style="white-space:pre-wrap;">—</span>
           </div>
           <div class="review-row">
             <span class="review-key">Urgency</span>
-            <span class="review-val" id="rv-urgency">â€”</span>
+            <span class="review-val" id="rv-urgency">—</span>
           </div>
         </div>
 
@@ -349,16 +348,16 @@
           <div class="review-block-title">Preferred Visit</div>
           <div class="review-row">
             <span class="review-key">Date</span>
-            <span class="review-val" id="rv-date">â€”</span>
+            <span class="review-val" id="rv-date">—</span>
           </div>
           <div class="review-row">
             <span class="review-key">Time Slot</span>
-            <span class="review-val" id="rv-time">â€”</span>
+            <span class="review-val" id="rv-time">—</span>
           </div>
         </div>
 
         <div class="disclaimer">
-          By submitting this request, you confirm that the information provided is accurate. Our team will review your report and respond within <strong>24â€“48 hours</strong>. For emergencies, please contact the admin directly.
+          By submitting this request, you confirm that the information provided is accurate. Our team will review your report and respond within <strong>24–48 hours</strong>. For emergencies, please contact the admin directly.
         </div>
 
         <div class="action-row" style="gap:0.75rem; justify-content:space-between; margin-top:1.25rem;">
@@ -379,7 +378,7 @@
     </div>
   </div>
 
-  <!-- â•â• SCREEN 4: Done â•â• -->
+  <!-- ══ SCREEN 4: Done ══ -->
   <div id="screen-done">
     <div class="card">
       <div class="done-wrap">
@@ -390,7 +389,7 @@
         </div>
         <div class="done-ticket" id="done-ticket">#SR-2025-0042</div>
         <div class="done-title">Report Submitted!</div>
-        <div class="done-sub">Your request has been received. Our maintenance team will review it and reach out to you within <strong>24â€“48 hours</strong>.</div>
+        <div class="done-sub">Your request has been received. Our maintenance team will review it and reach out to you within <strong>24–48 hours</strong>.</div>
         <div class="done-actions">
           <button class="btn-secondary" onclick="resetForm()">Submit Another</button>
           <a href="tenant-myroom.html" class="btn-primary" style="text-decoration:none;">
@@ -409,4 +408,7 @@
 
 </body>
 </html>
+
+
+
 
