@@ -378,3 +378,8 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   .log-table thead th { padding: 0.5rem 0.3rem; font-size: 0.55rem; }
   .log-table td { padding: 0.4rem 0.3rem; }
 }
+
+@keyframes slideUpFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }

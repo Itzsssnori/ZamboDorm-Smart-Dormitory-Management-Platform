@@ -332,8 +332,6 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .um-tab.active { color: var(--primary); border-bottom-color: var(--primary); background: rgba(124,58,237,0.06); }
 .um-tab svg { width: 16px; height: 16px; }
 
-.um-panel { }
-
 /* Add user form */
 .add-user-intro {
   display: flex; align-items: center; gap: 1rem;
@@ -353,7 +351,6 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .add-user-intro h3 { font-size: 0.95rem; font-weight: 800; color: var(--text); margin-bottom: 2px; }
 .add-user-intro p  { font-size: 0.8rem; color: var(--text-muted); }
 
-.add-user-form { }
 
 .role-info-box {
   display: flex; align-items: flex-start; gap: 0.5rem;
@@ -610,82 +607,7 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   display: flex; justify-content: flex-end; flex-shrink: 0;
 }
 
-/* ── Pending Approval Banner ── */
-.pending-banner {
-  display: none;
-  align-items: center;
-  margin: 1rem 1.75rem 0;
-  padding: 0.85rem 1.1rem;
-  background: linear-gradient(135deg, rgba(245,158,11,.1), rgba(251,191,36,.06));
-  border: 1.5px solid rgba(245,158,11,.3);
-  border-radius: 10px;
-  gap: 0.75rem;
-}
-.pending-banner-inner {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-}
-.pending-banner-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 8px;
-  background: rgba(245,158,11,.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.pending-banner-icon svg {
-  width: 18px;
-  height: 18px;
-  stroke: #b45309;
-}
-.pending-banner-text {
-  font-size: 0.85rem;
-  color: #92400e;
-  line-height: 1.45;
-}
-.pending-banner-text strong { color: #b45309; }
-
-/* ── Username code chip ── */
-.username-code {
-  font-family: 'Courier New', monospace;
-  background: rgba(0,0,0,.06);
-  padding: 2px 7px;
-  border-radius: 5px;
-  font-size: 0.82em;
-  color: #374151;
-}
-
-/* ── Role chips ── */
-.role-chip {
-  display: inline-block;
-  padding: 0.2rem 0.65rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  text-transform: capitalize;
-}
-.role-admin    { background: rgba(59,130,246,.12);  color: #1d4ed8; }
-.role-security { background: rgba(124,58,237,.12);  color: #6d28d9; }
-.role-staff    { background: rgba(16,185,129,.12);  color: #065f46; }
-
-/* ── Save toast show class ── */
-.save-toast {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #10b981;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity .3s;
-}
-.save-toast svg { width: 14px; height: 14px; }
-.save-toast.show { opacity: 1; }
-
-/* ── Toast warn variant ── */
-.admin-toast.toast-warn { background: linear-gradient(135deg,#f59e0b,#d97706); }
+@keyframes slideUpFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
