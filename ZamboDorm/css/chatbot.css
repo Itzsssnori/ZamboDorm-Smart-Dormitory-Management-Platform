@@ -1,0 +1,371 @@
+/* ZamboDorm Chatbot — floating helper widget.
+   All rules namespaced under .zd-chatbot-* (or scoped to the
+   <zd-chatbot> element) so they can't collide with page styles. */
+
+zd-chatbot {
+  display: block;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 9999;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+/* ─── Floating Action Button ────────────────────────────────────────── */
+
+.zd-chatbot-fab {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.35),
+              0 4px 8px rgba(124, 58, 237, 0.18);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.zd-chatbot-fab:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.42),
+              0 6px 12px rgba(124, 58, 237, 0.22);
+}
+
+.zd-chatbot-fab:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.zd-chatbot-fab:focus-visible {
+  outline: 3px solid rgba(124, 58, 237, 0.55);
+  outline-offset: 3px;
+}
+
+.zd-chatbot-robot {
+  width: 34px;
+  height: 34px;
+  display: block;
+}
+
+zd-chatbot.is-open .zd-chatbot-fab {
+  transform: scale(0.92);
+}
+
+/* Gentle bobbing animation on idle to invite interaction. */
+@keyframes zd-chatbot-bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+zd-chatbot:not(.is-open) .zd-chatbot-fab {
+  animation: zd-chatbot-bob 3.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zd-chatbot-fab,
+  zd-chatbot:not(.is-open) .zd-chatbot-fab {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* ─── Panel ─────────────────────────────────────────────────────────── */
+
+.zd-chatbot-panel {
+  position: absolute;
+  right: 0;
+  bottom: 76px;
+  width: 360px;
+  max-width: calc(100vw - 2rem);
+  height: 520px;
+  max-height: calc(100vh - 6rem);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  box-shadow: 0 20px 50px rgba(31, 41, 55, 0.18),
+              0 8px 16px rgba(31, 41, 55, 0.08);
+  animation: zd-chatbot-pop 0.18s ease-out;
+}
+
+.zd-chatbot-panel[hidden] {
+  display: none;
+}
+
+@keyframes zd-chatbot-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zd-chatbot-panel { animation: none; }
+}
+
+/* ─── Header ────────────────────────────────────────────────────────── */
+
+.zd-chatbot-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.zd-chatbot-header-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.zd-chatbot-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: grid;
+  place-items: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.zd-chatbot-titleblock {
+  min-width: 0;
+}
+
+.zd-chatbot-title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: inherit;
+}
+
+.zd-chatbot-subtitle {
+  margin: 2px 0 0;
+  font-size: 0.72rem;
+  font-weight: 500;
+  opacity: 0.85;
+  line-height: 1.2;
+}
+
+.zd-chatbot-close {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  color: inherit;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.zd-chatbot-close:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.zd-chatbot-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.zd-chatbot-close svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* ─── Messages ──────────────────────────────────────────────────────── */
+
+.zd-chatbot-messages {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background: #faf9ff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.zd-chatbot-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: #1f2937;
+  word-wrap: break-word;
+}
+
+.zd-chatbot-bubble--bot {
+  align-self: flex-start;
+  background: #fff;
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-top-left-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.zd-chatbot-bubble--user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+  color: #fff;
+  border-top-right-radius: 4px;
+}
+
+/* ─── FAQ Suggestions ───────────────────────────────────────────────── */
+
+.zd-chatbot-suggestions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.zd-chatbot-suggestion-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zd-chatbot-suggestion-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #6b21a8;
+  padding-left: 2px;
+}
+
+.zd-chatbot-suggestion-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.zd-chatbot-suggestion-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.zd-chatbot-suggestion {
+  text-align: left;
+  font: inherit;
+  font-size: 0.83rem;
+  line-height: 1.35;
+  color: #1e1b4b;
+  background: #fff;
+  border: 1px solid rgba(124, 58, 237, 0.22);
+  border-radius: 12px;
+  padding: 9px 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+              transform 0.12s ease, box-shadow 0.15s ease;
+}
+
+.zd-chatbot-suggestion:hover {
+  background: #f5f0ff;
+  border-color: rgba(124, 58, 237, 0.55);
+  transform: translateX(2px);
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.12);
+}
+
+.zd-chatbot-suggestion:active {
+  transform: translateX(0);
+  background: #ede5ff;
+}
+
+.zd-chatbot-suggestion:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+/* ─── Back to FAQs Button ───────────────────────────────────────────── */
+
+.zd-chatbot-back {
+  align-self: center;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7c3aed;
+  background: #fff;
+  border: 1.5px solid rgba(124, 58, 237, 0.35);
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  margin-top: 4px;
+  transition: background 0.15s ease, border-color 0.15s ease,
+              color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.zd-chatbot-back:hover {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
+.zd-chatbot-back:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zd-chatbot-suggestion,
+  .zd-chatbot-back {
+    transition: none;
+  }
+  .zd-chatbot-suggestion:hover {
+    transform: none;
+  }
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────── */
+
+/* On tablet/mobile (≤768px) the project's .sidebar-hamburger appears
+   at bottom:24px right:24px (48px wide). Shift the FAB above it so
+   the two never stack in the same corner. */
+@media (max-width: 768px) {
+  zd-chatbot {
+    bottom: 5.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  zd-chatbot {
+    right: 1rem;
+    bottom: 5.25rem;
+  }
+  .zd-chatbot-panel {
+    width: calc(100vw - 2rem);
+    height: calc(100vh - 10rem);
+    max-height: calc(100vh - 10rem);
+    bottom: 72px;
+  }
+  .zd-chatbot-fab {
+    width: 56px;
+    height: 56px;
+  }
+  .zd-chatbot-robot {
+    width: 30px;
+    height: 30px;
+  }
+}

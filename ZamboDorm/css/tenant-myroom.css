@@ -1990,7 +1990,11 @@
       opacity: 0;
     }
   }
+<<<<<<< HEAD
   
+=======
+  }
+>>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4
 
   @media (max-width: 768px) {
     .nav-inner {

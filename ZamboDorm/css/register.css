@@ -847,3 +847,57 @@ body::before {
   color: var(--primary);
   font-weight: 500;
 }
+
+/* ─── Action Button Row ───────────────────────────────────────────────────
+   Explicit flex layout (independent of utility classes) so the buttons in
+   the multi-step form footer are always right-aligned with comfortable,
+   consistent spacing — they never sit flush against each other.
+
+   Named .form__action-row (not .form__actions) to avoid colliding with
+   the existing global .form__actions rule in components.css, which is
+   used by signin-page.html for a single forgot-password link row.          */
+.form__action-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+@media (max-width: 480px) {
+  .form__action-row {
+    gap: 0.625rem;
+  }
+  .form__action-row .btn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+}
+
+/* ─── Neutral / Back Button ───────────────────────────────────────────────
+   A muted gray fill that reads clearly against the white card without
+   competing with the primary purple CTA. Text uses gray-800 for AAA
+   contrast against the gray-200 background.                                */
+.btn.btn-neutral {
+  background-color: #e5e7eb;
+  color: #1f2937;
+  border-color: #e5e7eb;
+}
+
+.btn.btn-neutral:hover {
+  background-color: #d1d5db;
+  border-color: #d1d5db;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(31, 41, 55, 0.12);
+}
+
+.btn.btn-neutral:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn.btn-neutral:focus-visible {
+  outline: 2px solid #6b7280;
+  outline-offset: 2px;
+}
