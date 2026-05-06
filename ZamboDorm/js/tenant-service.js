@@ -1,5 +1,6 @@
 let currentStep = 1;
 let selectedService = '';
+const SERVICE_REQUEST_STORAGE_KEY = 'zambodorm_service_requests';
 
 // ── Helpers ──
 function showToast(msg, dur = 3000) {
@@ -157,8 +158,58 @@ function handleBack() {
 
 // ── Submit ──
 function submitRequest() {
+  const request = buildServiceRequestRecord();
+  const storedRequests = JSON.parse(localStorage.getItem(SERVICE_REQUEST_STORAGE_KEY) || '[]');
+  storedRequests.unshift(request);
+  localStorage.setItem(SERVICE_REQUEST_STORAGE_KEY, JSON.stringify(storedRequests));
+
   // Show success dialog
   document.getElementById('success-overlay').classList.add('show');
+}
+
+function buildServiceRequestRecord() {
+  const isWater = selectedService === 'water';
+  const serviceType = isWater ? 'Water Delivery' : 'Laundry Service';
+  const serviceDetails = isWater
+    ? `${document.getElementById('water-qty').value}x ${document.getElementById('water-size').value === '5gallon' ? '5-Gallon Container' : document.getElementById('water-size').value === '3gallon' ? '3-Gallon Container' : '1-Gallon Bottle'}`
+    : document.getElementById('laundry-type').value === 'wash-fold' ? 'Wash & Fold' : document.getElementById('laundry-type').value === 'wash-iron' ? 'Wash & Iron' : 'Dry Cleaning';
+  const serviceLocation = isWater
+    ? document.getElementById('water-delivery-location').value
+    : document.getElementById('laundry-pickup-location').value;
+
+  return {
+    id: `SR-${new Date().getFullYear()}-${String(Date.now()).slice(-4)}`,
+    type: isWater ? 'Water' : 'Laundry',
+    icon: isWater ? 'Water' : 'Laundry',
+    title: serviceType,
+    desc: serviceDetails,
+    status: 'pending',
+    priority: 'medium',
+    tenant: (window.UserManager && typeof UserManager.getName === 'function' && UserManager.getName()) || 'Current Tenant',
+    room: document.getElementById('room-number').value,
+    submitted: new Date().toLocaleString('en-PH', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: '2-digit'
+    }),
+    assignee: null,
+    details: {
+      serviceType,
+      serviceDetails,
+      room: document.getElementById('room-number').value,
+      contact: document.getElementById('contact-number').value,
+      date: document.getElementById('service-date').value,
+      time: document.getElementById('service-time').value,
+      location: serviceLocation,
+      instructions: isWater
+        ? document.getElementById('water-instructions').value.trim()
+        : document.getElementById('laundry-instructions').value.trim(),
+      weight: isWater ? null : document.getElementById('laundry-weight').value,
+      serviceCategory: selectedService
+    }
+  };
 }
 
 // ── Success ──
