@@ -6,8 +6,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Initialize page features
 function initializePaymentPage() {
+  setupMobileNavigation();
   renderPaymentHistory();
   setupInteractiveElements();
+}
+
+// Mobile Navigation Toggle
+function setupMobileNavigation() {
+  const hamburger = document.getElementById('hbg');
+  const mobNav = document.getElementById('mob');
+  const sidebar = document.getElementById('sidebar');
+
+  if (hamburger) {
+    hamburger.addEventListener('click', function() {
+      mobNav.classList.toggle('active');
+      sidebar.classList.toggle('active');
+    });
+  }
+
+  // Close mobile nav when clicking links
+  const mobLinks = document.querySelectorAll('.mob a');
+  mobLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      mobNav.classList.remove('active');
+      sidebar.classList.remove('active');
+    });
+  });
+
+  // Close sidebar when window resizes
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      mobNav.classList.remove('active');
+      sidebar.classList.remove('active');
+    }
+  });
 }
 
 // Payment history data

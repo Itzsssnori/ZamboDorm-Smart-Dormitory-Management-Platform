@@ -18,7 +18,6 @@
   --font: 'Plus Jakarta Sans', sans-serif;
   --success: #10b981;
   --warning: #f59e0b;
-  --danger: #ef4444;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -381,10 +380,6 @@ body {
   background: linear-gradient(135deg, rgba(245,158,11,0.25), rgba(251,191,36,0.15));
   border: 1px solid rgba(245,158,11,0.3);
   flex-wrap: nowrap;
-  /* Use primary purple theme instead of orange */
-  background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(168,85,247,0.04));
-  border: 1px solid rgba(124,58,237,0.12);
-  flex-wrap: wrap;
 }
 
 .alert-header {
@@ -398,13 +393,12 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  background: rgba(245,158,11,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
-  color: white;
+  color: var(--warning);
   flex-shrink: 0;
-  box-shadow: 0 6px 18px rgba(124,58,237,0.12);
 }
 
 .alert-circle svg { 
@@ -418,24 +412,6 @@ body {
   flex-direction: column;
   gap: 0.25rem;
 }
-
-/* subtle left accent and refined spacing */
-.alert-box {
-  position: relative;
-  padding: 1.25rem 1.75rem;
-}
-.alert-box::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  bottom: 12px;
-  width: 4px;
-  border-radius: 4px;
-  background: linear-gradient(180deg, var(--primary), var(--primary-light));
-  opacity: 0.95;
-}
-.alert-header { margin-left: 18px; }
 
 .alert-title {
   font-size: 1rem;
@@ -458,45 +434,6 @@ body {
   justify-content: flex-end;
 }
 
-.alert-footer { flex-wrap: nowrap; }
-
-.header-right { display:flex; align-items:center; gap:0.6rem; }
-
-/* Small status badge (Due Soon, Paid, etc.) */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-.status-badge.due {
-  background: linear-gradient(90deg, rgba(239,68,68,0.95), rgba(239,68,68,0.85));
-  color: white;
-  box-shadow: 0 6px 16px rgba(239,68,68,0.12);
-}
-
-.invoice-btn {
-  margin-left: 0.6rem;
-  background: transparent;
-  border: 1px solid rgba(124,58,237,0.12);
-  color: var(--primary);
-  padding: 0.4rem 0.7rem;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-}
-.invoice-btn:hover { background: rgba(124,58,237,0.04); }
-
-/* Make amount stand out on the left of footer on wider screens */
-@media (min-width: 900px) {
-  .alert-footer { justify-content: flex-end; }
-  .alert-amount { margin-right: 0.5rem; }
-}
-
 .alert-amount {
   font-size: 1.5rem;
   font-weight: 800;
@@ -510,11 +447,11 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  background: rgba(245,158,11,0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, rgba(124,58,237,0.12), rgba(168,85,247,0.08));
-  color: var(--primary-dark);
+  color: var(--warning);
   flex-shrink: 0;
 }
 
@@ -530,37 +467,21 @@ body {
 
 .btn-pay-now {
   padding: 0.7rem 1.5rem;
-  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  background: linear-gradient(135deg, var(--warning), #fbbf24);
   color: white;
   border: none;
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 6px 18px rgba(124,58,237,0.18);
+  transition: all 0.3s;
+  box-shadow: 0 4px 12px rgba(245,158,11,0.3);
   flex-shrink: 0;
 }
 
 .btn-pay-now:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(124,58,237,0.2);
-}
-
-/* pill style + subtle pulse */
-.btn-pay-now {
-  border-radius: 999px;
-  padding: 0.6rem 1.4rem;
-}
-.btn-pay-now:active { transform: translateY(-1px); }
-
-@keyframes subtlePulse {
-  0% { box-shadow: 0 6px 18px rgba(124,58,237,0.12); }
-  50% { box-shadow: 0 14px 36px rgba(124,58,237,0.10); }
-  100% { box-shadow: 0 6px 18px rgba(124,58,237,0.12); }
-}
-.btn-pay-now.pulse {
-  animation: subtlePulse 2.8s ease-in-out infinite;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(245,158,11,0.4);
 }
 
 /* INFO CARDS */
@@ -717,35 +638,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Payment History Summary */
-.payment-history-summary {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.8rem;
-  margin-bottom: 1rem;
-}
-.ph-stat {
-  background: rgba(124,58,237,0.03);
-  border: 1px solid rgba(124,58,237,0.06);
-  padding: 0.6rem 0.9rem;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-.ph-label {
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-.ph-value {
-  font-size: 1rem;
-  font-weight: 800;
-  color: var(--primary);
-}
-.ph-value.pending { color: var(--danger); }
-
 /* BILL BREAKDOWN */
 .bill-breakdown-content {
   display: flex;
@@ -763,16 +655,16 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid rgba(124,58,237,0.06);
-  transition: all 0.18s;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(124,58,237,0.08);
+  transition: all 0.2s;
 }
 
 .bill-row:last-child { border-bottom: none; }
 
 .bill-row:hover {
-  background: rgba(124,58,237,0.03);
-  padding: 0.55rem 0;
+  background: rgba(124,58,237,0.04);
+  padding: 1rem 0;
   margin: 0;
   border-radius: 6px;
 }
@@ -799,7 +691,7 @@ body {
 .bill-item-amount {
   font-weight: 700;
   font-size: 1.1rem;
-  color: var(--primary);
+  color: var(--text);
 }
 
 .bill-total-row {
@@ -820,7 +712,7 @@ body {
 .bill-total-amount {
   font-weight: 800;
   font-size: 1.4rem;
-  color: var(--danger);
+  color: var(--primary);
 }
 
 .bill-item {

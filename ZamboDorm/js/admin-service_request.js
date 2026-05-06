@@ -26,47 +26,11 @@ const STATUS_LABELS = {
   'cancelled':   { label:'Cancelled',   cls:'cancelled' },
 };
 
-const TENANT_SERVICE_REQUESTS_KEY = 'zambodorm_service_requests';
-
 let activeTab      = 'all';
 let searchQuery    = '';
 let filterType     = 'all';
 let filterPriority = 'all';
 let currentRequest = null;
-
-function loadQueuedServiceRequests() {
-  try {
-    const queued = JSON.parse(localStorage.getItem(TENANT_SERVICE_REQUESTS_KEY) || '[]');
-    if (!Array.isArray(queued) || !queued.length) {
-      return;
-    }
-
-    const existingIds = new Set(SR_DATA.map(request => request.id));
-    const mappedQueued = queued
-      .filter(request => request && request.id && !existingIds.has(request.id))
-      .map(request => ({
-        id: request.id,
-        type: request.type || 'Service',
-        icon: request.icon || (request.type === 'Water' ? 'Water' : 'Laundry'),
-        iconBg: request.type === 'Water' ? 'rgba(124,58,237,0.10)' : 'rgba(5,150,105,0.10)',
-        title: request.title || request.details?.serviceType || 'Service Request',
-        desc: request.desc || request.details?.serviceDetails || 'Submitted from tenant service page.',
-        status: request.status || 'pending',
-        priority: request.priority || 'medium',
-        tenant: request.tenant || 'Current Tenant',
-        room: request.room || request.details?.room || '-',
-        submitted: request.submitted || '-',
-        assignee: request.assignee || null,
-        localOnly: true,
-      }));
-
-    if (mappedQueued.length) {
-      SR_DATA.unshift(...mappedQueued);
-    }
-  } catch (error) {
-    console.warn('Unable to load queued service requests from localStorage', error);
-  }
-}
 
 /* ── HELPERS ─────────────────────────────────────────── */
 function getFiltered(){
@@ -175,7 +139,6 @@ function showToast(msg, dur=3000){
 }
 
 /* ── INIT ────────────────────────────────────────────── */
-loadQueuedServiceRequests();
 renderStats();
 renderTabCounts();
 renderList();

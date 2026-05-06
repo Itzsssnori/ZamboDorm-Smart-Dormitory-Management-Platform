@@ -10,7 +10,6 @@ function initializePageFeatures() {
   setupMobileNavigation();
   setupInteractiveElements();
   setupResponsiveness();
-  updateItemsPagination();
 }
 
 // Update greeting with user's name
@@ -322,12 +321,10 @@ function submitAddItem(e) {
   const itemsList = document.querySelector('.items-list');
   const currentItems = itemsList.querySelectorAll('.item-row').length;
   const newNumber = currentItems + 1;
-  const itemsPerPage = 3;
-  const newPage = Math.ceil(newNumber / itemsPerPage);
   
-  // Create new item element with data-page attribute
+  // Create new item element
   const itemHTML = `
-    <div class="item-row" data-page="${newPage}">
+    <div class="item-row">
       <span class="item-number">${newNumber}</span>
       <span class="item-name">${itemName} (${itemBrand})</span>
       <span class="item-date">${itemQuantity}pc · ${formattedDate}</span>
@@ -340,9 +337,6 @@ function submitAddItem(e) {
   `;
   
   itemsList.innerHTML += itemHTML;
-  
-  // Update pagination
-  updateItemsPagination();
   
   // Close modal and show success message
   closeAddItemModal();
@@ -360,8 +354,6 @@ function deleteItem(button) {
     item.querySelector('.item-number').textContent = index + 1;
   });
   
-  // Update pagination
-  updateItemsPagination();
   showNotification('Item removed', 'info');
 }
 
@@ -480,11 +472,6 @@ function openMessageModal() {
   const modal = document.getElementById('messageModal');
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
-  // Scroll to bottom when opening
-  setTimeout(() => {
-    const chatBody = document.querySelector('.chat-body');
-    if (chatBody) chatBody.scrollTop = chatBody.scrollHeight;
-  }, 100);
 }
 
 // Close Message Modal
@@ -496,109 +483,19 @@ function closeMessageModal(e) {
   document.getElementById('messageForm').reset();
 }
 
-// Submit Message (Chat)
+// Submit Message
 function submitMessage(e) {
   e.preventDefault();
   
-  const messageInput = document.getElementById('messageBody');
-  const messageText = messageInput.value.trim();
+  const subject = document.getElementById('messageSubject').value;
+  const body = document.getElementById('messageBody').value;
   
-  if (!messageText) return;
+  // In a real app, this would send to server
+  console.log('Message sent to Ivan:', { subject, body });
   
-  // Add sent message to chat
-  const chatMessages = document.getElementById('chatMessages');
-  const sentMessageDiv = document.createElement('div');
-  sentMessageDiv.className = 'chat-message sent';
-  
-  const now = new Date();
-  const timeStr = now.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true });
-  
-  sentMessageDiv.innerHTML = `
-    <div class="message-bubble">${messageText}</div>
-    <span class="message-time">Just now</span>
-  `;
-  
-  chatMessages.appendChild(sentMessageDiv);
-  
-  // Clear input
-  messageInput.value = '';
-  messageInput.focus();
-  
-  // Scroll to bottom
-  const chatBody = document.querySelector('.chat-body');
-  setTimeout(() => {
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }, 10);
-  
-  // Simulate received response after 1 second (optional)
-  setTimeout(() => {
-    const receivedMessageDiv = document.createElement('div');
-    receivedMessageDiv.className = 'chat-message received';
-    
-    receivedMessageDiv.innerHTML = `
-      <div class="message-bubble">Thanks for the message! I'll get back to you soon.</div>
-      <span class="message-time">Just now</span>
-    `;
-    
-    chatMessages.appendChild(receivedMessageDiv);
-    
-    // Scroll to bottom again
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }, 1200);
+  closeMessageModal();
+  showNotification('Message sent to Ivan successfully!', 'success');
 }
-
-/* Items Pagination */
-function updateItemsPagination() {
-  const itemsPerPage = 3;
-  const itemRows = document.querySelectorAll('.item-row');
-  const totalPages = Math.ceil(itemRows.length / itemsPerPage);
-  
-  // Update data-page attributes
-  itemRows.forEach((row, index) => {
-    const page = Math.floor(index / itemsPerPage) + 1;
-    row.setAttribute('data-page', page);
-  });
-  
-  // Generate pagination buttons
-  const paginationContainer = document.getElementById('itemsPagination');
-  paginationContainer.innerHTML = '';
-  
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement('button');
-    btn.className = `pagination-btn ${i === 1 ? 'active' : ''}`;
-    btn.textContent = i;
-    btn.onclick = () => showItemsPage(i);
-    paginationContainer.appendChild(btn);
-  }
-  
-  // Show page 1 by default
-  showItemsPage(1);
-}
-
-function showItemsPage(page) {
-  // Hide all items
-  const itemRows = document.querySelectorAll('.item-row');
-  itemRows.forEach(row => {
-    row.style.display = 'none';
-  });
-  
-  // Show items for the current page
-  itemRows.forEach(row => {
-    if (row.getAttribute('data-page') === String(page)) {
-      row.style.display = 'grid';
-    }
-  });
-  
-  // Update pagination buttons
-  const paginationBtns = document.querySelectorAll('.pagination-btn');
-  paginationBtns.forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.textContent === String(page)) {
-      btn.classList.add('active');
-    }
-  });
-}
-
 
 /* ═══════════════════════════════════════
    PAYMENT REDIRECT
