@@ -57,6 +57,55 @@ function getCombinedUsers() {
   return [...demoUsers, ...localUsers];
 }
 
+// ─── Role Normalization ─────────────────────────────────────────────────────
+// Registration stores role values like "student"/"solo"/"parent" while demo
+// data uses "landlord"/"tenant"/"guard". This single map is the source of
+// truth for both category bucketing and the human-readable role name.
+const ROLE_CATEGORY = {
+  tenant: {
+    student:  'Student',
+    employed: 'Employed',
+    solo:     'Employed',
+    parent:   'Guardian',
+    tenant:   'Tenant'
+  },
+  admin: {
+    admin:    'Admin',
+    landlord: 'Landlord',
+    owner:    'Owner',
+    manager:  'Manager'
+  },
+  staff: {
+    security:     'Security',
+    guard:        'Security',
+    maintenance:  'Maintenance',
+    housekeeping: 'Housekeeping',
+    cleaner:      'Housekeeping'
+  }
+};
+
+const CATEGORY_LABEL = { tenant: 'Tenant', admin: 'Admin', staff: 'Staff' };
+
+function getUserCategory(user) {
+  if (!user || (!user.role && !user.category)) return 'unassigned';
+  const category = String(user.category || '').toLowerCase().trim();
+  const role     = String(user.role || '').toLowerCase().trim();
+
+  if (ROLE_CATEGORY[category]) return category;
+  for (const cat of Object.keys(ROLE_CATEGORY)) {
+    if (ROLE_CATEGORY[cat][role]) return cat;
+  }
+  return 'unassigned';
+}
+
+function normalizeUserRole(user) {
+  const category = getUserCategory(user);
+  if (category === 'unassigned') return 'Unassigned';
+  const role     = String(user.role || '').toLowerCase().trim();
+  const roleName = ROLE_CATEGORY[category][role] || 'Unassigned';
+  return `${CATEGORY_LABEL[category]} — ${roleName}`;
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 function formatPrice(price) {
@@ -513,6 +562,10 @@ function showToast(message) {
 }
 
 // ─── USER LIST MODAL HANDLER ───────────────────────────────────────────────
+// Tracks which property's users are currently shown so the modal can be
+// re-rendered if the underlying user list changes while it's open.
+let openUserListPropId = null;
+
 function openUserListModal(propId) {
   const prop = properties.find(p => p.id === propId);
   if (!prop) return;
@@ -527,35 +580,49 @@ function openUserListModal(propId) {
   if (propUsers.length === 0) {
     content.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No users assigned to this property.</div>';
   } else {
-    const groups = {
-      'Admin/Landlord': propUsers.filter(u => u.role === 'admin' || u.role === 'landlord'),
-      'Security': propUsers.filter(u => u.role === 'security' || u.role === 'guard'),
-      'Tenant': propUsers.filter(u => u.role === 'tenant')
+    // Group by normalized category so registration values (student/solo/parent)
+    // bucket the same way as demo values (tenant/landlord/guard).
+    const groups = { admin: [], staff: [], tenant: [], unassigned: [] };
+    for (const u of propUsers) groups[getUserCategory(u)].push(u);
+
+    const groupHeading = {
+      admin:      'Admins',
+      staff:      'Staff',
+      tenant:     'Tenants',
+      unassigned: 'Unassigned'
     };
 
-    for (const [role, users] of Object.entries(groups)) {
-      if (users.length > 0) {
-        const section = document.createElement('div');
-        section.style.marginBottom = '20px';
-        section.innerHTML = `
-          <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; border-bottom: 1px solid rgba(124, 58, 237, 0.1); padding-bottom: 4px;">${role}s (${users.length})</h4>
-          <div style="display: grid; gap: 8px;">
-            ${users.map(u => `
-              <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 12px; background: #f8f7ff; border-radius: 6px; border: 1px solid rgba(124, 58, 237, 0.1);">
-                <div>
-                  <div style="font-weight: 600; color: #1e1b4b; font-size: 0.9rem;">${u.name}</div>
-                  <div style="font-size: 0.8rem; color: #6b7280;">${u.email}</div>
-                </div>
+    for (const cat of ['admin', 'staff', 'tenant', 'unassigned']) {
+      const users = groups[cat];
+      if (users.length === 0) continue;
+
+      const section = document.createElement('div');
+      section.style.marginBottom = '20px';
+      section.innerHTML = `
+        <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; border-bottom: 1px solid rgba(124, 58, 237, 0.1); padding-bottom: 4px;">${groupHeading[cat]} (${users.length})</h4>
+        <div style="display: grid; gap: 8px;">
+          ${users.map(u => `
+            <div class="assigned-user-card">
+              <div class="assigned-user-info">
+                <div class="assigned-user-name">${u.name}</div>
+                <div class="assigned-user-email">${u.email}</div>
+                <span class="role-badge role-badge--${getUserCategory(u)}">${normalizeUserRole(u)}</span>
               </div>
-            `).join('')}
-          </div>
-        `;
-        content.appendChild(section);
-      }
+            </div>
+          `).join('')}
+        </div>
+      `;
+      content.appendChild(section);
     }
   }
 
+  openUserListPropId = propId;
   openModal('userListModal', 'userListOverlay');
+}
+
+function closeUserListModal() {
+  openUserListPropId = null;
+  closeModal('userListModal', 'userListOverlay');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -563,7 +630,14 @@ document.addEventListener('DOMContentLoaded', function() {
   const closeUserListBtn = document.getElementById('closeUserListBtn');
   const userListOverlay = document.getElementById('userListOverlay');
 
-  if(closeUserList) closeUserList.onclick = () => closeModal('userListModal', 'userListOverlay');
-  if(closeUserListBtn) closeUserListBtn.onclick = () => closeModal('userListModal', 'userListOverlay');
-  if(userListOverlay) userListOverlay.onclick = () => closeModal('userListModal', 'userListOverlay');
+  if(closeUserList) closeUserList.onclick = closeUserListModal;
+  if(closeUserListBtn) closeUserListBtn.onclick = closeUserListModal;
+  if(userListOverlay) userListOverlay.onclick = closeUserListModal;
+});
+
+// Re-render the modal if another tab edits the user list while it's open.
+window.addEventListener('storage', function (e) {
+  if (e.key === 'zambodorm_all_users' && openUserListPropId !== null) {
+    openUserListModal(openUserListPropId);
+  }
 });
