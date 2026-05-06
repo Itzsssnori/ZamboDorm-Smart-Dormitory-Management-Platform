@@ -159,78 +159,94 @@
   <!-- Step 2: Service Details -->
   <div class="sr-step-content" id="step-2" style="display:none;">
     <div class="sr-step-title">Service Details</div>
-    <div class="sr-info-box" id="step-2-error" style="display:none; background-color: #fee2e2; border-color: #fca5a5;">
+    <div class="sr-info-box sr-warning-box" id="step-2-error" style="display:none;">
       <span class="sr-info-icon">⚠️</span>
-      <div style="color: #991b1b;">
-        Please put all required fields before proceeding to next one
+      <div class="sr-error-message">
+        Please complete all required fields before continuing.
       </div>
     </div>
     
     <!-- Water Delivery Form -->
     <form id="water-form" style="display:none;">
-      <div class="sr-form-group">
-        <label class="sr-label">Select Water Container Size</label>
-        <select class="sr-select" id="water-size" required>
-          <option value="">Choose a size...</option>
-          <option value="5gallon">5-Gallon Container</option>
-          <option value="3gallon">3-Gallon Container</option>
-          <option value="1gallon">1-Gallon Bottle</option>
-        </select>
-      </div>
+      <div class="sr-form-panel water-panel">
+        <div class="sr-panel-title">
+          <h4>Water Delivery</h4>
+          <span class="sr-panel-pill water">Delivery Details</span>
+        </div>
+        <div class="sr-form-grid">
+          <div class="sr-form-group">
+            <label class="sr-label">Select Water Container Size</label>
+            <select class="sr-select" id="water-size" required>
+              <option value="">Choose a size...</option>
+              <option value="5gallon">5-Gallon Container</option>
+              <option value="3gallon">3-Gallon Container</option>
+              <option value="1gallon">1-Gallon Bottle</option>
+            </select>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Quantity</label>
-        <input type="number" class="sr-input" id="water-qty" min="1" max="20" value="1" required/>
-      </div>
+          <div class="sr-form-group">
+            <label class="sr-label">Quantity</label>
+            <input type="number" class="sr-input" id="water-qty" min="1" max="20" value="1" required/>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Delivery Location</label>
-        <select class="sr-select" id="water-delivery-location" required>
-          <option value="">Choose a location...</option>
-          <option value="room-entrance">Room Entrance</option>
-          <option value="ground-area">Ground Area</option>
-          <option value="reception-desk">Reception Desk</option>
-          <option value="building-entrance">Building Entrance</option>
-        </select>
-      </div>
+          <div class="sr-form-group full">
+            <label class="sr-label">Delivery Location</label>
+            <select class="sr-select" id="water-delivery-location" required>
+              <option value="">Choose a location...</option>
+              <option value="room-entrance">Room Entrance</option>
+              <option value="ground-area">Ground Area</option>
+              <option value="reception-desk">Reception Desk</option>
+              <option value="building-entrance">Building Entrance</option>
+            </select>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Special Instructions <span style="color: #999; font-weight: 400;">(Optional)</span></label>
-        <textarea class="sr-textarea" id="water-instructions" placeholder="Any special requests or delivery instructions..."></textarea>
+          <div class="sr-form-group full">
+            <label class="sr-label">Special Instructions <span style="color: #999; font-weight: 400;">(Optional)</span></label>
+            <textarea class="sr-textarea" id="water-instructions" placeholder="Any special requests or delivery instructions..."></textarea>
+          </div>
+        </div>
       </div>
     </form>
 
     <!-- Laundry Service Form -->
     <form id="laundry-form" style="display:none;">
-      <div class="sr-form-group">
-        <label class="sr-label">Select Laundry Service</label>
-        <select class="sr-select" id="laundry-type" required>
-          <option value="">Choose a service...</option>
-          <option value="wash-fold">Wash & Fold</option>
-          <option value="wash-iron">Wash & Iron</option>
-          <option value="dry-clean">Dry Cleaning</option>
-        </select>
-      </div>
+      <div class="sr-form-panel laundry-panel">
+        <div class="sr-panel-title">
+          <h4>Laundry Service</h4>
+          <span class="sr-panel-pill laundry">Pickup Details</span>
+        </div>
+        <div class="sr-form-grid">
+          <div class="sr-form-group">
+            <label class="sr-label">Select Laundry Service</label>
+            <select class="sr-select" id="laundry-type" required>
+              <option value="">Choose a service...</option>
+              <option value="wash-fold">Wash & Fold</option>
+              <option value="wash-iron">Wash & Iron</option>
+              <option value="dry-clean">Dry Cleaning</option>
+            </select>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Estimated Weight (kg)</label>
-        <input type="number" class="sr-input" id="laundry-weight" min="0.5" max="50" step="0.5" value="2.5" required/>
-      </div>
+          <div class="sr-form-group">
+            <label class="sr-label">Estimated Weight (kg)</label>
+            <input type="number" class="sr-input" id="laundry-weight" min="0.5" max="50" step="0.5" value="2.5" required/>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Pickup Location</label>
-        <select class="sr-select" id="laundry-pickup-location" required>
-          <option value="">Choose a location...</option>
-          <option value="room-entrance">Room Entrance</option>
-          <option value="ground-area">Ground Area</option>
-          <option value="reception-desk">Reception Desk</option>
-          <option value="building-entrance">Building Entrance</option>
-        </select>
-      </div>
+          <div class="sr-form-group full">
+            <label class="sr-label">Pickup Location</label>
+            <select class="sr-select" id="laundry-pickup-location" required>
+              <option value="">Choose a location...</option>
+              <option value="room-entrance">Room Entrance</option>
+              <option value="ground-area">Ground Area</option>
+              <option value="reception-desk">Reception Desk</option>
+              <option value="building-entrance">Building Entrance</option>
+            </select>
+          </div>
 
-      <div class="sr-form-group">
-        <label class="sr-label">Special Instructions <span style="color: #999; font-weight: 400;">(Optional)</span></label>
-        <textarea class="sr-textarea" id="laundry-instructions" placeholder="Any special care instructions or requests..."></textarea>
+          <div class="sr-form-group full">
+            <label class="sr-label">Special Instructions <span style="color: #999; font-weight: 400;">(Optional)</span></label>
+            <textarea class="sr-textarea" id="laundry-instructions" placeholder="Any special care instructions or requests..."></textarea>
+          </div>
+        </div>
       </div>
     </form>
 
@@ -243,53 +259,61 @@
   <!-- Step 3: Schedule -->
   <div class="sr-step-content" id="step-3" style="display:none;">
     <div class="sr-step-title">Schedule Pickup & Contact</div>
-    <div class="sr-info-box" id="step-3-error" style="display:none; background-color: #fee2e2; border-color: #fca5a5;">
+    <div class="sr-info-box sr-warning-box" id="step-3-error" style="display:none;">
       <span class="sr-info-icon">⚠️</span>
-      <div style="color: #991b1b;">
-        Please put all required fields before proceeding to next one
+      <div class="sr-error-message">
+        Please complete all required fields before continuing.
       </div>
     </div>
-    
-    <div class="sr-form-group">
-      <label class="sr-label">Room Number</label>
-      <input type="text" class="sr-input" id="room-number" placeholder="Enter your room number" required/>
+
+    <div class="sr-form-panel">
+      <div class="sr-panel-title">
+        <h4>Schedule Pickup & Contact</h4>
+        <span class="sr-panel-pill water">Schedule</span>
+      </div>
+      <div class="sr-form-grid">
+        <div class="sr-form-group">
+          <label class="sr-label">Room Number</label>
+          <input type="text" class="sr-input" id="room-number" placeholder="Enter your room number" required/>
+        </div>
+
+        <div class="sr-form-group">
+          <label class="sr-label">Contact Number</label>
+          <input type="tel" class="sr-input" id="contact-number" placeholder="Enter your contact number" required/>
+        </div>
+        
+        <div class="sr-form-group">
+          <label class="sr-label">Preferred Date</label>
+          <input type="date" class="sr-input" id="service-date" required/>
+        </div>
+
+        <div class="sr-form-group">
+          <label class="sr-label">Preferred Time Slot</label>
+          <select class="sr-select" id="service-time" required>
+            <option value="">Choose a time...</option>
+            <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
+            <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
+            <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
+            <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
+            <option value="16:00-18:00">4:00 PM - 6:00 PM</option>
+            <option value="18:00-20:00">6:00 PM - 8:00 PM</option>
+          </select>
+        </div>
+
+        <div class="sr-form-group full">
+          <label class="sr-label">Pickup Location</label>
+          <select class="sr-select" id="pickup-location" required>
+            <option value="">Choose a location...</option>
+            <option value="room-entrance">Room Entrance</option>
+            <option value="front-desk">Front Desk</option>
+            <option value="main-lobby">Main Lobby</option>
+            <option value="building-entrance">Building Entrance</option>
+          </select>
+        </div>
+      </div>
     </div>
 
-    <div class="sr-form-group">
-      <label class="sr-label">Contact Number</label>
-      <input type="tel" class="sr-input" id="contact-number" placeholder="Enter your contact number" required/>
-    </div>
-    
-    <div class="sr-form-group">
-      <label class="sr-label">Preferred Date</label>
-      <input type="date" class="sr-input" id="service-date" required/>
-    </div>
-
-    <div class="sr-form-group">
-      <label class="sr-label">Preferred Time Slot</label>
-      <select class="sr-select" id="service-time" required>
-        <option value="">Choose a time...</option>
-        <option value="08:00-10:00">8:00 AM - 10:00 AM</option>
-        <option value="10:00-12:00">10:00 AM - 12:00 PM</option>
-        <option value="12:00-14:00">12:00 PM - 2:00 PM</option>
-        <option value="14:00-16:00">2:00 PM - 4:00 PM</option>
-        <option value="16:00-18:00">4:00 PM - 6:00 PM</option>
-        <option value="18:00-20:00">6:00 PM - 8:00 PM</option>
-      </select>
-    </div>
-
-    <div class="sr-form-group">
-      <label class="sr-label">Pickup Location</label>
-      <select class="sr-select" id="pickup-location" required>
-        <option value="">Choose a location...</option>
-        <option value="room-entrance">Room Entrance</option>
-        <option value="front-desk">Front Desk</option>
-        <option value="main-lobby">Main Lobby</option>
-        <option value="building-entrance">Building Entrance</option>
-      </select>
-    </div>
-
-    <div class="sr-info-box">
+    <div class="sr-note-box">
       <span class="sr-info-icon">ℹ️</span>
       <div>
         <strong>Note:</strong> Your scheduled time is a preference. The actual pickup time may vary based on availability. You will be notified once the request is approved.
