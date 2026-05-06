@@ -313,7 +313,6 @@ nav.scrolled {
   background: #fff;
   border-bottom: 1px solid var(--border);
   padding: 1rem 2.5rem;
-  position: sticky;
   top: 72px;
   z-index: 90;
   box-shadow: 0 2px 12px rgba(100, 60, 200, 0.05);
@@ -642,6 +641,93 @@ nav.scrolled {
   font-size: 12px;
   color: var(--muted);
   margin-top: 2px;
+}
+
+/* Button Styles */
+.bv, .ba {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid var(--v);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+
+.bv {
+  background: transparent;
+  color: var(--v);
+}
+
+.bv:hover {
+  background: var(--v);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgba), 0.3);
+}
+
+.ba {
+  background: var(--v);
+  color: #fff;
+  border-color: var(--v);
+}
+
+.ba:hover {
+  background: var(--vl);
+  border-color: var(--vl);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgba), 0.4);
+}
+
+.bv svg, .ba svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* General Button Styles */
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.btn:hover {
+  background: #e5e7eb;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+  background: var(--v);
+  color: #fff;
+  border-color: var(--v);
+}
+
+.btn-primary:hover {
+  background: var(--vl);
+  border-color: var(--vl);
+  box-shadow: 0 4px 12px rgba(var(--primary-rgba), 0.3);
+}
+
+.btn svg, .btn-primary svg {
+  width: 16px;
+  height: 16px;
 }
 
 .ov {

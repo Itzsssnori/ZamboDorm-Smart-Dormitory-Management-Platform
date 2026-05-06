@@ -20,7 +20,7 @@ html { scroll-behavior: smooth; }
   --shadow-lg: 0 8px 32px rgba(124,58,237,0.14), 0 4px 12px rgba(0,0,0,0.06);
   --font: 'Plus Jakarta Sans', sans-serif;
   --nav-h: 68px;
-  --sidebar-w: 260px;
+  --sidebar-w: 280px;
   --bg: linear-gradient(135deg, #ede9fe 0%, #e0f2fe 60%, #f3e8ff 100%);
   --card-bg: #ffffff;
   --card-border: rgba(124,58,237,0.10);
@@ -458,3 +458,8 @@ padding-top: 0 !important;
   .sr-search-wrap { min-width: unset; }
   .sr-select { width: 100%; }
 }
+
+@keyframes slideUpFadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }

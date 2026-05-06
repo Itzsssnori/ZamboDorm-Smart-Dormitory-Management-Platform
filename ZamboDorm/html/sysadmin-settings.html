@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/sidebar-hamburger.css">
   <link rel="stylesheet" href="../css/admin-user-settings.css">
+  <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
+  <script src="../js/user-approval-store.js"></script>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
   <style></style>
@@ -57,6 +59,16 @@
             <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
           </svg>
           <span>Complaints</span>
+        </a>
+
+        <a href="sysadmin-user-approvals.html" class="sidebar-item">
+          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <polyline points="16 11 18 13 22 9"/>
+          </svg>
+          <span>User Approvals</span>
+          <span class="sidebar-badge" id="sidebar-pending-count">0</span>
         </a>
         <div class="sidebar-divider"></div>
         <a href="sysadmin-settings.html" class="sidebar-item active">
@@ -216,6 +228,17 @@
   <div class="toast" id="toast"></div>
 
   <script src="../js/settings-tenant.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const count = UserApprovalStore.getPendingCount();
+    const badge = document.getElementById('sidebar-pending-count');
+    if (badge && count > 0) {
+      badge.textContent = count;
+      badge.classList.add('show');
+    }
+  });
+</script>
 
 </body>
 </html>

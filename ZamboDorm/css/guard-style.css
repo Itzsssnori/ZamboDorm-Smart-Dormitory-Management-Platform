@@ -54,13 +54,18 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
   width: var(--sidebar-w);
   background: white;
   border-right: 1px solid var(--card-border);
-  padding: 1.25rem 0.875rem;
-  display: flex; flex-direction: column; gap: 0.35rem;
   position: sticky; top: var(--nav-h);
   height: calc(100vh - var(--nav-h));
   overflow-y: auto;
   z-index: 99;
   transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.25rem 0.875rem;
 }
 
 .sidebar-item {
@@ -78,6 +83,16 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .sidebar-item:hover { background: rgba(124,58,237,0.07); color: var(--primary); }
 .sidebar-item.active { background: rgba(124,58,237,0.12); color: var(--primary); }
 .sidebar-item.active::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: var(--primary); border-radius: 0 4px 4px 0; }
+
+.sidebar-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke-width: 1.75;
+  color: inherit;
+  fill: none;
+}
+
 .sidebar-item svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; flex-shrink: 0; color: inherit; }
 .sidebar-item.danger { color: var(--red); }
 .sidebar-item.danger:hover { background: rgba(239,68,68,0.07); }
