@@ -45,7 +45,7 @@ function populateProfileBadge(userData) {
   
   // Update room display if element exists
   if (document.getElementById('profileRoom')) {
-    document.getElementById('profileRoom').textContent = userData.room || '067-A';
+    document.getElementById('profileRoom').textContent = '--';
   }
 }
 

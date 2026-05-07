@@ -6,9 +6,6 @@ function toggleSidebar() {
   if (ov) ov.classList.toggle('active');
 }
 
-const VISITOR_STORAGE_KEY = 'zambodorm_visitor_registrations';
-const VISITOR_LATEST_KEY = 'zambodorm_latest_visitor_registration';
-
 /* ── Phase stepper ── */
 function setPhase(active) {
   const order = { a: 0, b: 1, c: 2 };
@@ -113,13 +110,8 @@ function checkAccept() {
 }
 
 function submitVisitor() {
-  const registration = buildVisitorRegistration();
-  const stored = JSON.parse(localStorage.getItem(VISITOR_STORAGE_KEY) || '[]');
-  stored.unshift(registration);
-  localStorage.setItem(VISITOR_STORAGE_KEY, JSON.stringify(stored));
-  localStorage.setItem(VISITOR_LATEST_KEY, JSON.stringify(registration));
-
-  document.getElementById('done-ref').textContent = registration.registrationId;
+  const ref = '#VIS-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  document.getElementById('done-ref').textContent = ref;
 
   ['a', 'b', 'c'].forEach(p => {
     const ph = document.getElementById('ph-' + p);
@@ -130,37 +122,6 @@ function submitVisitor() {
   document.getElementById('line-bc').classList.add('done');
 
   showScreen('d');
-}
-
-function buildVisitorRegistration() {
-  const name = document.getElementById('v-name').value.trim();
-  const phone = document.getElementById('v-phone').value.trim();
-  const governmentId = document.getElementById('v-id').value.trim();
-  const purpose = document.getElementById('v-purpose').value;
-  const duration = document.getElementById('v-duration').value;
-  const date = document.getElementById('v-date').value;
-  const time = document.getElementById('v-time').value;
-  const dateObj = new Date(date + 'T00:00:00');
-  const formattedDate = dateObj.toLocaleDateString('en-PH', { year: 'numeric', month: 'long', day: 'numeric' });
-  const [hours, minutes] = time.split(':');
-  const hourNumber = parseInt(hours, 10);
-  const suffix = hourNumber >= 12 ? 'PM' : 'AM';
-  const displayHour = hourNumber % 12 || 12;
-
-  return {
-    registrationId: `#VIS-${new Date().getFullYear()}-${String(Math.floor(Math.random() * 9000) + 1000)}`,
-    status: 'pending',
-    name,
-    phone,
-    governmentId,
-    purpose,
-    duration,
-    checkInDate: date,
-    checkInTime: time,
-    checkInDisplay: `${formattedDate} at ${displayHour}:${minutes} ${suffix}`,
-    createdAt: new Date().toISOString(),
-    source: 'tenant-visitors',
-  };
 }
 
 /* ── Reset ── */
@@ -175,9 +136,6 @@ function resetAll() {
   });
   document.getElementById('v-purpose').value  = '';
   document.getElementById('v-duration').value = '';
-  if (document.getElementById('done-ref')) {
-    document.getElementById('done-ref').textContent = '#VIS-2025-0001';
-  }
 
   /* Reset phase dot icons back to their originals */
   const icons = {
