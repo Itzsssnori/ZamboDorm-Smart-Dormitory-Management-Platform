@@ -10,9 +10,9 @@
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
   <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
+  <script src="../js/user-approval-store.js"></script>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
-  <script src="../js/user-approval-store.js"></script>
 </head>
 <body>
 
@@ -115,7 +115,7 @@
       <!-- Page Header -->
       <div class="page-header prop-header">
         <div>
-          <h1 class="page-title">User Account Approvals</h1>
+          <h1 class="page-title">User Account Approval</h1>
           <p class="page-subtitle">Review and approve user accounts created by dorm admins</p>
         </div>
         <div class="header-stats">
@@ -302,5 +302,16 @@
 
   <script src="../js/tenant-sidebar-hamburger.js"></script>
   <script src="../js/sysadmin-user-approvals.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const count = UserApprovalStore.getPendingCount();
+    const badge = document.getElementById('sidebar-pending-count');
+    if (badge && count > 0) {
+      badge.textContent = count;
+      badge.classList.add('show');
+    }
+  });
+  </script>
 </body>
 </html>

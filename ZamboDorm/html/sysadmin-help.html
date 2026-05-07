@@ -6,14 +6,14 @@
 <title>ZamboDorm – Help & FAQ (System Admin)</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%237c3aed;stop-opacity:1' /%3E%3Cstop offset='100%25' style='stop-color:%238b5cf6;stop-opacity:1' /%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='24' height='24' rx='6' ry='6' fill='url(%23grad)'/%3E%3Cpath d='M3 9.5L12 3L21 9.5V20C21 20.55 20.55 21 20 21H4C3.45 21 3 20.55 3 20V9.5Z' fill='white' fill-opacity='0.95'/%3E%3Crect x='9' y='14' width='6' height='7' rx='1' fill='rgba(124,58,237,0.65)'/%3E%3C/svg%3E"/>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/tenant-help.css">
-<link rel="stylesheet" href="../css/sidebar-hamburger.css">
-<link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
-<script src="../js/user-approval-store.js"></script>
-<script src="../js/user-manager.js"></script>
-<script src="../js/navbar.js"></script>
-<style></style>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/sidebar-hamburger.css">
+  <link rel="stylesheet" href="../css/sysadmin-overview.css">
+  <link rel="stylesheet" href="../css/tenant-help.css">
+  <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
+  <script src="../js/user-approval-store.js"></script>
+  <script src="../js/user-manager.js"></script>
+  <script src="../js/navbar.js"></script>
 </head>
 <body>
 
@@ -62,15 +62,14 @@
       </a>
 
       <a href="sysadmin-user-approvals.html" class="sidebar-item">
-     <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-     <circle cx="9" cy="7" r="4"/>
-      <polyline points="16 11 18 13 22 9"/>
-      </svg>
-      <span>User Approvals</span>
-      <span class="sidebar-badge" id="sidebar-pending-count">0</span>
+        <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <polyline points="16 11 18 13 22 9"/>
+        </svg>
+        <span>User Approvals</span>
+        <span class="sidebar-badge" id="sidebar-pending-count">0</span>
       </a>
-
       <div class="sidebar-divider"></div>
       <a href="sysadmin-settings.html" class="sidebar-item">
         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -233,9 +232,10 @@
 
 <div class="toast" id="toast"></div>
 
-<script src="../js/tenant-help.js"></script>
+  <script src="../js/tenant-sidebar-hamburger.js"></script>
+  <script src="../js/tenant-help.js"></script>
 
-<script>
+  <script>
   document.addEventListener('DOMContentLoaded', function() {
     const count = UserApprovalStore.getPendingCount();
     const badge = document.getElementById('sidebar-pending-count');
@@ -244,6 +244,6 @@
       badge.classList.add('show');
     }
   });
-</script>
+  </script>
 </body>
 </html>

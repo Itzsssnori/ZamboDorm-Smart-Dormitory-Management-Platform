@@ -78,3 +78,17 @@
   populateDropdowns();
   updateTimeIn();
   setInterval(updateTimeIn, 1000);
+
+  // Real-time validation for contact number
+  const contactInput = document.getElementById('f-contact');
+  if (contactInput) {
+    contactInput.addEventListener('input', function() {
+      // Check if value contains any alphabetical characters
+      const hasLetter = /[a-zA-Z]/.test(this.value);
+      if (hasLetter) {
+        this.classList.add('error');
+      } else {
+        this.classList.remove('error');
+      }
+    });
+  }

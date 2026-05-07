@@ -32,6 +32,80 @@ let nextId = 4;
 let editingId = null;
 let deletingId = null;
 
+// ─── Demo Data ──────────────────────────────────────────────────────────────
+
+const demoUsers = [
+  // Sunshine Dormitory (id: 1)
+  { name: 'Juan Dela Cruz', email: 'juan@example.com', role: 'landlord', propertyId: 1 },
+  { name: 'Maria Clara', email: 'maria@example.com', role: 'tenant', assignedDormId: 1 },
+  { name: 'Jose Rizal', email: 'jose@example.com', role: 'tenant', assignedDormId: 1 },
+  { name: 'Antonio Luna', email: 'antonio@example.com', role: 'guard', assignedDormId: 1 },
+  // Blue Haven Dorms (id: 2)
+  { name: 'Andres Bonifacio', email: 'andres@example.com', role: 'landlord', propertyId: 2 },
+  { name: 'Emilio Aguinaldo', email: 'emilio@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Apolinario Mabini', email: 'mabini@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Melchora Aquino', email: 'melchora@example.com', role: 'tenant', assignedDormId: 2 },
+  { name: 'Gabriela Silang', email: 'gabriela@example.com', role: 'guard', assignedDormId: 2 },
+  { name: 'Lapu-Lapu', email: 'lapu@example.com', role: 'guard', assignedDormId: 2 },
+  // Green Valley Residence (id: 3)
+  { name: 'Tandang Sora', email: 'sora@example.com', role: 'landlord', propertyId: 3 },
+  { name: 'Diego Silang', email: 'diego@example.com', role: 'tenant', assignedDormId: 3 },
+];
+
+function getCombinedUsers() {
+  const localUsers = JSON.parse(localStorage.getItem('zambodorm_all_users') || '[]');
+  return [...demoUsers, ...localUsers];
+}
+
+// ─── Role Normalization ─────────────────────────────────────────────────────
+// Registration stores role values like "student"/"solo"/"parent" while demo
+// data uses "landlord"/"tenant"/"guard". This single map is the source of
+// truth for both category bucketing and the human-readable role name.
+const ROLE_CATEGORY = {
+  tenant: {
+    student:  'Student',
+    employed: 'Employed',
+    solo:     'Employed',
+    parent:   'Guardian',
+    tenant:   'Tenant'
+  },
+  admin: {
+    admin:    'Admin',
+    landlord: 'Landlord',
+    owner:    'Owner',
+    manager:  'Manager'
+  },
+  staff: {
+    security:     'Security',
+    guard:        'Security',
+    maintenance:  'Maintenance',
+    housekeeping: 'Housekeeping',
+    cleaner:      'Housekeeping'
+  }
+};
+
+const CATEGORY_LABEL = { tenant: 'Tenant', admin: 'Admin', staff: 'Staff' };
+
+function getUserCategory(user) {
+  if (!user || (!user.role && !user.category)) return 'unassigned';
+  const category = String(user.category || '').toLowerCase().trim();
+  const role     = String(user.role || '').toLowerCase().trim();
+
+  if (ROLE_CATEGORY[category]) return category;
+  for (const cat of Object.keys(ROLE_CATEGORY)) {
+    if (ROLE_CATEGORY[cat][role]) return cat;
+  }
+  return 'unassigned';
+}
+
+function normalizeUserRole(user) {
+  const category = getUserCategory(user);
+  if (category === 'unassigned') return 'Unassigned';
+  const role     = String(user.role || '').toLowerCase().trim();
+  const roleName = ROLE_CATEGORY[category][role] || 'Unassigned';
+  return `${CATEGORY_LABEL[category]} — ${roleName}`;
+}
+
 // ─── Helpers ────────────────────────────────────────────────────────────────
 
 function formatPrice(price) {
@@ -60,19 +134,36 @@ function todayISO() {
 function renderTable() {
   const countBadge = document.getElementById('propCount');
   const tbody = document.getElementById('propTableBody');
+  const allUsers = JSON.parse(localStorage.getItem('zambodorm_all_users') || '[]');
 
   countBadge.textContent = `${properties.length} ${properties.length === 1 ? 'dormitory' : 'dormitories'}`;
   tbody.innerHTML = '';
 
   properties.forEach(function (prop) {
+    // Filter users assigned to this property
+    const propUsers = allUsers.filter(u => u.propertyId === prop.id || u.assignedDormId === prop.id);
+    const tenants = propUsers.filter(u => u.role === 'tenant').length;
+    const admins = propUsers.filter(u => u.role === 'admin' || u.role === 'landlord').length;
+    const securities = propUsers.filter(u => u.role === 'security' || u.role === 'guard').length;
+
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td>${escapeHtml(prop.name)}</td>
-      <td class="td-price">${formatPrice(prop.price)}</td>
-      <td class="td-address">${escapeHtml(prop.address)}</td>
-      <td>${prop.rooms}</td>
-      <td>${formatDate(prop.dateAdded)}</td>
-      <td>
+      <td data-label="Dormitory Name">${escapeHtml(prop.name)}</td>
+      <td data-label="Price/mo" class="td-price">${formatPrice(prop.price)}</td>
+      <td data-label="Address" class="td-address">${escapeHtml(prop.address)}</td>
+      <td data-label="Capacity">${prop.rooms}</td>
+      <td data-label="Users/Staff">
+        <button class="btn-user-counts" onclick="openUserListModal(${prop.id})" style="background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: 6px; padding: 4px 8px; cursor: pointer; text-align: left; font-family: inherit; transition: all 0.2s; width: 100%;">
+          <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 700; margin-bottom: 2px; white-space: nowrap;">👥 Assigned Users</div>
+          <div style="font-size: 0.8rem; color: #1e1b4b; display: flex; gap: 6px;">
+            <span>T: <strong>${tenants}</strong></span>
+            <span>A: <strong>${admins}</strong></span>
+            <span>S: <strong>${securities}</strong></span>
+          </div>
+        </button>
+      </td>
+      <td data-label="Date Added">${formatDate(prop.dateAdded)}</td>
+      <td data-label="Actions">
         <div class="action-wrap">
           <button class="btn-dots" data-id="${prop.id}" aria-label="Actions">&#8942;</button>
           <div class="dots-menu" id="menu-${prop.id}">
@@ -315,6 +406,243 @@ document.addEventListener('DOMContentLoaded', function () {
   
   // Load pending dorm applications
   loadPendingDormApplications();
+<<<<<<< HEAD
+=======
+});
+
+// ─── PENDING DORM APPLICATIONS HANDLER ──────────────────────────────────────
+let currentPendingApp = null;
+
+function loadPendingDormApplications() {
+  const pendingDorms = localStorage.getItem('zambodorm_pending_dorms');
+  const apps = pendingDorms ? JSON.parse(pendingDorms) : [];
+  
+  const container = document.getElementById('pendingAppsContainer');
+  const card = document.getElementById('pendingAppCard');
+  const badge = document.getElementById('pendingCount');
+  
+  if (apps.length === 0) {
+    card.style.display = 'none';
+    return;
+  }
+  
+  card.style.display = 'block';
+  badge.textContent = apps.length;
+  
+  container.innerHTML = apps.map((app, idx) => `
+    <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px; background: white; border: 1px solid #fbbf24; border-radius: 6px; margin-bottom: 10px;">
+      <div style="flex: 1;">
+        <div style="font-weight: 600; color: #1f2937; margin-bottom: 4px;">${app.dormName}</div>
+        <div style="font-size: 0.9rem; color: #6b7280;">
+          📍 ${app.dormLocation} • 👤 ${app.adminName} • 📅 ${app.submittedDate} ${app.submittedTime}
+        </div>
+      </div>
+      <button onclick="openAppReviewModal(${idx})" style="padding: 8px 16px; background: #f59e0b; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.9rem;">Review</button>
+    </div>
+  `).join('');
+}
+
+function openAppReviewModal(idx) {
+  const pendingDorms = localStorage.getItem('zambodorm_pending_dorms');
+  const apps = JSON.parse(pendingDorms);
+  currentPendingApp = { ...apps[idx], index: idx };
+  
+  document.getElementById('appAdminName').textContent = currentPendingApp.adminName || '-';
+  document.getElementById('appAdminEmail').textContent = currentPendingApp.adminEmail || '-';
+  document.getElementById('appAdminPhone').textContent = currentPendingApp.adminPhone || '-';
+  document.getElementById('appSubmittedDate').textContent = `${currentPendingApp.submittedDate} ${currentPendingApp.submittedTime}`;
+  
+  document.getElementById('appDormName').textContent = currentPendingApp.dormName || '-';
+  document.getElementById('appDormLocation').textContent = currentPendingApp.dormLocation || '-';
+  document.getElementById('appDormPhone').textContent = currentPendingApp.dormPhone || '-';
+  document.getElementById('appTotalRooms').textContent = currentPendingApp.totalRooms || '-';
+  document.getElementById('appCapacity').textContent = currentPendingApp.capacity || '-';
+  document.getElementById('appAmenities').textContent = (currentPendingApp.amenities && currentPendingApp.amenities.length > 0) 
+    ? currentPendingApp.amenities.join(', ') 
+    : 'None listed';
+  document.getElementById('appDescription').textContent = currentPendingApp.description || 'No description provided';
+  
+  const docsList = document.getElementById('appDocumentsList');
+  if (currentPendingApp.documents && currentPendingApp.documents.length > 0) {
+    docsList.innerHTML = currentPendingApp.documents.map(doc => `
+      <div style="padding: 10px; background: #f3e8ff; border-radius: 6px; text-align: center; font-size: 0.85rem; word-break: break-word;">
+        <div style="margin-bottom: 6px; color: #7c3aed;">📄</div>
+        <div style="color: #6b21a8; font-weight: 600;">${doc.name}</div>
+        <div style="color: #9333ea; font-size: 0.8rem;">${(doc.size / 1024).toFixed(1)}KB</div>
+      </div>
+    `).join('');
+  } else {
+    docsList.innerHTML = '<div style="grid-column: 1/-1; color: #9ca3af; text-align: center; padding: 20px;">No documents uploaded</div>';
+  }
+  
+  const photosList = document.getElementById('appPhotosList');
+  if (currentPendingApp.photos && currentPendingApp.photos.length > 0) {
+    photosList.innerHTML = currentPendingApp.photos.map((photo, idx) => `
+      <img src="${photo}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 6px; border: 1px solid #fed7aa;" alt="Dorm photo ${idx + 1}" />
+    `).join('');
+  } else {
+    photosList.innerHTML = '<div style="grid-column: 1/-1; color: #9ca3af; text-align: center; padding: 40px;">No photos uploaded</div>';
+  }
+  
+  document.getElementById('approvalNotes').value = '';
+  document.getElementById('appOverlay').style.display = 'block';
+  document.getElementById('appReviewModal').style.display = 'flex';
+}
+
+function closeAppReviewModal() {
+  document.getElementById('appOverlay').style.display = 'none';
+  document.getElementById('appReviewModal').style.display = 'none';
+  currentPendingApp = null;
+}
+
+function approveDormApplication() {
+  if (!currentPendingApp) return;
+  
+  const notes = document.getElementById('approvalNotes').value.trim();
+  const pendingDorms = JSON.parse(localStorage.getItem('zambodorm_pending_dorms'));
+  pendingDorms[currentPendingApp.index].status = 'Approved';
+  pendingDorms[currentPendingApp.index].approvalDate = new Date().toLocaleDateString('en-PH');
+  if (notes) pendingDorms[currentPendingApp.index].approvalNotes = notes;
+  
+  const approvedApp = pendingDorms.splice(currentPendingApp.index, 1)[0];
+  localStorage.setItem('zambodorm_pending_dorms', JSON.stringify(pendingDorms));
+  
+  const adminApps = JSON.parse(localStorage.getItem('zambodorm_dorm_applications') || '[]');
+  const adminAppIdx = adminApps.findIndex(a => a.id === approvedApp.id);
+  if (adminAppIdx !== -1) {
+    adminApps[adminAppIdx].status = 'Approved';
+    adminApps[adminAppIdx].approvalDate = approvedApp.approvalDate;
+    if (notes) adminApps[adminAppIdx].approvalNotes = notes;
+    localStorage.setItem('zambodorm_dorm_applications', JSON.stringify(adminApps));
+  }
+  
+  showToast(`✅ Dorm "${approvedApp.dormName}" approved successfully! Added to properties.`);
+  closeAppReviewModal();
+  loadPendingDormApplications();
+}
+
+function rejectDormApplication() {
+  if (!currentPendingApp) return;
+  
+  const notes = document.getElementById('approvalNotes').value.trim();
+  
+  if (!notes) {
+    showToast('⚠️ Please provide a reason for rejection in the notes field.');
+    return;
+  }
+  
+  const pendingDorms = JSON.parse(localStorage.getItem('zambodorm_pending_dorms'));
+  pendingDorms[currentPendingApp.index].status = 'Rejected';
+  pendingDorms[currentPendingApp.index].rejectionNotes = notes;
+  
+  const rejectedApp = pendingDorms.splice(currentPendingApp.index, 1)[0];
+  localStorage.setItem('zambodorm_pending_dorms', JSON.stringify(pendingDorms));
+  
+  const adminApps = JSON.parse(localStorage.getItem('zambodorm_dorm_applications') || '[]');
+  const adminAppIdx = adminApps.findIndex(a => a.id === rejectedApp.id);
+  if (adminAppIdx !== -1) {
+    adminApps[adminAppIdx].status = 'Rejected';
+    adminApps[adminAppIdx].rejectionNotes = notes;
+    localStorage.setItem('zambodorm_dorm_applications', JSON.stringify(adminApps));
+  }
+  
+  showToast(`❌ Dorm "${rejectedApp.dormName}" rejected. Admin will be notified.`);
+  closeAppReviewModal();
+  loadPendingDormApplications();
+}
+
+document.getElementById('closeAppReview').addEventListener('click', closeAppReviewModal);
+document.getElementById('approveAppBtn').addEventListener('click', approveDormApplication);
+document.getElementById('rejectAppBtn').addEventListener('click', rejectDormApplication);
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.textContent = message;
+  toast.style.cssText = 'position: fixed; bottom: 90px; right: 20px; background: #1f2937; color: white; padding: 12px 20px; border-radius: 6px; font-size: 0.9rem; z-index: 9000; animation: slideIn 0.3s ease-out;';
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// ─── USER LIST MODAL HANDLER ───────────────────────────────────────────────
+// Tracks which property's users are currently shown so the modal can be
+// re-rendered if the underlying user list changes while it's open.
+let openUserListPropId = null;
+
+function openUserListModal(propId) {
+  const prop = properties.find(p => p.id === propId);
+  if (!prop) return;
+
+  const allUsers = getCombinedUsers();
+  const propUsers = allUsers.filter(u => u.propertyId === propId || u.assignedDormId === propId);
+
+  document.getElementById('userListModalTitle').textContent = `Users for ${prop.name}`;
+  const content = document.getElementById('userListContent');
+  content.innerHTML = '';
+
+  if (propUsers.length === 0) {
+    content.innerHTML = '<div style="padding: 20px; text-align: center; color: #6b7280;">No users assigned to this property.</div>';
+  } else {
+    // Group by normalized category so registration values (student/solo/parent)
+    // bucket the same way as demo values (tenant/landlord/guard).
+    const groups = { admin: [], staff: [], tenant: [], unassigned: [] };
+    for (const u of propUsers) groups[getUserCategory(u)].push(u);
+
+    const groupHeading = {
+      admin:      'Admins',
+      staff:      'Staff',
+      tenant:     'Tenants',
+      unassigned: 'Unassigned'
+    };
+
+    for (const cat of ['admin', 'staff', 'tenant', 'unassigned']) {
+      const users = groups[cat];
+      if (users.length === 0) continue;
+
+      const section = document.createElement('div');
+      section.style.marginBottom = '20px';
+      section.innerHTML = `
+        <h4 style="font-size: 0.8rem; font-weight: 800; text-transform: uppercase; color: #7c3aed; margin-bottom: 8px; border-bottom: 1px solid rgba(124, 58, 237, 0.1); padding-bottom: 4px;">${groupHeading[cat]} (${users.length})</h4>
+        <div style="display: grid; gap: 8px;">
+          ${users.map(u => `
+            <div class="assigned-user-card">
+              <div class="assigned-user-info">
+                <div class="assigned-user-name">${u.name}</div>
+                <div class="assigned-user-email">${u.email}</div>
+                <span class="role-badge role-badge--${getUserCategory(u)}">${normalizeUserRole(u)}</span>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      content.appendChild(section);
+    }
+  }
+
+  openUserListPropId = propId;
+  openModal('userListModal', 'userListOverlay');
+}
+
+function closeUserListModal() {
+  openUserListPropId = null;
+  closeModal('userListModal', 'userListOverlay');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const closeUserList = document.getElementById('closeUserList');
+  const closeUserListBtn = document.getElementById('closeUserListBtn');
+  const userListOverlay = document.getElementById('userListOverlay');
+
+  if(closeUserList) closeUserList.onclick = closeUserListModal;
+  if(closeUserListBtn) closeUserListBtn.onclick = closeUserListModal;
+  if(userListOverlay) userListOverlay.onclick = closeUserListModal;
+});
+
+// Re-render the modal if another tab edits the user list while it's open.
+window.addEventListener('storage', function (e) {
+  if (e.key === 'zambodorm_all_users' && openUserListPropId !== null) {
+    openUserListModal(openUserListPropId);
+  }
+>>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4
 });
 
 // ─── PENDING DORM APPLICATIONS HANDLER ──────────────────────────────────────
