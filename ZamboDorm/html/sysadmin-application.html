@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="../css/sidebar-hamburger.css"/>
   <link rel="stylesheet" href="../css/sysadmin-overview.css"/>
   <link rel="stylesheet" href="../css/sysadmin-application.css"/>
-  <link rel="stylesheet" href="../css/sysadmin-user-approvals.css"/>
-  <script src="../js/user-approval-store.js"></script>
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
   <link rel="stylesheet" href="../css/chatbot.css">
@@ -73,34 +71,6 @@
           <span>Complaints</span>
         </a>
 
-        <a href="sysadmin-user-approvals.html" class="sidebar-item">
-         <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-          <circle cx="9" cy="7" r="4"/>
-           <polyline points="16 11 18 13 22 9"/>
-        </svg>
-         <span>User Approvals</span>
-          <span class="sidebar-badge" id="sidebar-pending-count">0</span>
-          </a>
-
-        <div class="sidebar-divider"></div>
-
-        <!-- Settings -->
-        <a href="sysadmin-settings.html" class="sidebar-item">
-          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="3"/>
-            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-          </svg>
-          <span>Settings</span>
-        </a>
-        <a href="sysadmin-help.html" class="sidebar-item">
-          <svg class="sidebar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
-            <circle cx="12" cy="17" r="0.5" fill="currentColor"/>
-          </svg>
-          <span>Help</span>
-        </a>
         <div class="sidebar-divider"></div>
 
         <!-- Settings -->
@@ -291,16 +261,5 @@
 
   <script src="../js/tenant-sidebar-hamburger.js"></script>
   <script src="../js/sysadmin-application.js"></script>
-
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const count = UserApprovalStore.getPendingCount();
-    const badge = document.getElementById('sidebar-pending-count');
-    if (badge && count > 0) {
-      badge.textContent = count;
-      badge.classList.add('show');
-    }
-  });
-</script>
 </body>
 </html>
