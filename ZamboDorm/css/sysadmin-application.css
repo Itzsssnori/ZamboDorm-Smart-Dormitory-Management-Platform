@@ -438,46 +438,22 @@
   .app-card-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .app-card-name {
-    width: 100%;
-  }
-
-  .app-card-details {
-    flex-direction: column;
-    gap: 0.5rem;
   }
 
   .app-card-actions {
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
   }
 
   .btn-view,
   .btn-edit-status,
   .btn-comment {
-    width: 100%;
+    flex: 1;
     text-align: center;
     justify-content: center;
-    padding: 0.75rem;
   }
 
   .modal {
     width: 95%;
     max-height: 95vh;
-  }
-
-  .detail-row {
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .detail-label {
-    width: 100%;
-    font-size: 0.75rem;
   }
 }

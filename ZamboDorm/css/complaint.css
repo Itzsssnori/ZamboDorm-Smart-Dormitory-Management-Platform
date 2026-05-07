@@ -162,8 +162,8 @@
 .page-header {
   margin-bottom: 2rem;
   margin-top: 1rem;
-  margin-left: 0;
-  margin-right: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .page-header h1 {
@@ -181,13 +181,13 @@
 
 /* ── STEP BAR (Block) ── */
 .step-bar {
-   display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
   margin-bottom: 2rem;
-  margin-left: 0; 
-  margin-right: 0;  
+  margin-left: 2rem;
+  margin-right: 2rem;
   background: white;
   border: 1px solid rgba(124,58,237,0.10);
   border-radius: 14px;
@@ -269,8 +269,8 @@
   border: 1px solid rgba(124,58,237,0.10);
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  margin-left: 0;   
-  margin-right: 0;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .card-header {

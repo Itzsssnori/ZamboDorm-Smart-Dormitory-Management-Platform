@@ -10,8 +10,6 @@
   <!-- Load user manager and navbar before body to ensure navbar renders correctly -->
   <script src="../js/user-manager.js"></script>
   <script src="../js/navbar.js"></script>
-  <link rel="stylesheet" href="../css/chatbot.css">
-  <script src="../js/chatbot.js" defer></script>
 </head>
 <body>
   <!-- Navbar Web Component -->
@@ -218,7 +216,7 @@
     <div class="roommate-section">
       <div class="section-header">
         <h3 class="section-title">My Roommate</h3>
-        <a href="#" class="section-link">Message</a>
+        <a href="#" class="section-link" onclick="openMessageModal(event)">Message</a>
       </div>
       <div class="roommate-card-full">
         <div class="roommate-avatar">
@@ -279,8 +277,8 @@
             </svg>
           </div>
           <div class="payment-info">
-            <span class="payment-name">February Rent</span>
-            <span class="payment-date">Paid Feb 5, 2026</span>
+            <span class="payment-name">May Rent</span>
+            <span class="payment-date">Paid May 5, 2026</span>
           </div>
           <span class="payment-amount">₱4,500</span>
         </div>
@@ -306,37 +304,40 @@
       <h3 class="section-title">Items & Appliances Brought In</h3>
       <a href="#" class="section-link" onclick="openAddItemModal(event)">+ Add Item</a>
     </div>
-    <div class="items-list">
-      <div class="item-row">
+    <div class="items-list" id="itemsList">
+      <div class="item-row" data-page="1">
         <span class="item-number">1</span>
         <span class="item-name">Electric Fan (Hanabishi)</span>
-        <span class="item-date">1pc · Feb 10, 2026</span>
+        <span class="item-date">1pc · May 10, 2026</span>
         <button class="item-delete">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </button>
       </div>
-      <div class="item-row">
+      <div class="item-row" data-page="1">
         <span class="item-number">2</span>
         <span class="item-name">Laptop (Dell Inspiron)</span>
-        <span class="item-date">1pc · Feb 10, 2026</span>
+        <span class="item-date">1pc · May 10, 2026</span>
         <button class="item-delete">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </button>
       </div>
-      <div class="item-row">
+      <div class="item-row" data-page="1">
         <span class="item-number">3</span>
         <span class="item-name">Rice Cooker (Kyowa)</span>
-        <span class="item-date">1pc · Feb 10, 2026</span>
+        <span class="item-date">1pc · May 10, 2026</span>
         <button class="item-delete">
           <svg viewBox="0 0 24 24" fill="currentColor">
             <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
           </svg>
         </button>
       </div>
+    </div>
+    <div class="items-pagination" id="itemsPagination">
+      <button class="pagination-btn active" onclick="showItemsPage(1)">1</button>
     </div>
   </div>
 
@@ -352,8 +353,8 @@
           <span class="notice-box-title">General Dorm Cleaning</span>
           <span class="notice-box-icon">📋</span>
         </div>
-        <p class="notice-box-content">Feb 7, 8 AM to 12 PM</p>
-        <span class="notice-box-date">Posted Feb 3, 2026</span>
+        <p class="notice-box-content">May 7, 8 AM to 12 PM</p>
+        <span class="notice-box-date">Posted May 3, 2026</span>
       </div>
       <div class="notice-box notice-box-success">
         <div class="notice-box-header">
@@ -464,11 +465,11 @@
   </div>
 </div>
 
-<!-- Message Roommate Modal -->
+<!-- Message Roommate Modal (Chat Interface) -->
 <div class="modal-overlay-full" id="messageModal" onclick="closeMessageModal(event)">
-  <div class="modal-content-medium" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <h2 class="modal-title">Send Message to Ivan</h2>
+  <div class="modal-content-chat" onclick="event.stopPropagation()">
+    <div class="modal-header chat-header">
+      <h2 class="modal-title">Chat with Ivan</h2>
       <button class="modal-close" onclick="closeMessageModal()">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
           <line x1="18" y1="6" x2="6" y2="18"/>
@@ -476,20 +477,26 @@
         </svg>
       </button>
     </div>
-    <div class="modal-body">
-      <form id="messageForm" onsubmit="submitMessage(event)">
-        <div class="form-group">
-          <label for="messageSubject" class="form-label">Subject</label>
-          <input type="text" id="messageSubject" class="form-input" placeholder="e.g., Room Arrangement" required>
+    <div class="modal-body chat-body">
+      <div class="chat-messages" id="chatMessages">
+        <div class="chat-message received">
+          <div class="message-bubble">Hey! How's the room treating you?</div>
+          <span class="message-time">Today 2:30 PM</span>
         </div>
-        <div class="form-group">
-          <label for="messageBody" class="form-label">Message</label>
-          <textarea id="messageBody" class="form-textarea" placeholder="Type your message here..." required></textarea>
+        <div class="chat-message sent">
+          <div class="message-bubble">Good! Just wanted to discuss the cleaning schedule.</div>
+          <span class="message-time">Today 2:32 PM</span>
         </div>
-        <div class="flex justify-end gap-4 mt-md">
-          <button type="button" class="btn" onclick="closeMessageModal()">Cancel</button>
-          <button type="submit" class="btn btn-primary">Send Message</button>
+        <div class="chat-message received">
+          <div class="message-bubble">Sure, sounds good to me. What did you have in mind?</div>
+          <span class="message-time">Today 2:35 PM</span>
         </div>
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <form id="messageForm" onsubmit="submitMessage(event)" class="chat-form">
+        <input type="text" id="messageBody" class="chat-input" placeholder="Type a message..." required>
+        <button type="submit" class="btn btn-primary send-btn">Send</button>
       </form>
     </div>
   </div>

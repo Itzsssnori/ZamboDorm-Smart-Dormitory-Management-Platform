@@ -146,11 +146,7 @@
        PAGE HEADER
     ═══════════════════════════════════════ */
     .page-header {
-<<<<<<< HEAD
       /* margin-top: 1.5rem; */
-=======
-      margin-top: 1.5rem;
->>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4
       display: flex;
       justify-content: space-between;
       align-items: flex-start;

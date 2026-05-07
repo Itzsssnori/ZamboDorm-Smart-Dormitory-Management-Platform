@@ -421,13 +421,9 @@ body { font-family: var(--font); background: var(--bg-gradient); color: var(--te
 .category-tab svg {
   width: 18px;
   height: 18px;
-<<<<<<< HEAD
 }
 
 @keyframes slideUpFadeIn {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
     }
-=======
-}
->>>>>>> 9446a6acac249405797600bdeedfa28d8c7166f4

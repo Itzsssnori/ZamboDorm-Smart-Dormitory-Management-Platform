@@ -65,7 +65,7 @@ class ZDNavBar extends HTMLElement {
                 <div class="navbar__user-avatar">${userInitials}</div>
                 <span class="navbar__user-name">${userName}</span>
               </a>
-<a href="javascript:void(0)" class="btn btn--signin" id="logoutBtn" style="border-radius: 50px">
+              <a href="javascript:void(0)" class="btn btn--signin" id="logoutBtn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                   <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
                 </svg>
@@ -97,7 +97,7 @@ class ZDNavBar extends HTMLElement {
           <a href="../index.html#contact" class="mobile-menu__link">Contact</a>
           <div class="mobile-menu__divider"></div>
           ${isAuth ? `
-            <a href="javascript:void(0)" class="btn btn--signin mobile-menu__link" id="logoutBtnMobile" style="border-radius: 50px">
+            <a href="javascript:void(0)" class="btn btn--signin mobile-menu__link" id="logoutBtnMobile">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
                 <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/>
               </svg>

@@ -152,8 +152,8 @@ function openView(id) {
   app.properties.forEach(function (prop) {
     const tr = document.createElement('tr');
     tr.innerHTML = `
-      <td data-label="Property Name">${escapeHtml(prop.name)}</td>
-      <td data-label="Total Capacity">${prop.capacity}</td>
+      <td>${escapeHtml(prop.name)}</td>
+      <td>${prop.capacity}</td>
     `;
     tbody.appendChild(tr);
   });
