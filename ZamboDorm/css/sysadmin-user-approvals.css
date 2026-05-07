@@ -246,6 +246,161 @@
   color: var(--text-muted, #9ca3af);
 }
 
+/* ── Table Card (for overview widget) ── */
+.table-card {
+  background: #ffffff;
+  border-radius: var(--radius, 12px);
+  border: 1px solid var(--card-border, #e5e7eb);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.table-card:hover {
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.12);
+}
+
+.table-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--card-border, #e5e7eb);
+  background: rgba(124, 58, 237, 0.02);
+}
+
+.table-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text, #111827);
+  margin-bottom: 0.25rem;
+}
+
+.prop-count-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: rgba(245, 158, 11, 0.18);
+  color: #b45309;
+  min-width: 24px;
+  justify-content: center;
+}
+
+.table-card-footer {
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid var(--card-border, #e5e7eb);
+  background: rgba(245, 158, 11, 0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: var(--text-muted, #9ca3af);
+}
+
+.table-card-footer a {
+  color: var(--primary, #7c3aed);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.table-card-footer a:hover {
+  text-decoration: underline;
+}
+
+/* ── Pending items in overview widget ── */
+.ua-pending-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.15s;
+}
+
+.ua-pending-item:hover {
+  background-color: rgba(124, 58, 237, 0.02);
+}
+
+.ua-pending-item:last-child {
+  border-bottom: none;
+}
+
+.ua-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.ua-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.ua-name-text {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #111827;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ua-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 0.75rem;
+}
+
+.ua-role-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.ua-date {
+  font-size: 0.72rem;
+  color: #9ca3af;
+}
+
+.ua-action-row {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.ua-more-link {
+  padding: 0.6rem 1.1rem;
+  text-align: center;
+}
+
+.ua-more-link a {
+  font-size: 0.8rem;
+  color: #7c3aed;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ua-more-link a:hover {
+  text-decoration: underline;
+}
+
 /* ══════════════════════════════════════════
    REVIEW MODAL
 ══════════════════════════════════════════ */

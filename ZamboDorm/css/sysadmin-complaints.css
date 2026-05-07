@@ -98,6 +98,7 @@
   line-height: 1;
   padding: 0;
   transition: color 0.2s;
+  outline: none;
 }
 
 .modal-close:hover {
@@ -179,10 +180,15 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
 }
 
 .btn-cancel:hover {
   background: rgba(124, 58, 237, 0.15);
+}
+
+.btn-cancel:active {
+  background: rgba(124, 58, 237, 0.2);
 }
 
 .btn-save {
@@ -196,10 +202,15 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
 }
 
 .btn-save:hover {
   background: var(--primary-dark, #5b21b6);
+}
+
+.btn-save:active {
+  background: var(--primary-dark, #4c1d95);
 }
 
 /* ═══════════════════════════════════════
@@ -375,11 +386,16 @@
   border-radius: 6px;
   line-height: 1;
   transition: all 0.2s;
+  outline: none;
 }
 
 .btn-dots:hover {
   background: rgba(124, 58, 237, 0.08);
   color: var(--primary);
+}
+
+.btn-dots:active {
+  background: rgba(124, 58, 237, 0.15);
 }
 
 .dots-menu {
@@ -415,11 +431,16 @@
   cursor: pointer;
   font-weight: 500;
   transition: background 0.15s;
+  outline: none;
 }
 
 .dots-menu button:hover {
   background: rgba(124, 58, 237, 0.06);
   color: var(--primary);
+}
+
+.dots-menu button:active {
+  background: rgba(124, 58, 237, 0.12);
 }
 
 /* ═══════════════════════════════════════
@@ -436,10 +457,15 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s;
+  outline: none;
 }
 
 .btn-comment:hover {
   background: rgba(16, 185, 129, 0.18);
+}
+
+.btn-comment:active {
+  background: rgba(16, 185, 129, 0.25);
 }
 
 /* ═══════════════════════════════════════
